@@ -7,6 +7,7 @@ type Pack struct {
 	PkgRel      string
 	PkgDesc     string
 	PkgDescLong []string
+	Maintainer  string
 	Arch        []string
 	License     []string
 	Section     string
@@ -42,6 +43,8 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.PkgDesc = data.(string)
 	case "pkgdesclong":
 		p.PkgDescLong = data.([]string)
+	case "maintainer":
+		p.Maintainer = data.(string)
 	case "arch":
 		p.Arch = data.([]string)
 	case "license":
