@@ -1,4 +1,5 @@
 package pack
+import "github.com/dropbox/godropbox/errors"
 
 type Pack struct {
 	PkgName     string
@@ -79,6 +80,11 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.PreRm = data.([]string)
 	case "postrm":
 		p.PostRm = data.([]string)
+	default:
+		err = &ParseError{
+			errors.Newf("pack: Unknown option '%s' (%d: %s)",
+				key, n, line),
+		}
 	}
 
 	return
