@@ -1,5 +1,8 @@
 package pack
-import "github.com/dropbox/godropbox/errors"
+
+import (
+	"github.com/dropbox/godropbox/errors"
+)
 
 type Pack struct {
 	PkgName     string

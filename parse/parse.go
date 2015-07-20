@@ -133,8 +133,8 @@ func File(path string) (pac *pack.Pack, err error) {
 							return
 						}
 					} else {
-						blockKey = key
 						blockType = blockList
+						blockKey = key
 					}
 				case " ":
 					err = &SyntaxError{
