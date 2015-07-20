@@ -126,8 +126,16 @@ func File(path string) (pac *pack.Pack, err error) {
 						return
 					}
 				case "(":
-					blockType = blockList
-					blockKey = parts[0]
+					if val[len(val)-1:] == ")" {
+						val = val[2:len(val)-2]
+						err = pac.AddItem(key, []string{val}, n, line)
+						if err != nil {
+							return
+						}
+					} else {
+						blockKey = key
+						blockType = blockList
+					}
 				case " ":
 					err = &SyntaxError{
 						errors.Newf("parse: Extra space after '=' (%d: %s)",
