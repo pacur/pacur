@@ -122,14 +122,43 @@ func File(path string) (pac *pack.Pack, err error) {
 					return
 				}
 
+				valLen := len(val)
 				switch val[:1] {
 				case `"`, "`":
-					err = pac.AddItem(key, val[1:len(val)-1], n, line)
+					if val[valLen-1:] != val[:1] {
+						err = &SyntaxError{
+							errors.Newf("parse: Unexpected char '%s' "+
+								"expected '%s' (%d: %s)",
+								val[valLen-1:], val[:1], n, line),
+						}
+						return
+					}
+
+					err = pac.AddItem(key, val[1:valLen-1], n, line)
 					if err != nil {
 						return
 					}
 				case "(":
-					if val[len(val)-1:] == ")" {
+					if val[valLen-1:] == ")" {
+						if val[1:2] != `"` && val[1:2] != "`" {
+							err = &SyntaxError{
+								errors.Newf("parse: Unexpected char '%s' "+
+									"expected '\"' or '`' (%d: %s)",
+									val[1:2], n, line),
+							}
+							return
+						}
+
+						if val[valLen-2:valLen-1] != val[1:2] {
+							err = &SyntaxError{
+								errors.Newf("parse: Unexpected char '%s' "+
+									"expected '%s' (%d: %s)",
+									val[valLen-2:valLen-1], val[1:2],
+									n, line),
+							}
+							return
+						}
+
 						val = val[2 : len(val)-2]
 						err = pac.AddItem(key, []string{val}, n, line)
 						if err != nil {
