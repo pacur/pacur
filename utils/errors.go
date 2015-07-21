@@ -7,3 +7,11 @@ import (
 type MakeDirError struct {
 	errors.DropboxError
 }
+
+type HttpError struct {
+	errors.DropboxError
+}
+
+type InvalidUrl struct {
+	errors.DropboxError
+}
