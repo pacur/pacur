@@ -22,7 +22,7 @@ type Pack struct {
 	MakeDepends []string
 	Provides    []string
 	Conflicts   []string
-	Source      []string
+	Sources     []string
 	HashSums    []string
 	Backup      []string
 	Build       []string
@@ -69,8 +69,8 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.Provides = data.([]string)
 	case "conflicts":
 		p.Conflicts = data.([]string)
-	case "source":
-		p.Source = data.([]string)
+	case "sources":
+		p.Sources = data.([]string)
 	case "hashsums":
 		p.HashSums = data.([]string)
 	case "backup":
