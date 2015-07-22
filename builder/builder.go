@@ -16,6 +16,11 @@ func (b *Builder) initDirs() (err error) {
 		return
 	}
 
+	err = utils.ExistsMakeDir(b.Pack.PackageDir)
+	if err != nil {
+		return
+	}
+
 	return
 }
 
