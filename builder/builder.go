@@ -33,7 +33,7 @@ func (b *Builder) initDirs() (err error) {
 func (b *Builder) getSources() (err error) {
 	for _, path := range b.Pack.Sources {
 		source := source.Source{
-			Path:   path,
+			Source: path,
 			Output: b.Pack.SourceDir,
 		}
 
