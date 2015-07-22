@@ -71,6 +71,8 @@ func (s *Source) extract() (err error) {
 		cmd = exec.Command("tar", "xfz", s.Path)
 	} else if strings.HasSuffix(s.Path, "tar") {
 		cmd = exec.Command("tar", "xf", s.Path)
+	} else if strings.HasSuffix(s.Path, "zip") {
+		cmd = exec.Command("unzip", s.Path)
 	} else {
 		return
 	}
