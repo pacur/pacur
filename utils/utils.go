@@ -42,8 +42,8 @@ func ExistsMakeDir(path string) (err error) {
 	return
 }
 
-func HttpGet(url, outputDir string) (err error) {
-	name := UrlFilename(url)
+func HttpGet(url, outputDir string) (name string, err error) {
+	name = UrlFilename(url)
 	if name == "" {
 		err = &InvalidUrl{
 			errors.Newf("utils: Failed to get filename from '%s'", url),
