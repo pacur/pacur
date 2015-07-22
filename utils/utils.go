@@ -52,6 +52,9 @@ func HttpGet(url, outputDir string) (name string, err error) {
 	output := filepath.Join(outputDir, name)
 
 	cmd := exec.Command("wget", url, "-O", output)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
 	err = cmd.Run()
 	if err != nil {
 		err = &HttpError{
