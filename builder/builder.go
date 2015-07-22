@@ -77,7 +77,7 @@ func (b *Builder) pkg() (err error) {
 		return
 	}
 
-	err = runScript(path, b.Pack.PackageDir)
+	err = runScript(path, b.Pack.SourceDir)
 	if err != nil {
 		return
 	}
