@@ -15,19 +15,19 @@ const (
 )
 
 type Source struct {
-	Path   string
+	Source   string
 	Output string
 }
 
 func (s *Source) getType() int {
-	if strings.HasPrefix(s.Path, "http") {
+	if strings.HasPrefix(s.Source, "http") {
 		return url
 	}
 	return path
 }
 
 func (s *Source) getUrl() (err error) {
-	name, err := utils.HttpGet(s.Path, s.Output)
+	name, err := utils.HttpGet(s.Source, s.Output)
 	if err != nil {
 		return
 	}
@@ -41,7 +41,7 @@ func (s *Source) getUrl() (err error) {
 	if err != nil {
 		err = &GetError{
 			errors.Wrapf(err, "builder: Failed to extract source '%s'",
-				s.Path),
+				s.Source),
 		}
 		return
 	}
