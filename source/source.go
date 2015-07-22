@@ -55,6 +55,14 @@ func (s *Source) getUrl() (err error) {
 		}
 	}
 
+	return
+}
+
+func (s *Source) getPath() (err error) {
+	return
+}
+
+func (s *Source) extract() (err error) {
 	cmd := exec.Command("tar", "xfz", s.Path)
 	cmd.Dir = s.Output
 	cmd.Stdout = os.Stdout
@@ -69,10 +77,6 @@ func (s *Source) getUrl() (err error) {
 		return
 	}
 
-	return
-}
-
-func (s *Source) getPath() (err error) {
 	return
 }
 
@@ -140,6 +144,11 @@ func (s *Source) Get() (err error) {
 	}
 
 	err = s.validate()
+	if err != nil {
+		return
+	}
+
+	err = s.extract()
 	if err != nil {
 		return
 	}
