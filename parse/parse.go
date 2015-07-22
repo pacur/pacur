@@ -29,7 +29,8 @@ func File(path string) (pac *pack.Pack, err error) {
 	}
 
 	pac = &pack.Pack{
-		Root: root,
+		Root:      root,
+		SourceDir: filepath.Join(root, "src"),
 	}
 
 	file, err := os.Open(path)
