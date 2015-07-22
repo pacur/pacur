@@ -7,3 +7,7 @@ import (
 type SyntaxError struct {
 	errors.DropboxError
 }
+
+type FileError struct {
+	errors.DropboxError
+}

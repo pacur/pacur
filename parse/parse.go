@@ -20,8 +20,16 @@ var (
 )
 
 func File(path string) (pac *pack.Pack, err error) {
+	root, err := filepath.Abs(filepath.Dir(path))
+	if err != nil {
+		err = &FileError{
+			errors.Wrapf(err, "parse: Failed to get root directory from '%s'",
+				path),
+		}
+	}
+
 	pac = &pack.Pack{
-		Root: filepath.Abs(filepath.Dir(path)),
+		Root: root,
 	}
 
 	file, err := os.Open(path)
