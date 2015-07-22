@@ -37,3 +37,17 @@ func (b *Builder) getSources() (err error) {
 
 	return
 }
+
+func (b *Builder) Build() (err error) {
+	err = b.initDirs()
+	if err != nil {
+		return
+	}
+
+	err = b.getSources()
+	if err != nil {
+		return
+	}
+
+	return
+}
