@@ -30,17 +30,30 @@ func Exists(path string) (exists bool, err error) {
 	return
 }
 
-func Filename(url string) (name string, err error) {
-	n := strings.LastIndex(url, "/")
-	if n == -1 {
-		err = &InvalidPath{
-			errors.Newf("utils: Failed to get filename from '%s'", url),
+func Copy(source, dest string) (err error) {
+	cmd := exec.Command("cp", "-p", "-r", "-T", "-f", source, dest)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &CopyError{
+			errors.Wrapf(err, "utils: Failed to copy '%s' to '%s'",
+				source, dest),
 		}
 		return
 	}
-	name = url[n+1:]
 
 	return
+}
+
+func Filename(path string) string {
+	n := strings.LastIndex(path, "/")
+	if n == -1 {
+		return path
+	}
+
+	return path[n+1:]
 }
 
 func ExistsMakeDir(path string) (err error) {

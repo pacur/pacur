@@ -12,10 +12,10 @@ type HttpError struct {
 	errors.DropboxError
 }
 
-type InvalidPath struct {
+type ExistsError struct {
 	errors.DropboxError
 }
 
-type ExistsError struct {
+type CopyError struct {
 	errors.DropboxError
 }
