@@ -49,7 +49,7 @@ func HttpGet(url, outputDir string) (err error) {
 	err = cmd.Run()
 	if err != nil {
 		err = &HttpError{
-			errors.Wrapf("utils: Failed to get '%s'", url),
+			errors.Wrapf(err, "utils: Failed to get '%s'", url),
 		}
 		return
 	}
