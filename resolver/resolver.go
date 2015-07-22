@@ -3,9 +3,9 @@ package resolver
 import (
 	"container/list"
 	"fmt"
+	"github.com/dropbox/godropbox/errors"
 	"regexp"
 	"strings"
-	"github.com/dropbox/godropbox/errors"
 )
 
 var (
