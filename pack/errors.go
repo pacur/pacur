@@ -7,3 +7,7 @@ import (
 type ParseError struct {
 	errors.DropboxError
 }
+
+type ValidationError struct {
+	errors.DropboxError
+}

@@ -139,3 +139,20 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 
 	return
 }
+
+func (p *Pack) Validate() (err error) {
+	if len(p.Sources) == len(p.HashSums) {
+	} else if len(p.Sources) > len(p.HashSums) {
+		err = &ValidationError{
+			errors.New("pack: Missing hash sum for source"),
+		}
+		return
+	} else {
+		err = &ValidationError{
+			errors.New("pack: Too many hash sums for sources"),
+		}
+		return
+	}
+
+	return
+}
