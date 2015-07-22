@@ -4,17 +4,14 @@ import (
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/source"
 	"github.com/pacur/pacur/utils"
-	"path/filepath"
 )
 
 type Builder struct {
-	srcDir string
-	Pack   *pack.Pack
+	Pack *pack.Pack
 }
 
 func (b *Builder) initDirs() (err error) {
-	b.srcDir = filepath.Join(b.Pack.Root, "src")
-	err = utils.ExistsMakeDir(b.srcDir)
+	err = utils.ExistsMakeDir(b.Pack.SourceDir)
 	if err != nil {
 		return
 	}
@@ -26,7 +23,7 @@ func (b *Builder) getSources() (err error) {
 	for _, path := range b.Pack.Sources {
 		source := source.Source{
 			Path:   path,
-			Output: b.srcDir,
+			Output: b.Pack.SourceDir,
 		}
 
 		err = source.Get()
