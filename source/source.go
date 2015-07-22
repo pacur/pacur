@@ -35,14 +35,11 @@ func (s *Source) getType() int {
 	return path
 }
 
+func (s *Source) parsePath() {
+	s.Path = filepath.Join(s.Output, utils.Filename(s.Source))
+}
+
 func (s *Source) getUrl() (err error) {
-	name, err := utils.Filename(s.Source)
-	if err != nil {
-		return
-	}
-
-	s.Path = filepath.Join(s.Output, name)
-
 	exists, err := utils.Exists(s.Path)
 	if err != nil {
 		return
@@ -59,22 +56,29 @@ func (s *Source) getUrl() (err error) {
 }
 
 func (s *Source) getPath() (err error) {
+	err = utils.Copy(s.Source, s.Path)
+	if err != nil {
+		return
+	}
+
 	return
 }
 
 func (s *Source) extract() (err error) {
-	cmd := exec.Command("tar", "xfz", s.Path)
-	cmd.Dir = s.Output
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
+	if strings.HasSuffix(s.Path, "tar.gz") {
+		cmd := exec.Command("tar", "xfz", s.Path)
+		cmd.Dir = s.Output
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
 
-	err = cmd.Run()
-	if err != nil {
-		err = &GetError{
-			errors.Wrapf(err, "builder: Failed to extract source '%s'",
-				s.Source),
+		err = cmd.Run()
+		if err != nil {
+			err = &GetError{
+				errors.Wrapf(err, "builder: Failed to extract source '%s'",
+					s.Source),
+			}
+			return
 		}
-		return
 	}
 
 	return
@@ -131,6 +135,8 @@ func (s *Source) validate() (err error) {
 }
 
 func (s *Source) Get() (err error) {
+	s.parsePath()
+
 	switch s.getType() {
 	case url:
 		err = s.getUrl()
