@@ -5,7 +5,6 @@ import (
 	"math/rand"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"strings"
 )
 
@@ -14,12 +13,34 @@ var (
 		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 )
 
-func UrlFilename(url string) string {
+func Exists(path string) (exists bool, err error) {
+	_, err = os.Stat(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			err = nil
+		} else {
+			err = &ExistsError{
+				errors.Wrapf(err, "utils: Exists check error for '%s'", path),
+			}
+		}
+	} else {
+		exists = true
+	}
+
+	return
+}
+
+func UrlFilename(url string) (name string, err error) {
 	n := strings.LastIndex(url, "/")
 	if n == -1 {
-		return ""
+		err = &InvalidUrl{
+			errors.Newf("utils: Failed to get filename from '%s'", url),
+		}
+		return
 	}
-	return url[n+1:]
+	name = url[n+1:]
+
+	return
 }
 
 func ExistsMakeDir(path string) (err error) {
@@ -42,15 +63,7 @@ func ExistsMakeDir(path string) (err error) {
 	return
 }
 
-func HttpGet(url, outputDir string) (name string, err error) {
-	name = UrlFilename(url)
-	if name == "" {
-		err = &InvalidUrl{
-			errors.Newf("utils: Failed to get filename from '%s'", url),
-		}
-	}
-	output := filepath.Join(outputDir, name)
-
+func HttpGet(url, output string) (err error) {
 	cmd := exec.Command("wget", url, "-O", output)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr

@@ -15,3 +15,7 @@ type HttpError struct {
 type InvalidUrl struct {
 	errors.DropboxError
 }
+
+type ExistsError struct {
+	errors.DropboxError
+}
