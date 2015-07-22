@@ -156,3 +156,17 @@ func (p *Pack) Validate() (err error) {
 
 	return
 }
+
+func (p *Pack) Compile() (err error) {
+	err = p.Validate()
+	if err != nil {
+		return
+	}
+
+	err = p.Resolve()
+	if err != nil {
+		return
+	}
+
+	return
+}
