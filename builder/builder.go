@@ -9,11 +9,11 @@ import (
 
 type Builder struct {
 	srcDir string
-	pac    *pack.Pack
+	Pack   *pack.Pack
 }
 
 func (b *Builder) initDirs() (err error) {
-	b.srcDir = filepath.Join(b.pac.Root, "src")
+	b.srcDir = filepath.Join(b.Pack.Root, "src")
 	err = utils.ExistsMakeDir(b.srcDir)
 	if err != nil {
 		return
@@ -23,9 +23,9 @@ func (b *Builder) initDirs() (err error) {
 }
 
 func (b *Builder) getSources() (err error) {
-	for _, path := range b.pac.Sources {
+	for _, path := range b.Pack.Sources {
 		source := source.Source{
-			Path: path,
+			Path:   path,
 			Output: b.srcDir,
 		}
 
