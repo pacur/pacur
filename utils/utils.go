@@ -2,10 +2,16 @@ package utils
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"math/rand"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
+)
+
+var (
+	chars = []rune(
+		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 )
 
 func UrlFilename(url string) string {
@@ -54,5 +60,14 @@ func HttpGet(url, outputDir string) (err error) {
 		return
 	}
 
+	return
+}
+
+func RandStr(n int) (str string) {
+	strList := make([]rune, n)
+	for i := range strList {
+		strList[i] = chars[rand.Intn(len(chars))]
+	}
+	str = string(strList)
 	return
 }
