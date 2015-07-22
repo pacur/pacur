@@ -31,8 +31,9 @@ func (b *Builder) initDirs() (err error) {
 }
 
 func (b *Builder) getSources() (err error) {
-	for _, path := range b.Pack.Sources {
+	for i, path := range b.Pack.Sources {
 		source := source.Source{
+			Hash:   b.Pack.HashSums[i],
 			Source: path,
 			Output: b.Pack.SourceDir,
 		}
