@@ -49,7 +49,7 @@ func (r *Resolver) AddList(key string, vals []string) {
 	}
 }
 
-func (r *Resolver) resolve(item *element) (status bool, err error) {
+func (r *Resolver) resolve(item *element) (err error) {
 	keys := keyReg.FindAllString(*item.Val, -1)
 
 	for _, keyFull := range keys {
@@ -57,6 +57,10 @@ func (r *Resolver) resolve(item *element) (status bool, err error) {
 
 		val, ok := r.data[key]
 		if !ok {
+			err = &ResolveError{
+				errors.Newf(`resolver: Failed to resolve '%s' in '%s="%s"'`,
+					keyFull, item.Key, *item.Val),
+			}
 			return
 		}
 
@@ -65,7 +69,6 @@ func (r *Resolver) resolve(item *element) (status bool, err error) {
 
 	r.data[item.Key] = *item.Val
 
-	status = true
 	return
 }
 
@@ -78,21 +81,19 @@ func (r *Resolver) Resolve() (err error) {
 		item := elem.Value.(*element)
 		item.Count += 1
 
-		ok, e := r.resolve(item)
-		if e != nil {
-			err = e
-			return
-		}
-
-		if ok {
-			r.queue.Remove(elem)
-		} else if item.Count > 10 {
-			err = errors.Newf("resolver: Failed to resolve '${%s}'", item.Key)
-			return
+		err = r.resolve(item)
+		if err != nil {
+			if item.Count > 10 {
+				return
+			} else {
+				err = nil
+				r.queue.PushBack(elem)
+			}
 		} else {
-			r.queue.PushBack(elem)
+			r.queue.Remove(elem)
 		}
 	}
+
 	return
 }
 
