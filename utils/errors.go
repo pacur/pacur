@@ -12,7 +12,7 @@ type HttpError struct {
 	errors.DropboxError
 }
 
-type InvalidUrl struct {
+type InvalidPath struct {
 	errors.DropboxError
 }
 

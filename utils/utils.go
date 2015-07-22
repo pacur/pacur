@@ -33,7 +33,7 @@ func Exists(path string) (exists bool, err error) {
 func Filename(url string) (name string, err error) {
 	n := strings.LastIndex(url, "/")
 	if n == -1 {
-		err = &InvalidUrl{
+		err = &InvalidPath{
 			errors.Newf("utils: Failed to get filename from '%s'", url),
 		}
 		return
