@@ -30,7 +30,7 @@ func Exists(path string) (exists bool, err error) {
 	return
 }
 
-func UrlFilename(url string) (name string, err error) {
+func Filename(url string) (name string, err error) {
 	n := strings.LastIndex(url, "/")
 	if n == -1 {
 		err = &InvalidUrl{

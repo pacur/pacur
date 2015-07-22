@@ -36,7 +36,7 @@ func (s *Source) getType() int {
 }
 
 func (s *Source) getUrl() (err error) {
-	name, err := utils.UrlFilename(s.Source)
+	name, err := utils.Filename(s.Source)
 	if err != nil {
 		return
 	}
