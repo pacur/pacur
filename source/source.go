@@ -65,20 +65,27 @@ func (s *Source) getPath() (err error) {
 }
 
 func (s *Source) extract() (err error) {
-	if strings.HasSuffix(s.Path, "tar.gz") {
-		cmd := exec.Command("tar", "xfz", s.Path)
-		cmd.Dir = s.Output
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
+	var cmd *exec.Cmd
 
-		err = cmd.Run()
-		if err != nil {
-			err = &GetError{
-				errors.Wrapf(err, "builder: Failed to extract source '%s'",
-					s.Source),
-			}
-			return
+	if strings.HasSuffix(s.Path, "tar.gz") {
+		cmd = exec.Command("tar", "xfz", s.Path)
+	} else if strings.HasSuffix(s.Path, "tar") {
+		cmd = exec.Command("tar", "xf", s.Path)
+	} else {
+		return
+	}
+
+	cmd.Dir = s.Output
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &GetError{
+			errors.Wrapf(err, "builder: Failed to extract source '%s'",
+				s.Source),
 		}
+		return
 	}
 
 	return
