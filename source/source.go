@@ -1,8 +1,15 @@
 package source
 
 import (
+	"crypto/md5"
+	"crypto/sha1"
+	"crypto/sha256"
+	"crypto/sha512"
+	"fmt"
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/utils"
+	"hash"
+	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -15,8 +22,10 @@ const (
 )
 
 type Source struct {
-	Source   string
+	Hash   string
+	Source string
 	Output string
+	Path   string
 }
 
 func (s *Source) getType() int {
@@ -27,12 +36,26 @@ func (s *Source) getType() int {
 }
 
 func (s *Source) getUrl() (err error) {
-	name, err := utils.HttpGet(s.Source, s.Output)
+	name, err := utils.UrlFilename(s.Source)
 	if err != nil {
 		return
 	}
 
-	cmd := exec.Command("tar", "xfz", filepath.Join(s.Output, name))
+	s.Path = filepath.Join(s.Output, name)
+
+	exists, err := utils.Exists(s.Path)
+	if err != nil {
+		return
+	}
+
+	if !exists {
+		err = utils.HttpGet(s.Source, s.Output)
+		if err != nil {
+			return
+		}
+	}
+
+	cmd := exec.Command("tar", "xfz", s.Path)
 	cmd.Dir = s.Output
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -53,6 +76,56 @@ func (s *Source) getPath() (err error) {
 	return
 }
 
+func (s *Source) validate() (err error) {
+	if strings.ToLower(s.Hash) == "skip" {
+		return
+	}
+
+	file, err := os.Open(s.Path)
+	if err != nil {
+		err = &HashError{
+			errors.Wrap(err, "source: Failed to open file for hash"),
+		}
+		return
+	}
+	defer file.Close()
+
+	var hash hash.Hash
+	switch len(s.Hash) {
+	case 32:
+		hash = md5.New()
+	case 40:
+		hash = sha1.New()
+	case 64:
+		hash = sha256.New()
+	case 128:
+		hash = sha512.New()
+	default:
+		err = &HashError{
+			errors.Newf("source: Unknown hash type for hash '%s'", s.Hash),
+		}
+		return
+	}
+
+	_, err = io.Copy(hash, file)
+	if err != nil {
+		return
+	}
+
+	sum := hash.Sum([]byte{})
+
+	hexSum := fmt.Sprintf("%x", sum)
+
+	if hexSum != s.Hash {
+		err = &HashError{
+			errors.Newf("source: Hash verification failed for '%s'", s.Source),
+		}
+		return
+	}
+
+	return
+}
+
 func (s *Source) Get() (err error) {
 	switch s.getType() {
 	case url:
@@ -62,6 +135,11 @@ func (s *Source) Get() (err error) {
 	default:
 		panic("utils: Unknown type")
 	}
+	if err != nil {
+		return
+	}
+
+	err = s.validate()
 	if err != nil {
 		return
 	}

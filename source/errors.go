@@ -7,3 +7,7 @@ import (
 type GetError struct {
 	errors.DropboxError
 }
+
+type HashError struct {
+	errors.DropboxError
+}
