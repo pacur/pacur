@@ -2,6 +2,7 @@ package pack
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/resolver"
 )
 
 type Pack struct {
@@ -33,6 +34,46 @@ type Pack struct {
 	PostInst    []string
 	PreRm       []string
 	PostRm      []string
+}
+
+func (p *Pack) Resolve() (err error) {
+	reslv := resolver.New()
+
+	reslv.Add("root", &p.Root)
+	reslv.Add("srcdir", &p.SourceDir)
+	reslv.Add("pkgdir", &p.PackageDir)
+	reslv.Add("pkgname", &p.PkgName)
+	reslv.Add("pkgver", &p.PkgVer)
+	reslv.Add("pkgrel", &p.PkgRel)
+	reslv.Add("pkgdesc", &p.PkgDesc)
+	reslv.AddList("pkgdesclong", p.PkgDescLong)
+	reslv.Add("maintainer", &p.Maintainer)
+	reslv.AddList("arch", p.Arch)
+	reslv.AddList("license", p.License)
+	reslv.Add("section", &p.Section)
+	reslv.Add("priority", &p.Priority)
+	reslv.Add("url", &p.Url)
+	reslv.AddList("depends", p.Depends)
+	reslv.AddList("optdepends", p.OptDepends)
+	reslv.AddList("makedepends", p.MakeDepends)
+	reslv.AddList("provides", p.Provides)
+	reslv.AddList("conflicts", p.Conflicts)
+	reslv.AddList("sources", p.Sources)
+	reslv.AddList("hashsums", p.HashSums)
+	reslv.AddList("backup", p.Backup)
+	reslv.AddList("build", p.Build)
+	reslv.AddList("package", p.Package)
+	reslv.AddList("preinst", p.PreInst)
+	reslv.AddList("postinst", p.PostInst)
+	reslv.AddList("prerm", p.PreRm)
+	reslv.AddList("postrm", p.PostRm)
+
+	err = reslv.Resolve()
+	if err != nil {
+		return
+	}
+
+	return
 }
 
 func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
