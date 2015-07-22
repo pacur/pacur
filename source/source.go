@@ -1,7 +1,11 @@
 package source
 
 import (
+	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/utils"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"strings"
 )
 
@@ -23,10 +27,25 @@ func (s *Source) getType() int {
 }
 
 func (s *Source) getUrl() (err error) {
-	err = utils.HttpGet(s.Path, s.Output)
+	name, err := utils.HttpGet(s.Path, s.Output)
 	if err != nil {
 		return
 	}
+
+	cmd := exec.Command("tar", "xfz", filepath.Join(s.Output, name))
+	cmd.Dir = s.Output
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &GetError{
+			errors.Wrapf(err, "builder: Failed to extract source '%s'",
+				s.Path),
+		}
+		return
+	}
+
 	return
 }
 
