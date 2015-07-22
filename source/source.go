@@ -67,14 +67,17 @@ func (s *Source) getPath() (err error) {
 func (s *Source) extract() (err error) {
 	var cmd *exec.Cmd
 
-	if strings.HasSuffix(s.Path, ".tar.gz") {
-		cmd = exec.Command("tar", "xfz", s.Path)
-	} else if strings.HasSuffix(s.Path, ".tar") {
+	if strings.HasSuffix(s.Path, ".tar") {
 		cmd = exec.Command("tar", "xf", s.Path)
 	} else if strings.HasSuffix(s.Path, ".zip") {
 		cmd = exec.Command("unzip", s.Path)
 	} else {
-		return
+		split := strings.Split(s.Path, ".")
+		if len(split) > 2 && split[len(split)-2] == "tar" {
+			cmd = exec.Command("tar", "xf", s.Path)
+		} else {
+			return
+		}
 	}
 
 	cmd.Dir = s.Output
