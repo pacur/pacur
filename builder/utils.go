@@ -9,7 +9,7 @@ import (
 func createScript(path string, cmds []string) (err error) {
 	script, err := os.Create(path)
 	if err != nil {
-		err = &BuilderError{
+		err = &ScriptError{
 			errors.Wrapf(err, "builder: Failed to create script '%s'", path),
 		}
 		return
@@ -21,7 +21,7 @@ func createScript(path string, cmds []string) (err error) {
 	for _, cmd := range cmds {
 		_, err = script.WriteString(cmd + "\n")
 		if err != nil {
-			err = &BuilderError{
+			err = &ScriptError{
 				errors.Wrapf(err, "builder: Failed to write script '%s'",
 					path),
 			}
@@ -40,7 +40,7 @@ func runScript(path, dir string) (err error) {
 
 	err = cmd.Run()
 	if err != nil {
-		err = &BuilderError{
+		err = &ScriptError{
 			errors.Wrapf(err, "builder: Failed to exec script"),
 		}
 		return

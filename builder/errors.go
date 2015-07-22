@@ -7,3 +7,7 @@ import (
 type BuilderError struct {
 	errors.DropboxError
 }
+
+type ScriptError struct {
+	errors.DropboxError
+}
