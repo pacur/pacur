@@ -46,7 +46,7 @@ func (s *Source) getUrl() (err error) {
 	}
 
 	if !exists {
-		err = utils.HttpGet(s.Source, s.Output)
+		err = utils.HttpGet(s.Source, s.Path)
 		if err != nil {
 			return
 		}
