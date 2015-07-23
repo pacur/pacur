@@ -11,3 +11,7 @@ type HashError struct {
 type WriteError struct {
 	errors.DropboxError
 }
+
+type BuildError struct {
+	errors.DropboxError
+}

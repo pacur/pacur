@@ -187,6 +187,23 @@ func (d *Debian) createScripts() (err error) {
 	return
 }
 
+func (d *Debian) dpkgDeb() (err error) {
+	cmd := exec.Command("dpkg-deb", "-b", d.Pack.PackageDir)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "debian: Failed to build dpkg-deb '%s'",
+				d.Pack.PackageDir),
+		}
+		return
+	}
+
+	return
+}
+
 func (d *Debian) Build() (err error) {
 	d.installSize, err = utils.GetDirSize(d.Pack.PackageDir)
 	if err != nil {
@@ -223,6 +240,11 @@ func (d *Debian) Build() (err error) {
 	}
 
 	err = d.createScripts()
+	if err != nil {
+		return
+	}
+
+	err = d.dpkgDeb()
 	if err != nil {
 		return
 	}
