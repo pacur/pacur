@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 )
 
@@ -25,6 +26,31 @@ func Exists(path string) (exists bool, err error) {
 		}
 	} else {
 		exists = true
+	}
+
+	return
+}
+
+func GetDirSize(path string) (size int, err error) {
+	cmd := exec.Command("du", "-c", "-s", path)
+	cmd.Stderr = os.Stderr
+
+	output, err := cmd.Output()
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to get dir size '%s'", path),
+		}
+		return
+	}
+
+	split := strings.Fields(string(output))
+
+	size, err = strconv.Atoi(split[len(split)-2])
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to get dir size '%s'", path),
+		}
+		return
 	}
 
 	return

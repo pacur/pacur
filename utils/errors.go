@@ -19,3 +19,7 @@ type ExistsError struct {
 type CopyError struct {
 	errors.DropboxError
 }
+
+type ReadError struct {
+	errors.DropboxError
+}
