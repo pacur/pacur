@@ -149,6 +149,44 @@ func (d *Debian) createMd5Sums() (err error) {
 	return
 }
 
+func (d *Debian) createScripts() (err error) {
+	scripts := map[string][]string{
+		"preinst":  d.Pack.PreInst,
+		"postinst": d.Pack.PostInst,
+		"prerm":    d.Pack.PreRm,
+		"postrm":   d.Pack.PostRm,
+	}
+
+	for name, script := range scripts {
+		if len(script) == 0 {
+			continue
+		}
+
+		path := filepath.Join(d.debDir, name)
+
+		file, e := os.Create(path)
+		if e != nil {
+			err = &WriteError{
+				errors.Wrapf(e,
+					"debian: Failed to create debian %s at '%s'", name, path),
+			}
+			return
+		}
+		defer file.Close()
+
+		_, err = file.WriteString(strings.Join(script, "\n"))
+		if err != nil {
+			err = &WriteError{
+				errors.Wrapf(err,
+					"debian: Failed to write debian %s at '%s'", name, path),
+			}
+			return
+		}
+	}
+
+	return
+}
+
 func (d *Debian) Build() (err error) {
 	d.installSize, err = utils.GetDirSize(d.Pack.PackageDir)
 	if err != nil {
@@ -180,6 +218,11 @@ func (d *Debian) Build() (err error) {
 	}
 
 	err = d.createMd5Sums()
+	if err != nil {
+		return
+	}
+
+	err = d.createScripts()
 	if err != nil {
 		return
 	}
