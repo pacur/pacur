@@ -74,7 +74,7 @@ func (s *Source) extract() (err error) {
 	} else {
 		split := strings.Split(s.Path, ".")
 		if len(split) > 2 && split[len(split)-2] == "tar" {
-			cmd = exec.Command("tar", "xf", s.Path)
+			cmd = exec.Command("tar", "--no-same-owner", "-xf", s.Path)
 		} else {
 			return
 		}
