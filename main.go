@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	pac, err := parse.File("/pkg/PKGBUILD")
+	pac, err := parse.File("/pacur/PKGBUILD")
 	if err != nil {
 		panic(err)
 	}
