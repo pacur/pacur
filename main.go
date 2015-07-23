@@ -1,10 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"github.com/pacur/pacur/parse"
 	"github.com/pacur/pacur/builder"
 	"github.com/pacur/pacur/debian"
+	"github.com/pacur/pacur/parse"
 )
 
 func main() {
