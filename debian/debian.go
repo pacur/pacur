@@ -20,8 +20,13 @@ type Debian struct {
 }
 
 func (d *Debian) getDepends() (err error) {
-	cmd := exec.Command("apt-get", "--assume-yes", "install",
-		d.Pack.MakeDepends...)
+	args := []string{
+		"--assume-yes",
+		"install",
+	}
+	args = append(args, d.Pack.MakeDepends...)
+
+	cmd := exec.Command("apt-get", args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
