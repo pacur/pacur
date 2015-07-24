@@ -16,6 +16,14 @@ func createScript(path string, cmds []string) (err error) {
 	}
 	defer script.Close()
 
+	_, err = script.WriteString("set -e\n")
+	if err != nil {
+		err = &ScriptError{
+			errors.Wrapf(err, "builder: Failed to write script '%s'", path),
+		}
+		return
+	}
+
 	for _, cmd := range cmds {
 		_, err = script.WriteString(cmd + "\n")
 		if err != nil {
