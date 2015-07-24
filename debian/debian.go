@@ -20,6 +20,10 @@ type Debian struct {
 }
 
 func (d *Debian) getDepends() (err error) {
+	if len(d.Pack.MakeDepends) == 0 {
+		return
+	}
+
 	args := []string{
 		"--assume-yes",
 		"install",
