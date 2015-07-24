@@ -15,7 +15,7 @@ type Pack struct {
 	PkgDesc     string
 	PkgDescLong []string
 	Maintainer  string
-	Arch        []string
+	Arch        string
 	License     []string
 	Section     string
 	Priority    string
@@ -48,7 +48,7 @@ func (p *Pack) Resolve() (err error) {
 	reslv.Add("pkgdesc", &p.PkgDesc)
 	reslv.AddList("pkgdesclong", p.PkgDescLong)
 	reslv.Add("maintainer", &p.Maintainer)
-	reslv.AddList("arch", p.Arch)
+	reslv.Add("arch", &p.Arch)
 	reslv.AddList("license", p.License)
 	reslv.Add("section", &p.Section)
 	reslv.Add("priority", &p.Priority)
@@ -93,7 +93,7 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 	case "maintainer":
 		p.Maintainer = data.(string)
 	case "arch":
-		p.Arch = data.([]string)
+		p.Arch = data.(string)
 	case "license":
 		p.License = data.([]string)
 	case "section":
