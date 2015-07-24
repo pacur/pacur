@@ -37,8 +37,7 @@ func (d *Debian) getDepends() (err error) {
 	err = cmd.Run()
 	if err != nil {
 		err = &BuildError{
-			errors.Wrapf(err, "utils: Failed to get make depends '%s'",
-				),
+			errors.Wrapf(err, "utils: Failed to get make depends '%s'"),
 		}
 		return
 	}
@@ -233,6 +232,24 @@ func (d *Debian) dpkgDeb() (err error) {
 	if err != nil {
 		err = &BuildError{
 			errors.Wrapf(err, "debian: Failed to build dpkg-deb '%s'",
+				d.Pack.PackageDir),
+		}
+		return
+	}
+
+	_, dir := filepath.Split(filepath.Clean(d.Pack.Root))
+	path := filepath.Join(d.Pack.Root, dir+".deb")
+	newPath := filepath.Join(d.Pack.Root,
+		fmt.Sprintf("%s_%s-0ubuntu%s.%s_%s.deb",
+			d.Pack.PkgName, d.Pack.PkgVer, d.Pack.PkgRel,
+			d.Release, d.Pack.Arch))
+
+	os.Remove(newPath)
+
+	err = os.Rename(path, newPath)
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "debian: Failed to rename deb '%s'",
 				d.Pack.PackageDir),
 		}
 		return
