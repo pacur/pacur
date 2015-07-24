@@ -14,9 +14,7 @@ func createScript(path string, cmds []string) (err error) {
 		}
 		return
 	}
-	defer func() {
-		script.Close()
-	}()
+	defer script.Close()
 
 	for _, cmd := range cmds {
 		_, err = script.WriteString(cmd + "\n")

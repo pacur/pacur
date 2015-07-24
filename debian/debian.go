@@ -173,6 +173,15 @@ func (d *Debian) createScripts() (err error) {
 			return
 		}
 		defer file.Close()
+		if e != nil {
+			err = &WriteError{
+				errors.Wrapf(e,
+					"debian: Failed to chmod debian %s at '%s'", name, path),
+			}
+			return
+		}
+
+		err = os.Chmod(path, 0755)
 
 		_, err = file.WriteString(strings.Join(script, "\n"))
 		if err != nil {
@@ -220,9 +229,7 @@ func (d *Debian) Build() (err error) {
 	if err != nil {
 		return
 	}
-	defer func() {
-		os.RemoveAll(d.debDir)
-	}()
+	defer os.RemoveAll(d.debDir)
 
 	err = d.createConfFiles()
 	if err != nil {

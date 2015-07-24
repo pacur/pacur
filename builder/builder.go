@@ -48,9 +48,7 @@ func (b *Builder) getSources() (err error) {
 func (b *Builder) build() (err error) {
 	path := filepath.Join(string(os.PathSeparator), "tmp",
 		fmt.Sprintf("pacur_%s_build", b.id))
-	defer func() {
-		os.Remove(path)
-	}()
+	defer os.Remove(path)
 
 	err = createScript(path, b.Pack.Build)
 	if err != nil {
@@ -68,9 +66,7 @@ func (b *Builder) build() (err error) {
 func (b *Builder) pkg() (err error) {
 	path := filepath.Join(string(os.PathSeparator), "tmp",
 		fmt.Sprintf("pacur_%s_package", b.id))
-	defer func() {
-		os.Remove(path)
-	}()
+	defer os.Remove(path)
 
 	err = createScript(path, b.Pack.Package)
 	if err != nil {
