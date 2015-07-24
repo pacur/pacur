@@ -19,6 +19,24 @@ type Debian struct {
 	sums        string
 }
 
+func (d *Debian) getDepends() (err error) {
+	cmd := exec.Command("apt-get", "--assume-yes", "install",
+		strings.Join(d.Pack.MakeDepends, ", "))
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "utils: Failed to get make depends '%s'",
+				),
+		}
+		return
+	}
+
+	return
+}
+
 func (d *Debian) getSums() (err error) {
 	cmd := exec.Command("find", ".", "-type", "f",
 		"-exec", "md5sum", "{}", ";")
@@ -215,6 +233,11 @@ func (d *Debian) dpkgDeb() (err error) {
 }
 
 func (d *Debian) Build() (err error) {
+	err = d.getDepends()
+	if err != nil {
+		return
+	}
+
 	d.installSize, err = utils.GetDirSize(d.Pack.PackageDir)
 	if err != nil {
 		return
