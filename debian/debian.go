@@ -12,6 +12,7 @@ import (
 )
 
 type Debian struct {
+	Release     string
 	Pack        *pack.Pack
 	debDir      string
 	installSize int
@@ -88,8 +89,8 @@ func (d *Debian) createControl() (err error) {
 	data := ""
 
 	data += fmt.Sprintf("Package: %s\n", d.Pack.PkgName)
-	data += fmt.Sprintf("Version: %s-0ubuntu%s\n",
-		d.Pack.PkgVer, d.Pack.PkgRel)
+	data += fmt.Sprintf("Version: %s-0ubuntu%s~%s\n",
+		d.Pack.PkgVer, d.Pack.PkgRel, d.Release)
 	data += fmt.Sprintf("Architecture: %s\n", strings.Join(d.Pack.Arch, ", "))
 	data += fmt.Sprintf("Maintainer: %s\n", d.Pack.Maintainer)
 	data += fmt.Sprintf("Installed-Size: %d\n", d.installSize)
