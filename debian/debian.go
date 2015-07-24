@@ -237,7 +237,7 @@ func (d *Debian) dpkgDeb() (err error) {
 		return
 	}
 
-	_, dir := filepath.Split(filepath.Clean(d.Pack.Root))
+	_, dir := filepath.Split(filepath.Clean(d.Pack.PackageDir))
 	path := filepath.Join(d.Pack.Root, dir+".deb")
 	newPath := filepath.Join(d.Pack.Root,
 		fmt.Sprintf("%s_%s-0ubuntu%s.%s_%s.deb",
