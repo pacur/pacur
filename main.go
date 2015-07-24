@@ -1,10 +1,10 @@
 package main
 
 import (
+	"flag"
 	"github.com/pacur/pacur/builder"
 	"github.com/pacur/pacur/debian"
 	"github.com/pacur/pacur/parse"
-	"flag"
 )
 
 func main() {
@@ -52,7 +52,7 @@ func main() {
 	switch distro {
 	case "ubuntu":
 		deb := debian.Debian{
-			Pack: pac,
+			Pack:    pac,
 			Release: release,
 		}
 		err = deb.Build()
