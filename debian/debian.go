@@ -258,12 +258,16 @@ func (d *Debian) dpkgDeb() (err error) {
 	return
 }
 
-func (d *Debian) Build() (err error) {
+func (d *Debian) Prep() (err error) {
 	err = d.getDepends()
 	if err != nil {
 		return
 	}
 
+	return
+}
+
+func (d *Debian) Build() (err error) {
 	d.installSize, err = utils.GetDirSize(d.Pack.PackageDir)
 	if err != nil {
 		return
