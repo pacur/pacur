@@ -1,4 +1,4 @@
-[![pacur](https://raw.githubusercontent.com/pacur/pacur-artwork/master/pacur.svg)](http://pacur.org)
+[![pacur](https://raw.githubusercontent.com/pacur/pacur-artwork/master/pacur.png)](http://pacur.org)
 
 # pacur: simple packaging
 
