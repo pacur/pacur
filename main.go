@@ -28,7 +28,7 @@ func main() {
 		distro = "ubuntu"
 		release = "wily"
 	default:
-		panic("main: Unknown build target " + arg)
+		panic("main: Unknown build distro or release " + arg)
 	}
 
 	pac, err := parse.File("/pacur/PKGBUILD")
