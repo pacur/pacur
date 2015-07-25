@@ -2,10 +2,13 @@ FROM ubuntu:precise
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update
-RUN apt-get --assume-yes install build-essential wget zip git mercurial golang
+RUN apt-get --assume-yes install build-essential wget zip git mercurial
+
+wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
+tar -C /usr/local -xf go1.4.2.linux-amd64.tar.gz
 
 ENV GOPATH /go
-ENV PATH $PATH:/go/bin
+ENV PATH $PATH:/usr/local/go/bin:/go/bin
 
 RUN go get github.com/pacur/pacur
 
