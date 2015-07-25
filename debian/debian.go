@@ -12,6 +12,7 @@ import (
 )
 
 type Debian struct {
+	Distro      string
 	Release     string
 	Pack        *pack.Pack
 	debDir      string
@@ -115,8 +116,8 @@ func (d *Debian) createControl() (err error) {
 	data := ""
 
 	data += fmt.Sprintf("Package: %s\n", d.Pack.PkgName)
-	data += fmt.Sprintf("Version: %s-0ubuntu%s~%s\n",
-		d.Pack.PkgVer, d.Pack.PkgRel, d.Release)
+	data += fmt.Sprintf("Version: %s-0%s%s~%s\n",
+		d.Distro, d.Pack.PkgVer, d.Pack.PkgRel, d.Release)
 	data += fmt.Sprintf("Architecture: %s\n", d.Pack.Arch)
 	data += fmt.Sprintf("Maintainer: %s\n", d.Pack.Maintainer)
 	data += fmt.Sprintf("Installed-Size: %d\n", d.installSize)
@@ -240,8 +241,8 @@ func (d *Debian) dpkgDeb() (err error) {
 	_, dir := filepath.Split(filepath.Clean(d.Pack.PackageDir))
 	path := filepath.Join(d.Pack.Root, dir+".deb")
 	newPath := filepath.Join(d.Pack.Root,
-		fmt.Sprintf("%s_%s-0ubuntu%s.%s_%s.deb",
-			d.Pack.PkgName, d.Pack.PkgVer, d.Pack.PkgRel,
+		fmt.Sprintf("%s_%s-0%s%s.%s_%s.deb",
+			d.Distro, d.Pack.PkgName, d.Pack.PkgVer, d.Pack.PkgRel,
 			d.Release, d.Pack.Arch))
 
 	os.Remove(newPath)
