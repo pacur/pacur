@@ -68,17 +68,17 @@ func main() {
 		panic(err)
 	}
 
-//	switch distro {
-//	case "ubuntu":
-//		deb := debian.Debian{
-//			Pack:    pac,
-//			Release: release,
-//		}
-//		err = deb.Build()
-//		if err != nil {
-//			panic(err)
-//		}
-//	default:
-//		panic("main: Unknown distro")
-//	}
+	//	switch distro {
+	//	case "ubuntu":
+	//		deb := debian.Debian{
+	//			Pack:    pac,
+	//			Release: release,
+	//		}
+	//		err = deb.Build()
+	//		if err != nil {
+	//			panic(err)
+	//		}
+	//	default:
+	//		panic("main: Unknown distro")
+	//	}
 }
