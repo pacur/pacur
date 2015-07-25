@@ -38,7 +38,7 @@ func (d *Debian) getDepends() (err error) {
 	err = cmd.Run()
 	if err != nil {
 		err = &BuildError{
-			errors.Wrapf(err, "utils: Failed to get make depends '%s'"),
+			errors.Wrapf(err, "debian: Failed to get make depends '%s'"),
 		}
 		return
 	}
