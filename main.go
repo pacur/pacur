@@ -3,32 +3,19 @@ package main
 import (
 	"flag"
 	"github.com/pacur/pacur/builder"
-	"github.com/pacur/pacur/debian"
+	"github.com/pacur/pacur/packer"
 	"github.com/pacur/pacur/parse"
+	"strings"
 )
 
 func main() {
 	flag.Parse()
 
-	distro := ""
+	split := strings.Split(flag.Arg(0), "-")
+	distro := split[0]
 	release := ""
-
-	arg := flag.Arg(0)
-	switch arg {
-	case "ubuntu-precise":
-		distro = "ubuntu"
-		release = "precise"
-	case "ubuntu-trusty":
-		distro = "ubuntu"
-		release = "trusty"
-	case "ubuntu-vivid":
-		distro = "ubuntu"
-		release = "vivid"
-	case "ubuntu-wily":
-		distro = "ubuntu"
-		release = "wily"
-	default:
-		panic("main: Unknown build distro or release " + arg)
+	if len(split) > 1 {
+		release = split[1]
 	}
 
 	pac, err := parse.File("/pacur/PKGBUILD")
@@ -41,16 +28,12 @@ func main() {
 		panic(err)
 	}
 
-	if distro != "ubuntu" {
-		panic("main: Unknown distro")
+	pcker, err := packer.GetPacker(pac, distro, release)
+	if err != nil {
+		panic(err)
 	}
 
-	deb := debian.Debian{
-		Pack:    pac,
-		Release: release,
-	}
-
-	err = deb.Prep()
+	err = pcker.Prep()
 	if err != nil {
 		panic(err)
 	}
@@ -63,22 +46,8 @@ func main() {
 		panic(err)
 	}
 
-	err = deb.Build()
+	err = pcker.Build()
 	if err != nil {
 		panic(err)
 	}
-
-	//	switch distro {
-	//	case "ubuntu":
-	//		deb := debian.Debian{
-	//			Pack:    pac,
-	//			Release: release,
-	//		}
-	//		err = deb.Build()
-	//		if err != nil {
-	//			panic(err)
-	//		}
-	//	default:
-	//		panic("main: Unknown distro")
-	//	}
 }
