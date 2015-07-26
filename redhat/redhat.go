@@ -5,10 +5,10 @@ import (
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"io/ioutil"
 )
 
 type Redhat struct {
@@ -204,6 +204,11 @@ func (r *Redhat) Build() (err error) {
 		if err != nil {
 			return
 		}
+	}
+
+	err = utils.CopyFiles(r.sourcesDir, r.Pack.Home)
+	if err != nil {
+		return
 	}
 
 	return
