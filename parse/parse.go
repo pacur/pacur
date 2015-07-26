@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/pack"
+	"github.com/pacur/pacur/utils"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -19,14 +20,21 @@ var (
 	itemReg = regexp.MustCompile("(\"[^\"]+\")|(`[^`]+`)")
 )
 
-func File(path string) (pac *pack.Pack, err error) {
-	root, err := filepath.Abs(filepath.Dir(path))
+func File(root string) (pac *pack.Pack, err error) {
+	root, err = filepath.Abs(root)
 	if err != nil {
 		err = &FileError{
 			errors.Wrapf(err, "parse: Failed to get root directory from '%s'",
-				path),
+				root),
 		}
 	}
+
+	err = utils.CopyFiles(root, "/pacur_build")
+	if err != nil {
+		return
+	}
+	root = "/pacur_build"
+	path := filepath.Join(root, "PKGBUILD")
 
 	pac = &pack.Pack{
 		Root:       root,
