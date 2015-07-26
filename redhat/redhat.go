@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"io/ioutil"
 )
 
 type Redhat struct {
@@ -186,6 +187,23 @@ func (r *Redhat) Build() (err error) {
 	err = r.rpmBuild()
 	if err != nil {
 		return
+	}
+
+	archs, err := ioutil.ReadDir(r.rpmsDir)
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "redhat: Failed to find rpms from '%s'",
+				r.rpmsDir),
+		}
+		return
+	}
+
+	for _, arch := range archs {
+		err = utils.CopyFiles(filepath.Join(r.rpmsDir, arch.Name()),
+			r.Pack.Home)
+		if err != nil {
+			return
+		}
 	}
 
 	return
