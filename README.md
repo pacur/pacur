@@ -1,6 +1,6 @@
 [![pacur](https://raw.githubusercontent.com/pacur/pacur-artwork/master/pacur.png)](http://pacur.org)
 
-# pacur: simple packaging
+# pacur: simple packaging (beta)
 
 Copyright (c) 2015 Zachary Huff
 
