@@ -6,6 +6,7 @@ import (
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
 	"os"
+	"os/exec"
 	"path/filepath"
 )
 
@@ -129,6 +130,25 @@ func (r *Redhat) createSpec() (err error) {
 	return
 }
 
+func (r *Redhat) rpmBuild() (err error) {
+	cmd := exec.Command("rpmbuild", "--define", "_topdir "+r.redhatDir,
+		"-ba", r.Pack.PkgName+".spec")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Dir = r.specsDir
+
+	err = cmd.Run()
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "redhat: Failed to run rpmbuild '%s'",
+				r.redhatDir),
+		}
+		return
+	}
+
+	return
+}
+
 func (r *Redhat) Prep() (err error) {
 	return
 }
@@ -156,9 +176,14 @@ func (r *Redhat) Build() (err error) {
 			return
 		}
 	}
-	//defer os.RemoveAll(r.redhatDir)
+	defer os.RemoveAll(r.redhatDir)
 
 	err = r.createSpec()
+	if err != nil {
+		return
+	}
+
+	err = r.rpmBuild()
 	if err != nil {
 		return
 	}
