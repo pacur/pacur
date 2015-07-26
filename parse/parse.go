@@ -12,6 +12,7 @@ import (
 )
 
 const (
+	root = "/pacur_build"
 	blockList = 1
 	blockFunc = 2
 )
@@ -20,20 +21,24 @@ var (
 	itemReg = regexp.MustCompile("(\"[^\"]+\")|(`[^`]+`)")
 )
 
-func File(root string) (pac *pack.Pack, err error) {
-	root, err = filepath.Abs(root)
+func File(source string) (pac *pack.Pack, err error) {
+	source, err = filepath.Abs(source)
 	if err != nil {
 		err = &FileError{
 			errors.Wrapf(err, "parse: Failed to get root directory from '%s'",
-				root),
+				source),
 		}
 	}
 
-	err = utils.CopyFiles(root, "/pacur_build")
+	err = utils.ExistsMakeDir(root)
 	if err != nil {
 		return
 	}
-	root = "/pacur_build"
+
+	err = utils.CopyFiles(source, root)
+	if err != nil {
+		return
+	}
 	path := filepath.Join(root, "PKGBUILD")
 
 	pac = &pack.Pack{
