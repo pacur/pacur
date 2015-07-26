@@ -5,8 +5,10 @@ import (
 	"math/rand"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"strings"
+	"io/ioutil"
 )
 
 var (
@@ -68,6 +70,46 @@ func Copy(source, dest string) (err error) {
 				source, dest),
 		}
 		return
+	}
+
+	return
+}
+
+func CopyFile(source, dest string) (err error) {
+	cmd := exec.Command("cp", "-p", "-f", source, dest)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &CopyError{
+			errors.Wrapf(err, "utils: Failed to copy '%s' to '%s'",
+				source, dest),
+		}
+		return
+	}
+
+	return
+}
+
+func CopyFiles(source, dest string) (err error) {
+	files, err := ioutil.ReadDir(source)
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to read dir '%s'", source),
+		}
+		return
+	}
+
+	for _, file := range files {
+		if file.IsDir() {
+			continue
+		}
+
+		err = CopyFile(filepath.Join(source, file.Name()), dest)
+		if err != nil {
+			return
+		}
 	}
 
 	return
