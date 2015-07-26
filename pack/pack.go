@@ -7,6 +7,7 @@ import (
 
 type Pack struct {
 	Root        string
+	Home        string
 	SourceDir   string
 	PackageDir  string
 	PkgName     string
