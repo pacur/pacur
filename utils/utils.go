@@ -76,7 +76,7 @@ func Copy(source, dest string) (err error) {
 }
 
 func CopyFile(source, dest string) (err error) {
-	cmd := exec.Command("cp", "-p", "-f", source, dest)
+	cmd := exec.Command("cp", "-f", source, dest)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
