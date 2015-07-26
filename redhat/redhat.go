@@ -206,7 +206,7 @@ func (r *Redhat) Build() (err error) {
 		}
 	}
 
-	err = utils.CopyFiles(r.sourcesDir, r.Pack.Home)
+	err = utils.CopyFiles(r.srpmsDir, r.Pack.Home)
 	if err != nil {
 		return
 	}
