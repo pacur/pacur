@@ -18,7 +18,7 @@ func main() {
 		release = split[1]
 	}
 
-	pac, err := parse.File("/pacur/PKGBUILD")
+	pac, err := parse.File("/pacur")
 	if err != nil {
 		panic(err)
 	}
