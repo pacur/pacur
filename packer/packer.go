@@ -3,6 +3,7 @@ package packer
 import (
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/debian"
+	"github.com/pacur/pacur/redhat"
 	"github.com/pacur/pacur/pack"
 )
 
@@ -17,6 +18,12 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 	switch distro {
 	case "debian", "ubuntu":
 		pcker = &debian.Debian{
+			Pack:    pac,
+			Distro:  distro,
+			Release: release,
+		}
+	case "centos":
+		pcker = &redhat.Redhat{
 			Pack:    pac,
 			Distro:  distro,
 			Release: release,
