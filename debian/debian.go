@@ -247,7 +247,7 @@ func (d *Debian) dpkgDeb() (err error) {
 
 	os.Remove(newPath)
 
-	err = os.Rename(path, newPath)
+	err = utils.Move(path, newPath)
 	if err != nil {
 		err = &BuildError{
 			errors.Wrapf(err, "debian: Failed to rename deb '%s'",
