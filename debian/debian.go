@@ -117,7 +117,7 @@ func (d *Debian) createControl() (err error) {
 
 	data += fmt.Sprintf("Package: %s\n", d.Pack.PkgName)
 	data += fmt.Sprintf("Version: %s-0%s%s~%s\n",
-		d.Distro, d.Pack.PkgVer, d.Pack.PkgRel, d.Release)
+		d.Pack.PkgVer, d.Distro, d.Pack.PkgRel, d.Release)
 	data += fmt.Sprintf("Architecture: %s\n", d.Pack.Arch)
 	data += fmt.Sprintf("Maintainer: %s\n", d.Pack.Maintainer)
 	data += fmt.Sprintf("Installed-Size: %d\n", d.installSize)
