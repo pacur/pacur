@@ -13,4 +13,4 @@ ENV PATH $PATH:/usr/local/go/bin:/go/bin
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["debian-wheezy"]
+CMD ["build", "debian-wheezy"]

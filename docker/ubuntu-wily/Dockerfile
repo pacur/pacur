@@ -10,4 +10,4 @@ ENV PATH $PATH:/go/bin
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["ubuntu-wily"]
+CMD ["build", "ubuntu-wily"]
