@@ -58,6 +58,23 @@ func GetDirSize(path string) (size int, err error) {
 	return
 }
 
+func Move(source, dest string) (err error) {
+	cmd := exec.Command("mv", source, dest)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &CopyError{
+			errors.Wrapf(err, "utils: Failed to move '%s' to '%s'",
+				source, dest),
+		}
+		return
+	}
+
+	return
+}
+
 func Copy(source, dest string) (err error) {
 	cmd := exec.Command("cp", "-p", "-r", "-T", "-f", source, dest)
 	cmd.Stdout = os.Stdout
