@@ -247,7 +247,7 @@ func (d *Debian) dpkgDeb() (err error) {
 
 	os.Remove(newPath)
 
-	err = utils.Move(path, newPath)
+	err = utils.CopyFile(path, newPath)
 	if err != nil {
 		return
 	}
