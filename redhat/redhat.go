@@ -43,7 +43,7 @@ func (r *Redhat) createSpec() (err error) {
 	data += fmt.Sprintf("Summary: %s\n", r.Pack.PkgDesc)
 	data += fmt.Sprintf("Version: %s\n", r.Pack.PkgVer)
 	data += fmt.Sprintf("Release: %s", r.Pack.PkgName) + "%{?dist}\n"
-	data += fmt.Sprintf("Group: %s\n", r.Pack.Section)
+	data += fmt.Sprintf("Group: %s\n", ConvertSection(r.Pack.Section))
 	data += fmt.Sprintf("URL: %s\n", r.Pack.Url)
 	data += fmt.Sprintf("License: %s\n", r.Pack.License)
 	data += fmt.Sprintf("Packager: %s\n", r.Pack.Maintainer)
