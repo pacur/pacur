@@ -12,6 +12,8 @@ func Parse() (err error) {
 	switch cmd {
 	case "build":
 		err = Build()
+	case "repo":
+		err = Repo()
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown command '%s'", cmd),
