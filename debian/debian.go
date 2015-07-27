@@ -249,10 +249,6 @@ func (d *Debian) dpkgDeb() (err error) {
 
 	err = utils.Move(path, newPath)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "debian: Failed to rename deb '%s'",
-				d.Pack.PackageDir),
-		}
 		return
 	}
 
