@@ -86,7 +86,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 				pathDir := filepath.Dir(path)
 
 				if !filesSet.Contains(pathDir) {
-					files = append(files, `%dir "`+pathDir+`"`)
+					files = append(files, `"`+pathDir+`"`)
 					filesSet.Add(pathDir)
 				}
 			} else {
@@ -96,12 +96,12 @@ func (r *Redhat) getFiles() (files []string, err error) {
 
 		path = `"` + path + `"`
 
-		if filesSet.Contains(path) {
-			continue
-		}
-
 		if backups.Contains(path) {
 			path = "%config " + path
+		}
+
+		if filesSet.Contains(path) {
+			continue
 		}
 
 		files = append(files, path)
