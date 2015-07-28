@@ -60,7 +60,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 		backups.Add(path)
 	}
 
-	cmd := exec.Command("find", "-L", ".", "-type", "f")
+	cmd := exec.Command("find", ".", "-type", "f", "-o", "-type", "l")
 	cmd.Dir = r.Pack.PackageDir
 	cmd.Stderr = os.Stderr
 
@@ -98,7 +98,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 		filesSet.Add(path)
 	}
 
-	cmd = exec.Command("find", "-L", ".", "-type", "d", "-empty")
+	cmd = exec.Command("find", ".", "-type", "d", "-empty")
 	cmd.Dir = r.Pack.PackageDir
 	cmd.Stderr = os.Stderr
 
