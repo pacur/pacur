@@ -1,10 +1,10 @@
 package cmd
 
 import (
+	"flag"
+	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/repo"
 	"os"
-	"github.com/dropbox/godropbox/errors"
-	"flag"
 )
 
 func Repo() (err error) {
