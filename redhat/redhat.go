@@ -2,8 +2,8 @@ package redhat
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
 	"github.com/dropbox/godropbox/container/set"
+	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
 	"io/ioutil"
