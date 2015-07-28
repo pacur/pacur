@@ -22,6 +22,7 @@ const (
 )
 
 type Source struct {
+	Root   string
 	Hash   string
 	Source string
 	Output string
@@ -56,7 +57,7 @@ func (s *Source) getUrl() (err error) {
 }
 
 func (s *Source) getPath() (err error) {
-	err = utils.Copy(s.Source, s.Path)
+	err = utils.Copy(s.Root, s.Source, s.Path)
 	if err != nil {
 		return
 	}

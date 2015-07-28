@@ -75,10 +75,11 @@ func Move(source, dest string) (err error) {
 	return
 }
 
-func Copy(source, dest string) (err error) {
+func Copy(dir, source, dest string) (err error) {
 	cmd := exec.Command("cp", "-p", "-r", "-T", "-f", source, dest)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
+	cmd.Dir = dir
 
 	err = cmd.Run()
 	if err != nil {
