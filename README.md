@@ -56,7 +56,8 @@ extracted |
 | `makedepends` | `list` | List of package build dependencies |
 | `provides` | `list` | List of packages provided |
 | `conflicts` | `list` | List of packages conflicts |
-| `sources` | `list` | List of packages sources |
+| `sources` | `list` | List of packages sources. Sources can be url or paths
+that are relative to the PKGBUILD |
 | `hashsums` | `list` | List of `md5`/`sha1`/`sha256`/`sha512` hex hashes for sources, hash type is determined by the length of the hash. Use `skip` to ignore hash check |
 | `backup` | `list` | List of config files that shouldn't be overwritten on upgrades |
 | `build` | `func` | Function to build the source, starts in srcdir |
@@ -66,4 +67,52 @@ extracted |
 | `prerm` | `func` | Function to run before removing |
 | `postrm` | `func` | Function to run after removing |
 
-Copyright (c) 2015 Zachary Huff
+### example
+
+First create a directory for the PKGBUILD file. This directory should only
+contain the PKGBUILD file and any other files needed such as patches. Then
+create a PKGBUILD the package directory.
+
+```
+mkdir httpserver
+cd httpserver
+nano PKGBUILD
+```
+
+```
+pkgname="httpserver"
+pkgver="1.0"
+pkgrel="1"
+pkgdesc="Http file server written with Go"
+pkgdesclong=(
+    "Quick http file server written with Go"
+    "using directory listing similar to apache"
+)
+maintainer="Pacur <contact@pacur.com>"
+arch="all"
+license=("GPLv3")
+section="utils"
+priority="optional"
+url="https://github.com/pacur/${pkgname}"
+sources=(
+    "${url}/archive/${pkgver}.tar.gz"
+)
+hashsums=(
+    "2b09f0afe6d3caba38794d0c81f5d8e2"
+)
+
+build() {
+    mkdir -p "go/src"
+    export GOPATH="${srcdir}/go"
+    mv "${pkgname}-${pkgver}" "go/src"
+    cd "go/src/${pkgname}-${pkgver}"
+    go get
+    go build -a
+}
+
+package() {
+    cd "${srcdir}/go/src/${pkgname}-${pkgver}"
+    mkdir -p "${pkgdir}/usr/bin"
+    cp ${pkgname}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
+}
+```
