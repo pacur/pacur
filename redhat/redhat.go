@@ -115,8 +115,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 		if len(path) < 1 {
 			continue
 		}
-		path = "%dir " + path[1:]
-		path = `"` + path + `"`
+		path = `%dir "` + path[1:] + `"`
 		files = append(files, path)
 	}
 
