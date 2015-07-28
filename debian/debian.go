@@ -149,10 +149,6 @@ func (d *Debian) createControl() (err error) {
 }
 
 func (d *Debian) createMd5Sums() (err error) {
-	if len(d.Pack.Backup) == 0 {
-		return
-	}
-
 	path := filepath.Join(d.debDir, "md5sums")
 
 	file, err := os.Create(path)
