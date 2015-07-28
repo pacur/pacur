@@ -81,7 +81,17 @@ func (r *Redhat) getFiles() (files []string, err error) {
 
 		if strings.HasSuffix(path, ".py") || strings.HasSuffix(path, ".pyc") ||
 			strings.HasSuffix(path, ".pyo") {
-			path = path[:strings.LastIndex(path, ".")] + ".*"
+
+			if strings.Contains(path, " ") {
+				pathDir := filepath.Dir(path)
+
+				if !filesSet.Contains(pathDir) {
+					files = append(files, `%dir "`+pathDir+`"`)
+					filesSet.Add(pathDir)
+				}
+			} else {
+				path = path[:strings.LastIndex(path, ".")] + ".*"
+			}
 		}
 
 		path = `"` + path + `"`
