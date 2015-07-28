@@ -84,7 +84,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 			path = path[:strings.LastIndex(path, ".")] + ".*"
 		}
 
-		path = strings.Replace(path, " ", "\\ ", -1)
+		path = `"` + path + `"`
 
 		if filesSet.Contains(path) {
 			continue
@@ -116,7 +116,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 			continue
 		}
 		path = "%dir " + path[1:]
-		path = strings.Replace(path, " ", "\\ ", -1)
+		path = `"` + path + `"`
 		files = append(files, path)
 	}
 
