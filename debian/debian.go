@@ -196,7 +196,8 @@ func (d *Debian) createScripts() (err error) {
 		if e != nil {
 			err = &WriteError{
 				errors.Wrapf(e,
-					"debian: Failed to create debian %s at '%s'", name, path),
+					"debian: Failed to create debian %s at '%s'",
+					name, path),
 			}
 			return
 		}
