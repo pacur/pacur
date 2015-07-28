@@ -31,8 +31,7 @@ key="example ${variable} string"
 
 | key | value |
 | --- | ----- |
-| `${srcdir}` | `Source` directory where all sources are downloaded and
-extracted |
+| `${srcdir}` | `Source` directory where all sources are downloaded and extracted |
 | `${pkgdir}` | `Package` directory for the root of the package |
 
 ### spec
@@ -47,8 +46,7 @@ extracted |
 | `maintainer` | `string` | Package maintainer |
 | `arch` | `string` | Package architecture, only used for debian packages |
 | `license` | `list` | List of licenses for packaged software |
-| `section` | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br>
-`libs` |
+| `section` | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br> `libs` |
 | `priority` | `string` | Package priority, only used for debian packages |
 | `url` | `string` | Package url |
 | `depends` | `list` | List of package dependencies |
@@ -56,8 +54,7 @@ extracted |
 | `makedepends` | `list` | List of package build dependencies |
 | `provides` | `list` | List of packages provided |
 | `conflicts` | `list` | List of packages conflicts |
-| `sources` | `list` | List of packages sources. Sources can be url or paths
-that are relative to the PKGBUILD |
+| `sources` | `list` | List of packages sources. Sources can be url or paths that are relative to the PKGBUILD |
 | `hashsums` | `list` | List of `md5`/`sha1`/`sha256`/`sha512` hex hashes for sources, hash type is determined by the length of the hash. Use `skip` to ignore hash check |
 | `backup` | `list` | List of config files that shouldn't be overwritten on upgrades |
 | `build` | `func` | Function to build the source, starts in srcdir |
