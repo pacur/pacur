@@ -231,7 +231,7 @@ func (r *Redhat) createSpec() (err error) {
 		return
 	}
 
-	fmt.Printf(data)
+	fmt.Println(data)
 
 	return
 }
