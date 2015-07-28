@@ -26,6 +26,45 @@ type Redhat struct {
 	srpmsDir     string
 }
 
+func (r *Redhat) getRpmPath() (path string, err error) {
+	archs, err := ioutil.ReadDir(r.rpmsDir)
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "redhat: Failed to find rpms arch from '%s'",
+				r.rpmsDir),
+		}
+		return
+	}
+
+	if len(archs) < 1 {
+		err = &BuildError{
+			errors.Newf("redhat: Failed to find rpm arch from '%s'",
+				r.rpmsDir),
+		}
+		return
+	}
+	archPath := filepath.Join(r.rpmsDir, archs[0].Name())
+
+	rpms, err := ioutil.ReadDir(archPath)
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "redhat: Failed to find rpms from '%s'",
+				r.rpmsDir),
+		}
+		return
+	}
+
+	if len(rpms) < 1 {
+		err = &BuildError{
+			errors.Newf("redhat: Failed to find rpm from '%s'"),
+		}
+		return
+	}
+	path = filepath.Join(archPath, rpms[0].Name())
+
+	return
+}
+
 func (r *Redhat) getDepends() (err error) {
 	if len(r.Pack.MakeDepends) == 0 {
 		return
@@ -53,22 +92,27 @@ func (r *Redhat) getDepends() (err error) {
 }
 
 func (r *Redhat) getFiles() (files []string, err error) {
-	filesSet := set.NewSet()
-	backups := set.NewSet()
+	backup := set.NewSet()
+	paths := set.NewSet()
 
 	for _, path := range r.Pack.Backup {
-		backups.Add(path)
+		backup.Add(path)
 	}
 
-	cmd := exec.Command("find", ".", "-type", "f", "-o", "-type", "l")
+	rpmPath, err := r.getRpmPath()
+	if err != nil {
+		return
+	}
+
+	cmd := exec.Command("rpm", "-qlp", rpmPath)
 	cmd.Dir = r.Pack.PackageDir
 	cmd.Stderr = os.Stderr
 
 	output, err := cmd.Output()
 	if err != nil {
 		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to get file list for '%s'",
-				r.Pack.PackageDir),
+			errors.Wrapf(err, "redhat: Failed to get rpm file list from '%s'",
+				rpmPath),
 		}
 		return
 	}
@@ -77,62 +121,27 @@ func (r *Redhat) getFiles() (files []string, err error) {
 		if len(path) < 1 {
 			continue
 		}
-		path = path[1:]
 
-		if strings.HasSuffix(path, ".py") || strings.HasSuffix(path, ".pyc") ||
-			strings.HasSuffix(path, ".pyo") {
-
-			if strings.Contains(path, " ") {
-				pathDir := filepath.Dir(path)
-
-				if !filesSet.Contains(pathDir) {
-					files = append(files, `"`+pathDir+`"`)
-					filesSet.Add(pathDir)
-				}
-			} else {
-				path = path[:strings.LastIndex(path, ".")] + ".*"
-			}
-		}
-
-		path = `"` + path + `"`
-
-		if backups.Contains(path) {
-			path = "%config " + path
-		}
-
-		if filesSet.Contains(path) {
-			continue
-		}
-
-		files = append(files, path)
-		filesSet.Add(path)
+		paths.Remove(filepath.Dir(path))
+		paths.Add(path)
 	}
 
-	cmd = exec.Command("find", ".", "-type", "d", "-empty")
-	cmd.Dir = r.Pack.PackageDir
-	cmd.Stderr = os.Stderr
+	for pathInf := range paths.Iter() {
+		path := pathInf.(string)
 
-	output, err = cmd.Output()
-	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to get dir list for '%s'",
-				r.Pack.PackageDir),
+		if backup.Contains(path) {
+			path = `%config "` + path + `"`
+		} else {
+			path = `"` + path + `"`
 		}
-		return
-	}
 
-	for _, path := range strings.Split(string(output), "\n") {
-		if len(path) < 1 {
-			continue
-		}
-		path = `%dir "` + path[1:] + `"`
 		files = append(files, path)
 	}
 
 	return
 }
 
-func (r *Redhat) createSpec() (err error) {
+func (r *Redhat) createSpec(files []string) (err error) {
 	path := filepath.Join(r.specsDir, r.Pack.PkgName+".spec")
 
 	file, err := os.Create(path)
@@ -183,20 +192,17 @@ func (r *Redhat) createSpec() (err error) {
 	}
 
 	data += "%install\n"
-	data += fmt.Sprintf("mv -f %s/.[!.]* $RPM_BUILD_ROOT || true\n",
-		r.Pack.PackageDir)
-	data += fmt.Sprintf("mv -f %s/* $RPM_BUILD_ROOT || true\n",
+	data += fmt.Sprintf("rsync -a -A -X %s/ $RPM_BUILD_ROOT/\n",
 		r.Pack.PackageDir)
 	data += "\n"
 
-	files, err := r.getFiles()
-	if err != nil {
-		return
-	}
-
 	data += "%files\n"
-	for _, line := range files {
-		data += line + "\n"
+	if len(files) == 0 {
+		data += "/\n"
+	} else {
+		for _, line := range files {
+			data += line + "\n"
+		}
 	}
 	data += "\n"
 
@@ -273,7 +279,7 @@ func (r *Redhat) Prep() (err error) {
 	return
 }
 
-func (r *Redhat) Build() (err error) {
+func (r *Redhat) makeDirs() (err error) {
 	r.redhatDir = filepath.Join(r.Pack.Root, "redhat")
 	r.buildDir = filepath.Join(r.redhatDir, "BUILD")
 	r.buildRootDir = filepath.Join(r.redhatDir, "BUILDROOT")
@@ -296,9 +302,51 @@ func (r *Redhat) Build() (err error) {
 			return
 		}
 	}
-	defer os.RemoveAll(r.redhatDir)
 
-	err = r.createSpec()
+	return
+}
+
+func (r *Redhat) remDirs() {
+	os.RemoveAll(r.redhatDir)
+}
+
+func (r *Redhat) Build() (err error) {
+	err = r.makeDirs()
+	if err != nil {
+		return
+	}
+	defer r.remDirs()
+
+	err = r.createSpec([]string{})
+	if err != nil {
+		return
+	}
+
+	err = r.rpmBuild()
+	if err != nil {
+		return
+	}
+
+	files, err := r.getFiles()
+	if err != nil {
+		return
+	}
+
+	if len(files) == 0 {
+		err = &BuildError{
+			errors.Newf("redhat: Failed to find rpms files '%s'",
+				r.rpmsDir),
+		}
+		return
+	}
+
+	r.remDirs()
+	err = r.makeDirs()
+	if err != nil {
+		return
+	}
+
+	err = r.createSpec(files)
 	if err != nil {
 		return
 	}
