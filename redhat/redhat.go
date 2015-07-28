@@ -26,6 +26,32 @@ type Redhat struct {
 	srpmsDir     string
 }
 
+func (r *Redhat) getDepends() (err error) {
+	if len(r.Pack.MakeDepends) == 0 {
+		return
+	}
+
+	args := []string{
+		"-y",
+		"install",
+	}
+	args = append(args, r.Pack.MakeDepends...)
+
+	cmd := exec.Command("yum", args...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "redhat: Failed to get make depends '%s'"),
+		}
+		return
+	}
+
+	return
+}
+
 func (r *Redhat) getFiles() (files []string, err error) {
 	filesSet := set.NewSet()
 	backups := set.NewSet()
@@ -225,6 +251,11 @@ func (r *Redhat) rpmBuild() (err error) {
 }
 
 func (r *Redhat) Prep() (err error) {
+	err = r.getDepends()
+	if err != nil {
+		return
+	}
+
 	return
 }
 
