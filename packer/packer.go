@@ -29,8 +29,13 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 			Release: release,
 		}
 	default:
+		system := distro
+		if release != "" {
+			system += "-" + release
+		}
+
 		err = &UnknownSystem{
-			errors.Newf("packer: Unkown system %s-%s", distro, release),
+			errors.Newf("packer: Unkown system %s", system),
 		}
 		return
 	}
