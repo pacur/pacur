@@ -231,6 +231,8 @@ func (r *Redhat) createSpec() (err error) {
 		return
 	}
 
+	fmt.Printf(data)
+
 	return
 }
 
