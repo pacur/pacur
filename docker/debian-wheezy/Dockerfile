@@ -2,6 +2,7 @@ FROM debian:wheezy
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update
+RUN apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install build-essential wget zip git mercurial
 
 RUN wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
