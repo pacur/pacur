@@ -3,12 +3,14 @@ package redhat
 import (
 	"fmt"
 	"github.com/dropbox/godropbox/errors"
+	"github.com/dropbox/godropbox/container/set"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
 type Redhat struct {
@@ -22,6 +24,74 @@ type Redhat struct {
 	sourcesDir   string
 	specsDir     string
 	srpmsDir     string
+}
+
+func (r *Redhat) getFiles() (files []string, err error) {
+	filesSet := set.NewSet()
+	backups := set.NewSet()
+
+	for _, path := range r.Pack.Backup {
+		backups.Add(path)
+	}
+
+	cmd := exec.Command("find", ".", "-type", "f")
+	cmd.Dir = r.Pack.PackageDir
+	cmd.Stderr = os.Stderr
+
+	output, err := cmd.Output()
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "redhat: Failed to get file list for '%s'",
+				r.Pack.PackageDir),
+		}
+		return
+	}
+
+	for _, path := range strings.Split(string(output), "\n") {
+		if len(path) < 1 {
+			continue
+		}
+		path = path[1:]
+
+		if strings.HasSuffix(path, ".py") || strings.HasSuffix(path, ".pyc") ||
+			strings.HasSuffix(path, ".pyo") {
+			path = path[:strings.LastIndex(path, ".")] + ".*"
+		}
+
+		if filesSet.Contains(path) {
+			continue
+		}
+
+		if backups.Contains(path) {
+			path = "%config " + path
+		}
+
+		files = append(files, path)
+		filesSet.Add(path)
+	}
+
+	cmd = exec.Command("find", ".", "-type", "d", "-empty")
+	cmd.Dir = r.Pack.PackageDir
+	cmd.Stderr = os.Stderr
+
+	output, err = cmd.Output()
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "redhat: Failed to get dir list for '%s'",
+				r.Pack.PackageDir),
+		}
+		return
+	}
+
+	for _, path := range strings.Split(string(output), "\n") {
+		if len(path) < 1 {
+			continue
+		}
+		path = "%dir " + path[1:]
+		files = append(files, path)
+	}
+
+	return
 }
 
 func (r *Redhat) createSpec() (err error) {
@@ -81,10 +151,14 @@ func (r *Redhat) createSpec() (err error) {
 		r.Pack.PackageDir)
 	data += "\n"
 
+	files, err := r.getFiles()
+	if err != nil {
+		return
+	}
+
 	data += "%files\n"
-	data += "/\n"
-	for _, file := range r.Pack.Backup {
-		data += "%config " + file + "\n"
+	for _, line := range files {
+		data += line + "\n"
 	}
 	data += "\n"
 
