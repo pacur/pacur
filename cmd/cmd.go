@@ -12,6 +12,8 @@ func Parse() (err error) {
 	switch cmd {
 	case "build":
 		err = Build()
+	case "create":
+		err = Create()
 	case "repo":
 		err = Repo()
 	default:
