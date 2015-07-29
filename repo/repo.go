@@ -78,6 +78,25 @@ func (r *Repo) Build() (err error) {
 			}
 			return
 		}
+
+		typ, e := GetRepoType(name)
+		if e != nil {
+			err = e
+			return
+		}
+
+		cmd = exec.Command("docker", "run", "--rm", "-t", "-v",
+			path+":/pacur", "pacur/"+name, "create", typ)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+
+		err = cmd.Run()
+		if err != nil {
+			err = &BuildError{
+				errors.Wrapf(err, "repo: Failed to build '%s'", path),
+			}
+			return
+		}
 	}
 
 	return
