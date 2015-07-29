@@ -2,13 +2,13 @@ package utils
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"io/ioutil"
 	"math/rand"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strconv"
 	"strings"
-	"io/ioutil"
 )
 
 var (
