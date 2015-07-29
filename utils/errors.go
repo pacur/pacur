@@ -27,3 +27,7 @@ type ReadError struct {
 type WriteError struct {
 	errors.DropboxError
 }
+
+type ExecError struct {
+	errors.DropboxError
+}
