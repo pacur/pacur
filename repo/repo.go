@@ -15,7 +15,14 @@ type Repo struct {
 
 func (r *Repo) Init() (err error) {
 	for _, dir := range []string{
-		"mirror",
+		"mirror/yum/centos/6",
+		"mirror/yum/centos/7",
+		"mirror/apt/debian/dists/jessie",
+		"mirror/apt/debian/dists/wheezy",
+		"mirror/apt/ubuntu/dists/precise",
+		"mirror/apt/ubuntu/dists/trusty",
+		"mirror/apt/ubuntu/dists/vivid",
+		"mirror/apt/ubuntu/dists/wily",
 		"centos-6",
 		"centos-7",
 		"debian-jessie",
