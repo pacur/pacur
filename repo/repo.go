@@ -82,34 +82,3 @@ func (r *Repo) Build() (err error) {
 
 	return
 }
-
-func (r *Repo) createRedhat() (err error) {
-	cmd := exec.Command("createrepo", ".")
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	cmd.Dir = r.Root
-
-	err = cmd.Run()
-	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "repo: Failed to create redhat repo '%s'",
-				r.Root),
-		}
-		return
-	}
-
-	return
-}
-
-func (r *Repo) Create(typ string) (err error) {
-	switch typ {
-	case "redhat":
-		err = r.createRedhat()
-	default:
-		err = &UnknownType{
-			errors.Newf("repo: Unknown type '%s'", typ),
-		}
-	}
-
-	return
-}
