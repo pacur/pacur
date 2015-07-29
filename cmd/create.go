@@ -2,15 +2,15 @@ package cmd
 
 import (
 	"flag"
-	"github.com/pacur/pacur/repo"
+	"github.com/pacur/pacur/mirror"
 )
 
 func Create() (err error) {
-	rpo := &repo.Repo{
+	mirr := &mirror.Mirror{
 		Root: "/pacur",
 	}
 
-	err = rpo.Create(flag.Arg(1))
+	err = mirr.Create(flag.Arg(1))
 	if err != nil {
 		return
 	}
