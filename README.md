@@ -9,7 +9,7 @@ Ubuntu 15.10. Builds are done on Docker containers without needing to setup
 any virtual machines or install any software other then Docker. All packages
 are built using a simple format that is similar to
 [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from Arch Linux.
-Each distribution is different and will still require a seperate PKGBUILD for
+Each distribution is different and will still require a separate PKGBUILD for
 each distribution but a consistent build process and format can be used for
 all builds. Docker only supports 64 bit containers, pacur can't be used to
 build packages 32 bit packages.
