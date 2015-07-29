@@ -23,3 +23,7 @@ type CopyError struct {
 type ReadError struct {
 	errors.DropboxError
 }
+
+type WriteError struct {
+	errors.DropboxError
+}
