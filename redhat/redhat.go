@@ -367,7 +367,7 @@ func (r *Redhat) Build() (err error) {
 
 	for _, arch := range archs {
 		err = utils.CopyFiles(filepath.Join(r.rpmsDir, arch.Name()),
-			r.Pack.Home)
+			r.Pack.Home, false)
 		if err != nil {
 			return
 		}

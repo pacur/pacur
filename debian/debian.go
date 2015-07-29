@@ -91,7 +91,8 @@ func (d *Debian) createConfFiles() (err error) {
 		if err != nil {
 			err = &WriteError{
 				errors.Wrapf(err,
-					"debian: Failed to write debian conffiles at '%s'", path),
+					"debian: Failed to write debian conffiles at '%s'",
+					path),
 			}
 			return
 		}
@@ -244,7 +245,7 @@ func (d *Debian) dpkgDeb() (err error) {
 
 	os.Remove(newPath)
 
-	err = utils.CopyFile(path, newPath)
+	err = utils.CopyFile("", path, newPath, false)
 	if err != nil {
 		return
 	}

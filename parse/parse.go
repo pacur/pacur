@@ -35,7 +35,7 @@ func File(home string) (pac *pack.Pack, err error) {
 		return
 	}
 
-	err = utils.CopyFiles(home, root)
+	err = utils.CopyFiles(home, root, false)
 	if err != nil {
 		return
 	}

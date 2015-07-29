@@ -57,7 +57,7 @@ func (s *Source) getUrl() (err error) {
 }
 
 func (s *Source) getPath() (err error) {
-	err = utils.Copy(s.Root, s.Source, s.Path)
+	err = utils.Copy(s.Root, s.Source, s.Path, true)
 	if err != nil {
 		return
 	}
