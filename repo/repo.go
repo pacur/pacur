@@ -45,9 +45,48 @@ func (r *Repo) Init() (err error) {
 	return
 }
 
-func (r *Repo) createRedhat(image, distro, release, path string) (err error) {
+func (r *Repo) createRedhat(distro, release, path string) (err error) {
+	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
+		path+":/pacur", "pacur/"+distro+"-"+release, "create",
+		distro+"-"+release)
+	if err != nil {
+		return
+	}
+
+	repoPath := filepath.Join(r.Root, "mirror", "yum", distro, release)
+
+	err = utils.RsyncExt(path, repoPath, "rpm")
+	if err != nil {
+		return
+	}
+
+	err = utils.Rsync(filepath.Join(path, "repodata"),
+		filepath.Join(repoPath, "repodata"))
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+func (r *Repo) createDebian(distro, release, path string) (err error) {
+	confDir := filepath.Join(r.Root, "conf")
+	confPath := filepath.Join("conf", "distributions")
+
+	err = utils.MkdirAll(confDir)
+	if err != nil {
+		return
+	}
+
+	err = utils.CreateWrite(confPath, "Codename: "+release+"\n"+
+		"Components: main\nArchitectures: amd64\n")
+	if err != nil {
+		return
+	}
+
 	cmd := exec.Command("docker", "run", "--rm", "-t", "-v",
-		path+":/pacur", "pacur/"+image, "create", "redhat")
+		path+":/pacur", "pacur/"+distro+"-"+release, "create",
+		distro+"-"+release)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
@@ -83,8 +122,9 @@ func (r *Repo) Create(image, path string) (err error) {
 
 	switch distro {
 	case "centos":
-		err = r.createRedhat(image, distro, release, path)
+		err = r.createRedhat(distro, release, path)
 	case "debian", "ubuntu":
+		err = r.createDebian(distro, release, path)
 	default:
 		err = &UnknownType{
 			errors.Newf("repo: Unknown repo type '%s'", image),
