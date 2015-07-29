@@ -68,7 +68,8 @@ key="example ${variable} string"
 
 First create a directory for the PKGBUILD file. This directory should only
 contain the PKGBUILD file and any other files needed such as patches. Then
-create a PKGBUILD the package directory.
+create a PKGBUILD the package directory. After creating the PKGBUILD build
+the package with docker.
 
 ```
 mkdir httpserver
