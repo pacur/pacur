@@ -74,6 +74,7 @@ create a PKGBUILD the package directory.
 mkdir httpserver
 cd httpserver
 nano PKGBUILD
+docker run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
 ```
 
 ```
