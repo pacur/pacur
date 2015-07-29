@@ -2,6 +2,7 @@ package repo
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/utils"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -37,6 +38,55 @@ func (r *Repo) Init() (err error) {
 	return
 }
 
+func (r *Repo) createRedhat(image, distro, release, path string) (err error) {
+	cmd := exec.Command("docker", "run", "--rm", "-t", "-v",
+		path+":/pacur", "pacur/"+image, "create", "redhat")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &BuildError{
+			errors.Wrapf(err, "repo: Failed to build '%s'", path),
+		}
+		return
+	}
+
+	repoPath := filepath.Join(r.Root, "mirror", "yum", distro, release)
+
+	err = utils.RsyncExt(path, repoPath, "rpm")
+	if err != nil {
+		return
+	}
+
+	err = utils.Rsync(filepath.Join(path, "repodata"),
+		filepath.Join(repoPath, "repodata"))
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+func (r *Repo) Create(image, path string) (err error) {
+	distro, release, err := getDistro(image)
+	if err != nil {
+		return
+	}
+
+	switch distro {
+	case "centos":
+		err = r.createRedhat(image, distro, release, path)
+	case "debian", "ubuntu":
+	default:
+		err = &UnknownType{
+			errors.Newf("repo: Unknown repo type '%s'", image),
+		}
+	}
+
+	return
+}
+
 func (r *Repo) Build() (err error) {
 	targets, err := ioutil.ReadDir(r.Root)
 	if err != nil {
@@ -47,27 +97,27 @@ func (r *Repo) Build() (err error) {
 	}
 
 	for _, target := range targets {
-		name := target.Name()
+		image := target.Name()
 
-		if name == "mirror" || !target.IsDir() {
+		if image == "mirror" || !target.IsDir() {
 			continue
 		}
-		path := filepath.Join(r.Root, name)
+		path := filepath.Join(r.Root, image)
 
-		cmd := exec.Command("docker", "pull", "pacur/"+name)
+		cmd := exec.Command("docker", "pull", "pacur/"+image)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
 		err = cmd.Run()
 		if err != nil {
 			err = &BuildError{
-				errors.Wrapf(err, "repo: Failed to pull 'pacur/%s'", name),
+				errors.Wrapf(err, "repo: Failed to pull 'pacur/%s'", image),
 			}
 			return
 		}
 
 		cmd = exec.Command("docker", "run", "--rm", "-t", "-v",
-			path+":/pacur", "pacur/"+name)
+			path+":/pacur", "pacur/"+image)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
@@ -79,22 +129,8 @@ func (r *Repo) Build() (err error) {
 			return
 		}
 
-		typ, e := GetRepoType(name)
-		if e != nil {
-			err = e
-			return
-		}
-
-		cmd = exec.Command("docker", "run", "--rm", "-t", "-v",
-			path+":/pacur", "pacur/"+name, "create", typ)
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-
-		err = cmd.Run()
+		err = r.Create(image, path)
 		if err != nil {
-			err = &BuildError{
-				errors.Wrapf(err, "repo: Failed to build '%s'", path),
-			}
 			return
 		}
 	}
