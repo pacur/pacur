@@ -26,8 +26,6 @@ func Repo() (err error) {
 		err = rpo.Init()
 	case "build":
 		err = rpo.Build()
-	case "create":
-		err = rpo.Create(flag.Arg(2))
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown cmd '%s'", cmd),
