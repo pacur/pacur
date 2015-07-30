@@ -58,6 +58,8 @@ func (p *Project) getTargets() (targets []os.FileInfo, err error) {
 }
 
 func (p *Project) createRedhat(distro, release, path string) (err error) {
+	yumDir := filepath.Join(path, "yum")
+
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 		path+":/pacur", constants.DockerOrg+distro+"-"+release, "create",
 		distro+"-"+release)
@@ -65,8 +67,12 @@ func (p *Project) createRedhat(distro, release, path string) (err error) {
 		return
 	}
 
-	err = utils.Rsync(filepath.Join(path, "yum"),
-		filepath.Join(p.Root, "mirror", "yum"))
+	err = utils.Rsync(yumDir, filepath.Join(p.Root, "mirror", "yum"))
+	if err != nil {
+		return
+	}
+
+	err = utils.RemoveAll(yumDir)
 	if err != nil {
 		return
 	}
@@ -77,6 +83,7 @@ func (p *Project) createRedhat(distro, release, path string) (err error) {
 func (p *Project) createDebian(distro, release, path string) (err error) {
 	confDir := filepath.Join(p.Root, distro+"-"+release, "conf")
 	confPath := filepath.Join(confDir, "distributions")
+	aptDir := filepath.Join(path, "apt")
 
 	err = utils.MkdirAll(confDir)
 	if err != nil {
@@ -96,8 +103,12 @@ func (p *Project) createDebian(distro, release, path string) (err error) {
 		return
 	}
 
-	err = utils.Rsync(filepath.Join(path, "apt"),
-		filepath.Join(p.Root, "mirror", "apt"))
+	err = utils.Rsync(aptDir, filepath.Join(p.Root, "mirror", "apt"))
+	if err != nil {
+		return
+	}
+
+	err = utils.RemoveAll(aptDir)
 	if err != nil {
 		return
 	}
