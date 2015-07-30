@@ -138,7 +138,8 @@ $ httpserver --port 80
 After the repo has been created and is hosted on a server the following
 commands can be used to add the repo to the package manager for yum and apt.
 For the debian repo the `jessie` should be replaced with the debian/ubuntu
-release name.
+release name. The `pacur` repo name and filenames can be change to suite the
+name of your software.
 
 ```
 $ nano /etc/yum.repos.d/pacur.repo
