@@ -2,37 +2,20 @@ package builder
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/utils"
 	"os"
 	"os/exec"
 )
 
 func createScript(path string, cmds []string) (err error) {
-	script, err := os.Create(path)
-	if err != nil {
-		err = &ScriptError{
-			errors.Wrapf(err, "builder: Failed to create script '%s'", path),
-		}
-		return
-	}
-	defer script.Close()
-
-	_, err = script.WriteString("set -e\n")
-	if err != nil {
-		err = &ScriptError{
-			errors.Wrapf(err, "builder: Failed to write script '%s'", path),
-		}
-		return
-	}
-
+	data := "set -e\n"
 	for _, cmd := range cmds {
-		_, err = script.WriteString(cmd + "\n")
-		if err != nil {
-			err = &ScriptError{
-				errors.Wrapf(err, "builder: Failed to write script '%s'",
-					path),
-			}
-			return
-		}
+		data += cmd + "\n"
+	}
+
+	err = utils.CreateWrite(path, data)
+	if err != nil {
+		return
 	}
 
 	return
