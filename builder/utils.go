@@ -1,10 +1,7 @@
 package builder
 
 import (
-	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/utils"
-	"os"
-	"os/exec"
 )
 
 func createScript(path string, cmds []string) (err error) {
@@ -22,16 +19,8 @@ func createScript(path string, cmds []string) (err error) {
 }
 
 func runScript(path, dir string) (err error) {
-	cmd := exec.Command("sh", path)
-	cmd.Dir = dir
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	err = cmd.Run()
+	err = utils.Exec(dir, "sh", path)
 	if err != nil {
-		err = &ScriptError{
-			errors.Wrapf(err, "builder: Failed to exec script"),
-		}
 		return
 	}
 

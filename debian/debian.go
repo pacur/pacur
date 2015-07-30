@@ -2,11 +2,9 @@ package debian
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 )
@@ -31,15 +29,8 @@ func (d *Debian) getDepends() (err error) {
 	}
 	args = append(args, d.Pack.MakeDepends...)
 
-	cmd := exec.Command("apt-get", args...)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	err = cmd.Run()
+	err = utils.Exec("", "apt-get", args...)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "debian: Failed to get make depends '%s'"),
-		}
 		return
 	}
 
@@ -47,22 +38,14 @@ func (d *Debian) getDepends() (err error) {
 }
 
 func (d *Debian) getSums() (err error) {
-	cmd := exec.Command("find", ".", "-type", "f",
-		"-exec", "md5sum", "{}", ";")
-	cmd.Dir = d.Pack.PackageDir
-	cmd.Stderr = os.Stderr
-
-	output, err := cmd.Output()
+	output, err := utils.ExecOutput(d.Pack.PackageDir, "find", ".",
+		"-type", "f", "-exec", "md5sum", "{}", ";")
 	if err != nil {
-		err = &HashError{
-			errors.Wrapf(err, "debian: Failed to get md5 hashes for '%s'",
-				d.Pack.PackageDir),
-		}
 		return
 	}
 
 	d.sums = ""
-	for _, line := range strings.Split(string(output), "\n") {
+	for _, line := range strings.Split(output, "\n") {
 		d.sums += strings.Replace(line, "./", "", 1) + "\n"
 	}
 
@@ -76,26 +59,14 @@ func (d *Debian) createConfFiles() (err error) {
 
 	path := filepath.Join(d.debDir, "conffiles")
 
-	file, err := os.Create(path)
-	if err != nil {
-		err = &WriteError{
-			errors.Wrapf(err,
-				"debian: Failed to create debian conffiles at '%s'", path),
-		}
-		return
-	}
-	defer file.Close()
-
+	data := ""
 	for _, name := range d.Pack.Backup {
-		_, err = file.WriteString(name + "\n")
-		if err != nil {
-			err = &WriteError{
-				errors.Wrapf(err,
-					"debian: Failed to write debian conffiles at '%s'",
-					path),
-			}
-			return
-		}
+		data += name + "\n"
+	}
+
+	err = utils.CreateWrite(path, data)
+	if err != nil {
+		return
 	}
 
 	return
@@ -103,16 +74,6 @@ func (d *Debian) createConfFiles() (err error) {
 
 func (d *Debian) createControl() (err error) {
 	path := filepath.Join(d.debDir, "control")
-
-	file, err := os.Create(path)
-	if err != nil {
-		err = &WriteError{
-			errors.Wrapf(err,
-				"debian: Failed to create debian control at '%s'", path),
-		}
-		return
-	}
-	defer file.Close()
 
 	data := ""
 
@@ -137,12 +98,8 @@ func (d *Debian) createControl() (err error) {
 		data += fmt.Sprintf("  %s\n", line)
 	}
 
-	_, err = file.WriteString(data)
+	err = utils.CreateWrite(path, data)
 	if err != nil {
-		err = &WriteError{
-			errors.Wrapf(err,
-				"debian: Failed to write debian control at '%s'", path),
-		}
 		return
 	}
 
@@ -152,22 +109,8 @@ func (d *Debian) createControl() (err error) {
 func (d *Debian) createMd5Sums() (err error) {
 	path := filepath.Join(d.debDir, "md5sums")
 
-	file, err := os.Create(path)
+	err = utils.CreateWrite(path, d.sums)
 	if err != nil {
-		err = &WriteError{
-			errors.Wrapf(err,
-				"debian: Failed to create debian md5sums at '%s'", path),
-		}
-		return
-	}
-	defer file.Close()
-
-	_, err = file.WriteString(d.sums)
-	if err != nil {
-		err = &WriteError{
-			errors.Wrapf(err,
-				"debian: Failed to write debian md5sums at '%s'", path),
-		}
 		return
 	}
 
@@ -189,32 +132,13 @@ func (d *Debian) createScripts() (err error) {
 
 		path := filepath.Join(d.debDir, name)
 
-		file, e := os.Create(path)
-		if e != nil {
-			err = &WriteError{
-				errors.Wrapf(e,
-					"debian: Failed to create debian %s at '%s'",
-					name, path),
-			}
-			return
-		}
-		defer file.Close()
-		if e != nil {
-			err = &WriteError{
-				errors.Wrapf(e,
-					"debian: Failed to chmod debian %s at '%s'", name, path),
-			}
-			return
-		}
-
-		err = os.Chmod(path, 0755)
-
-		_, err = file.WriteString(strings.Join(script, "\n"))
+		err = utils.CreateWrite(path, strings.Join(script, "\n"))
 		if err != nil {
-			err = &WriteError{
-				errors.Wrapf(err,
-					"debian: Failed to write debian %s at '%s'", name, path),
-			}
+			return
+		}
+
+		err = utils.Chmod(path, 0755)
+		if err != nil {
 			return
 		}
 	}
@@ -223,16 +147,8 @@ func (d *Debian) createScripts() (err error) {
 }
 
 func (d *Debian) dpkgDeb() (err error) {
-	cmd := exec.Command("dpkg-deb", "-b", d.Pack.PackageDir)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	err = cmd.Run()
+	err = utils.Exec("", "dpkg-deb", "-b", d.Pack.PackageDir)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "debian: Failed to build dpkg-deb '%s'",
-				d.Pack.PackageDir),
-		}
 		return
 	}
 

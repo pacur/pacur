@@ -8,7 +8,6 @@ import (
 	"github.com/pacur/pacur/utils"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 )
@@ -76,15 +75,8 @@ func (r *Redhat) getDepends() (err error) {
 	}
 	args = append(args, r.Pack.MakeDepends...)
 
-	cmd := exec.Command("yum", args...)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	err = cmd.Run()
+	err = utils.Exec("", "yum", args...)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to get make depends '%s'"),
-		}
 		return
 	}
 
@@ -104,20 +96,12 @@ func (r *Redhat) getFiles() (files []string, err error) {
 		return
 	}
 
-	cmd := exec.Command("rpm", "-qlp", rpmPath)
-	cmd.Dir = r.Pack.PackageDir
-	cmd.Stderr = os.Stderr
-
-	output, err := cmd.Output()
+	output, err := utils.ExecOutput(r.Pack.PackageDir, "rpm", "-qlp", rpmPath)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to get rpm file list from '%s'",
-				rpmPath),
-		}
 		return
 	}
 
-	for _, path := range strings.Split(string(output), "\n") {
+	for _, path := range strings.Split(output, "\n") {
 		if len(path) < 1 {
 			continue
 		}
@@ -144,18 +128,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 func (r *Redhat) createSpec(files []string) (err error) {
 	path := filepath.Join(r.specsDir, r.Pack.PkgName+".spec")
 
-	file, err := os.Create(path)
-	if err != nil {
-		err = &WriteError{
-			errors.Wrapf(err,
-				"redhat: Failed to create redhat spec at '%s'", path),
-		}
-		return
-	}
-	defer file.Close()
-
 	data := ""
-
 	data += fmt.Sprintf("Name: %s\n", r.Pack.PkgName)
 	data += fmt.Sprintf("Summary: %s\n", r.Pack.PkgDesc)
 	data += fmt.Sprintf("Version: %s\n", r.Pack.PkgVer)
@@ -237,12 +210,8 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		}
 	}
 
-	_, err = file.WriteString(data)
+	err = utils.CreateWrite(path, data)
 	if err != nil {
-		err = &WriteError{
-			errors.Wrapf(err,
-				"redhat: Failed to write redhat spec at '%s'", path),
-		}
 		return
 	}
 
@@ -252,18 +221,9 @@ func (r *Redhat) createSpec(files []string) (err error) {
 }
 
 func (r *Redhat) rpmBuild() (err error) {
-	cmd := exec.Command("rpmbuild", "--define", "_topdir "+r.redhatDir,
-		"-ba", r.Pack.PkgName+".spec")
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	cmd.Dir = r.specsDir
-
-	err = cmd.Run()
+	err = utils.Exec(r.specsDir, "rpmbuild", "--define",
+		"_topdir "+r.redhatDir, "-ba", r.Pack.PkgName+".spec")
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to run rpmbuild '%s'",
-				r.redhatDir),
-		}
 		return
 	}
 
