@@ -1,4 +1,4 @@
-package repo
+package project
 
 import (
 	"github.com/dropbox/godropbox/errors"

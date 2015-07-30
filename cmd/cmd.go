@@ -14,8 +14,8 @@ func Parse() (err error) {
 		err = Build()
 	case "create":
 		err = Create()
-	case "repo":
-		err = Repo()
+	case "project":
+		err = Project()
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown command '%s'", cmd),

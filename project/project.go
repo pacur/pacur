@@ -1,4 +1,4 @@
-package repo
+package project
 
 import (
 	"github.com/dropbox/godropbox/errors"
@@ -9,11 +9,11 @@ import (
 	"path/filepath"
 )
 
-type Repo struct {
+type Project struct {
 	Root string
 }
 
-func (r *Repo) Init() (err error) {
+func (p *Project) Init() (err error) {
 	for _, dir := range []string{
 		"mirror/yum/centos/6",
 		"mirror/yum/centos/7",
@@ -32,7 +32,7 @@ func (r *Repo) Init() (err error) {
 		"ubuntu-vivid",
 		"ubuntu-wily",
 	} {
-		path := filepath.Join(r.Root, dir)
+		path := filepath.Join(p.Root, dir)
 		err = os.MkdirAll(path, 0755)
 		if err != nil {
 			err = &FileError{
@@ -45,11 +45,11 @@ func (r *Repo) Init() (err error) {
 	return
 }
 
-func (r *Repo) getTargets() (targets []os.FileInfo, err error) {
-	targets, err = ioutil.ReadDir(r.Root)
+func (p *Project) getTargets() (targets []os.FileInfo, err error) {
+	targets, err = ioutil.ReadDir(p.Root)
 	if err != nil {
 		err = &FileError{
-			errors.Wrapf(err, "repo: Failed to read dir '%s'", r.Root),
+			errors.Wrapf(err, "repo: Failed to read dir '%s'", p.Root),
 		}
 		return
 	}
@@ -57,7 +57,7 @@ func (r *Repo) getTargets() (targets []os.FileInfo, err error) {
 	return
 }
 
-func (r *Repo) createRedhat(distro, release, path string) (err error) {
+func (p *Project) createRedhat(distro, release, path string) (err error) {
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 		path+":/pacur", constants.DockerOrg+distro+"-"+release, "create",
 		distro+"-"+release)
@@ -65,7 +65,7 @@ func (r *Repo) createRedhat(distro, release, path string) (err error) {
 		return
 	}
 
-	repoPath := filepath.Join(r.Root, "mirror", "yum", distro, release)
+	repoPath := filepath.Join(p.Root, "mirror", "yum", distro, release)
 
 	err = utils.RsyncExt(path, repoPath, "rpm")
 	if err != nil {
@@ -81,8 +81,8 @@ func (r *Repo) createRedhat(distro, release, path string) (err error) {
 	return
 }
 
-func (r *Repo) createDebian(distro, release, path string) (err error) {
-	confDir := filepath.Join(r.Root, distro+"-"+release, "conf")
+func (p *Project) createDebian(distro, release, path string) (err error) {
+	confDir := filepath.Join(p.Root, distro+"-"+release, "conf")
 	confPath := filepath.Join("conf", "distributions")
 
 	err = utils.MkdirAll(confDir)
@@ -104,7 +104,7 @@ func (r *Repo) createDebian(distro, release, path string) (err error) {
 	}
 
 	err = utils.Rsync(filepath.Join(path, "apt"),
-		filepath.Join(r.Root, "mirror", "apt"))
+		filepath.Join(p.Root, "mirror", "apt"))
 	if err != nil {
 		return
 	}
@@ -112,7 +112,7 @@ func (r *Repo) createDebian(distro, release, path string) (err error) {
 	return
 }
 
-func (r *Repo) createTarget(target, path string) (err error) {
+func (p *Project) createTarget(target, path string) (err error) {
 	distro, release, err := getDistro(target)
 	if err != nil {
 		return
@@ -120,9 +120,9 @@ func (r *Repo) createTarget(target, path string) (err error) {
 
 	switch distro {
 	case "centos":
-		err = r.createRedhat(distro, release, path)
+		err = p.createRedhat(distro, release, path)
 	case "debian", "ubuntu":
-		err = r.createDebian(distro, release, path)
+		err = p.createDebian(distro, release, path)
 	default:
 		err = &UnknownType{
 			errors.Newf("repo: Unknown repo type '%s'", target),
@@ -132,8 +132,8 @@ func (r *Repo) createTarget(target, path string) (err error) {
 	return
 }
 
-func (r *Repo) Pull() (err error) {
-	targets, err := r.getTargets()
+func (p *Project) Pull() (err error) {
+	targets, err := p.getTargets()
 	if err != nil {
 		return
 	}
@@ -153,8 +153,8 @@ func (r *Repo) Pull() (err error) {
 	return
 }
 
-func (r *Repo) Build() (err error) {
-	targets, err := r.getTargets()
+func (p *Project) Build() (err error) {
+	targets, err := p.getTargets()
 	if err != nil {
 		return
 	}
@@ -164,7 +164,7 @@ func (r *Repo) Build() (err error) {
 		if image == "mirror" || !target.IsDir() {
 			continue
 		}
-		path := filepath.Join(r.Root, image)
+		path := filepath.Join(p.Root, image)
 
 		err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 			path+":/pacur", constants.DockerOrg+image)
@@ -176,8 +176,8 @@ func (r *Repo) Build() (err error) {
 	return
 }
 
-func (r *Repo) Create() (err error) {
-	targets, err := r.getTargets()
+func (p *Project) Create() (err error) {
+	targets, err := p.getTargets()
 	if err != nil {
 		return
 	}
@@ -187,9 +187,9 @@ func (r *Repo) Create() (err error) {
 		if image == "mirror" || !target.IsDir() {
 			continue
 		}
-		path := filepath.Join(r.Root, image)
+		path := filepath.Join(p.Root, image)
 
-		err = r.createTarget(image, path)
+		err = p.createTarget(image, path)
 		if err != nil {
 			return
 		}
