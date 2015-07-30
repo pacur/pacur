@@ -113,6 +113,16 @@ func (p *Project) createDebian(distro, release, path string) (err error) {
 		return
 	}
 
+	err = utils.RemoveAll(filepath.Join(path, "conf"))
+	if err != nil {
+		return
+	}
+
+	err = utils.RemoveAll(filepath.Join(path, "db"))
+	if err != nil {
+		return
+	}
+
 	return
 }
 
