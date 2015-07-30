@@ -6,7 +6,6 @@ import (
 	"github.com/pacur/pacur/utils"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path/filepath"
 )
 
@@ -41,6 +40,18 @@ func (r *Repo) Init() (err error) {
 			}
 			return
 		}
+	}
+
+	return
+}
+
+func (r *Repo) getTargets() (targets []os.FileInfo, err error) {
+	targets, err = ioutil.ReadDir(r.Root)
+	if err != nil {
+		err = &FileError{
+			errors.Wrapf(err, "repo: Failed to read dir '%s'", r.Root),
+		}
+		return
 	}
 
 	return
@@ -101,8 +112,8 @@ func (r *Repo) createDebian(distro, release, path string) (err error) {
 	return
 }
 
-func (r *Repo) Create(image, path string) (err error) {
-	distro, release, err := getDistro(image)
+func (r *Repo) createTarget(target, path string) (err error) {
+	distro, release, err := getDistro(target)
 	if err != nil {
 		return
 	}
@@ -114,7 +125,28 @@ func (r *Repo) Create(image, path string) (err error) {
 		err = r.createDebian(distro, release, path)
 	default:
 		err = &UnknownType{
-			errors.Newf("repo: Unknown repo type '%s'", image),
+			errors.Newf("repo: Unknown repo type '%s'", target),
+		}
+	}
+
+	return
+}
+
+func (r *Repo) Pull() (err error) {
+	targets, err := r.getTargets()
+	if err != nil {
+		return
+	}
+
+	for _, target := range targets {
+		image := target.Name()
+		if image == "mirror" || !target.IsDir() {
+			continue
+		}
+
+		err = utils.Exec("", "docker", "pull", constants.DockerOrg+image)
+		if err != nil {
+			return
 		}
 	}
 
@@ -122,43 +154,42 @@ func (r *Repo) Create(image, path string) (err error) {
 }
 
 func (r *Repo) Build() (err error) {
-	targets, err := ioutil.ReadDir(r.Root)
+	targets, err := r.getTargets()
 	if err != nil {
-		err = &FileError{
-			errors.Wrapf(err, "repo: Failed to read dir '%s'", r.Root),
-		}
 		return
 	}
 
 	for _, target := range targets {
 		image := target.Name()
-
 		if image == "mirror" || !target.IsDir() {
 			continue
 		}
 		path := filepath.Join(r.Root, image)
 
-		if constants.DockerOrg != "" {
-			err = utils.Exec("", "docker", "pull", constants.DockerOrg+image)
-			if err != nil {
-				return
-			}
-		}
-
-		cmd := exec.Command("docker", "run", "--rm", "-t", "-v",
+		err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 			path+":/pacur", constants.DockerOrg+image)
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-
-		err = cmd.Run()
 		if err != nil {
-			err = &BuildError{
-				errors.Wrapf(err, "repo: Failed to build '%s'", path),
-			}
 			return
 		}
+	}
 
-		err = r.Create(image, path)
+	return
+}
+
+func (r *Repo) Create() (err error) {
+	targets, err := r.getTargets()
+	if err != nil {
+		return
+	}
+
+	for _, target := range targets {
+		image := target.Name()
+		if image == "mirror" || !target.IsDir() {
+			continue
+		}
+		path := filepath.Join(r.Root, image)
+
+		err = r.createTarget(image, path)
 		if err != nil {
 			return
 		}
