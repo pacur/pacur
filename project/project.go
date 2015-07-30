@@ -83,7 +83,7 @@ func (p *Project) createRedhat(distro, release, path string) (err error) {
 
 func (p *Project) createDebian(distro, release, path string) (err error) {
 	confDir := filepath.Join(p.Root, distro+"-"+release, "conf")
-	confPath := filepath.Join("conf", "distributions")
+	confPath := filepath.Join(confDir, "distributions")
 
 	err = utils.MkdirAll(confDir)
 	if err != nil {
