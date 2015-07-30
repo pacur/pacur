@@ -39,6 +39,11 @@ func (m *Mirror) createDebian() (err error) {
 func (m *Mirror) createRedhat() (err error) {
 	outDir := filepath.Join(m.Root, "yum", "centos", m.Release)
 
+	err = utils.MkdirAll(outDir)
+	if err != nil {
+		return
+	}
+
 	err = utils.RsyncExt(m.Root, outDir, ".rpm")
 	if err != nil {
 		return
