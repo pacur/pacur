@@ -47,7 +47,7 @@ func (m *Mirror) Create(distro, release string) (err error) {
 	switch distro {
 	case "centos":
 		err = m.createRedhat()
-	case "debian":
+	case "debian", "ubuntu":
 		err = m.createDebian(release)
 	default:
 		err = &UnknownType{
