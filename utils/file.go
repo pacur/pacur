@@ -40,7 +40,7 @@ func ExistsMakeDir(path string) (err error) {
 	return
 }
 
-func Create(path string, perm os.FileMode) (file *os.File, err error) {
+func Create(path string) (file *os.File, err error) {
 	file, err = os.Create(path)
 	if err != nil {
 		err = &WriteError{
@@ -52,8 +52,8 @@ func Create(path string, perm os.FileMode) (file *os.File, err error) {
 	return
 }
 
-func CreateWrite(path string, perm os.FileMode, data string) (err error) {
-	file, err := Create(path, perm)
+func CreateWrite(path string, data string) (err error) {
+	file, err := Create(path)
 	if err != nil {
 		return
 	}
@@ -128,6 +128,28 @@ func CopyFiles(source, dest string, presv bool) (err error) {
 		err = CopyFile("", filepath.Join(source, file.Name()), dest, presv)
 		if err != nil {
 			return
+		}
+	}
+
+	return
+}
+
+func FindExt(path, ext string) (matches []string, err error) {
+	files, err := ioutil.ReadDir(path)
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to read dir '%s'", path),
+		}
+		return
+	}
+
+	for _, file := range files {
+		if file.IsDir() {
+			continue
+		}
+
+		if strings.HasSuffix(file.Name(), ext) {
+			matches = append(matches, filepath.Join(path, file.Name()))
 		}
 	}
 
