@@ -65,15 +65,8 @@ func (p *Project) createRedhat(distro, release, path string) (err error) {
 		return
 	}
 
-	repoPath := filepath.Join(p.Root, "mirror", "yum", distro, release)
-
-	err = utils.RsyncExt(path, repoPath, "rpm")
-	if err != nil {
-		return
-	}
-
-	err = utils.Rsync(filepath.Join(path, "repodata"),
-		filepath.Join(repoPath, "repodata"))
+	err = utils.Rsync(filepath.Join(path, "yum"),
+		filepath.Join(p.Root, "mirror", "yum"))
 	if err != nil {
 		return
 	}
