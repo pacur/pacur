@@ -176,7 +176,7 @@ func (p *Project) Build() (err error) {
 	return
 }
 
-func (p *Project) Create() (err error) {
+func (p *Project) Repo() (err error) {
 	targets, err := p.getTargets()
 	if err != nil {
 		return

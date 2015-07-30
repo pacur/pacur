@@ -24,8 +24,12 @@ func Project() (err error) {
 	switch cmd {
 	case "init":
 		err = proj.Init()
+	case "pull":
+		err = proj.Pull()
 	case "build":
 		err = proj.Build()
+	case "repo":
+		err = proj.Repo()
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown cmd '%s'", cmd),
