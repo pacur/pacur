@@ -1,0 +1,35 @@
+pkgname="httpserver"
+pkgver="1.0"
+pkgrel="1"
+pkgdesc="Http file server written with Go"
+pkgdesclong=(
+    "Quick http file server written with Go"
+    "using directory listing similar to apache"
+)
+maintainer="Pacur <contact@pacur.com>"
+arch="all"
+license=("GPLv3")
+section="utils"
+priority="optional"
+url="https://github.com/pacur/${pkgname}"
+sources=(
+    "${url}/archive/${pkgver}.tar.gz"
+)
+hashsums=(
+    "c22e43a8e77a684af90a60609060ee79"
+)
+
+build() {
+    mkdir -p "go/src"
+    export GOPATH="${srcdir}/go"
+    mv "${pkgname}-${pkgver}" "go/src"
+    cd "go/src/${pkgname}-${pkgver}"
+    go get
+    go build -a
+}
+
+package() {
+    cd "${srcdir}/go/src/${pkgname}-${pkgver}"
+    mkdir -p "${pkgdir}/usr/bin"
+    cp ${pkgname}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
+}
