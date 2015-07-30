@@ -21,6 +21,30 @@ func MkdirAll(path string) (err error) {
 	return
 }
 
+func Remove(path string) (err error) {
+	err = os.Remove(path)
+	if err != nil {
+		err = &WriteError{
+			errors.Wrapf(err, "utils: Failed to remove '%s'", path),
+		}
+		return
+	}
+
+	return
+}
+
+func RemoveAll(path string) (err error) {
+	err = os.RemoveAll(path)
+	if err != nil {
+		err = &WriteError{
+			errors.Wrapf(err, "utils: Failed to remove '%s'", path),
+		}
+		return
+	}
+
+	return
+}
+
 func ExistsMakeDir(path string) (err error) {
 	_, err = os.Stat(path)
 	if err != nil {
