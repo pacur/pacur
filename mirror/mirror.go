@@ -36,7 +36,7 @@ func (m *Mirror) createDebian() (err error) {
 	return
 }
 
-func (m *Mirror) createRedhat(release string) (err error) {
+func (m *Mirror) createRedhat() (err error) {
 	outDir := filepath.Join(m.Root, "yum", "centos", m.Release)
 
 	err = utils.RsyncExt(m.Root, outDir, ".rpm")
@@ -53,14 +53,14 @@ func (m *Mirror) createRedhat(release string) (err error) {
 }
 
 func (m *Mirror) Create() (err error) {
-	switch distro {
+	switch m.Distro {
 	case "centos":
 		err = m.createRedhat()
 	case "debian", "ubuntu":
-		err = m.createDebian(release)
+		err = m.createDebian()
 	default:
 		err = &UnknownType{
-			errors.Newf("mirror: Unknown type '%s'", distro),
+			errors.Newf("mirror: Unknown type '%s'", m.Distro),
 		}
 	}
 
