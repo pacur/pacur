@@ -12,7 +12,8 @@ are built using a simple format that is similar to
 Each distribution is different and will still require a separate PKGBUILD for
 each distribution but a consistent build process and format can be used for
 all builds. Docker only supports 64 bit containers, pacur can't be used to
-build packages 32 bit packages.
+build packages 32 bit packages. Pacur will also create a DEB and APT repository
+that can be hosted on a server to distribute the packages.
 
 ### format
 
@@ -72,10 +73,10 @@ create a PKGBUILD the package directory. After creating the PKGBUILD build
 the package with docker.
 
 ```
-mkdir httpserver
-cd httpserver
-nano PKGBUILD
-docker run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
+$ mkdir httpserver
+$ cd httpserver
+$ nano PKGBUILD
+$ docker run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
 ```
 
 ```
@@ -114,4 +115,42 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     cp ${pkgname}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
 }
+```
+
+### project example
+
+A project can be created with the cli tools. After creating a project a
+PKGBUILD file must be added to each release directory. Then the packages can
+be built and added to the repo. An example project is available in the example
+directory.
+
+```
+$ go get github.com/pacur/pacur
+$ cd example
+$ pacur project init
+$ pacur project build
+$ pacur project repo
+$ go get github.com/pacur/httpserver
+$ cd mirror
+$ httpserver --port 80
+```
+
+After the repo has been created and is hosted on a server the following
+commands can be used to add the repo to the package manager for yum and apt.
+
+```
+$ nano /etc/yum.repos.d/pacur.repo
+[pacur]
+name=Pacur Repository
+baseurl=http://HTTP_SERVER_IP/yum/centos/7/
+gpgcheck=0
+enabled=1
+$ yum install httpserver
+```
+
+```
+$ nano /etc/apt/sources.list.d/pacur.list
+deb http://10.0.0.60/apt jessie main
+$ apt-get update
+$ apt-get install httpserver
 ```
