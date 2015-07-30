@@ -84,29 +84,15 @@ func (r *Repo) createDebian(distro, release, path string) (err error) {
 		return
 	}
 
-	cmd := exec.Command("docker", "run", "--rm", "-t", "-v",
+	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 		path+":/pacur", "pacur/"+distro+"-"+release, "create",
 		distro+"-"+release)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	err = cmd.Run()
-	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "repo: Failed to build '%s'", path),
-		}
-		return
-	}
-
-	repoPath := filepath.Join(r.Root, "mirror", "yum", distro, release)
-
-	err = utils.RsyncExt(path, repoPath, "rpm")
 	if err != nil {
 		return
 	}
 
-	err = utils.Rsync(filepath.Join(path, "repodata"),
-		filepath.Join(repoPath, "repodata"))
+	err = utils.Rsync(filepath.Join(path, "apt"),
+		filepath.Join(r.Root, "mirror", "apt"))
 	if err != nil {
 		return
 	}
