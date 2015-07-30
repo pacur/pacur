@@ -83,9 +83,17 @@ func (d *Debian) createControl() (err error) {
 	data += fmt.Sprintf("Architecture: %s\n", d.Pack.Arch)
 	data += fmt.Sprintf("Maintainer: %s\n", d.Pack.Maintainer)
 	data += fmt.Sprintf("Installed-Size: %d\n", d.installSize)
-	data += fmt.Sprintf("Depends: %s\n", strings.Join(d.Pack.Depends, ", "))
-	data += fmt.Sprintf("Recommends: %s\n",
-		strings.Join(d.Pack.OptDepends, ", "))
+
+	if len(d.Pack.Depends) > 0 {
+		data += fmt.Sprintf("Depends: %s\n",
+			strings.Join(d.Pack.Depends, ", "))
+	}
+
+	if len(d.Pack.OptDepends) > 0 {
+		data += fmt.Sprintf("Recommends: %s\n",
+			strings.Join(d.Pack.OptDepends, ", "))
+	}
+
 	data += fmt.Sprintf("Section: %s\n", d.Pack.Section)
 	data += fmt.Sprintf("Priority: %s\n", d.Pack.Priority)
 	data += fmt.Sprintf("Homepage: %s\n", d.Pack.Url)
