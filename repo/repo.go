@@ -138,19 +138,14 @@ func (r *Repo) Build() (err error) {
 		}
 		path := filepath.Join(r.Root, image)
 
-		cmd := exec.Command("docker", "pull", constants.DockerOrg+image)
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-
-		err = cmd.Run()
-		if err != nil {
-			err = &BuildError{
-				errors.Wrapf(err, "repo: Failed to pull 'pacur/%s'", image),
+		if constants.DockerOrg != "" {
+			err = utils.Exec("", "docker", "pull", constants.DockerOrg+image)
+			if err != nil {
+				return
 			}
-			return
 		}
 
-		cmd = exec.Command("docker", "run", "--rm", "-t", "-v",
+		cmd := exec.Command("docker", "run", "--rm", "-t", "-v",
 			path+":/pacur", constants.DockerOrg+image)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
