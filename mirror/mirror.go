@@ -26,7 +26,7 @@ func (m *Mirror) createDebian() (err error) {
 	}
 
 	for _, deb := range debs {
-		err = utils.Exec(m.Root, "createrepo", "--outdir", outDir,
+		err = utils.Exec(m.Root, "reprepro", "--outdir", outDir,
 			"includedeb", m.Release, deb)
 		if err != nil {
 			return
