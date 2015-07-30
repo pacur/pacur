@@ -21,6 +21,18 @@ func MkdirAll(path string) (err error) {
 	return
 }
 
+func Chmod(path string, perm os.FileMode) (err error) {
+	err = os.Chmod(path, perm)
+	if err != nil {
+		err = &WriteError{
+			errors.Wrapf(err, "utils: Failed to chmod '%s'", path),
+		}
+		return
+	}
+
+	return
+}
+
 func Remove(path string) (err error) {
 	err = os.Remove(path)
 	if err != nil {
