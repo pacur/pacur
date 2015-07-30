@@ -137,6 +137,8 @@ $ httpserver --port 80
 
 After the repo has been created and is hosted on a server the following
 commands can be used to add the repo to the package manager for yum and apt.
+For the debian repo the `jessie` should be replaced with the debian/ubuntu
+release name.
 
 ```
 $ nano /etc/yum.repos.d/pacur.repo
@@ -150,7 +152,7 @@ $ yum install httpserver
 
 ```
 $ nano /etc/apt/sources.list.d/pacur.list
-deb http://10.0.0.60/apt jessie main
+deb http://HTTP_SERVER_IP/apt jessie main
 $ apt-get update
 $ apt-get install httpserver
 ```
