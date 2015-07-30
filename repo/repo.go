@@ -2,6 +2,7 @@ package repo
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/utils"
 	"io/ioutil"
 	"os"
@@ -47,7 +48,7 @@ func (r *Repo) Init() (err error) {
 
 func (r *Repo) createRedhat(distro, release, path string) (err error) {
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-		path+":/pacur", "pacur/"+distro+"-"+release, "create",
+		path+":/pacur", constants.DockerOrg+distro+"-"+release, "create",
 		distro+"-"+release)
 	if err != nil {
 		return
@@ -85,7 +86,7 @@ func (r *Repo) createDebian(distro, release, path string) (err error) {
 	}
 
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-		path+":/pacur", "pacur/"+distro+"-"+release, "create",
+		path+":/pacur", constants.DockerOrg+distro+"-"+release, "create",
 		distro+"-"+release)
 	if err != nil {
 		return
@@ -137,7 +138,7 @@ func (r *Repo) Build() (err error) {
 		}
 		path := filepath.Join(r.Root, image)
 
-		cmd := exec.Command("docker", "pull", "pacur/"+image)
+		cmd := exec.Command("docker", "pull", constants.DockerOrg+image)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
@@ -150,7 +151,7 @@ func (r *Repo) Build() (err error) {
 		}
 
 		cmd = exec.Command("docker", "run", "--rm", "-t", "-v",
-			path+":/pacur", "pacur/"+image)
+			path+":/pacur", constants.DockerOrg+image)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
