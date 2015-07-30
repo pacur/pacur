@@ -4,10 +4,6 @@ import (
 	"github.com/dropbox/godropbox/errors"
 )
 
-type MakeDirError struct {
-	errors.DropboxError
-}
-
 type HttpError struct {
 	errors.DropboxError
 }

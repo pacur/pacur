@@ -66,7 +66,7 @@ func ExistsMakeDir(path string) (err error) {
 				return
 			}
 		} else {
-			err = &MakeDirError{
+			err = &WriteError{
 				errors.Wrapf(err, "utils: Failed to stat '%s'", path),
 			}
 		}
