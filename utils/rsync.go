@@ -27,7 +27,7 @@ func Rsync(source, dest string) (err error) {
 
 func RsyncExt(source, dest, ext string) (err error) {
 	cmd := exec.Command("rsync", "-a", "-A", "-X",
-		"--include", "*."+ext, "--exclude", "*",
+		"--include", "*"+ext, "--exclude", "*",
 		source+string(os.PathSeparator),
 		dest+string(os.PathSeparator))
 	cmd.Stdout = os.Stdout

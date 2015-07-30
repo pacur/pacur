@@ -7,10 +7,12 @@ import (
 )
 
 type Mirror struct {
-	Root string
+	Root    string
+	Distro  string
+	Release string
 }
 
-func (m *Mirror) createDebian(release string) (err error) {
+func (m *Mirror) createDebian() (err error) {
 	outDir := filepath.Join(m.Root, "apt")
 
 	err = utils.MkdirAll(outDir)
@@ -25,7 +27,7 @@ func (m *Mirror) createDebian(release string) (err error) {
 
 	for _, deb := range debs {
 		err = utils.Exec(m.Root, "createrepo", "--outdir", outDir,
-			"includedeb", release, deb)
+			"includedeb", m.Release, deb)
 		if err != nil {
 			return
 		}
@@ -34,8 +36,15 @@ func (m *Mirror) createDebian(release string) (err error) {
 	return
 }
 
-func (m *Mirror) createRedhat() (err error) {
-	err = utils.Exec(m.Root, "createrepo", ".")
+func (m *Mirror) createRedhat(release string) (err error) {
+	outDir := filepath.Join(m.Root, "yum", "centos", m.Release)
+
+	err = utils.RsyncExt(m.Root, outDir, ".rpm")
+	if err != nil {
+		return
+	}
+
+	err = utils.Exec(outDir, "createrepo", ".")
 	if err != nil {
 		return
 	}
@@ -43,7 +52,7 @@ func (m *Mirror) createRedhat() (err error) {
 	return
 }
 
-func (m *Mirror) Create(distro, release string) (err error) {
+func (m *Mirror) Create() (err error) {
 	switch distro {
 	case "centos":
 		err = m.createRedhat()

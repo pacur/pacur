@@ -7,10 +7,6 @@ import (
 )
 
 func Create() (err error) {
-	mirr := &mirror.Mirror{
-		Root: "/pacur",
-	}
-
 	split := strings.Split(flag.Arg(1), "-")
 	distro := split[0]
 	release := ""
@@ -18,7 +14,13 @@ func Create() (err error) {
 		release = split[1]
 	}
 
-	err = mirr.Create(distro, release)
+	mirr := &mirror.Mirror{
+		Root:    "/pacur",
+		Distro:  distro,
+		Release: release,
+	}
+
+	err = mirr.Create()
 	if err != nil {
 		return
 	}
