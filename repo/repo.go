@@ -71,7 +71,7 @@ func (r *Repo) createRedhat(distro, release, path string) (err error) {
 }
 
 func (r *Repo) createDebian(distro, release, path string) (err error) {
-	confDir := filepath.Join(r.Root, "conf")
+	confDir := filepath.Join(r.Root, distro+"-"+release, "conf")
 	confPath := filepath.Join("conf", "distributions")
 
 	err = utils.MkdirAll(confDir)
