@@ -120,9 +120,9 @@ package() {
 ### project example
 
 A project can be created with the cli tools which can be installed using
-go get. After creating a project a PKGBUILD file must be added to each
-release directory. Then the packages can be built and added to the repo. An
-example project is available in the example directory.
+go get. After creating a project a PKGBUILD file must be added to each release
+directory. Then the packages can be built and added to the repo. An example
+project is available in the example directory.
 
 ```
 $ go get github.com/pacur/pacur
