@@ -14,17 +14,18 @@
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--wily-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-wily/)
 
 Pacur allows building packages for several package formats and linux
-distributions. Currently DEB and RPM packages are available for CentOS 6,
-CentOS 7, Debian 7, Debian 8, Ubuntu 12.04, Ubuntu 14.04, Ubuntu 15.04 and
-Ubuntu 15.10. Builds are done on Docker containers without needing to setup
-any virtual machines or install any software other then Docker. All packages
-are built using a simple format that is similar to
+distributions. Currently DEB, RPM and PKG packages are available for
+ArchLinux, CentOS 6, CentOS 7, Debian 7, Debian 8, Ubuntu 12.04, Ubuntu 14.04,
+Ubuntu 15.04 and Ubuntu 15.10. Builds are done on Docker containers without
+needing to setup any virtual machines or install any software other then
+Docker. All packages are built using a simple format that is similar to
 [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from Arch Linux.
 Each distribution is different and will still require a separate PKGBUILD for
 each distribution but a consistent build process and format can be used for
 all builds. Docker only supports 64 bit containers, pacur can't be used to
-build packages 32 bit packages. Pacur will also create a DEB and APT repository
-that can be used to distribute the packages.
+build packages 32 bit packages. Pacur will also create a DEB, APT and PKG
+repository that can be used on ArchLinux, CentOS, Debian and Ubuntu to
+distribute the packages.
 
 ### format
 
