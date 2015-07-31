@@ -12,6 +12,30 @@ type Mirror struct {
 	Release string
 }
 
+func (m *Mirror) createArch() (err error) {
+	outDir := filepath.Join(m.Root, "arch")
+
+	err = utils.MkdirAll(outDir)
+	if err != nil {
+		return
+	}
+
+	err = utils.RsyncExt(m.Root, outDir, ".pkg.tar.xz")
+	if err != nil {
+		return
+	}
+
+	pkgs, err := utils.FindExt(outDir, ".pkg.tar.xz")
+	for _, pkg := range pkgs {
+		err = utils.Exec(m.Root, "repo-add", "pacur.db.tar.gz", pkg)
+		if err != nil {
+			return
+		}
+	}
+
+	return
+}
+
 func (m *Mirror) createDebian() (err error) {
 	outDir := filepath.Join(m.Root, "apt")
 
@@ -59,6 +83,8 @@ func (m *Mirror) createRedhat() (err error) {
 
 func (m *Mirror) Create() (err error) {
 	switch m.Distro {
+	case "archlinux":
+		err = m.createArch()
 	case "centos":
 		err = m.createRedhat()
 	case "debian", "ubuntu":
