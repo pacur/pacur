@@ -1,20 +1,15 @@
 package project
 
 import (
-	"github.com/dropbox/godropbox/errors"
 	"strings"
 )
 
-func getDistro(name string) (distro, release string, err error) {
+func getDistro(name string) (distro, release string) {
 	split := strings.Split(name, "-")
-	if len(split) < 2 {
-		err = &UnknownType{
-			errors.Newf("repo: Unknown distro '%s'", name),
-		}
-		return
-	}
 	distro = split[0]
-	release = split[1]
+	if len(split) > 1 {
+		release = split[1]
+	}
 
 	return
 }

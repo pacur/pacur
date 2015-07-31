@@ -51,6 +51,29 @@ func (p *Project) getTargets() (targets []os.FileInfo, err error) {
 	return
 }
 
+func (p *Project) createArch(distro, release, path string) (err error) {
+	archDir := filepath.Join(path, "arch")
+
+	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
+		path+":/pacur", constants.DockerOrg+distro, "create",
+		distro)
+	if err != nil {
+		return
+	}
+
+	err = utils.Rsync(archDir, filepath.Join(p.Root, "mirror", "arch"))
+	if err != nil {
+		return
+	}
+
+	err = utils.RemoveAll(archDir)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
 func (p *Project) createRedhat(distro, release, path string) (err error) {
 	yumDir := filepath.Join(path, "yum")
 
@@ -121,12 +144,14 @@ func (p *Project) createDebian(distro, release, path string) (err error) {
 }
 
 func (p *Project) createTarget(target, path string) (err error) {
-	distro, release, err := getDistro(target)
+	distro, release := getDistro(target)
 	if err != nil {
 		return
 	}
 
 	switch distro {
+	case "archlinux":
+		err = p.createArch(distro, release, path)
 	case "centos":
 		err = p.createRedhat(distro, release, path)
 	case "debian", "ubuntu":
