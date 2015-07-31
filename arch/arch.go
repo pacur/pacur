@@ -144,7 +144,7 @@ func (a *Arch) createMake() (err error) {
 			strconv.Quote(a.Pack.PkgName+".install"))
 	}
 
-	data += `options=("emptydirs")\n`
+	data += "options=(\"emptydirs\")\n"
 
 	if len(a.Pack.Backup) > 0 {
 		data += "backup=(\n"
