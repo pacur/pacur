@@ -2,6 +2,7 @@ package packer
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/arch"
 	"github.com/pacur/pacur/debian"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/redhat"
@@ -16,6 +17,12 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 	pcker Packer, err error) {
 
 	switch distro {
+	case "archlinux":
+		pcker = &arch.Arch{
+			Pack:    pac,
+			Distro:  distro,
+			Release: release,
+		}
 	case "debian", "ubuntu":
 		pcker = &debian.Debian{
 			Pack:    pac,
