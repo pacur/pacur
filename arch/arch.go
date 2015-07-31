@@ -212,7 +212,7 @@ func (a *Arch) Build() (err error) {
 	if err != nil {
 		return
 	}
-	//defer a.remDirs()
+	defer a.remDirs()
 
 	err = a.createMake()
 	if err != nil {
@@ -222,6 +222,18 @@ func (a *Arch) Build() (err error) {
 	err = a.archBuild()
 	if err != nil {
 		return
+	}
+
+	pkgs, err := utils.FindExt(a.archDir, ".pkg.tar.xz")
+	if err != nil {
+		return
+	}
+
+	for _, pkg := range pkgs {
+		err = utils.CopyFile("", pkg, a.Pack.Home, false)
+		if err != nil {
+			return
+		}
 	}
 
 	return
