@@ -1,6 +1,10 @@
 #!/bin/bash
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
+cd archlinux
+docker build --rm --no-cache -t archlinux .
+cd ..
+
 cd centos-6
 docker build --rm --no-cache -t centos-6 .
 cd ..

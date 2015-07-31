@@ -1,6 +1,12 @@
 #!/bin/bash
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
+cd archlinux
+sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur #`date`|g" Dockerfile
+docker build --rm -t archlinux .
+sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur|g" Dockerfile
+cd ..
+
 cd centos-6
 sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur #`date`|g" Dockerfile
 docker build --rm -t centos-6 .
