@@ -2,6 +2,8 @@
 
 # pacur: simple packaging (beta)
 
+[![Docker Repository](https://img.shields.io/badge/docker-centos--6-1794d1.svg?style=flat "Docker Repository")](https://registry.hub.docker
+.com/u/pacur/archlinux/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
 [![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
