@@ -2,16 +2,16 @@
 
 # pacur: simple packaging (beta)
 
-[![Docker Repository](https://img.shields.io/badge/docker-centos--6-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
-[![Docker Repository](https://img.shields.io/badge/docker-centos--7-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
-[![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
-[![Docker Repository](https://img.shields.io/badge/docker-debian--wheezy-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-wheezy/)
+[![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
+[![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
+[![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
+[![Docker Repository](https://img.shields.io/badge/docker-debian--wheezy-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-wheezy/)
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--precise-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-precise/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--vivid-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-vivid/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--wily-22b8eb.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-wily/)
+[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--precise-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-precise/)
+[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
+[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--vivid-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-vivid/)
+[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--wily-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-wily/)
 
 Pacur allows building packages for several package formats and linux
 distributions. Currently DEB and RPM packages are available for CentOS 6,
