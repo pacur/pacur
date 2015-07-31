@@ -25,6 +25,7 @@ func (a *Arch) getDepends() (err error) {
 		"-S",
 		"--noconfirm",
 	}
+	args = append(args, a.Pack.Depends...)
 	args = append(args, a.Pack.MakeDepends...)
 
 	err = utils.Exec("", "pacman", args...)
