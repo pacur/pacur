@@ -13,7 +13,7 @@ Each distribution is different and will still require a separate PKGBUILD for
 each distribution but a consistent build process and format can be used for
 all builds. Docker only supports 64 bit containers, pacur can't be used to
 build packages 32 bit packages. Pacur will also create a DEB and APT repository
-that can be hosted on a server to distribute the packages.
+that can be used to distribute the packages.
 
 ### format
 
