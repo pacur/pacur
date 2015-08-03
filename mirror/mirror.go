@@ -2,6 +2,7 @@ package mirror
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/signing"
 	"github.com/pacur/pacur/utils"
 	"path/filepath"
 )
@@ -10,6 +11,7 @@ type Mirror struct {
 	Root    string
 	Distro  string
 	Release string
+	Signing bool
 }
 
 func (m *Mirror) createArch() (err error) {
@@ -73,6 +75,13 @@ func (m *Mirror) createRedhat() (err error) {
 		return
 	}
 
+	if m.Signing {
+		err = signing.SignRedhat(outDir)
+		if err != nil {
+			return
+		}
+	}
+
 	err = utils.Exec(outDir, "createrepo", ".")
 	if err != nil {
 		return
@@ -82,6 +91,16 @@ func (m *Mirror) createRedhat() (err error) {
 }
 
 func (m *Mirror) Create() (err error) {
+	keyPath := filepath.Join(m.Root, "sign.key")
+	m.Signing, err := utils.Exists(keyPath)
+	if err != nil {
+		return
+	}
+
+	if m.Signing {
+		signing.ImportKey(keyPath)
+	}
+
 	switch m.Distro {
 	case "archlinux":
 		err = m.createArch()
