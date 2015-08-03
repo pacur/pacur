@@ -99,7 +99,10 @@ func (m *Mirror) Create() (err error) {
 	}
 
 	if m.Signing {
-		signing.ImportKey(keyPath)
+		err = signing.ImportKey(keyPath)
+		if err != nil {
+			return
+		}
 	}
 
 	switch m.Distro {
