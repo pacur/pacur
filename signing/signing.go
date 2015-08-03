@@ -33,10 +33,7 @@ func GetName() (name string, err error) {
 }
 
 func ImportKey(path string) (err error) {
-	err = utils.Exec("", "gpg", "--allow-secret-key-import", "--import", path)
-	if err != nil {
-		return
-	}
-
+	utils.Exec("", "gpg", "--allow-secret-key-import", "--import", path)
+	// TODO err handle already imported
 	return
 }
