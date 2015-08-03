@@ -21,7 +21,7 @@ ArchLinux, CentOS 6, CentOS 7, Debian 7, Debian 8, Ubuntu 12.04, Ubuntu 14.04,
 Ubuntu 15.04 and Ubuntu 15.10. Builds are done on Docker containers without
 needing to setup any virtual machines or install any software other then
 Docker. All packages are built using a simple format that is similar to
-[PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from Arch Linux.
+[PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from ArchLinux.
 Each distribution is different and will still require a separate PKGBUILD for
 each distribution but a consistent build process and format can be used for
 all builds. Docker only supports 64 bit containers, pacur can't be used to
