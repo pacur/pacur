@@ -103,6 +103,11 @@ func (m *Mirror) Create() (err error) {
 		if err != nil {
 			return
 		}
+
+		err = signing.CreateRedhatConf()
+		if err != nil {
+			return
+		}
 	}
 
 	switch m.Distro {
