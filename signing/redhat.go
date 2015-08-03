@@ -14,7 +14,7 @@ func CreateRedhatConf() (err error) {
 		return
 	}
 
-	data := fmt.Sprintf("%_signature gpg\n%_gpg_name %s\n", name)
+	data := fmt.Sprintf("%%_signature gpg\n%%_gpg_name %s\n", name)
 
 	usr, err := user.Current()
 	if err != nil {
