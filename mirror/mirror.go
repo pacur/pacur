@@ -92,7 +92,8 @@ func (m *Mirror) createRedhat() (err error) {
 
 func (m *Mirror) Create() (err error) {
 	keyPath := filepath.Join(m.Root, "sign.key")
-	m.Signing, err := utils.Exists(keyPath)
+
+	m.Signing, err = utils.Exists(keyPath)
 	if err != nil {
 		return
 	}
