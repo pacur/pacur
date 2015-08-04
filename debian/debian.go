@@ -164,7 +164,7 @@ func (d *Debian) dpkgDeb() (err error) {
 	path := filepath.Join(d.Pack.Root, dir+".deb")
 	newPath := filepath.Join(d.Pack.Home,
 		fmt.Sprintf("%s_%s-0%s%s.%s_%s.deb",
-			d.Distro, d.Pack.PkgName, d.Pack.PkgVer, d.Pack.PkgRel,
+			d.Pack.PkgName, d.Pack.PkgVer, d.Distro, d.Pack.PkgRel,
 			d.Release, d.Pack.Arch))
 
 	os.Remove(newPath)
