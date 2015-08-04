@@ -30,13 +30,13 @@ func (m *Mirror) createArch() (err error) {
 
 	pkgs, err := utils.FindExt(outDir, ".pkg.tar.xz")
 	for _, pkg := range pkgs {
-		args := []string{"repo-add"}
+		args := []string{}
 		if m.Signing {
 			args = append(args, "--sign")
 		}
 		args = append(args, "pacur.db.tar.gz", pkg)
 
-		err = utils.Exec(outDir, args...)
+		err = utils.Exec(outDir, "repo-add", args...)
 		if err != nil {
 			return
 		}
