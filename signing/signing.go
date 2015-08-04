@@ -7,7 +7,7 @@ import (
 )
 
 func GetName() (name string, err error) {
-	output, err := utils.ExecOutput("", "gpg", "-K")
+	output, err := utils.ExecOutput("", "gpg", "--list-keys")
 	if err != nil {
 		return
 	}
