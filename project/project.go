@@ -98,7 +98,6 @@ func (p *Project) createRedhat(distro, release, path string) (err error) {
 }
 
 func (p *Project) createDebian(distro, release, path string) (err error) {
-	confDir := filepath.Join(path, "conf")
 	aptDir := filepath.Join(path, "apt")
 
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
