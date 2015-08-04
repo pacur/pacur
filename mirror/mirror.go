@@ -53,7 +53,13 @@ func (m *Mirror) createDebian() (err error) {
 		"Components: main\nArchitectures: amd64\n"
 
 	if m.Signing {
-		data += fmt.Sprintf("SignWith: %s\n", "")
+		id, e := signing.GetId()
+		if e != nil {
+			err = e
+			return
+		}
+
+		data += fmt.Sprintf("SignWith: %s\n", id)
 	}
 
 	err = utils.CreateWrite(confPath, data)
