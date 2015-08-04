@@ -60,6 +60,12 @@ func (m *Mirror) createDebian() (err error) {
 		}
 
 		data += fmt.Sprintf("SignWith: %s\n", id)
+
+		err = utils.CreateWrite(filepath.Join(confDir, "options"),
+			"ask-passphrase\n")
+		if err != nil {
+			return
+		}
 	}
 
 	err = utils.CreateWrite(confPath, data)
