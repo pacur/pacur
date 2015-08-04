@@ -98,20 +98,8 @@ func (p *Project) createRedhat(distro, release, path string) (err error) {
 }
 
 func (p *Project) createDebian(distro, release, path string) (err error) {
-	confDir := filepath.Join(p.Root, distro+"-"+release, "conf")
-	confPath := filepath.Join(confDir, "distributions")
+	confDir := filepath.Join(path, "conf")
 	aptDir := filepath.Join(path, "apt")
-
-	err = utils.MkdirAll(confDir)
-	if err != nil {
-		return
-	}
-
-	err = utils.CreateWrite(confPath, "Codename: "+release+"\n"+
-		"Components: main\nArchitectures: amd64\n")
-	if err != nil {
-		return
-	}
 
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 		path+":/pacur", constants.DockerOrg+distro+"-"+release, "create",

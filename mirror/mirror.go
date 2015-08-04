@@ -40,6 +40,19 @@ func (m *Mirror) createArch() (err error) {
 
 func (m *Mirror) createDebian() (err error) {
 	outDir := filepath.Join(m.Root, "apt")
+	confDir := filepath.Join(m.Root, "conf")
+	confPath := filepath.Join(confDir, "distributions")
+
+	err = utils.MkdirAll(confDir)
+	if err != nil {
+		return
+	}
+
+	err = utils.CreateWrite(confPath, "Codename: "+m.Release+"\n"+
+		"Components: main\nArchitectures: amd64\n")
+	if err != nil {
+		return
+	}
 
 	err = utils.MkdirAll(outDir)
 	if err != nil {
