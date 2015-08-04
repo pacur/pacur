@@ -136,12 +136,14 @@ package() {
 A project can be created with the cli tools which can be installed using
 go get. After creating a project a PKGBUILD file must be added to each release
 directory. Then the packages can be built and added to the repo. An example
-project is available in the example directory.
+project is available in the example directory. The `pull` command should be
+run before all builds to update the docker images used for builds.
 
 ```
 $ go get github.com/pacur/pacur
 $ cd example
 $ pacur project init
+$ pacur project pull
 $ pacur project build
 $ pacur project repo
 $ go get github.com/pacur/httpserver
