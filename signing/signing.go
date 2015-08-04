@@ -65,7 +65,8 @@ func GetId() (id string, err error) {
 }
 
 func ImportKey(path string) (err error) {
-	utils.Exec("", "gpg", "--allow-secret-key-import", "--import", path)
+	utils.Exec("", "gpg", "--batch", "--allow-secret-key-import",
+		"--import", path)
 	// TODO err handle already imported
 	return
 }
