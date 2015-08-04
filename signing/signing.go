@@ -32,6 +32,38 @@ func GetName() (name string, err error) {
 	return
 }
 
+func GetId() (id string, err error) {
+	output, err := utils.ExecOutput("", "gpg", "--list-keys")
+	if err != nil {
+		return
+	}
+
+	for _, line := range strings.Split(output, "\n") {
+		if !strings.HasPrefix(line, "pub") && !strings.HasPrefix(line, "sub") {
+			continue
+		}
+
+		fields := strings.Fields(line)
+		if len(fields) < 2 {
+			continue
+		}
+
+		split := strings.Split(fields[1], "/")
+		if len(split) < 2 {
+			continue
+		}
+
+		id = split[1]
+	}
+
+	if id == "" {
+		err = &LookupError{
+			errors.New("signing: Failed to find gpg id"),
+		}
+	}
+	return
+}
+
 func ImportKey(path string) (err error) {
 	utils.Exec("", "gpg", "--allow-secret-key-import", "--import", path)
 	// TODO err handle already imported
