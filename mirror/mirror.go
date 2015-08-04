@@ -5,6 +5,7 @@ import (
 	"github.com/pacur/pacur/signing"
 	"github.com/pacur/pacur/utils"
 	"path/filepath"
+	"fmt"
 )
 
 type Mirror struct {
@@ -48,8 +49,14 @@ func (m *Mirror) createDebian() (err error) {
 		return
 	}
 
-	err = utils.CreateWrite(confPath, "Codename: "+m.Release+"\n"+
-		"Components: main\nArchitectures: amd64\n")
+	data := "Codename: " + m.Release + "\n" +
+		"Components: main\nArchitectures: amd64\n"
+
+	if m.Signing {
+		data += fmt.Sprintf("SignWith: %s\n", "")
+	}
+
+	err = utils.CreateWrite(confPath, data)
 	if err != nil {
 		return
 	}
