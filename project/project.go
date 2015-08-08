@@ -17,7 +17,6 @@ func (p *Project) Init() (err error) {
 	for _, dir := range []string{
 		"mirror",
 		"archlinux",
-		"centos-6",
 		"centos-7",
 		"debian-jessie",
 		"debian-wheezy",
