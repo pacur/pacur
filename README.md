@@ -59,7 +59,7 @@ key="example ${variable} string"
 | `pkgdesc` | `string` | Short package description |
 | `pkgdesclong` | `list` | List of lines for package description |
 | `maintainer` | `string` | Package maintainer |
-| `arch` | `string` | Package architecture, only used for debian packages |
+| `arch` | `string` | Package architecture, can be `all` or `amd64` |
 | `license` | `list` | List of licenses for packaged software |
 | `section` | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br> `libs` |
 | `priority` | `string` | Package priority, only used for debian packages |
