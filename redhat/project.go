@@ -6,28 +6,28 @@ import (
 	"path/filepath"
 )
 
-type RedhatRepo struct {
+type RedhatProject struct {
 	Root    string
 	Path    string
 	Distro  string
 	Release string
 }
 
-func (r *RedhatRepo) Prep() (err error) {
+func (p *RedhatProject) Prep() (err error) {
 	return
 }
 
-func (r *RedhatRepo) Create() (err error) {
-	yumDir := filepath.Join(r.Path, "yum")
+func (p *RedhatProject) Create() (err error) {
+	yumDir := filepath.Join(p.Path, "yum")
 
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-		r.Path+":/pacur", constants.DockerOrg+r.Distro+"-"+r.Release,
-		"create", r.Distro+"-"+r.Release)
+		p.Path+":/pacur", constants.DockerOrg+p.Distro+"-"+p.Release,
+		"create", p.Distro+"-"+p.Release)
 	if err != nil {
 		return
 	}
 
-	err = utils.Rsync(yumDir, filepath.Join(r.Root, "mirror", "yum"))
+	err = utils.Rsync(yumDir, filepath.Join(p.Root, "mirror", "yum"))
 	if err != nil {
 		return
 	}

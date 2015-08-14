@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 )
 
-type Repo interface {
+type DistroProject interface {
 	Prep() error
 	Create() error
 }
@@ -35,26 +35,28 @@ func (p *Project) Init() (err error) {
 	return
 }
 
-func (p *Project) getRepo(target, path string) (repo Repo, err error) {
+func (p *Project) getProject(target, path string) (
+	proj DistroProject, err error) {
+
 	distro, release := getDistro(target)
 
 	switch distro {
 	case "archlinux":
-		repo = &arch.ArchRepo{
+		proj = &arch.ArchProject{
 			Root:    p.Root,
 			Path:    path,
 			Distro:  distro,
 			Release: release,
 		}
 	case "centos":
-		repo = &redhat.RedhatRepo{
+		proj = &redhat.RedhatProject{
 			Root:    p.Root,
 			Path:    path,
 			Distro:  distro,
 			Release: release,
 		}
 	case "debian", "ubuntu":
-		repo = &debian.DebianRepo{
+		proj = &debian.DebianProject{
 			Root:    p.Root,
 			Path:    path,
 			Distro:  distro,
@@ -129,12 +131,12 @@ func (p *Project) Build() (err error) {
 
 func (p *Project) Repo() (err error) {
 	err = p.iterPackages(func(target, path string) (err error) {
-		repo, err := p.getRepo(target, path)
+		proj, err := p.getProject(target, path)
 		if err != nil {
 			return
 		}
 
-		err = repo.Prep()
+		err = proj.Prep()
 		if err != nil {
 			return
 		}
@@ -146,12 +148,12 @@ func (p *Project) Repo() (err error) {
 	}
 
 	err = p.iterPackages(func(target, path string) (err error) {
-		repo, err := p.getRepo(target, path)
+		proj, err := p.getProject(target, path)
 		if err != nil {
 			return
 		}
 
-		err = repo.Create()
+		err = proj.Create()
 		if err != nil {
 			return
 		}

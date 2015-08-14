@@ -6,28 +6,28 @@ import (
 	"path/filepath"
 )
 
-type ArchRepo struct {
+type ArchProject struct {
 	Root    string
 	Path    string
 	Distro  string
 	Release string
 }
 
-func (r *ArchRepo) Prep() (err error) {
+func (p *ArchProject) Prep() (err error) {
 	return
 }
 
-func (r *ArchRepo) Create() (err error) {
-	archDir := filepath.Join(r.Path, "arch")
+func (p *ArchProject) Create() (err error) {
+	archDir := filepath.Join(p.Path, "arch")
 
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-		r.Path+":/pacur", constants.DockerOrg+r.Distro, "create",
-		r.Distro)
+		p.Path+":/pacur", constants.DockerOrg+p.Distro, "create",
+		p.Distro)
 	if err != nil {
 		return
 	}
 
-	err = utils.Rsync(archDir, filepath.Join(r.Root, "mirror", "arch"))
+	err = utils.Rsync(archDir, filepath.Join(p.Root, "mirror", "arch"))
 	if err != nil {
 		return
 	}
