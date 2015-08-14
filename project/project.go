@@ -111,9 +111,9 @@ func (p *Project) iterPackages(handle func(string, string) error) (err error) {
 }
 
 func (p *Project) Build() (err error) {
-	err = p.iterPackages(func(release, path string) (err error) {
+	err = p.iterPackages(func(target, path string) (err error) {
 		err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-			path+":/pacur", constants.DockerOrg+release)
+			path+":/pacur", constants.DockerOrg+target)
 		if err != nil {
 			return
 		}
