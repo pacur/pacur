@@ -9,6 +9,18 @@ import (
 	"strings"
 )
 
+func ReadDir(path string) (items []os.FileInfo, err error) {
+	items, err = ioutil.ReadDir(path)
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to read dir '%s'", path),
+		}
+		return
+	}
+
+	return
+}
+
 func MkdirAll(path string) (err error) {
 	err = os.MkdirAll(path, 0755)
 	if err != nil {
