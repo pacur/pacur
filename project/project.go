@@ -175,5 +175,10 @@ func (p *Project) Repo() (err error) {
 		return
 	}
 
+	err = utils.RemoveAll(p.BuildRoot)
+	if err != nil {
+		return
+	}
+
 	return
 }
