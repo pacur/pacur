@@ -128,5 +128,39 @@ func (p *Project) Build() (err error) {
 }
 
 func (p *Project) Repo() (err error) {
+	err = p.iterPackages(func(target, path string) (err error) {
+		repo, err := p.getRepo(target, path)
+		if err != nil {
+			return
+		}
+
+		err = repo.Prep()
+		if err != nil {
+			return
+		}
+
+		return
+	})
+	if err != nil {
+		return
+	}
+
+	err = p.iterPackages(func(target, path string) (err error) {
+		repo, err := p.getRepo(target, path)
+		if err != nil {
+			return
+		}
+
+		err = repo.Create()
+		if err != nil {
+			return
+		}
+
+		return
+	})
+	if err != nil {
+		return
+	}
+
 	return
 }
