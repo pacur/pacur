@@ -153,24 +153,48 @@ func (p *Project) Pull() (err error) {
 	return
 }
 
-func (p *Project) Build() (err error) {
-	targets, err := p.getTargets()
+func (p *Project) iterPackages(handle func(string, string) error) (err error) {
+	projects, err := utils.ReadDir(p.Root)
 	if err != nil {
 		return
 	}
 
-	for _, target := range targets {
-		image := target.Name()
-		if image == "mirror" || !target.IsDir() {
+	for _, project := range projects {
+		if project.Name() == "mirror" || !project.IsDir() {
 			continue
 		}
-		path := filepath.Join(p.Root, image)
 
+		projectPath := filepath.Join(p.Root, project.Name())
+
+		packages, e := utils.ReadDir(projectPath)
+		if e != nil {
+			err = e
+			return
+		}
+
+		for _, pkg := range packages {
+			err = handle(pkg.Name(), filepath.Join(projectPath, pkg.Name()))
+			if err != nil {
+				return
+			}
+		}
+	}
+
+	return
+}
+
+func (p *Project) Build() (err error) {
+	err = p.iterPackages(func(release, path string) (err error) {
 		err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-			path+":/pacur", constants.DockerOrg+image)
+			path+":/pacur", constants.DockerOrg+release)
 		if err != nil {
 			return
 		}
+
+		return
+	})
+	if err != nil {
+		return
 	}
 
 	return
