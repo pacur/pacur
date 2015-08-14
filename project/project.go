@@ -158,21 +158,26 @@ func (p *Project) Repo() (err error) {
 		return
 	}
 
-	err = p.iterPackages(func(target, path string) (err error) {
-		proj, err := p.getProject(target, path)
-		if err != nil {
+	for _, release := range constants.Releases {
+		path := filepath.Join(p.BuildRoot, release)
+
+		exists, e := utils.Exists(path)
+		if e != nil {
+			err = e
 			return
 		}
 
-		err = proj.Create()
-		if err != nil {
-			return
-		}
+		if exists {
+			proj, err := p.getProject(release, path)
+			if err != nil {
+				return
+			}
 
-		return
-	})
-	if err != nil {
-		return
+			err = proj.Create()
+			if err != nil {
+				return
+			}
+		}
 	}
 
 	err = utils.RemoveAll(p.BuildRoot)
