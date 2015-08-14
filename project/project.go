@@ -2,12 +2,18 @@ package project
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/arch"
 	"github.com/pacur/pacur/constants"
+	"github.com/pacur/pacur/debian"
+	"github.com/pacur/pacur/redhat"
 	"github.com/pacur/pacur/utils"
-	"io/ioutil"
-	"os"
 	"path/filepath"
 )
+
+type Repo interface {
+	Prep() error
+	Create() error
+}
 
 type Project struct {
 	Root string
@@ -29,110 +35,31 @@ func (p *Project) Init() (err error) {
 	return
 }
 
-func (p *Project) getTargets() (targets []os.FileInfo, err error) {
-	targets, err = ioutil.ReadDir(p.Root)
-	if err != nil {
-		err = &FileError{
-			errors.Wrapf(err, "repo: Failed to read dir '%s'", p.Root),
-		}
-		return
-	}
-
-	return
-}
-
-func (p *Project) createArch(distro, release, path string) (err error) {
-	archDir := filepath.Join(path, "arch")
-
-	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-		path+":/pacur", constants.DockerOrg+distro, "create",
-		distro)
-	if err != nil {
-		return
-	}
-
-	err = utils.Rsync(archDir, filepath.Join(p.Root, "mirror", "arch"))
-	if err != nil {
-		return
-	}
-
-	err = utils.RemoveAll(archDir)
-	if err != nil {
-		return
-	}
-
-	return
-}
-
-func (p *Project) createRedhat(distro, release, path string) (err error) {
-	yumDir := filepath.Join(path, "yum")
-
-	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-		path+":/pacur", constants.DockerOrg+distro+"-"+release, "create",
-		distro+"-"+release)
-	if err != nil {
-		return
-	}
-
-	err = utils.Rsync(yumDir, filepath.Join(p.Root, "mirror", "yum"))
-	if err != nil {
-		return
-	}
-
-	err = utils.RemoveAll(yumDir)
-	if err != nil {
-		return
-	}
-
-	return
-}
-
-func (p *Project) createDebian(distro, release, path string) (err error) {
-	aptDir := filepath.Join(path, "apt")
-
-	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
-		path+":/pacur", constants.DockerOrg+distro+"-"+release, "create",
-		distro+"-"+release)
-	if err != nil {
-		return
-	}
-
-	err = utils.Rsync(aptDir, filepath.Join(p.Root, "mirror", "apt"))
-	if err != nil {
-		return
-	}
-
-	err = utils.RemoveAll(aptDir)
-	if err != nil {
-		return
-	}
-
-	err = utils.RemoveAll(filepath.Join(path, "conf"))
-	if err != nil {
-		return
-	}
-
-	err = utils.RemoveAll(filepath.Join(path, "db"))
-	if err != nil {
-		return
-	}
-
-	return
-}
-
-func (p *Project) createTarget(target, path string) (err error) {
+func (p *Project) getRepo(target, path string) (repo Repo, err error) {
 	distro, release := getDistro(target)
-	if err != nil {
-		return
-	}
 
 	switch distro {
 	case "archlinux":
-		err = p.createArch(distro, release, path)
+		repo = &arch.ArchRepo{
+			Root:    p.Root,
+			Path:    path,
+			Distro:  distro,
+			Release: release,
+		}
 	case "centos":
-		err = p.createRedhat(distro, release, path)
+		repo = &redhat.RedhatRepo{
+			Root:    p.Root,
+			Path:    path,
+			Distro:  distro,
+			Release: release,
+		}
 	case "debian", "ubuntu":
-		err = p.createDebian(distro, release, path)
+		repo = &debian.DebianRepo{
+			Root:    p.Root,
+			Path:    path,
+			Distro:  distro,
+			Release: release,
+		}
 	default:
 		err = &UnknownType{
 			errors.Newf("repo: Unknown repo type '%s'", target),
@@ -201,23 +128,5 @@ func (p *Project) Build() (err error) {
 }
 
 func (p *Project) Repo() (err error) {
-	targets, err := p.getTargets()
-	if err != nil {
-		return
-	}
-
-	for _, target := range targets {
-		image := target.Name()
-		if image == "mirror" || !target.IsDir() {
-			continue
-		}
-		path := filepath.Join(p.Root, image)
-
-		err = p.createTarget(image, path)
-		if err != nil {
-			return
-		}
-	}
-
 	return
 }
