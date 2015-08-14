@@ -143,18 +143,8 @@ func (p *Project) createTarget(target, path string) (err error) {
 }
 
 func (p *Project) Pull() (err error) {
-	targets, err := p.getTargets()
-	if err != nil {
-		return
-	}
-
-	for _, target := range targets {
-		image := target.Name()
-		if image == "mirror" || !target.IsDir() {
-			continue
-		}
-
-		err = utils.Exec("", "docker", "pull", constants.DockerOrg+image)
+	for _, release := range constants.Releases {
+		err = utils.Exec("", "docker", "pull", constants.DockerOrg+release)
 		if err != nil {
 			return
 		}
