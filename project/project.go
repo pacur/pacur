@@ -16,14 +16,14 @@ type Project struct {
 func (p *Project) Init() (err error) {
 	for _, dir := range []string{
 		"mirror",
-		"archlinux",
-		"centos-7",
-		"debian-jessie",
-		"debian-wheezy",
-		"ubuntu-precise",
-		"ubuntu-trusty",
-		"ubuntu-vivid",
-		"ubuntu-wily",
+		filepath.Join("pkgname", "archlinux"),
+		filepath.Join("pkgname", "centos-7"),
+		filepath.Join("pkgname", "debian-jessie"),
+		filepath.Join("pkgname", "debian-wheezy"),
+		filepath.Join("pkgname", "ubuntu-precise"),
+		filepath.Join("pkgname", "ubuntu-trusty"),
+		filepath.Join("pkgname", "ubuntu-vivid"),
+		filepath.Join("pkgname", "ubuntu-wily"),
 	} {
 		path := filepath.Join(p.Root, dir)
 		err = os.MkdirAll(path, 0755)
