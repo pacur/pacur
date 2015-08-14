@@ -16,11 +16,16 @@ type DistroProject interface {
 }
 
 type Project struct {
-	Root string
+	Root       string
+	MirrorRoot string
+	BuildRoot  string
 }
 
 func (p *Project) Init() (err error) {
-	err = utils.MkdirAll(filepath.Join(p.Root, "mirror"))
+	p.MirrorRoot = filepath.Join(p.Root, "mirror")
+	p.BuildRoot = filepath.Join(p.MirrorRoot, "tmp")
+
+	err = utils.MkdirAll(p.MirrorRoot)
 	if err != nil {
 		return
 	}
@@ -43,24 +48,30 @@ func (p *Project) getProject(target, path string) (
 	switch distro {
 	case "archlinux":
 		proj = &arch.ArchProject{
-			Root:    p.Root,
-			Path:    path,
-			Distro:  distro,
-			Release: release,
+			Root:       p.Root,
+			MirrorRoot: p.MirrorRoot,
+			BuildRoot:  p.BuildRoot,
+			Path:       path,
+			Distro:     distro,
+			Release:    release,
 		}
 	case "centos":
 		proj = &redhat.RedhatProject{
-			Root:    p.Root,
-			Path:    path,
-			Distro:  distro,
-			Release: release,
+			Root:       p.Root,
+			MirrorRoot: p.MirrorRoot,
+			BuildRoot:  p.BuildRoot,
+			Path:       path,
+			Distro:     distro,
+			Release:    release,
 		}
 	case "debian", "ubuntu":
 		proj = &debian.DebianProject{
-			Root:    p.Root,
-			Path:    path,
-			Distro:  distro,
-			Release: release,
+			Root:       p.Root,
+			MirrorRoot: p.MirrorRoot,
+			BuildRoot:  p.BuildRoot,
+			Path:       path,
+			Distro:     distro,
+			Release:    release,
 		}
 	default:
 		err = &UnknownType{
