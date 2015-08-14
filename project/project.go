@@ -14,23 +14,14 @@ type Project struct {
 }
 
 func (p *Project) Init() (err error) {
-	for _, dir := range []string{
-		"mirror",
-		filepath.Join("pkgname", "archlinux"),
-		filepath.Join("pkgname", "centos-7"),
-		filepath.Join("pkgname", "debian-jessie"),
-		filepath.Join("pkgname", "debian-wheezy"),
-		filepath.Join("pkgname", "ubuntu-precise"),
-		filepath.Join("pkgname", "ubuntu-trusty"),
-		filepath.Join("pkgname", "ubuntu-vivid"),
-		filepath.Join("pkgname", "ubuntu-wily"),
-	} {
-		path := filepath.Join(p.Root, dir)
-		err = os.MkdirAll(path, 0755)
+	err = utils.MkdirAll(filepath.Join(p.Root, "mirror"))
+	if err != nil {
+		return
+	}
+
+	for _, release := range constants.Releases {
+		err = utils.MkdirAll(filepath.Join("pkgname", release))
 		if err != nil {
-			err = &FileError{
-				errors.Wrapf(err, "repo: Failed to mkdir '%s'", path),
-			}
 			return
 		}
 	}
