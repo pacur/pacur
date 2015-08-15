@@ -16,7 +16,7 @@ type DebianProject struct {
 }
 
 func (p *DebianProject) getBuildDir() (path string, err error) {
-	path = filepath.Join(p.BuildRoot, p.Distro)
+	path = filepath.Join(p.BuildRoot, p.Distro+"-"+p.Release)
 
 	err = utils.MkdirAll(path)
 	if err != nil {
