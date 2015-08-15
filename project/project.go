@@ -21,10 +21,12 @@ type Project struct {
 	BuildRoot  string
 }
 
-func (p *Project) Init() (err error) {
+func (p *Project) Init() {
 	p.MirrorRoot = filepath.Join(p.Root, "mirror")
 	p.BuildRoot = filepath.Join(p.MirrorRoot, "tmp")
+}
 
+func (p *Project) InitProject() (err error) {
 	err = utils.MkdirAll(p.MirrorRoot)
 	if err != nil {
 		return

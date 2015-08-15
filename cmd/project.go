@@ -19,11 +19,12 @@ func Project() (err error) {
 	proj := &project.Project{
 		Root: path,
 	}
+	proj.Init()
 
 	cmd := flag.Arg(1)
 	switch cmd {
 	case "init":
-		err = proj.Init()
+		err = proj.InitProject()
 	case "pull":
 		err = proj.Pull()
 	case "build":
