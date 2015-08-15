@@ -70,8 +70,10 @@ func (p *Pack) Resolve() (err error) {
 	reslv.AddList("prerm", p.PreRm)
 	reslv.AddList("postrm", p.PostRm)
 
-	for key, val := range p.Variables {
-		reslv.Add(key, &val)
+	if p.Variables != nil {
+		for key, val := range p.Variables {
+			reslv.Add(key, &val)
+		}
 	}
 
 	err = reslv.Resolve()
@@ -137,6 +139,9 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 	case "postrm":
 		p.PostRm = data.([]string)
 	default:
+		if p.Variables == nil {
+			p.Variables = map[string]string{}
+		}
 		p.Variables[key] = data.(string)
 	}
 
