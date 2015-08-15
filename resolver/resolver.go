@@ -83,15 +83,14 @@ func (r *Resolver) Resolve() (err error) {
 
 		err = r.resolve(item)
 		if err != nil {
-			if item.Count > 10 {
+			if item.Count > 32 {
 				return
 			} else {
 				err = nil
-				r.queue.PushBack(elem)
+				r.queue.PushBack(elem.Value)
 			}
-		} else {
-			r.queue.Remove(elem)
 		}
+		r.queue.Remove(elem)
 	}
 
 	return
