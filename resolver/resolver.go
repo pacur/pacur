@@ -90,6 +90,7 @@ func (r *Resolver) Resolve() (err error) {
 				r.queue.PushBack(elem.Value)
 			}
 		}
+
 		r.queue.Remove(elem)
 	}
 
