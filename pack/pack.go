@@ -35,6 +35,7 @@ type Pack struct {
 	PostInst    []string
 	PreRm       []string
 	PostRm      []string
+	Variables   map[string]string
 }
 
 func (p *Pack) Resolve() (err error) {
@@ -68,6 +69,10 @@ func (p *Pack) Resolve() (err error) {
 	reslv.AddList("postinst", p.PostInst)
 	reslv.AddList("prerm", p.PreRm)
 	reslv.AddList("postrm", p.PostRm)
+
+	for key, val := range p.Variables {
+		reslv.Add(key, &val)
+	}
 
 	err = reslv.Resolve()
 	if err != nil {
@@ -132,10 +137,7 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 	case "postrm":
 		p.PostRm = data.([]string)
 	default:
-		err = &ParseError{
-			errors.Newf("pack: Unknown option '%s' (%d: %s)",
-				key, n, line),
-		}
+		p.Variables[key] = data.(string)
 	}
 
 	return
