@@ -168,8 +168,9 @@ func (p *Project) Repo() (err error) {
 		}
 
 		if exists {
-			proj, err := p.getProject(release, path)
-			if err != nil {
+			proj, e := p.getProject(release, path)
+			if e != nil {
+				err = e
 				return
 			}
 
