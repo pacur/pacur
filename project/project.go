@@ -77,7 +77,7 @@ func (p *Project) getProject(target, path string) (
 		}
 	default:
 		err = &UnknownType{
-			errors.Newf("repo: Unknown repo type '%s'", target),
+			errors.Newf("project: Unknown repo type '%s'", target),
 		}
 	}
 
