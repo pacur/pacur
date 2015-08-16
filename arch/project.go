@@ -32,23 +32,22 @@ func (p *ArchProject) Prep() (err error) {
 		return
 	}
 
-	err = utils.CopyFile("", filepath.Join(p.Path, "..", "sign.key"),
-		buildDir, true)
-	if err != nil {
-		return
-	}
-
-	keyPath := filepath.Join(p.Path, "sign.key")
+	keyPath := filepath.Join(p.Path, "..", "sign.key")
 	exists, err := utils.Exists(keyPath)
 	if err != nil {
 		return
 	}
 
 	if exists {
-		err = utils.Rsync(keyPath, buildDir)
+		err = utils.CopyFile("", keyPath, buildDir, true)
 		if err != nil {
 			return
 		}
+	}
+
+	err = utils.RsyncExt(p.Path, buildDir, ".pkg.tar.xz")
+	if err != nil {
+		return
 	}
 
 	return
