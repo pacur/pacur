@@ -48,6 +48,7 @@ func SignRedhat(dir string) (err error) {
 			"-c", "spawn rpm --resign "+pkg,
 			"-c", `expect "Enter pass phrase:"`,
 			"-c", `send "\r"`,
+			"-c", "wait",
 			"-c", "interact")
 		if err != nil {
 			return
