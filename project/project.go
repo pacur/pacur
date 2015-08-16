@@ -115,6 +115,10 @@ func (p *Project) iterPackages(handle func(string, string) error) (err error) {
 		}
 
 		for _, pkg := range packages {
+			if !pkg.IsDir() {
+				continue
+			}
+
 			err = handle(pkg.Name(), filepath.Join(projectPath, pkg.Name()))
 			if err != nil {
 				return
