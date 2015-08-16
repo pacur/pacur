@@ -44,7 +44,11 @@ func SignRedhat(dir string) (err error) {
 	}
 
 	for _, pkg := range pkgs {
-		err = utils.Exec("", "rpm", "--resign", pkg)
+		err = utils.Exec("", "expect",
+			"-c", "spawn rpm --resign "+pkg,
+			"-c", `expect "Enter pass phrase:"`,
+			"-c", `send "\r"`,
+			"-c", "interact")
 		if err != nil {
 			return
 		}
