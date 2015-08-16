@@ -178,9 +178,9 @@ $ apt-get install httpserver
 ### signing
 
 Packages in the repository can also be signed by adding a `sign.key` in the
-packages directory or the `example/httpserver` directory. The signing key
-cannot use a passphrase. To export a key first get the key id then export the
-key with the commands below.
+project directory or the `example` directory. The signing key cannot use a
+passphrase. To export a key first get the key id then export the key with the
+commands below.
 
 ```
 $ gpg --list-secret-keys
