@@ -37,6 +37,19 @@ func (p *ArchProject) Prep() (err error) {
 		return
 	}
 
+	keyPath := filepath.Join(p.Path, "sign.key")
+	exists, err := utils.Exists(keyPath)
+	if err != nil {
+		return
+	}
+
+	if exists {
+		err = utils.Rsync(keyPath, buildDir)
+		if err != nil {
+			return
+		}
+	}
+
 	return
 }
 
