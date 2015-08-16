@@ -32,6 +32,19 @@ func (p *RedhatProject) Prep() (err error) {
 		return
 	}
 
+	keyPath := filepath.Join(p.Path, "..", "sign.key")
+	exists, err := utils.Exists(keyPath)
+	if err != nil {
+		return
+	}
+
+	if exists {
+		err = utils.CopyFile("", keyPath, buildDir, true)
+		if err != nil {
+			return
+		}
+	}
+
 	err = utils.RsyncExt(p.Path, buildDir, ".rpm")
 	if err != nil {
 		return
