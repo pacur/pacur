@@ -5,11 +5,6 @@ import (
 )
 
 func SignArch(dir string) (err error) {
-	err = CreateRedhatConf()
-	if err != nil {
-		return
-	}
-
 	pkgs, err := utils.FindExt(dir, ".pkg.tar.xz")
 	if err != nil {
 		return
