@@ -159,18 +159,34 @@ release name. The `pacur` repo name and filenames can be change to suite the
 name of your software.
 
 ```
+$ nano /etc/pacman.conf
+[pacur]
+Server = http://HTTP_SERVER_IP/arch
+
+$ pacman-key --keyserver hkp://pgp.mit.edu -r KEYID
+$ pacman-key --lsign-key KEYID
+$ pacman -Sy
+$ pacman -S httpserver
+```
+
+```
 $ nano /etc/yum.repos.d/pacur.repo
 [pacur]
 name=Pacur Repository
 baseurl=http://HTTP_SERVER_IP/yum/centos/7/
-gpgcheck=0
+gpgcheck=1
 enabled=1
+
+$ gpg --keyserver hkp://pgp.mit.edu --recv-keys KEYID
+$ gpg --armor --export KEYID > key.tmp; rpm --import key.tmp; rm -f key.tmp
 $ yum install httpserver
 ```
 
 ```
 $ nano /etc/apt/sources.list.d/pacur.list
 deb http://HTTP_SERVER_IP/apt jessie main
+
+$ apt-key adv --keyserver hkp://pgp.mit.edu --recv KEYID
 $ apt-get update
 $ apt-get install httpserver
 ```
