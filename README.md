@@ -184,5 +184,5 @@ commands below.
 
 ```
 $ gpg --list-secret-keys
-$ gpg -a --export-secret-keys CF8E292A > sign.key
+$ gpg -a --export-secret-keys KEYID > sign.key
 ```
