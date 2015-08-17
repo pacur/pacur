@@ -45,7 +45,7 @@ func GetId() (id string, err error) {
 	}
 
 	for _, line := range strings.Split(output, "\n") {
-		if !strings.HasPrefix(line, "pub") && !strings.HasPrefix(line, "sub") {
+		if !strings.HasPrefix(line, "pub") {
 			continue
 		}
 
