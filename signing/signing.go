@@ -17,12 +17,15 @@ func GetName() (name string, err error) {
 			continue
 		}
 
-		fields := strings.Fields(line)
-		if len(fields) < 2 {
-			continue
+		index := strings.Index(line, "]")
+		if index == -1 {
+			err = &LookupError{
+				errors.New("signing: Failed to find gpg name index"),
+			}
+			return
 		}
 
-		name = strings.Join(fields[1:], " ")
+		name = strings.TrimSpace(line[index+1:])
 		return
 	}
 
