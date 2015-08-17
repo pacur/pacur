@@ -10,7 +10,7 @@ func SignArch(dir string) (err error) {
 		return
 	}
 
-	pkgs, err := utils.FindExt(dir, ".rpm")
+	pkgs, err := utils.FindExt(dir, ".pkg.tar.xz")
 	if err != nil {
 		return
 	}
