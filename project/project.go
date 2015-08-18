@@ -8,6 +8,7 @@ import (
 	"github.com/pacur/pacur/redhat"
 	"github.com/pacur/pacur/utils"
 	"path/filepath"
+	"strings"
 )
 
 type DistroProject interface {
@@ -93,7 +94,9 @@ func (p *Project) iterPackages(filter string,
 	}
 
 	for _, project := range projects {
-		if project.Name() == "mirror" || !project.IsDir() {
+		if strings.HasPrefix(project.Name(), ".") ||
+			project.Name() == "mirror" || !project.IsDir() {
+
 			continue
 		}
 
