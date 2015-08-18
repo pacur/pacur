@@ -143,8 +143,8 @@ used for builds.
 ```
 $ go get github.com/pacur/pacur
 $ cd example
+$ pacur pull
 $ pacur project init
-$ pacur project pull
 $ pacur project build
 $ pacur project repo
 $ go get github.com/pacur/httpserver
