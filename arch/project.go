@@ -7,6 +7,7 @@ import (
 )
 
 type ArchProject struct {
+	Name       string
 	Root       string
 	MirrorRoot string
 	BuildRoot  string

@@ -101,6 +101,7 @@ func (p *Project) getProject(target, path string) (
 	switch distro {
 	case "archlinux":
 		proj = &arch.ArchProject{
+			Name:       p.Name,
 			Root:       p.Root,
 			MirrorRoot: p.MirrorRoot,
 			BuildRoot:  p.BuildRoot,
@@ -110,6 +111,7 @@ func (p *Project) getProject(target, path string) (
 		}
 	case "centos":
 		proj = &redhat.RedhatProject{
+			Name:       p.Name,
 			Root:       p.Root,
 			MirrorRoot: p.MirrorRoot,
 			BuildRoot:  p.BuildRoot,
@@ -119,6 +121,7 @@ func (p *Project) getProject(target, path string) (
 		}
 	case "debian", "ubuntu":
 		proj = &debian.DebianProject{
+			Name:       p.Name,
 			Root:       p.Root,
 			MirrorRoot: p.MirrorRoot,
 			BuildRoot:  p.BuildRoot,

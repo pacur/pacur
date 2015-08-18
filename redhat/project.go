@@ -7,6 +7,7 @@ import (
 )
 
 type RedhatProject struct {
+	Name       string
 	Root       string
 	MirrorRoot string
 	BuildRoot  string
