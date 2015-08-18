@@ -23,7 +23,7 @@ type Project struct {
 
 func (p *Project) Init() {
 	p.MirrorRoot = filepath.Join(p.Root, "mirror")
-	p.BuildRoot = filepath.Join(p.MirrorRoot, "tmp")
+	p.BuildRoot = filepath.Join(p.Root, "mirror.tmp")
 }
 
 func (p *Project) InitProject() (err error) {
