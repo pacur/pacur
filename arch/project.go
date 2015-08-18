@@ -33,7 +33,7 @@ func (p *ArchProject) Prep() (err error) {
 		return
 	}
 
-	keyPath := filepath.Join(p.Path, "..",  "..", "sign.key")
+	keyPath := filepath.Join(p.Path, "..", "..", "sign.key")
 	exists, err := utils.Exists(keyPath)
 	if err != nil {
 		return
