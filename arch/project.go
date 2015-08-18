@@ -62,7 +62,7 @@ func (p *ArchProject) Create() (err error) {
 
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 		buildDir+":/pacur", constants.DockerOrg+p.Distro, "create",
-		p.Distro)
+		p.Distro, p.Name)
 	if err != nil {
 		return
 	}

@@ -9,6 +9,7 @@ import (
 )
 
 type Mirror struct {
+	Name    string
 	Root    string
 	Distro  string
 	Release string
@@ -37,7 +38,8 @@ func (m *Mirror) createArch() (err error) {
 
 	pkgs, err := utils.FindExt(outDir, ".pkg.tar.xz")
 	for _, pkg := range pkgs {
-		err = utils.Exec(outDir, "repo-add", "pacur.db.tar.gz", pkg)
+		err = utils.Exec(outDir, "repo-add",
+			fmt.Sprintf("%s.db.tar.gz", m.Name), pkg)
 		if err != nil {
 			return
 		}

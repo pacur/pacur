@@ -62,7 +62,7 @@ func (p *DebianProject) Create() (err error) {
 
 	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 		buildDir+":/pacur", constants.DockerOrg+p.Distro+"-"+p.Release,
-		"create", p.Distro+"-"+p.Release)
+		"create", p.Distro+"-"+p.Release, p.Name)
 	if err != nil {
 		return
 	}

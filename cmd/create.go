@@ -14,7 +14,13 @@ func Create() (err error) {
 		release = split[1]
 	}
 
+	name := flag.Arg(2)
+	if name == "" {
+		name = "pacur"
+	}
+
 	mirr := &mirror.Mirror{
+		Name:    name,
 		Root:    "/pacur",
 		Distro:  distro,
 		Release: release,
