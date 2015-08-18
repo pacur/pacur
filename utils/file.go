@@ -9,6 +9,18 @@ import (
 	"strings"
 )
 
+func ReadFile(path string) (data []byte, err error) {
+	data, err = ioutil.ReadFile(path)
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to read file '%s'", path),
+		}
+		return
+	}
+
+	return
+}
+
 func ReadDir(path string) (items []os.FileInfo, err error) {
 	items, err = ioutil.ReadDir(path)
 	if err != nil {

@@ -19,7 +19,10 @@ func Project() (err error) {
 	proj := &project.Project{
 		Root: path,
 	}
-	proj.Init()
+	err = proj.Init()
+	if err != nil {
+		return
+	}
 
 	cmd := flag.Arg(1)
 	switch cmd {

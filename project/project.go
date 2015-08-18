@@ -1,6 +1,7 @@
 package project
 
 import (
+	"encoding/json"
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/arch"
 	"github.com/pacur/pacur/constants"
@@ -16,15 +17,52 @@ type DistroProject interface {
 	Create() error
 }
 
+type conf struct {
+	Name string `json:"name"`
+}
+
 type Project struct {
+	confPath   string
 	Root       string
 	MirrorRoot string
 	BuildRoot  string
+	Name       string
 }
 
-func (p *Project) Init() {
+func (p *Project) Init() (err error) {
 	p.MirrorRoot = filepath.Join(p.Root, "mirror")
 	p.BuildRoot = filepath.Join(p.Root, "mirror.tmp")
+	p.confPath = filepath.Join(p.Root, "pacur.json")
+
+	exists, err := utils.Exists(p.confPath)
+	if err != nil {
+		return
+	}
+
+	if exists {
+		dataByt, e := utils.ReadFile(p.confPath)
+		if e != nil {
+			err = e
+			return
+		}
+
+		data := conf{}
+
+		err = json.Unmarshal(dataByt, &data)
+		if err != nil {
+			err = &ParseError{
+				errors.Wrapf(err,
+					"project: Failed to parse project conf '%s'", p.confPath),
+			}
+			return
+		}
+
+		p.Name = data.Name
+	} else {
+		p.Name = "pacur"
+	}
+
+	return
 }
 
 func (p *Project) InitProject() (err error) {
@@ -35,6 +73,18 @@ func (p *Project) InitProject() (err error) {
 
 	for _, release := range constants.Releases {
 		err = utils.MkdirAll(filepath.Join("pkgname", release))
+		if err != nil {
+			return
+		}
+	}
+
+	exists, err := utils.Exists(p.confPath)
+	if err != nil {
+		return
+	}
+
+	if !exists {
+		err = utils.CreateWrite(p.confPath, `{\n    "name": "pacur",\n}\n`)
 		if err != nil {
 			return
 		}
