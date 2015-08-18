@@ -30,7 +30,7 @@ func Project() (err error) {
 	case "build":
 		err = proj.Build(flag.Arg(2))
 	case "repo":
-		err = proj.Repo()
+		err = proj.Repo(flag.Arg(2))
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown cmd '%s'", cmd),

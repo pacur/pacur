@@ -152,8 +152,8 @@ func (p *Project) Build(filter string) (err error) {
 	return
 }
 
-func (p *Project) Repo() (err error) {
-	err = p.iterPackages("", func(target, path string) (err error) {
+func (p *Project) Repo(filter string) (err error) {
+	err = p.iterPackages(filter, func(target, path string) (err error) {
 		proj, err := p.getProject(target, path)
 		if err != nil {
 			return
