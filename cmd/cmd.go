@@ -3,6 +3,7 @@ package cmd
 import (
 	"flag"
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/utils"
 )
 
 func Parse() (err error) {
@@ -16,6 +17,8 @@ func Parse() (err error) {
 		err = Create()
 	case "project":
 		err = Project()
+	case "pull":
+		err = utils.PullContainers()
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown command '%s'", cmd),
