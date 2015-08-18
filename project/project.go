@@ -95,7 +95,9 @@ func (p *Project) Pull() (err error) {
 	return
 }
 
-func (p *Project) iterPackages(handle func(string, string) error) (err error) {
+func (p *Project) iterPackages(filter string,
+	handle func(string, string) error) (err error) {
+
 	projects, err := utils.ReadDir(p.Root)
 	if err != nil {
 		return
@@ -103,6 +105,10 @@ func (p *Project) iterPackages(handle func(string, string) error) (err error) {
 
 	for _, project := range projects {
 		if project.Name() == "mirror" || !project.IsDir() {
+			continue
+		}
+
+		if filter != "" && project.Name() != filter {
 			continue
 		}
 
@@ -129,8 +135,8 @@ func (p *Project) iterPackages(handle func(string, string) error) (err error) {
 	return
 }
 
-func (p *Project) Build() (err error) {
-	err = p.iterPackages(func(target, path string) (err error) {
+func (p *Project) Build(filter string) (err error) {
+	err = p.iterPackages(filter, func(target, path string) (err error) {
 		err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 			path+":/pacur", constants.DockerOrg+target)
 		if err != nil {
@@ -147,7 +153,7 @@ func (p *Project) Build() (err error) {
 }
 
 func (p *Project) Repo() (err error) {
-	err = p.iterPackages(func(target, path string) (err error) {
+	err = p.iterPackages("", func(target, path string) (err error) {
 		proj, err := p.getProject(target, path)
 		if err != nil {
 			return

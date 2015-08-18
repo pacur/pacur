@@ -28,7 +28,7 @@ func Project() (err error) {
 	case "pull":
 		err = proj.Pull()
 	case "build":
-		err = proj.Build()
+		err = proj.Build(flag.Arg(2))
 	case "repo":
 		err = proj.Repo()
 	default:
