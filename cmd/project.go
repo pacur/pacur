@@ -4,6 +4,7 @@ import (
 	"flag"
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/project"
+	"github.com/pacur/pacur/utils"
 	"os"
 )
 
@@ -26,7 +27,7 @@ func Project() (err error) {
 	case "init":
 		err = proj.InitProject()
 	case "pull":
-		err = proj.Pull()
+		err = utils.PullContainers()
 	case "build":
 		err = proj.Build(flag.Arg(2))
 	case "repo":

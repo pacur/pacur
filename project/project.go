@@ -84,17 +84,6 @@ func (p *Project) getProject(target, path string) (
 	return
 }
 
-func (p *Project) Pull() (err error) {
-	for _, release := range constants.Releases {
-		err = utils.Exec("", "docker", "pull", constants.DockerOrg+release)
-		if err != nil {
-			return
-		}
-	}
-
-	return
-}
-
 func (p *Project) iterPackages(filter string,
 	handle func(string, string) error) (err error) {
 

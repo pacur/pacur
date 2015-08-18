@@ -2,6 +2,7 @@ package utils
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/constants"
 	"math/rand"
 	"os"
 	"os/exec"
@@ -34,5 +35,16 @@ func RandStr(n int) (str string) {
 		strList[i] = chars[rand.Intn(len(chars))]
 	}
 	str = string(strList)
+	return
+}
+
+func PullContainers() (err error) {
+	for _, release := range constants.Releases {
+		err = Exec("", "docker", "pull", constants.DockerOrg+release)
+		if err != nil {
+			return
+		}
+	}
+
 	return
 }
