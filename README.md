@@ -27,7 +27,9 @@ each distribution but a consistent build process and format can be used for
 all builds. Docker only supports 64 bit containers, pacur can't be used to
 build packages 32 bit packages. Pacur will also create a DEB, APT and PKG
 signed repository that can be used on ArchLinux, CentOS, Debian and Ubuntu to
-distribute the packages.
+distribute the packages. A
+[tutorial](https://medium.com/@zachhuff386/pacur-tutorial-9848b774c84a)
+on creating a project is aviaible on medium.
 
 ### format
 
