@@ -19,6 +19,8 @@ func Parse() (err error) {
 		err = Project()
 	case "pull":
 		err = utils.PullContainers()
+	case "genkey":
+		err = GenKey()
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown command '%s'", cmd),
