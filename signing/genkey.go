@@ -13,6 +13,11 @@ type GenKey struct {
 }
 
 func (g *GenKey) createConf() (path string, err error) {
+	err = utils.MkdirAll(g.Root)
+	if err != nil {
+		return
+	}
+
 	path = filepath.Join(g.Root, "genkey")
 
 	err = utils.CreateWrite(path, "Key-Type: 1\n"+
