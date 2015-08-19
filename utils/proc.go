@@ -52,6 +52,7 @@ func ExecInput(dir, input, name string, arg ...string) (err error) {
 		}
 		return
 	}
+
 	_, err = io.WriteString(stdin, input)
 	if err != nil {
 		err = &ExecError{
