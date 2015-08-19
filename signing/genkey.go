@@ -61,5 +61,16 @@ func (g *GenKey) Export() (err error) {
 		return
 	}
 
+	data, err = utils.ExecOutput(g.Root,
+		"gpg", "-a", "--export", id)
+	if err != nil {
+		return
+	}
+
+	err = utils.CreateWrite(filepath.Join(g.Root, "sign.pub"), data)
+	if err != nil {
+		return
+	}
+
 	return
 }
