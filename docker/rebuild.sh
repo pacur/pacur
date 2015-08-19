@@ -36,3 +36,7 @@ cd ..
 cd ubuntu-wily
 docker build --rm --no-cache -t ubuntu-wily .
 cd ..
+
+cd genkey
+docker build --rm --no-cache -t genkey .
+cd ..

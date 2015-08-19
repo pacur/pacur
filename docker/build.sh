@@ -54,3 +54,9 @@ sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur #`dat
 docker build --rm -t ubuntu-wily .
 sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur|g" Dockerfile
 cd ..
+
+cd genkey
+sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur #`date`|g" Dockerfile
+docker build --rm -t genkey .
+sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur|g" Dockerfile
+cd ..
