@@ -1,6 +1,6 @@
 [![pacur](https://raw.githubusercontent.com/pacur/pacur-artwork/master/pacur.png)](http://pacur.org)
 
-# pacur: simple packaging (beta)
+# pacur: simple packaging
 
 [![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")](https://registry.hub.docker
 .com/u/pacur/archlinux/)
