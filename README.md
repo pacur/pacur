@@ -102,7 +102,7 @@ pkgdesclong=(
     "Quick http file server written with Go"
     "using directory listing similar to apache"
 )
-maintainer="Pacur <contact@pacur.com>"
+maintainer="Example <example@pacur.org>"
 arch="all"
 license=("GPLv3")
 section="utils"
