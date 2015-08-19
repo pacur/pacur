@@ -198,6 +198,11 @@ func (p *Project) Build(filter string) (err error) {
 }
 
 func (p *Project) Repo(filter string) (err error) {
+	err = utils.MkdirAll(p.MirrorRoot)
+	if err != nil {
+		return
+	}
+
 	err = p.iterPackages(filter, func(target, path string) (err error) {
 		proj, err := p.getProject(target, path)
 		if err != nil {
