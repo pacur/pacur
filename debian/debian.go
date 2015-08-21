@@ -23,6 +23,11 @@ func (d *Debian) getDepends() (err error) {
 		return
 	}
 
+	err = utils.Exec("", "apt-get", "--assume-yes", "update")
+	if err != nil {
+		return
+	}
+
 	args := []string{
 		"--assume-yes",
 		"install",

@@ -21,6 +21,11 @@ func (a *Arch) getDepends() (err error) {
 		return
 	}
 
+	err = utils.Exec("", "pacman", "-Sy")
+	if err != nil {
+		return
+	}
+
 	args := []string{
 		"-S",
 		"--noconfirm",
