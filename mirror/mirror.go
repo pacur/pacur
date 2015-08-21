@@ -59,7 +59,7 @@ func (m *Mirror) createDebian() (err error) {
 	}
 
 	data := "Codename: " + m.Release + "\n" +
-		"Components: main\nArchitectures: amd64\n"
+		"Components: main\nArchitectures: i386 amd64\n"
 
 	if m.Signing {
 		id, e := signing.GetId()
