@@ -67,8 +67,11 @@ func (p *RedhatProject) Create() (err error) {
 		return
 	}
 
-	err = utils.Rsync(filepath.Join(buildDir, "yum"),
-		filepath.Join(p.MirrorRoot, "yum"))
+	path := filepath.Join(p.MirrorRoot, "yum")
+
+	_ = utils.RemoveAll(path)
+
+	err = utils.Rsync(filepath.Join(buildDir, "yum"), path)
 	if err != nil {
 		return
 	}

@@ -67,8 +67,11 @@ func (p *ArchProject) Create() (err error) {
 		return
 	}
 
-	err = utils.Rsync(filepath.Join(buildDir, "arch"),
-		filepath.Join(p.MirrorRoot, "arch"))
+	path := filepath.Join(p.MirrorRoot, "arch")
+
+	_ = utils.RemoveAll(path)
+
+	err = utils.Rsync(filepath.Join(buildDir, "arch"), path)
 	if err != nil {
 		return
 	}
