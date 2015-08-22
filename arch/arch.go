@@ -209,6 +209,19 @@ func (a *Arch) makeDirs() (err error) {
 	return
 }
 
+func (a *Arch) clean() (err error) {
+	pkgPaths, err := utils.FindExt(a.Pack.Home, ".pkg.tar.xz")
+	if err != nil {
+		return
+	}
+
+	for _, pkgPath := range pkgPaths {
+		_ = utils.Remove(pkgPath)
+	}
+
+	return
+}
+
 func (a *Arch) remDirs() {
 	os.RemoveAll(a.archDir)
 }
@@ -226,6 +239,11 @@ func (a *Arch) Build() (err error) {
 	}
 
 	err = a.archBuild()
+	if err != nil {
+		return
+	}
+
+	err = a.clean()
 	if err != nil {
 		return
 	}
