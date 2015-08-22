@@ -99,7 +99,7 @@ func (p *Project) getProject(target, path string) (
 	distro, release := getDistro(target)
 
 	switch constants.BaseDistro[distro] {
-	case "archlinux":
+	case "pacman":
 		proj = &pacman.PacmanProject{
 			Name:       p.Name,
 			Root:       p.Root,

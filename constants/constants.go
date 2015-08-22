@@ -16,7 +16,7 @@ var (
 		"ubuntu-wily",
 	}
 	BaseDistro = map[string]string{
-		"archlinux":      "archlinux",
+		"archlinux":      "pacman",
 		"centos-7":       "redhat",
 		"debian-jessie":  "debian",
 		"debian-wheezy":  "debian",

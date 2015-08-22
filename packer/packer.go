@@ -18,7 +18,7 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 	pcker Packer, err error) {
 
 	switch constants.BaseDistro[distro] {
-	case "archlinux":
+	case "pacman":
 		pcker = &pacman.Pacman{
 			Pack:    pac,
 			Distro:  distro,
