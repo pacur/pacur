@@ -159,6 +159,19 @@ func (d *Debian) createScripts() (err error) {
 	return
 }
 
+func (d *Debian) clean() (err error) {
+	pkgPaths, err := utils.FindExt(d.Pack.Home, ".deb")
+	if err != nil {
+		return
+	}
+
+	for _, pkgPath := range pkgPaths {
+		_ = utils.Remove(pkgPath)
+	}
+
+	return
+}
+
 func (d *Debian) dpkgDeb() (err error) {
 	err = utils.Exec("", "dpkg-deb", "-b", d.Pack.PackageDir)
 	if err != nil {
@@ -225,6 +238,11 @@ func (d *Debian) Build() (err error) {
 	}
 
 	err = d.createScripts()
+	if err != nil {
+		return
+	}
+
+	err = d.clean()
 	if err != nil {
 		return
 	}
