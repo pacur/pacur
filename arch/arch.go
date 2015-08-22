@@ -222,6 +222,22 @@ func (a *Arch) clean() (err error) {
 	return
 }
 
+func (a *Arch) copy() (err error) {
+	pkgs, err := utils.FindExt(a.archDir, ".pkg.tar.xz")
+	if err != nil {
+		return
+	}
+
+	for _, pkg := range pkgs {
+		err = utils.CopyFile("", pkg, a.Pack.Home, false)
+		if err != nil {
+			return
+		}
+	}
+
+	return
+}
+
 func (a *Arch) remDirs() {
 	os.RemoveAll(a.archDir)
 }
@@ -248,16 +264,9 @@ func (a *Arch) Build() (err error) {
 		return
 	}
 
-	pkgs, err := utils.FindExt(a.archDir, ".pkg.tar.xz")
+	err = a.copy()
 	if err != nil {
 		return
-	}
-
-	for _, pkg := range pkgs {
-		err = utils.CopyFile("", pkg, a.Pack.Home, false)
-		if err != nil {
-			return
-		}
 	}
 
 	return
