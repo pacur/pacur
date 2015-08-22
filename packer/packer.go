@@ -2,10 +2,10 @@ package packer
 
 import (
 	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/arch"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/debian"
 	"github.com/pacur/pacur/pack"
+	"github.com/pacur/pacur/pacman"
 	"github.com/pacur/pacur/redhat"
 )
 
@@ -19,7 +19,7 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 
 	switch constants.BaseDistro[distro] {
 	case "archlinux":
-		pcker = &arch.Arch{
+		pcker = &pacman.Pacman{
 			Pack:    pac,
 			Distro:  distro,
 			Release: release,

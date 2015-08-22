@@ -1,4 +1,4 @@
-package arch
+package pacman
 
 import (
 	"github.com/pacur/pacur/constants"
@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 )
 
-type ArchProject struct {
+type PacmanProject struct {
 	Name       string
 	Root       string
 	MirrorRoot string
@@ -16,7 +16,7 @@ type ArchProject struct {
 	Release    string
 }
 
-func (p *ArchProject) getBuildDir() (path string, err error) {
+func (p *PacmanProject) getBuildDir() (path string, err error) {
 	path = filepath.Join(p.BuildRoot, p.Distro)
 
 	err = utils.MkdirAll(path)
@@ -27,7 +27,7 @@ func (p *ArchProject) getBuildDir() (path string, err error) {
 	return
 }
 
-func (p *ArchProject) Prep() (err error) {
+func (p *PacmanProject) Prep() (err error) {
 	buildDir, err := p.getBuildDir()
 	if err != nil {
 		return
@@ -54,7 +54,7 @@ func (p *ArchProject) Prep() (err error) {
 	return
 }
 
-func (p *ArchProject) Create() (err error) {
+func (p *PacmanProject) Create() (err error) {
 	buildDir, err := p.getBuildDir()
 	if err != nil {
 		return
@@ -67,11 +67,11 @@ func (p *ArchProject) Create() (err error) {
 		return
 	}
 
-	path := filepath.Join(p.MirrorRoot, "arch")
+	path := filepath.Join(p.MirrorRoot, "pacman")
 
 	_ = utils.RemoveAll(path)
 
-	err = utils.Rsync(filepath.Join(buildDir, "arch"), path)
+	err = utils.Rsync(filepath.Join(buildDir, "pacman"), path)
 	if err != nil {
 		return
 	}

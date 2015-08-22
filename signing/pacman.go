@@ -4,7 +4,7 @@ import (
 	"github.com/pacur/pacur/utils"
 )
 
-func SignArch(dir string) (err error) {
+func SignPacman(dir string) (err error) {
 	pkgs, err := utils.FindExt(dir, ".pkg.tar.xz")
 	if err != nil {
 		return

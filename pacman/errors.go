@@ -1,4 +1,4 @@
-package arch
+package pacman
 
 import (
 	"github.com/dropbox/godropbox/errors"

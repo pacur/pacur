@@ -3,9 +3,9 @@ package project
 import (
 	"encoding/json"
 	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/arch"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/debian"
+	"github.com/pacur/pacur/pacman"
 	"github.com/pacur/pacur/redhat"
 	"github.com/pacur/pacur/utils"
 	"path/filepath"
@@ -100,7 +100,7 @@ func (p *Project) getProject(target, path string) (
 
 	switch constants.BaseDistro[distro] {
 	case "archlinux":
-		proj = &arch.ArchProject{
+		proj = &pacman.PacmanProject{
 			Name:       p.Name,
 			Root:       p.Root,
 			MirrorRoot: p.MirrorRoot,

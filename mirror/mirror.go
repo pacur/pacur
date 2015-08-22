@@ -17,8 +17,8 @@ type Mirror struct {
 	Signing bool
 }
 
-func (m *Mirror) createArch() (err error) {
-	outDir := filepath.Join(m.Root, "arch")
+func (m *Mirror) createPacman() (err error) {
+	outDir := filepath.Join(m.Root, "pacman")
 
 	err = utils.MkdirAll(outDir)
 	if err != nil {
@@ -31,7 +31,7 @@ func (m *Mirror) createArch() (err error) {
 	}
 
 	if m.Signing {
-		err = signing.SignArch(outDir)
+		err = signing.SignPacman(outDir)
 		if err != nil {
 			return
 		}
@@ -154,7 +154,7 @@ func (m *Mirror) Create() (err error) {
 
 	switch constants.BaseDistro[m.Distro] {
 	case "archlinux":
-		err = m.createArch()
+		err = m.createPacman()
 	case "debian":
 		err = m.createDebian()
 	case "redhat":
