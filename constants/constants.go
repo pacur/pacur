@@ -17,6 +17,7 @@ var (
 	}
 	DistroPack = map[string]string{
 		"archlinux": "pacman",
+		"fedora":    "redhat",
 		"centos":    "redhat",
 		"debian":    "debian",
 	}
