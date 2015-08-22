@@ -7,6 +7,8 @@ const (
 var (
 	Releases = [...]string{
 		"archlinux",
+		"fedora-21",
+		"fedora-22",
 		"centos-7",
 		"debian-jessie",
 		"debian-wheezy",
