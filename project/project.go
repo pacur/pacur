@@ -98,7 +98,7 @@ func (p *Project) getProject(target, path string) (
 
 	distro, release := getDistro(target)
 
-	switch distro {
+	switch constants.BaseDistro[distro] {
 	case "archlinux":
 		proj = &arch.ArchProject{
 			Name:       p.Name,
@@ -109,8 +109,8 @@ func (p *Project) getProject(target, path string) (
 			Distro:     distro,
 			Release:    release,
 		}
-	case "centos":
-		proj = &redhat.RedhatProject{
+	case "debian":
+		proj = &debian.DebianProject{
 			Name:       p.Name,
 			Root:       p.Root,
 			MirrorRoot: p.MirrorRoot,
@@ -119,8 +119,8 @@ func (p *Project) getProject(target, path string) (
 			Distro:     distro,
 			Release:    release,
 		}
-	case "debian", "ubuntu":
-		proj = &debian.DebianProject{
+	case "redhat":
+		proj = &redhat.RedhatProject{
 			Name:       p.Name,
 			Root:       p.Root,
 			MirrorRoot: p.MirrorRoot,

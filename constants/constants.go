@@ -15,4 +15,14 @@ var (
 		"ubuntu-vivid",
 		"ubuntu-wily",
 	}
+	BaseDistro = map[string]string{
+		"archlinux":      "archlinux",
+		"centos-7":       "redhat",
+		"debian-jessie":  "debian",
+		"debian-wheezy":  "debian",
+		"ubuntu-precise": "debian",
+		"ubuntu-trusty":  "debian",
+		"ubuntu-vivid":   "debian",
+		"ubuntu-wily":    "debian",
+	}
 )

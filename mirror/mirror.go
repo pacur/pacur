@@ -3,6 +3,7 @@ package mirror
 import (
 	"fmt"
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/signing"
 	"github.com/pacur/pacur/utils"
 	"path/filepath"
@@ -151,13 +152,13 @@ func (m *Mirror) Create() (err error) {
 		}
 	}
 
-	switch m.Distro {
+	switch constants.BaseDistro[m.Distro] {
 	case "archlinux":
 		err = m.createArch()
-	case "centos":
-		err = m.createRedhat()
-	case "debian", "ubuntu":
+	case "debian":
 		err = m.createDebian()
+	case "redhat":
+		err = m.createRedhat()
 	default:
 		err = &UnknownType{
 			errors.Newf("mirror: Unknown type '%s'", m.Distro),
