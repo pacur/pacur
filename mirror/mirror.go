@@ -152,7 +152,7 @@ func (m *Mirror) Create() (err error) {
 		}
 	}
 
-	switch constants.BaseDistro[m.Distro] {
+	switch constants.DistroPack[m.Distro] {
 	case "pacman":
 		err = m.createPacman()
 	case "debian":

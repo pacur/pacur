@@ -98,7 +98,7 @@ func (p *Project) getProject(target, path string) (
 
 	distro, release := getDistro(target)
 
-	switch constants.BaseDistro[distro] {
+	switch constants.DistroPack[distro] {
 	case "pacman":
 		proj = &pacman.PacmanProject{
 			Name:       p.Name,

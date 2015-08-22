@@ -17,7 +17,7 @@ type Packer interface {
 func GetPacker(pac *pack.Pack, distro, release string) (
 	pcker Packer, err error) {
 
-	switch constants.BaseDistro[distro] {
+	switch constants.DistroPack[distro] {
 	case "pacman":
 		pcker = &pacman.Pacman{
 			Pack:    pac,
