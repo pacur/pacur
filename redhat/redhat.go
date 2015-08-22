@@ -266,6 +266,19 @@ func (r *Redhat) makeDirs() (err error) {
 	return
 }
 
+func (r *Redhat) clean() (err error) {
+	pkgPaths, err := utils.FindExt(r.Pack.Home, ".rpm")
+	if err != nil {
+		return
+	}
+
+	for _, pkgPath := range pkgPaths {
+		_ = utils.Remove(pkgPath)
+	}
+
+	return
+}
+
 func (r *Redhat) remDirs() {
 	os.RemoveAll(r.redhatDir)
 }
@@ -312,6 +325,11 @@ func (r *Redhat) Build() (err error) {
 	}
 
 	err = r.rpmBuild()
+	if err != nil {
+		return
+	}
+
+	err = r.clean()
 	if err != nil {
 		return
 	}
