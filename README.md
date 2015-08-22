@@ -6,10 +6,12 @@
 .com/u/pacur/archlinux/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--21-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-21/)
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--22-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-22/)
 [![Docker Repository](https://img.shields.io/badge/docker-debian--wheezy-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-wheezy/)
+
+
 [![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
-
-
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--precise-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-precise/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--vivid-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-vivid/)
