@@ -6,12 +6,12 @@
 .com/u/pacur/archlinux/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
-[![Docker Repository](https://img.shields.io/badge/docker-fedora--21-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-21/)
-[![Docker Repository](https://img.shields.io/badge/docker-fedora--22-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-22/)
 [![Docker Repository](https://img.shields.io/badge/docker-debian--wheezy-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-wheezy/)
-
-
 [![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--21-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-21/)
+
+
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--22-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-22/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--precise-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-precise/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--vivid-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-vivid/)
@@ -19,17 +19,17 @@
 
 Pacur allows building packages for several package formats and linux
 distributions. Currently DEB, RPM and PKG packages are available for
-ArchLinux, CentOS 6, CentOS 7, Debian 7, Debian 8, Ubuntu 12.04, Ubuntu 14.04,
-Ubuntu 15.04 and Ubuntu 15.10. Builds are done on Docker containers without
-needing to setup any virtual machines or install any software other then
-Docker. All packages are built using a simple format that is similar to
-[PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from ArchLinux.
-Each distribution is different and will still require a separate PKGBUILD for
-each distribution but a consistent build process and format can be used for
-all builds. Docker only supports 64 bit containers, pacur can't be used to
-build packages 32 bit packages. Pacur will also create a DEB, APT and PKG
-signed repository that can be used on ArchLinux, CentOS, Debian and Ubuntu to
-distribute the packages. A
+ArchLinux, CentOS 6, CentOS 7, Debian 7, Debian 8, Fedora 21, Fedora 22,
+Ubuntu 12.04, Ubuntu 14.04, Ubuntu 15.04 and Ubuntu 15.10. Builds are done on
+Docker containers without needing to setup any virtual machines or install any
+software other then Docker. All packages are built using a simple format that
+is similar to [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from
+ArchLinux. Each distribution is different and will still require a separate
+PKGBUILD for each distribution but a consistent build process and format can be
+used for all builds. Docker only supports 64 bit containers, pacur can't be
+used to build packages 32 bit packages. Pacur will also create a DEB, APT and
+PKG signed repository that can be used on ArchLinux, CentOS, Debian and Ubuntu
+to distribute the packages. A
 [tutorial](https://medium.com/@zachhuff386/pacur-tutorial-9848b774c84a)
 on creating a project is aviaible on medium.
 
