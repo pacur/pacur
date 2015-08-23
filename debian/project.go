@@ -67,11 +67,8 @@ func (p *DebianProject) Create() (err error) {
 		return
 	}
 
-	path := filepath.Join(p.MirrorRoot, "apt")
-
-	_ = utils.RemoveAll(path)
-
-	err = utils.Rsync(filepath.Join(buildDir, "apt"), path)
+	err = utils.Rsync(filepath.Join(buildDir, "apt"),
+		filepath.Join(p.MirrorRoot, "apt"))
 	if err != nil {
 		return
 	}

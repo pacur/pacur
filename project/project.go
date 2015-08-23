@@ -199,6 +199,7 @@ func (p *Project) Build(filter string) (err error) {
 
 func (p *Project) Repo(filter string) (err error) {
 	_ = utils.RemoveAll(p.BuildRoot)
+	_ = utils.RemoveAll(p.MirrorRoot)
 
 	err = utils.MkdirAll(p.MirrorRoot)
 	if err != nil {

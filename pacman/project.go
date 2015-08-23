@@ -67,11 +67,8 @@ func (p *PacmanProject) Create() (err error) {
 		return
 	}
 
-	path := filepath.Join(p.MirrorRoot, "pacman")
-
-	_ = utils.RemoveAll(path)
-
-	err = utils.Rsync(filepath.Join(buildDir, "pacman"), path)
+	err = utils.Rsync(filepath.Join(buildDir, "pacman"),
+		filepath.Join(p.MirrorRoot, "pacman"))
 	if err != nil {
 		return
 	}
