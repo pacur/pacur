@@ -22,5 +22,6 @@ var (
 		"fedora":    "redhat",
 		"centos":    "redhat",
 		"debian":    "debian",
+		"ubuntu":    "debian",
 	}
 )
