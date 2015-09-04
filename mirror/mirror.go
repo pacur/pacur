@@ -105,7 +105,7 @@ func (m *Mirror) createDebian() (err error) {
 }
 
 func (m *Mirror) createRedhat() (err error) {
-	outDir := filepath.Join(m.Root, "yum", "centos", m.Release)
+	outDir := filepath.Join(m.Root, "yum", m.Distro, m.Release)
 
 	err = utils.MkdirAll(outDir)
 	if err != nil {
