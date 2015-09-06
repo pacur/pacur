@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/dropbox/godropbox/container/set"
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
 	"io/ioutil"
@@ -272,8 +273,12 @@ func (r *Redhat) clean() (err error) {
 		return
 	}
 
+	match := constants.ReleasesMatch[r.Pack.FullRelease]
+
 	for _, pkgPath := range pkgPaths {
-		_ = utils.Remove(pkgPath)
+		if strings.Contains(filepath.Base(pkgPath), match) {
+			_ = utils.Remove(pkgPath)
+		}
 	}
 
 	return
