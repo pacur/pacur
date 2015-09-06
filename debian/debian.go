@@ -2,6 +2,7 @@ package debian
 
 import (
 	"fmt"
+	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
@@ -166,7 +167,14 @@ func (d *Debian) clean() (err error) {
 		return
 	}
 
-	match := constants.ReleasesMatch[d.Pack.FullRelease]
+	match, ok := constants.ReleasesMatch[d.Pack.FullRelease]
+	if !ok {
+		err = &BuildError{
+			errors.Newf("debian: Failed to find match for '%s'",
+				d.Pack.FullRelease),
+		}
+		return
+	}
 
 	for _, pkgPath := range pkgPaths {
 		if strings.Contains(filepath.Base(pkgPath), match) {

@@ -273,7 +273,14 @@ func (r *Redhat) clean() (err error) {
 		return
 	}
 
-	match := constants.ReleasesMatch[r.Pack.FullRelease]
+	match, ok := constants.ReleasesMatch[r.Pack.FullRelease]
+	if !ok {
+		err = &BuildError{
+			errors.Newf("redhat: Failed to find match for '%s'",
+				r.Pack.FullRelease),
+		}
+		return
+	}
 
 	for _, pkgPath := range pkgPaths {
 		if strings.Contains(filepath.Base(pkgPath), match) {
