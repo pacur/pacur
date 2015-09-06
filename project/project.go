@@ -66,18 +66,6 @@ func (p *Project) Init() (err error) {
 }
 
 func (p *Project) InitProject() (err error) {
-	err = utils.MkdirAll(p.MirrorRoot)
-	if err != nil {
-		return
-	}
-
-	for _, release := range constants.Releases {
-		err = utils.MkdirAll(filepath.Join("pkgname", release))
-		if err != nil {
-			return
-		}
-	}
-
 	exists, err := utils.Exists(p.confPath)
 	if err != nil {
 		return
