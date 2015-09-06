@@ -74,6 +74,13 @@ func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
 		return
 	}
 
+	if key == "pkgver" || key == "pkgrel" {
+		err = &ParseError{
+			errors.Newf("pack: Cannot use directive for '%s'", key),
+		}
+		return
+	}
+
 	dirc := split[1]
 
 	if constants.ReleasesSet.Contains(dirc) {
