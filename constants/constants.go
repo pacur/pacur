@@ -22,6 +22,19 @@ var (
 		"ubuntu-vivid",
 		"ubuntu-wily",
 	}
+	ReleasesMatch = map[string]string{
+		"archlinux":      "",
+		"fedora-21":      ".fc21.",
+		"fedora-22":      ".fc22.",
+		"centos-6":       ".el6.centos.",
+		"centos-7":       ".el7.centos.",
+		"debian-jessie":  ".jessie_",
+		"debian-wheezy":  ".wheezy_",
+		"ubuntu-precise": ".precise_",
+		"ubuntu-trusty":  ".trusty_",
+		"ubuntu-vivid":   ".vivid_",
+		"ubuntu-wily":    ".wily_",
+	}
 	DistroPack = map[string]string{
 		"archlinux": "pacman",
 		"fedora":    "redhat",
