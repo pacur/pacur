@@ -130,6 +130,18 @@ func CreateWrite(path string, data string) (err error) {
 	return
 }
 
+func Open(path string) (file *os.File, err error) {
+	file, err = os.Open(path)
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to open file '%s'", path),
+		}
+		return
+	}
+
+	return
+}
+
 func Move(source, dest string) (err error) {
 	err = Exec("", "mv", source, dest)
 	if err != nil {
