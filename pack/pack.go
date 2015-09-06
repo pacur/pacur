@@ -162,6 +162,8 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 	p.priorities[key] = priority
 
 	switch key {
+	case "targets":
+		return
 	case "pkgname":
 		p.PkgName = data.(string)
 	case "pkgver":
