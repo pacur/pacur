@@ -88,7 +88,16 @@ func (m *Mirror) createDebian() (err error) {
 		return
 	}
 
-	debs, err := utils.FindExt(m.Root, ".deb")
+	match, ok := constants.ReleasesMatch[m.Distro + "-" + m.Release]
+	if !ok {
+		err = &BuildError{
+			errors.Newf("mirror: Failed to find match for '%s'",
+				m.Distro + "-" + m.Release),
+		}
+		return
+	}
+
+	debs, err := utils.FindMatch(m.Root, match)
 	if err != nil {
 		return
 	}
@@ -112,7 +121,16 @@ func (m *Mirror) createRedhat() (err error) {
 		return
 	}
 
-	err = utils.RsyncExt(m.Root, outDir, ".rpm")
+	match, ok := constants.ReleasesMatch[m.Distro + "-" + m.Release]
+	if !ok {
+		err = &BuildError{
+			errors.Newf("mirror: Failed to find match for '%s'",
+				m.Distro + "-" + m.Release),
+		}
+		return
+	}
+
+	err = utils.RsyncMatch(m.Root, outDir, match)
 	if err != nil {
 		return
 	}
