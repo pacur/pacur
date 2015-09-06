@@ -9,6 +9,7 @@ import (
 
 type Pack struct {
 	priorities  map[string]int
+	Targets     []string
 	Distro      string
 	Release     string
 	FullRelease string
@@ -101,6 +102,7 @@ func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
 func (p *Pack) Resolve() (err error) {
 	reslv := resolver.New()
 
+	reslv.AddList("targets", p.Targets)
 	reslv.Add("root", &p.Root)
 	reslv.Add("srcdir", &p.SourceDir)
 	reslv.Add("pkgdir", &p.PackageDir)
@@ -163,7 +165,7 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 
 	switch key {
 	case "targets":
-		return
+		p.Targets = data.([]string)
 	case "pkgname":
 		p.PkgName = data.(string)
 	case "pkgver":
