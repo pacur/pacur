@@ -35,15 +35,16 @@ var (
 		"yum",
 	}
 
-	ReleasesSet    = set.NewSet(Releases)
+	ReleasesSet    = set.NewSet()
 	Distros        = []string{}
 	DistrosSet     = set.NewSet()
 	DistroPackager = map[string]string{}
-	PackagersSet   = set.NewSet(Packagers)
+	PackagersSet   = set.NewSet()
 )
 
 func init() {
 	for _, release := range Releases {
+		ReleasesSet.Add(release)
 		distro := strings.Split(release, "-")[0]
 		Distros = append(Distros, distro)
 		DistrosSet.Add(distro)
@@ -64,5 +65,9 @@ func init() {
 		}
 
 		DistroPackager[distro] = packager
+	}
+
+	for _, packager := range Packagers {
+		PackagersSet.Add(packager)
 	}
 }
