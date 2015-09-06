@@ -159,18 +159,14 @@ func (p *Project) iterPackages(filter string,
 
 		projectPath := filepath.Join(p.Root, project.Name())
 
-		packages, e := utils.ReadDir(projectPath)
+		targets, e := getTargets(projectPath)
 		if e != nil {
 			err = e
 			return
 		}
 
-		for _, pkg := range packages {
-			if !pkg.IsDir() {
-				continue
-			}
-
-			err = handle(pkg.Name(), filepath.Join(projectPath, pkg.Name()))
+		for _, target := range targets {
+			err = handle(target, projectPath)
 			if err != nil {
 				return
 			}
