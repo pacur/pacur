@@ -50,6 +50,8 @@ func File(distro, release, home string) (pac *pack.Pack, err error) {
 		PackageDir: filepath.Join(root, "pkg"),
 	}
 
+	pac.Init()
+
 	file, err := os.Open(path)
 	if err != nil {
 		return

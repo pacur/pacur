@@ -45,6 +45,8 @@ type Pack struct {
 }
 
 func (p *Pack) Init() {
+	p.priorities = map[string]int{}
+
 	p.FullRelease = p.Distro
 	if p.Release != "" {
 		p.FullRelease += "-" + p.Release
