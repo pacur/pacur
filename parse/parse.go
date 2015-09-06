@@ -5,7 +5,6 @@ import (
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
-	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -52,7 +51,7 @@ func File(distro, release, home string) (pac *pack.Pack, err error) {
 
 	pac.Init()
 
-	file, err := os.Open(path)
+	file, err := utils.Open(path)
 	if err != nil {
 		return
 	}
