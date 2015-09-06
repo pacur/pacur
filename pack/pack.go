@@ -70,6 +70,10 @@ func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
 		pry = -1
 	}
 
+	if p.Distro == "" {
+		return
+	}
+
 	dirc := split[1]
 
 	if constants.ReleasesSet.Contains(dirc) {
