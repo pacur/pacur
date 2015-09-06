@@ -23,19 +23,18 @@
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--vivid-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-vivid/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--wily-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-wily/)
 
-Pacur allows building packages for several package formats and linux
-distributions. Currently DEB, RPM and PKG packages are available for
-ArchLinux, CentOS 6, CentOS 7, Debian 7, Debian 8, Fedora 21, Fedora 22,
-Ubuntu 12.04, Ubuntu 14.04, Ubuntu 15.04 and Ubuntu 15.10. Builds are done on
-Docker containers without needing to setup any virtual machines or install any
+Pacur allows building packages for multiple linux distributions with a
+consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
+are available for several linux distributions. Builds are done on Docker
+containers without needing to setup any virtual machines or install any
 software other then Docker. All packages are built using a simple format that
 is similar to [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from
-ArchLinux. Each distribution is different and will still require a separate
-PKGBUILD for each distribution but a consistent build process and format can be
-used for all builds. Docker only supports 64 bit containers, pacur can't be
-used to build packages 32 bit packages. Pacur will also create a DEB, APT and
-PKG signed repository that can be used on ArchLinux, CentOS, Debian and Ubuntu
-to distribute the packages. A
+ArchLinux. Each distribution is different and will still require different
+build instructions but a consistent build process and format can be used for
+all builds. Docker only supports 64 bit containers, pacur can't be used to
+build packages 32 bit packages. Pacur will also create a `deb`, `rpm` and
+`pacman` signed repository that can be used on ArchLinux, CentOS, Fedora,
+Debian and Ubuntu to distribute the packages. A
 [tutorial](https://medium.com/@zachhuff386/pacur-tutorial-9848b774c84a)
 on creating a project is aviaible on medium.
 
@@ -50,6 +49,7 @@ key=(
     "multiple elements"
 )
 key="example ${variable} string"
+key:ubuntu="this will apply only to ubuntu builds"
 ```
 
 ### builtin variables
@@ -63,6 +63,7 @@ key="example ${variable} string"
 
 | key | type | value |
 | --- | ---- | ----- |
+| `targets` | `list` | List of build targets only used for projects. Prefix a `!` to ignore target. |
 | `pkgname` | `string` | Package name |
 | `pkgver` | `string` | Package version |
 | `pkgrel` | `string` | Package release number |
@@ -89,6 +90,56 @@ key="example ${variable} string"
 | `prerm` | `func` | Function to run before removing |
 | `postrm` | `func` | Function to run after removing |
 
+### build targets
+
+| target | value |
+| ------ | ----- |
+| `archlinux` | All archlinux releases |
+| `centos` | All centos releases |
+| `debian` | All debian releases |
+| `fedora` | All fedora releases |
+| `ubuntu` | All ubuntu releases |
+| `centos-6` | Centos 6 |
+| `centos-7` | Centos 7 |
+| `debian-wheezy` | Debian wheezy |
+| `debian-jessie` | Debian jessie |
+| `fedora-21` | Fedora 21 |
+| `fedora-22` | Fedora 22 |
+| `ubuntu-precise` | Ubuntu precise |
+| `ubuntu-trusty` | Ubuntu trusty |
+| `ubuntu-vivid` | Ubuntu vivid |
+| `ubuntu-wily` | Ubuntu wily |
+
+### directives
+
+| directive | value |
+| --------- | ----- |
+| `apt` | All deb packages |
+| `pacman` | All pkg packages |
+| `yum` | All rpm packages |
+| `archlinux` | All archlinux releases |
+| `centos` | All centos releases |
+| `debian` | All debian releases |
+| `fedora` | All fedora releases |
+| `ubuntu` | All ubuntu releases |
+| `centos-6` | Centos 6 |
+| `centos-7` | Centos 7 |
+| `debian-wheezy` | Debian wheezy |
+| `debian-jessie` | Debian jessie |
+| `fedora-21` | Fedora 21 |
+| `fedora-22` | Fedora 22 |
+| `ubuntu-precise` | Ubuntu precise |
+| `ubuntu-trusty` | Ubuntu trusty |
+| `ubuntu-vivid` | Ubuntu vivid |
+| `ubuntu-wily` | Ubuntu wily |
+
+Directives are used to specify variables that only apply to a limited set of
+build targets. All variables can use directives including user definied
+variables. To use directives include the directive after a
+variable seperated by a colon such as
+`pkgdesc:ubuntu="This description will only apply to Ubuntu packages"`
+The directives above are sorted lowest to highest priority.
+
 ### example
 
 First create a directory for the PKGBUILD file. This directory should only
@@ -104,10 +155,23 @@ $ docker run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
 ```
 
 ```
+targets=(
+    "!centos-6"
+    "!fedora-21"
+    "archlinux"
+    "centos"
+    "debian"
+    "fedora"
+    "ubuntu"
+)
 pkgname="httpserver"
 pkgver="1.0"
 pkgrel="1"
 pkgdesc="Http file server written with Go"
+pkgdesc:centos="Http file server written with Go for CentOS"
+pkgdesc:debian="Http file server written with Go for Debian"
+pkgdesc:fedora="Http file server written with Go for Fedora"
+pkgdesc:ubuntu="Http file server written with Go for Ubuntu"
 pkgdesclong=(
     "Quick http file server written with Go"
     "using directory listing similar to apache"
@@ -144,11 +208,9 @@ package() {
 ### project example
 
 A project can be created with the cli tools which can be installed using
-go get. After creating a project a PKGBUILD file must be added to each release
-directory inside the packages directory. Then the packages can be built and
-added to the repo. An example project is available in the example directory.
-The `pull` command should be run before all builds to update the docker images
-used for builds.
+go get. The packages can be built and added to the repo. An example project is
+available in the example directory. The `pull` command should be run before
+all builds to update the docker images used for builds.
 
 ```
 $ go get github.com/pacur/pacur
