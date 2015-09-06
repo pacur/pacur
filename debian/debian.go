@@ -2,6 +2,7 @@ package debian
 
 import (
 	"fmt"
+	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
 	"os"
@@ -165,8 +166,12 @@ func (d *Debian) clean() (err error) {
 		return
 	}
 
+	match := constants.ReleasesMatch[d.Pack.FullRelease]
+
 	for _, pkgPath := range pkgPaths {
-		_ = utils.Remove(pkgPath)
+		if strings.Contains(filepath.Base(pkgPath), match) {
+			_ = utils.Remove(pkgPath)
+		}
 	}
 
 	return
