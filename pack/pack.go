@@ -2,12 +2,16 @@ package pack
 
 import (
 	"github.com/dropbox/godropbox/errors"
+	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/resolver"
+	"strings"
 )
 
 type Pack struct {
+	priorities  map[string]int
 	Distro      string
 	Release     string
+	FullRelease string
 	Root        string
 	Home        string
 	SourceDir   string
@@ -38,6 +42,58 @@ type Pack struct {
 	PreRm       []string
 	PostRm      []string
 	Variables   map[string]string
+}
+
+func (p *Pack) Init() {
+	p.FullRelease = p.Distro
+	if p.Release != "" {
+		p.FullRelease += "-" + p.Release
+	}
+}
+
+func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
+	split := strings.Split(input, ":")
+	key = split[0]
+
+	if len(split) == 0 {
+		pry = 0
+		return
+	} else if len(split) != 2 {
+		err = &ParseError{
+			errors.Newf("pack: Invalid use of ':' directive in '%s'", input),
+		}
+		return
+	} else {
+		pry = -1
+	}
+
+	dirc := split[1]
+
+	if constants.ReleasesSet.Contains(dirc) {
+		if dirc == p.FullRelease {
+			pry = 3
+		}
+		return
+	}
+
+	if constants.DistrosSet.Contains(dirc) {
+		if dirc == p.Distro {
+			pry = 2
+		}
+		return
+	}
+
+	if constants.PackagersSet.Contains(dirc) {
+		if dirc == constants.DistroPackager[p.Distro] {
+			pry = 1
+		}
+		return
+	}
+
+	err = &ParseError{
+		errors.Newf("pack: Unknown directive '%s'", dirc),
+	}
+	return
 }
 
 func (p *Pack) Resolve() (err error) {
@@ -88,6 +144,20 @@ func (p *Pack) Resolve() (err error) {
 
 func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 	err error) {
+
+	key, priority, err := p.parseDirective(key)
+	if err != nil {
+		return
+	}
+
+	if priority == -1 {
+		return
+	}
+
+	if priority < p.priorities[key] {
+		return
+	}
+	p.priorities[key] = priority
 
 	switch key {
 	case "pkgname":
