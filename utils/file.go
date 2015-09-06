@@ -228,6 +228,28 @@ func FindExt(path, ext string) (matches []string, err error) {
 	return
 }
 
+func FindMatch(path, match string) (matches []string, err error) {
+	files, err := ioutil.ReadDir(path)
+	if err != nil {
+		err = &ReadError{
+			errors.Wrapf(err, "utils: Failed to read dir '%s'", path),
+		}
+		return
+	}
+
+	for _, file := range files {
+		if file.IsDir() {
+			continue
+		}
+
+		if strings.Contains(file.Name(), match) {
+			matches = append(matches, filepath.Join(path, file.Name()))
+		}
+	}
+
+	return
+}
+
 func Filename(path string) string {
 	n := strings.LastIndex(path, "/")
 	if n == -1 {

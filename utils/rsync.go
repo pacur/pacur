@@ -44,3 +44,23 @@ func RsyncExt(source, dest, ext string) (err error) {
 
 	return
 }
+
+func RsyncMatch(source, dest, match string) (err error) {
+	cmd := exec.Command("rsync", "-a", "-A", "-X",
+		"--include", "*"+match+"*", "--exclude", "*",
+		source+string(os.PathSeparator),
+		dest+string(os.PathSeparator))
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err = cmd.Run()
+	if err != nil {
+		err = &CopyError{
+			errors.Wrapf(err, "utils: Failed to rsync '%s' to '%s'", source,
+				dest),
+		}
+		return
+	}
+
+	return
+}
