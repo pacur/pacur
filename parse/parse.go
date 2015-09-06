@@ -21,7 +21,7 @@ var (
 	itemReg = regexp.MustCompile("(\"[^\"]+\")|(`[^`]+`)")
 )
 
-func File(home string) (pac *pack.Pack, err error) {
+func File(distro, release, home string) (pac *pack.Pack, err error) {
 	home, err = filepath.Abs(home)
 	if err != nil {
 		err = &FileError{
@@ -42,6 +42,8 @@ func File(home string) (pac *pack.Pack, err error) {
 	path := filepath.Join(root, "PKGBUILD")
 
 	pac = &pack.Pack{
+		Distro:     distro,
+		Release:    release,
 		Root:       root,
 		Home:       home,
 		SourceDir:  filepath.Join(root, "src"),

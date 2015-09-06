@@ -16,7 +16,7 @@ func Build() (err error) {
 		release = split[1]
 	}
 
-	pac, err := parse.File("/pacur")
+	pac, err := parse.File(distro, release, "/pacur")
 	if err != nil {
 		return
 	}

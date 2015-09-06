@@ -6,6 +6,8 @@ import (
 )
 
 type Pack struct {
+	Distro      string
+	Release     string
 	Root        string
 	Home        string
 	SourceDir   string
