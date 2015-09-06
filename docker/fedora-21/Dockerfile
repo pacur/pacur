@@ -14,4 +14,4 @@ ENV PATH /usr/local/go/bin:$PATH:/go/bin
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "fedora"]
+CMD ["build", "fedora-21"]

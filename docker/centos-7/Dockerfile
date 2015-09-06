@@ -14,4 +14,4 @@ ENV PATH $PATH:/go/bin
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "centos"]
+CMD ["build", "centos-7"]
