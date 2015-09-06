@@ -55,7 +55,7 @@ func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
 	split := strings.Split(input, ":")
 	key = split[0]
 
-	if len(split) == 0 {
+	if len(split) == 1 {
 		pry = 0
 		return
 	} else if len(split) != 2 {
