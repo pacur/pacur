@@ -20,15 +20,15 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 	switch constants.DistroPack[distro] {
 	case "pacman":
 		pcker = &pacman.Pacman{
-			Pack:    pac,
+			Pack: pac,
 		}
 	case "debian":
 		pcker = &debian.Debian{
-			Pack:    pac,
+			Pack: pac,
 		}
 	case "redhat":
 		pcker = &redhat.Redhat{
-			Pack:    pac,
+			Pack: pac,
 		}
 	default:
 		system := distro
