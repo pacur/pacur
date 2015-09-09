@@ -89,6 +89,9 @@ func (r *Redhat) getFiles() (files []string, err error) {
 	paths := set.NewSet()
 
 	for _, path := range r.Pack.Backup {
+		if !strings.HasPrefix(path, "/") {
+			path = "/" + path
+		}
 		backup.Add(path)
 	}
 
