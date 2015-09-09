@@ -84,7 +84,7 @@ func (d *Debian) createControl() (err error) {
 
 	data += fmt.Sprintf("Package: %s\n", d.Pack.PkgName)
 	data += fmt.Sprintf("Version: %s-0%s%s~%s\n",
-		d.Pack.PkgVer, d.Distro, d.Pack.PkgRel, d.Release)
+		d.Pack.PkgVer, d.Pack.Distro, d.Pack.PkgRel, d.Pack.Release)
 	data += fmt.Sprintf("Architecture: %s\n", d.Pack.Arch)
 	data += fmt.Sprintf("Maintainer: %s\n", d.Pack.Maintainer)
 	data += fmt.Sprintf("Installed-Size: %d\n", d.installSize)
@@ -193,8 +193,8 @@ func (d *Debian) dpkgDeb() (err error) {
 	path := filepath.Join(d.Pack.Root, dir+".deb")
 	newPath := filepath.Join(d.Pack.Home,
 		fmt.Sprintf("%s_%s-0%s%s.%s_%s.deb",
-			d.Pack.PkgName, d.Pack.PkgVer, d.Distro, d.Pack.PkgRel,
-			d.Release, d.Pack.Arch))
+			d.Pack.PkgName, d.Pack.PkgVer, d.Pack.Distro, d.Pack.PkgRel,
+			d.Pack.Release, d.Pack.Arch))
 
 	os.Remove(newPath)
 
