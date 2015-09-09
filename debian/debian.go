@@ -12,8 +12,6 @@ import (
 )
 
 type Debian struct {
-	Distro      string
-	Release     string
 	Pack        *pack.Pack
 	debDir      string
 	installSize int

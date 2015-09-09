@@ -10,8 +10,6 @@ import (
 )
 
 type Pacman struct {
-	Distro    string
-	Release   string
 	Pack      *pack.Pack
 	pacmanDir string
 }

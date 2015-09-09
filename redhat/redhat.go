@@ -14,8 +14,6 @@ import (
 )
 
 type Redhat struct {
-	Distro       string
-	Release      string
 	Pack         *pack.Pack
 	redhatDir    string
 	buildDir     string
