@@ -153,6 +153,9 @@ func (p *Pacman) createMake() (err error) {
 	if len(p.Pack.Backup) > 0 {
 		data += "backup=(\n"
 		for _, item := range p.Pack.Backup {
+			if strings.HasPrefix(item, "/") {
+				item = item[1:]
+			}
 			data += fmt.Sprintf("    %s\n", strconv.Quote(item))
 		}
 		data += ")\n"

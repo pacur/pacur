@@ -66,6 +66,9 @@ func (d *Debian) createConfFiles() (err error) {
 
 	data := ""
 	for _, name := range d.Pack.Backup {
+		if !strings.HasPrefix(name, "/") {
+			name = "/" + name
+		}
 		data += name + "\n"
 	}
 
