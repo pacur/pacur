@@ -127,7 +127,8 @@ func File(distro, release, home string) (pac *pack.Pack, err error) {
 					return
 				} else if key[len(key)-1:] == " " {
 					err = &SyntaxError{
-						errors.Newf("parse: Extra space before '=' (%d: %s)",
+						errors.Newf(
+							"parse: Extra space before '=' (%d: %s)",
 							n, line),
 					}
 					return
@@ -181,13 +182,15 @@ func File(distro, release, home string) (pac *pack.Pack, err error) {
 					}
 				case " ":
 					err = &SyntaxError{
-						errors.Newf("parse: Extra space after '=' (%d: %s)",
+						errors.Newf(
+							"parse: Extra space after '=' (%d: %s)",
 							n, line),
 					}
 					return
 				default:
 					err = &SyntaxError{
-						errors.Newf("parse: Unexpected char '%s' expected "+
+						errors.Newf(
+							"parse: Unexpected char '%s' expected "+
 							"'\"' or '`' (%d: %s)", val[:1], n, line),
 					}
 					return
