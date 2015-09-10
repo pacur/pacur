@@ -86,7 +86,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `build` | `func` | Function to build the source, starts in srcdir |
 | `package` | `func` | Function to package the source into the pkgdir, starts in srcdir |
 | `preinst` | `func` | Function to run before installing |
-| `postint` | `func` | Function to run after installing |
+| `postinst` | `func` | Function to run after installing |
 | `prerm` | `func` | Function to run before removing |
 | `postrm` | `func` | Function to run after removing |
 
