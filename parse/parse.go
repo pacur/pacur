@@ -103,26 +103,10 @@ func File(distro, release, home string) (pac *pack.Pack, err error) {
 
 			blockItems = append(blockItems, strings.TrimSpace(line))
 		} else {
-			switch line {
-			case "build() {":
+			if strings.Contains(line, "() {") {
 				blockType = blockFunc
-				blockKey = "build"
-			case "package() {":
-				blockType = blockFunc
-				blockKey = "package"
-			case "preinst() {":
-				blockType = blockFunc
-				blockKey = "preinst"
-			case "postinst() {":
-				blockType = blockFunc
-				blockKey = "postinst"
-			case "prerm() {":
-				blockType = blockFunc
-				blockKey = "prerm"
-			case "postrm() {":
-				blockType = blockFunc
-				blockKey = "postrm"
-			default:
+				blockKey = strings.Split(line, "() {")[0]
+			} else {
 				parts := strings.SplitN(line, "=", 2)
 				if len(parts) != 2 {
 					err = &SyntaxError{
