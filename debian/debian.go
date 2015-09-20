@@ -146,9 +146,15 @@ func (d *Debian) createScripts() (err error) {
 			continue
 		}
 
+		data := strings.Join(script, "\n")
+
+		if name == "prerm" || name == "postrm" {
+			data = removeHeader + data
+		}
+
 		path := filepath.Join(d.debDir, name)
 
-		err = utils.CreateWrite(path, strings.Join(script, "\n"))
+		err = utils.CreateWrite(path, data)
 		if err != nil {
 			return
 		}
