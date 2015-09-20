@@ -147,7 +147,6 @@ func (d *Debian) createScripts() (err error) {
 		}
 
 		data := strings.Join(script, "\n")
-
 		if name == "prerm" || name == "postrm" {
 			data = removeHeader + data
 		}
