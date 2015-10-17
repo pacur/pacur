@@ -186,7 +186,7 @@ sources=(
     "${url}/archive/${pkgver}.tar.gz"
 )
 hashsums=(
-    "8ad577961ebe2e4377edbdda70459774"
+    "c3c490932531a6ee5a0d5a5e622a0d6c"
 )
 
 build() {
