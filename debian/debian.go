@@ -97,6 +97,11 @@ func (d *Debian) createControl() (err error) {
 			strings.Join(d.Pack.Depends, ", "))
 	}
 
+	if len(d.Pack.Depends) > 0 {
+		data += fmt.Sprintf("Conflicts: %s\n",
+			strings.Join(d.Pack.Conflicts, ", "))
+	}
+
 	if len(d.Pack.OptDepends) > 0 {
 		data += fmt.Sprintf("Recommends: %s\n",
 			strings.Join(d.Pack.OptDepends, ", "))
