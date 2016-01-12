@@ -18,7 +18,7 @@ func getDistro(name string) (distro, release string) {
 }
 
 func getTargets(path string) (targets []string, err error) {
-	pac, err := parse.File("", "", "/pacur")
+	pac, err := parse.File("", "", path)
 	if err != nil {
 		return
 	}
