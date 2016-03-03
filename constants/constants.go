@@ -21,6 +21,7 @@ var (
 		"ubuntu-trusty",
 		"ubuntu-vivid",
 		"ubuntu-wily",
+		"ubuntu-xenial",
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":      "",
@@ -34,6 +35,7 @@ var (
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-vivid":   ".vivid_",
 		"ubuntu-wily":    ".wily_",
+		"ubuntu-xenial":    ".xenial_",
 	}
 	DistroPack = map[string]string{
 		"archlinux": "pacman",
