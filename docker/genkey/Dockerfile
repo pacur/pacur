@@ -5,8 +5,9 @@ RUN apt-get --assume-yes update
 RUN apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install wget git
 
-RUN wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
-RUN tar -C /usr/local -xf go1.4.2.linux-amd64.tar.gz
+RUN wget https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz
+RUN tar -C /usr/local -xf go1.6.linux-amd64.tar.gz
+RUN rm -f go1.6.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH $PATH:/usr/local/go/bin:/go/bin
