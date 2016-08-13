@@ -16,6 +16,8 @@
 
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--21-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-21/)
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--22-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-22/)
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--23-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-23/)
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--24-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-24/)
 
 
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--precise-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-precise/)
@@ -106,6 +108,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `fedora-21` | Fedora 21 |
 | `fedora-22` | Fedora 22 |
+| `fedora-23` | Fedora 23 |
+| `fedora-24` | Fedora 24 |
 | `ubuntu-precise` | Ubuntu precise |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-vivid` | Ubuntu vivid |
@@ -130,6 +134,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `fedora-21` | Fedora 21 |
 | `fedora-22` | Fedora 22 |
+| `fedora-23` | Fedora 23 |
+| `fedora-24` | Fedora 24 |
 | `ubuntu-precise` | Ubuntu precise |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-vivid` | Ubuntu vivid |
