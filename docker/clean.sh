@@ -1,3 +1,5 @@
+docker rm $(docker ps -a -q)
+
 docker rmi pacur/archlinux
 docker rmi pacur/centos-6
 docker rmi pacur/centos-7
@@ -28,3 +30,5 @@ docker rmi ubuntu:vivid
 docker rmi ubuntu:wily
 docker rmi ubuntu:xenial
 docker rmi ubuntu:yakkety
+
+docker rmi $(docker images -q -f dangling=true)
