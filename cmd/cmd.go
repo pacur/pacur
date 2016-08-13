@@ -21,6 +21,8 @@ func Parse() (err error) {
 		err = utils.PullContainers()
 	case "genkey":
 		err = GenKey()
+	case "list-targets":
+		err = ListTargets()
 	default:
 		err = &UnknownCommand{
 			errors.Newf("cmd: Unknown command '%s'", cmd),
