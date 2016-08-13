@@ -21,9 +21,8 @@ var (
 		"debian-wheezy",
 		"ubuntu-precise",
 		"ubuntu-trusty",
-		"ubuntu-vivid",
-		"ubuntu-wily",
 		"ubuntu-xenial",
+		"ubuntu-yakkety",
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":      "",
@@ -37,9 +36,8 @@ var (
 		"debian-wheezy":  ".wheezy_",
 		"ubuntu-precise": ".precise_",
 		"ubuntu-trusty":  ".trusty_",
-		"ubuntu-vivid":   ".vivid_",
-		"ubuntu-wily":    ".wily_",
 		"ubuntu-xenial":    ".xenial_",
+		"ubuntu-yakkety":    ".yakkety_",
 	}
 	DistroPack = map[string]string{
 		"archlinux": "pacman",
