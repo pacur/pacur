@@ -44,8 +44,19 @@ func GetId() (id string, err error) {
 		return
 	}
 
+	hasKey := false
 	for _, line := range strings.Split(output, "\n") {
+		if hasKey {
+			id = strings.TrimSpace(line)
+			break
+		}
+
 		if !strings.HasPrefix(line, "pub") {
+			continue
+		}
+
+		if !strings.Contains(line, "/") {
+			hasKey = true
 			continue
 		}
 
@@ -60,6 +71,7 @@ func GetId() (id string, err error) {
 		}
 
 		id = split[1]
+		break
 	}
 
 	if id == "" {
