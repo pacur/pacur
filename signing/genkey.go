@@ -15,13 +15,15 @@ type GenKey struct {
 func (g *GenKey) createConf() (path string, err error) {
 	path = filepath.Join(g.Root, "genkey")
 
-	err = utils.CreateWrite(path, "Key-Type: 1\n"+
+	err = utils.CreateWrite(path, "%no-protection\n"+
+		"Key-Type: 1\n"+
 		"Key-Length: 4096\n"+
 		"Subkey-Type: 1\n"+
 		"Subkey-Length: 4096\n"+
 		fmt.Sprintf("Name-Real: %s\n", g.Name)+
 		fmt.Sprintf("Name-Email: %s\n", g.Email)+
-		"Expire-Date: 0\n")
+		"Expire-Date: 0\n"+
+		"%commit\n")
 	if err != nil {
 		return
 	}
