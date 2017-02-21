@@ -17,6 +17,7 @@ docker rmi pacur/ubuntu-vivid
 docker rmi pacur/ubuntu-wily
 docker rmi pacur/ubuntu-xenial
 docker rmi pacur/ubuntu-yakkety
+docker rmi pacur/ubuntu-zesty
 docker rmi centos:6
 docker rmi centos:7
 docker rmi debian:jessie
@@ -32,5 +33,6 @@ docker rmi ubuntu:vivid
 docker rmi ubuntu:wily
 docker rmi ubuntu:xenial
 docker rmi ubuntu:yakkety
+docker rmi ubuntu:zesty
 
 docker rmi $(docker images -q -f dangling=true)
