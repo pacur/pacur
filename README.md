@@ -25,6 +25,7 @@
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-xenial/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--yakkety-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-yakkety/)
+[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--zesty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-zesty/)
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -115,6 +116,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-yakkety` | Ubuntu yakkety |
+| `ubuntu-zesty` | Ubuntu zesty |
 
 ### directives
 
@@ -141,6 +143,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-yakkety` | Ubuntu yakkety |
+| `ubuntu-zesty` | Ubuntu zesty |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user definied
