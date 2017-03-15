@@ -2,6 +2,7 @@ package project
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/debian"
@@ -166,6 +167,10 @@ func (p *Project) iterPackages(filter string,
 
 func (p *Project) Build(filter string) (err error) {
 	err = p.iterPackages(filter, func(target, path string) (err error) {
+		fmt.Println("******************************************************")
+		fmt.Printf("Building: %s - %s\n", filter, target)
+		fmt.Println("******************************************************")
+
 		err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 			path+":/pacur", constants.DockerOrg+target)
 		if err != nil {
