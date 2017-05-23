@@ -178,6 +178,16 @@ func (p *Pacman) createMake() (err error) {
 }
 
 func (p *Pacman) pacmanBuild() (err error) {
+	err = utils.Chmod(p.pacmanDir, 0777)
+	if err != nil {
+		return
+	}
+
+	err = utils.ChownR(p.pacmanDir, "nobody", "nobody")
+	if err != nil {
+		return
+	}
+
 	err = utils.ChownR(p.Pack.PackageDir, "nobody", "nobody")
 	if err != nil {
 		return
