@@ -2,8 +2,7 @@
 
 # pacur: simple packaging
 
-[![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")](https://registry.hub.docker
-.com/u/pacur/archlinux/)
+[![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/archlinux/)
 
 [![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2016.09-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2016.09/)
 [![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2017.03-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2017.03/)
