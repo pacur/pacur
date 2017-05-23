@@ -178,7 +178,7 @@ func (p *Pacman) createMake() (err error) {
 }
 
 func (p *Pacman) pacmanBuild() (err error) {
-	err = utils.ChownR(p.pacmanDir, "nobody", "nobody")
+	err = utils.ChownR(p.Pack.PackageDir, "nobody", "nobody")
 	if err != nil {
 		return
 	}
