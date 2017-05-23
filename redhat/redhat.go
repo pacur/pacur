@@ -167,7 +167,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	}
 
 	data += "%install\n"
-	data += fmt.Sprintf("rsync -a -A -X %s/ $RPM_BUILD_ROOT/\n",
+	data += fmt.Sprintf("sudo rsync -a -A -X %s/ $RPM_BUILD_ROOT/\n",
 		r.Pack.PackageDir)
 	data += "\n"
 
