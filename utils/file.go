@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"github.com/dropbox/godropbox/errors"
 	"io/ioutil"
 	"os"
@@ -51,6 +52,20 @@ func Chmod(path string, perm os.FileMode) (err error) {
 		err = &WriteError{
 			errors.Wrapf(err, "utils: Failed to chmod '%s'", path),
 		}
+		return
+	}
+
+	return
+}
+
+func ChownR(path string, user, group string) (err error) {
+	err = Exec("",
+		"chown",
+		"-R",
+		fmt.Sprintf("%s:%s", user, group),
+		path,
+	)
+	if err != nil {
 		return
 	}
 
