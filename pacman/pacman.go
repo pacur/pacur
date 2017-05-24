@@ -29,7 +29,6 @@ func (p *Pacman) getDepends() (err error) {
 		"-S",
 		"--noconfirm",
 	}
-	args = append(args, p.Pack.Depends...)
 	args = append(args, p.Pack.MakeDepends...)
 
 	err = utils.Exec("", "pacman", args...)
