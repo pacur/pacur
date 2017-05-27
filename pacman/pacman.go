@@ -58,6 +58,22 @@ func (p *Pacman) createInstall() (exists bool, err error) {
 		data += "}\n"
 	}
 
+	if len(p.Pack.PreInst) > 0 {
+		data += "pre_upgrade() {\n"
+		for _, line := range p.Pack.PreInst {
+			data += fmt.Sprintf("    %s\n", line)
+		}
+		data += "}\n"
+	}
+
+	if len(p.Pack.PostInst) > 0 {
+		data += "post_upgrade() {\n"
+		for _, line := range p.Pack.PostInst {
+			data += fmt.Sprintf("    %s\n", line)
+		}
+		data += "}\n"
+	}
+
 	if len(p.Pack.PreRm) > 0 {
 		data += "pre_remove() {\n"
 		for _, line := range p.Pack.PreRm {
