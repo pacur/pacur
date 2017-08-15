@@ -13,6 +13,7 @@
 
 [![Docker Repository](https://img.shields.io/badge/docker-debian--wheezy-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-wheezy/)
 [![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
+[![Docker Repository](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-stretch/)
 
 
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--21-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-21/)
@@ -111,6 +112,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos-7` | Centos 7 |
 | `debian-wheezy` | Debian wheezy |
 | `debian-jessie` | Debian jessie |
+| `debian-stretch` | Debian stretch |
 | `fedora-21` | Fedora 21 |
 | `fedora-22` | Fedora 22 |
 | `fedora-23` | Fedora 23 |
@@ -141,6 +143,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos-7` | Centos 7 |
 | `debian-wheezy` | Debian wheezy |
 | `debian-jessie` | Debian jessie |
+| `debian-stretch` | Debian stretch |
 | `fedora-21` | Fedora 21 |
 | `fedora-22` | Fedora 22 |
 | `fedora-23` | Fedora 23 |

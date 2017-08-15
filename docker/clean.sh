@@ -6,6 +6,7 @@ docker rmi pacur/amazonlinux-2017.03
 docker rmi pacur/centos-6
 docker rmi pacur/centos-7
 docker rmi pacur/debian-jessie
+docker rmi pacur/debian-stretch
 docker rmi pacur/debian-wheezy
 docker rmi pacur/fedora-21
 docker rmi pacur/fedora-22
@@ -25,6 +26,7 @@ docker rmi amazonlinux:2017.03
 docker rmi centos:6
 docker rmi centos:7
 docker rmi debian:jessie
+docker rmi debian:stretch
 docker rmi debian:wheezy
 docker rmi fedora:21
 docker rmi fedora:22
