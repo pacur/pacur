@@ -1,8 +1,9 @@
 package constants
 
 import (
-	"github.com/dropbox/godropbox/container/set"
 	"strings"
+
+	"github.com/dropbox/godropbox/container/set"
 )
 
 const (
@@ -16,7 +17,7 @@ var (
 		"amazonlinux-2017.03",
 		"fedora-24",
 		"fedora-25",
-		"fedora-26",
+		//		"fedora-26",
 		"centos-7",
 		"debian-wheezy",
 		"debian-jessie",
@@ -38,7 +39,7 @@ var (
 		"centos-7":            ".el7.centos.",
 		"debian-wheezy":       ".wheezy_",
 		"debian-jessie":       ".jessie_",
-		"debian-stretch":       ".stretch_",
+		"debian-stretch":      ".stretch_",
 		"ubuntu-precise":      ".precise_",
 		"ubuntu-trusty":       ".trusty_",
 		"ubuntu-xenial":       ".xenial_",
