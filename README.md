@@ -173,8 +173,6 @@ $ docker run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
 ```
 targets=(
     "!centos-6"
-    "!fedora-21"
-    "!fedora-22"
     "archlinux"
     "centos"
     "debian"
