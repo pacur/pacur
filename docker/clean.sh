@@ -35,6 +35,7 @@ docker rmi fedora:22
 docker rmi fedora:23
 docker rmi fedora:24
 docker rmi fedora:25
+docker rmi fedora:26
 docker rmi ubuntu:precise
 docker rmi ubuntu:trusty
 docker rmi ubuntu:vivid
@@ -42,5 +43,6 @@ docker rmi ubuntu:wily
 docker rmi ubuntu:xenial
 docker rmi ubuntu:yakkety
 docker rmi ubuntu:zesty
+docker rmi ubuntu:artful
 
 docker rmi $(docker images -q -f dangling=true)
