@@ -6,6 +6,7 @@
 
 [![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2016.09-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2016.09/)
 [![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2017.03-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2017.03/)
+[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2017.09-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2017.09/)
 
 [![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
@@ -107,6 +108,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu` | All ubuntu releases |
 | `amazonlinux-2016.09` | Amazonlinux 2016.09 |
 | `amazonlinux-2017.03` | Amazonlinux 2017.03 |
+| `amazonlinux-2017.09` | Amazonlinux 2017.09 |
 | `centos-6` | Centos 6 |
 | `centos-7` | Centos 7 |
 | `debian-wheezy` | Debian wheezy |
@@ -137,6 +139,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu` | All ubuntu releases |
 | `amazonlinux-2016.09` | Amazonlinux 2016.09 |
 | `amazonlinux-2017.03` | Amazonlinux 2017.03 |
+| `amazonlinux-2017.09` | Amazonlinux 2017.09 |
 | `centos-6` | Centos 6 |
 | `centos-7` | Centos 7 |
 | `debian-wheezy` | Debian wheezy |
