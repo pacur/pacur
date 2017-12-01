@@ -25,6 +25,7 @@ docker rmi pacur/ubuntu-xenial
 docker rmi pacur/ubuntu-yakkety
 docker rmi pacur/ubuntu-zesty
 docker rmi pacur/ubuntu-artful
+docker rmi pacur/ubuntu-bionic
 docker rmi amazonlinux:2016.09
 docker rmi amazonlinux:2017.03
 docker rmi amazonlinux:2017.09

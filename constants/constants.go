@@ -29,6 +29,7 @@ var (
 		"ubuntu-yakkety",
 		"ubuntu-zesty",
 		"ubuntu-artful",
+		"ubuntu-bionic",
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":           "",
@@ -50,6 +51,7 @@ var (
 		"ubuntu-yakkety":      ".yakkety_",
 		"ubuntu-zesty":        ".zesty_",
 		"ubuntu-artful":        ".artful_",
+		"ubuntu-bionic":        ".bionic_",
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",
