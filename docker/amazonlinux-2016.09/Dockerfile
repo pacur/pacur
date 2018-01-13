@@ -2,6 +2,7 @@ FROM amazonlinux:2016.09
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y upgrade
+RUN yum -y groupinstall 'Development Tools'
 RUN yum -y install tar expect rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git bzr mercurial epel-release
 
 RUN wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
