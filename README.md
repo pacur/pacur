@@ -4,8 +4,8 @@
 
 [![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/archlinux/)
 
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux1-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux1/)
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux2-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux2/)
+[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-1/)
+[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2/)
 
 [![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
