@@ -4,6 +4,7 @@ docker rmi pacur/archlinux
 docker rmi pacur/amazonlinux-2016.09
 docker rmi pacur/amazonlinux-2017.03
 docker rmi pacur/amazonlinux-2017.09
+docker rmi pacur/amazonlinux-2017.12
 docker rmi pacur/centos-6
 docker rmi pacur/centos-7
 docker rmi pacur/debian-jessie
@@ -29,6 +30,7 @@ docker rmi pacur/ubuntu-bionic
 docker rmi amazonlinux:2016.09
 docker rmi amazonlinux:2017.03
 docker rmi amazonlinux:2017.09
+docker rmi amazonlinux:2017.12
 docker rmi centos:6
 docker rmi centos:7
 docker rmi debian:jessie
