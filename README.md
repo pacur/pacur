@@ -4,10 +4,8 @@
 
 [![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/archlinux/)
 
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2016.09-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2016.09/)
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2017.03-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2017.03/)
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2017.09-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2017.09/)
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2017.09-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2017.12/)
+[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux1-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux1/)
+[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux2-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux2/)
 
 [![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
@@ -109,10 +107,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian` | All debian releases |
 | `fedora` | All fedora releases |
 | `ubuntu` | All ubuntu releases |
-| `amazonlinux-2016.09` | Amazonlinux 2016.09 |
-| `amazonlinux-2017.03` | Amazonlinux 2017.03 |
-| `amazonlinux-2017.09` | Amazonlinux 2017.09 |
-| `amazonlinux-2017.12` | Amazonlinux 2017.12 |
+| `amazonlinux-1` | Amazonlinux 1 |
+| `amazonlinux-2` | Amazonlinux 2 |
 | `centos-6` | Centos 6 |
 | `centos-7` | Centos 7 |
 | `debian-wheezy` | Debian wheezy |
@@ -143,10 +139,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian` | All debian releases |
 | `fedora` | All fedora releases |
 | `ubuntu` | All ubuntu releases |
-| `amazonlinux-2016.09` | Amazonlinux 2016.09 |
-| `amazonlinux-2017.03` | Amazonlinux 2017.03 |
-| `amazonlinux-2017.09` | Amazonlinux 2017.09 |
-| `amazonlinux-2017.12` | Amazonlinux 2017.12 |
+| `amazonlinux-1` | Amazonlinux 1 |
+| `amazonlinux-2` | Amazonlinux 2 |
 | `centos-6` | Centos 6 |
 | `centos-7` | Centos 7 |
 | `debian-wheezy` | Debian wheezy |
