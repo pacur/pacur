@@ -1,4 +1,4 @@
-FROM amazonlinux:2017.12
+FROM amazonlinux:2
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN rpm -Uvh https://mirror.sfo12.us.leaseweb.net/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm

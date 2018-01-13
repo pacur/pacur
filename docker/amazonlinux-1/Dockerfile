@@ -1,4 +1,4 @@
-FROM amazonlinux:2017.09
+FROM amazonlinux:1
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y upgrade
