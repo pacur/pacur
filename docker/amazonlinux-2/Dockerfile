@@ -1,4 +1,4 @@
-FROM amazonlinux:2016.09
+FROM amazonlinux:2017.12
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y upgrade
@@ -15,4 +15,4 @@ ENV PATH /usr/local/go/bin:$PATH:/go/bin
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "amazonlinux-2016.09"]
+CMD ["build", "amazonlinux-2"]

@@ -5,6 +5,8 @@ docker rmi pacur/amazonlinux-2016.09
 docker rmi pacur/amazonlinux-2017.03
 docker rmi pacur/amazonlinux-2017.09
 docker rmi pacur/amazonlinux-2017.12
+docker rmi pacur/amazonlinux-1
+docker rmi pacur/amazonlinux-2
 docker rmi pacur/centos-6
 docker rmi pacur/centos-7
 docker rmi pacur/debian-jessie
