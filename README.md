@@ -16,6 +16,9 @@
 [![Docker Repository](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-stretch/)
 
 
+[![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/oraclelinux-7/)
+
+
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--24-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-24/)
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--25-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-25/)
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--26-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-26/)
@@ -106,6 +109,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos` | All centos releases |
 | `debian` | All debian releases |
 | `fedora` | All fedora releases |
+| `oraclelinux` | All oraclelinux releases |
 | `ubuntu` | All ubuntu releases |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
@@ -118,6 +122,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-25` | Fedora 25 |
 | `fedora-26` | Fedora 26 |
 | `fedora-27` | Fedora 27 |
+| `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-precise` | Ubuntu precise |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
@@ -138,6 +143,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos` | All centos releases |
 | `debian` | All debian releases |
 | `fedora` | All fedora releases |
+| `oraclelinux` | All oraclelinux releases |
 | `ubuntu` | All ubuntu releases |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
@@ -150,6 +156,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-25` | Fedora 25 |
 | `fedora-26` | Fedora 26 |
 | `fedora-27` | Fedora 27 |
+| `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-precise` | Ubuntu precise |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |

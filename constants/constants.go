@@ -18,10 +18,12 @@ var (
 		"fedora-25",
 		"fedora-26",
 		"fedora-27",
+		"centos-6",
 		"centos-7",
 		"debian-wheezy",
 		"debian-jessie",
 		"debian-stretch",
+		"oraclelinux-7",
 		"ubuntu-precise",
 		"ubuntu-trusty",
 		"ubuntu-xenial",
@@ -43,6 +45,7 @@ var (
 		"debian-wheezy":  ".wheezy_",
 		"debian-jessie":  ".jessie_",
 		"debian-stretch": ".stretch_",
+		"oraclelinux-7":  ".el7.oraclelinux.",
 		"ubuntu-precise": ".precise_",
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
@@ -57,6 +60,7 @@ var (
 		"fedora":      "redhat",
 		"centos":      "redhat",
 		"debian":      "debian",
+		"oraclelinux": "redhat",
 		"ubuntu":      "debian",
 	}
 	Packagers = [...]string{
