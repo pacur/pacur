@@ -1,10 +1,7 @@
 targets=(
-    "!centos-6"
-    "!fedora-21"
     "archlinux"
     "centos"
     "debian"
-    "fedora"
     "ubuntu"
 )
 pkgname="httpserver"

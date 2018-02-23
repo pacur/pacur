@@ -7,11 +7,9 @@
 [![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-1/)
 [![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2/)
 
-[![Docker Repository](https://img.shields.io/badge/docker-centos--6-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-6/)
 [![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-debian--wheezy-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-wheezy/)
 [![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
 [![Docker Repository](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-stretch/)
 
@@ -25,11 +23,8 @@
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--27-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-27/)
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--precise-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-precise/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-xenial/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--yakkety-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-yakkety/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--zesty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-zesty/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--artful-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-artful/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-bionic/)
 
@@ -113,9 +108,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu` | All ubuntu releases |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
-| `centos-6` | Centos 6 |
 | `centos-7` | Centos 7 |
-| `debian-wheezy` | Debian wheezy |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `fedora-24` | Fedora 24 |
@@ -123,11 +116,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-26` | Fedora 26 |
 | `fedora-27` | Fedora 27 |
 | `oraclelinux-7` | Oraclelinux 7 |
-| `ubuntu-precise` | Ubuntu precise |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-yakkety` | Ubuntu yakkety |
-| `ubuntu-zesty` | Ubuntu zesty |
 | `ubuntu-artful` | Ubuntu artful |
 | `ubuntu-bionic` | Ubuntu bionic |
 
@@ -147,9 +137,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu` | All ubuntu releases |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
-| `centos-6` | Centos 6 |
 | `centos-7` | Centos 7 |
-| `debian-wheezy` | Debian wheezy |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `fedora-24` | Fedora 24 |
@@ -157,11 +145,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-26` | Fedora 26 |
 | `fedora-27` | Fedora 27 |
 | `oraclelinux-7` | Oraclelinux 7 |
-| `ubuntu-precise` | Ubuntu precise |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-yakkety` | Ubuntu yakkety |
-| `ubuntu-zesty` | Ubuntu zesty |
 | `ubuntu-artful` | Ubuntu artful |
 | `ubuntu-bionic` | Ubuntu bionic |
 
@@ -188,11 +173,9 @@ $ docker run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
 
 ```
 targets=(
-    "!centos-6"
     "archlinux"
     "centos"
     "debian"
-    "fedora"
     "ubuntu"
 )
 pkgname="httpserver"

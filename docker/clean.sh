@@ -34,6 +34,8 @@ docker rmi amazonlinux:2016.09
 docker rmi amazonlinux:2017.03
 docker rmi amazonlinux:2017.09
 docker rmi amazonlinux:2017.12
+docker rmi amazonlinux:1
+docker rmi amazonlinux:2
 docker rmi centos:6
 docker rmi centos:7
 docker rmi debian:jessie
@@ -45,6 +47,7 @@ docker rmi fedora:23
 docker rmi fedora:24
 docker rmi fedora:25
 docker rmi fedora:26
+docker rmi fedora:27
 docker rmi oraclelinux:7
 docker rmi ubuntu:precise
 docker rmi ubuntu:trusty
@@ -54,5 +57,6 @@ docker rmi ubuntu:xenial
 docker rmi ubuntu:yakkety
 docker rmi ubuntu:zesty
 docker rmi ubuntu:artful
+docker rmi ubuntu:bionic
 
 docker rmi $(docker images -q -f dangling=true)
