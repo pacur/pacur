@@ -1,8 +1,12 @@
 package pacman
 
 func convertPacman(arch string) string {
-	if arch == "all" {
+	switch arch {
+	case "all":
 		return "any"
+	case "amd64":
+		return "x86_64"
+	default:
+		return arch
 	}
-	return arch
 }
