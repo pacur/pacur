@@ -199,6 +199,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 
 	if len(r.Pack.PreRm) > 0 {
 		data += "%preun\n"
+		data += "if [[ \"$1\" -ne 0 ]]; then exit 0; fi\n"
 		for _, line := range r.Pack.PreRm {
 			data += line + "\n"
 		}
@@ -207,6 +208,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 
 	if len(r.Pack.PostRm) > 0 {
 		data += "%postun\n"
+		data += "if [[ \"$1\" -ne 0 ]]; then exit 0; fi\n"
 		for _, line := range r.Pack.PostRm {
 			data += line + "\n"
 		}
