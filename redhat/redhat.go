@@ -130,11 +130,22 @@ func (r *Redhat) getFiles() (files []string, err error) {
 func (r *Redhat) createSpec(files []string) (err error) {
 	path := filepath.Join(r.specsDir, r.Pack.PkgName+".spec")
 
+	release := "%{?dist}"
+	if r.Pack.Distro == "amazonlinux" && r.Pack.Release == "1" {
+		release = ".amzn1"
+	} else if r.Pack.Distro == "amazonlinux" && r.Pack.Release == "2" {
+		release = ".amzn2"
+	} else if r.Pack.Distro == "centos" && r.Pack.Release == "7" {
+		release = ".el7.centos"
+	} else if r.Pack.Distro == "oraclelinux" && r.Pack.Release == "7" {
+		release = ".el7.oraclelinux"
+	}
+
 	data := ""
 	data += fmt.Sprintf("Name: %s\n", r.Pack.PkgName)
 	data += fmt.Sprintf("Summary: %s\n", r.Pack.PkgDesc)
 	data += fmt.Sprintf("Version: %s\n", r.Pack.PkgVer)
-	data += fmt.Sprintf("Release: %s", r.Pack.PkgRel) + "%{?dist}\n"
+	data += fmt.Sprintf("Release: %s", r.Pack.PkgRel) + release + "\n"
 	data += fmt.Sprintf("Group: %s\n", ConvertSection(r.Pack.Section))
 	data += fmt.Sprintf("URL: %s\n", r.Pack.Url)
 	data += fmt.Sprintf("License: %s\n", r.Pack.License)

@@ -38,7 +38,7 @@ var (
 		"centos-7":       ".el7.centos.",
 		"debian-jessie":  ".jessie_",
 		"debian-stretch": ".stretch_",
-		"oraclelinux-7":  ".el7.x",
+		"oraclelinux-7":  ".el7.oraclelinux.",
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-artful":  ".artful_",
