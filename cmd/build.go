@@ -36,10 +36,10 @@ func Build() (err error) {
 		return
 	}
 
-	builder := builder.Builder{
+	buildr := builder.Builder{
 		Pack: pac,
 	}
-	err = builder.Build()
+	err = buildr.Build()
 	if err != nil {
 		return
 	}
