@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:28
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y upgrade
@@ -15,4 +15,4 @@ ENV PATH /usr/local/go/bin:$PATH:/go/bin
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "fedora-25"]
+CMD ["build", "fedora-28"]
