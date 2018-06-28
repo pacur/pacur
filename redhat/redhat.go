@@ -104,7 +104,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 	}
 
 	for _, path := range strings.Split(output, "\n") {
-		if len(path) < 1 {
+		if len(path) < 1 || strings.Contains(path, ".build-id") {
 			continue
 		}
 
@@ -237,7 +237,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 
 func (r *Redhat) rpmBuild() (err error) {
 	err = utils.Exec(r.specsDir, "rpmbuild", "--define",
-		"_topdir "+r.redhatDir, "-bb", r.Pack.PkgName+".spec")
+		"_topdir "+r.redhatDir, "-ba", r.Pack.PkgName+".spec")
 	if err != nil {
 		return
 	}
