@@ -43,6 +43,19 @@ Debian and Ubuntu to distribute the packages. A
 [tutorial](https://medium.com/@zachhuff386/pacur-tutorial-9848b774c84a)
 on creating a project is aviaible on medium.
 
+### initialize
+
+It is recommended to build the docker images locally instead of pulling each
+image from the Docker Hub. A script is located in the docker directory to
+assist with this. Always run the `clean.sh` script to clear any existing pacur
+images. Building the images can take several hours.
+
+```
+cd docker
+sh clean.sh
+sh build.sh
+```
+
 ### format
 
 ```
