@@ -178,7 +178,7 @@ func (p *Pacman) createMake() (err error) {
 	}
 
 	data += "package() {\n"
-	data += fmt.Sprintf("    rsync -a -A -X %s/ ${pkgdir}/\n",
+	data += fmt.Sprintf("    rsync -a -A %s/ ${pkgdir}/\n",
 		p.Pack.PackageDir)
 	data += "}\n"
 
