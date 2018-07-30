@@ -7,7 +7,7 @@ import (
 )
 
 func Rsync(source, dest string) (err error) {
-	cmd := exec.Command("rsync", "-a", "-A", "-X",
+	cmd := exec.Command("rsync", "-a", "-A",
 		source+string(os.PathSeparator),
 		dest+string(os.PathSeparator))
 	cmd.Stdout = os.Stdout
@@ -26,7 +26,7 @@ func Rsync(source, dest string) (err error) {
 }
 
 func RsyncExt(source, dest, ext string) (err error) {
-	cmd := exec.Command("rsync", "-a", "-A", "-X",
+	cmd := exec.Command("rsync", "-a", "-A",
 		"--include", "*"+ext, "--exclude", "*",
 		source+string(os.PathSeparator),
 		dest+string(os.PathSeparator))
@@ -46,7 +46,7 @@ func RsyncExt(source, dest, ext string) (err error) {
 }
 
 func RsyncMatch(source, dest, match string) (err error) {
-	cmd := exec.Command("rsync", "-a", "-A", "-X",
+	cmd := exec.Command("rsync", "-a", "-A",
 		"--include", "*"+match+"*", "--exclude", "*",
 		source+string(os.PathSeparator),
 		dest+string(os.PathSeparator))
