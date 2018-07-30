@@ -9,5 +9,7 @@ ENV PATH $PATH:/go/bin
 
 RUN go get github.com/pacur/pacur
 
+RUN sed -i 's|bsdtar -xf "$dbfile" -C "$tmpdir/$repo"|tar -xf "$dbfile" -C "$tmpdir/$repo"|g' /usr/bin/repo-add
+
 ENTRYPOINT ["pacur"]
 CMD ["build", "archlinux"]
