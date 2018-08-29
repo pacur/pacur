@@ -174,6 +174,11 @@ func (p *Project) Build(filter string) (err error) {
 		err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
 			path+":/pacur:Z", constants.DockerOrg+target)
 		if err != nil {
+			fmt.Println(
+				"******************************************************")
+			fmt.Printf("Error: %s - %s\n", filter, target)
+			fmt.Println(
+				"******************************************************")
 			return
 		}
 
