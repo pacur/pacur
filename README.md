@@ -23,7 +23,6 @@
 
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-xenial/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--artful-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-artful/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-bionic/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--cosmic-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-cosmic/)
 
@@ -128,7 +127,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-artful` | Ubuntu artful |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-cosmic` | Ubuntu cosmic |
 
@@ -156,7 +154,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-artful` | Ubuntu artful |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-cosmic` | Ubuntu cosmic |
 

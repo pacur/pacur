@@ -22,7 +22,6 @@ var (
 		"oraclelinux-7",
 		"ubuntu-trusty",
 		"ubuntu-xenial",
-		"ubuntu-artful",
 		"ubuntu-bionic",
 		"ubuntu-cosmic",
 	}
@@ -38,7 +37,6 @@ var (
 		"oraclelinux-7":  ".el7.oraclelinux.",
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
-		"ubuntu-artful":  ".artful_",
 		"ubuntu-bionic":  ".bionic_",
 		"ubuntu-cosmic":  ".cosmic_",
 	}
