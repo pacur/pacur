@@ -1,4 +1,4 @@
-FROM pritunl/archlinux
+FROM base/archlinux
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN pacman -S --noconfirm base-devel go git bzr mercurial wget rsync tar zip sudo
