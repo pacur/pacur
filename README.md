@@ -17,9 +17,8 @@
 [![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/oraclelinux-7/)
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-fedora--26-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-26/)
-[![Docker Repository](https://img.shields.io/badge/docker-fedora--27-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-27/)
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--28-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-28/)
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--29-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-29/)
 
 
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
@@ -51,7 +50,7 @@ assist with this. Always run the `clean.sh` script to clear any existing pacur
 images. Building the images can take several hours.
 
 ```
-cd docker
+cd ~/go/src/github.com/pacur/pacur/docker
 sh clean.sh
 sh build.sh
 ```
@@ -124,9 +123,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos-7` | Centos 7 |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
-| `fedora-26` | Fedora 26 |
-| `fedora-27` | Fedora 27 |
 | `fedora-28` | Fedora 28 |
+| `fedora-29` | Fedora 29 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
@@ -153,9 +151,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos-7` | Centos 7 |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
-| `fedora-26` | Fedora 26 |
-| `fedora-27` | Fedora 27 |
 | `fedora-28` | Fedora 28 |
+| `fedora-29` | Fedora 29 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
