@@ -59,7 +59,7 @@ func (m *Mirror) createDebian() (err error) {
 		return
 	}
 
-	data := "Codename: " + m.Release + "\n" +
+	data := "Origin: " + m.Name + "\nCodename: " + m.Release + "\n" +
 		"Components: main\nArchitectures: i386 amd64\n"
 
 	if m.Signing {
@@ -88,11 +88,11 @@ func (m *Mirror) createDebian() (err error) {
 		return
 	}
 
-	match, ok := constants.ReleasesMatch[m.Distro + "-" + m.Release]
+	match, ok := constants.ReleasesMatch[m.Distro+"-"+m.Release]
 	if !ok {
 		err = &BuildError{
 			errors.Newf("mirror: Failed to find match for '%s'",
-				m.Distro + "-" + m.Release),
+				m.Distro+"-"+m.Release),
 		}
 		return
 	}
@@ -121,11 +121,11 @@ func (m *Mirror) createRedhat() (err error) {
 		return
 	}
 
-	match, ok := constants.ReleasesMatch[m.Distro + "-" + m.Release]
+	match, ok := constants.ReleasesMatch[m.Distro+"-"+m.Release]
 	if !ok {
 		err = &BuildError{
 			errors.Newf("mirror: Failed to find match for '%s'",
-				m.Distro + "-" + m.Release),
+				m.Distro+"-"+m.Release),
 		}
 		return
 	}
