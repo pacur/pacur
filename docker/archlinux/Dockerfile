@@ -1,7 +1,7 @@
 FROM base/archlinux
 MAINTAINER Pacur <contact@pacur.org>
 
-RUN pacman -Syu
+RUN pacman -Syu --noconfirm
 RUN pacman -S --noconfirm base-devel go git bzr mercurial wget rsync tar zip sudo
 RUN ln -s -f /usr/bin/pinentry-curses /usr/bin/pinentry
 
