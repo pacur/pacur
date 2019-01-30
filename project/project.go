@@ -73,7 +73,7 @@ func (p *Project) InitProject() (err error) {
 	}
 
 	if !exists {
-		err = utils.CreateWrite(p.confPath, `{\n    "name": "pacur"\n}\n`)
+		err = utils.CreateWrite(p.confPath, "{\n    \"name\": \"pacur\"\n}\n")
 		if err != nil {
 			return
 		}
