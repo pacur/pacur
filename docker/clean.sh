@@ -9,6 +9,7 @@ docker rmi pacur/amazonlinux-1
 docker rmi pacur/amazonlinux-2
 docker rmi pacur/centos-6
 docker rmi pacur/centos-7
+docker rmi pacur/debian-buster
 docker rmi pacur/debian-jessie
 docker rmi pacur/debian-stretch
 docker rmi pacur/debian-wheezy
@@ -42,6 +43,7 @@ docker rmi amazonlinux:1
 docker rmi amazonlinux:2
 docker rmi centos:6
 docker rmi centos:7
+docker rmi debian:buster
 docker rmi debian:jessie
 docker rmi debian:stretch
 docker rmi debian:wheezy

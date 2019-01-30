@@ -120,6 +120,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |
+| `debian-buster` | Debian buster |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `fedora-28` | Fedora 28 |
@@ -147,6 +148,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |
+| `debian-buster` | Debian buster |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `fedora-28` | Fedora 28 |
