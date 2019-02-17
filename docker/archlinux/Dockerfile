@@ -1,4 +1,4 @@
-FROM base/archlinux
+FROM archlinux/base
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN pacman -Syu --noconfirm
