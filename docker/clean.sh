@@ -36,6 +36,7 @@ docker rmi pacur/ubuntu-bionic
 docker rmi pacur/ubuntu-cosmic
 docker rmi pacur/ubuntu-disco
 docker rmi base/archlinux
+docker rmi archlinux/base
 docker rmi amazonlinux:2016.09
 docker rmi amazonlinux:2017.03
 docker rmi amazonlinux:2017.09
