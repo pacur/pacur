@@ -26,6 +26,7 @@
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-xenial/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-bionic/)
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--cosmic-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-cosmic/)
+[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--cosmic-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-disco/)
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -131,6 +132,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-cosmic` | Ubuntu cosmic |
+| `ubuntu-disco` | Ubuntu disco |
 
 ### directives
 
@@ -159,6 +161,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-cosmic` | Ubuntu cosmic |
+| `ubuntu-disco` | Ubuntu disco |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user definied

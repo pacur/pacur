@@ -34,6 +34,7 @@ docker rmi pacur/ubuntu-zesty
 docker rmi pacur/ubuntu-artful
 docker rmi pacur/ubuntu-bionic
 docker rmi pacur/ubuntu-cosmic
+docker rmi pacur/ubuntu-disco
 docker rmi base/archlinux
 docker rmi amazonlinux:2016.09
 docker rmi amazonlinux:2017.03
@@ -67,5 +68,6 @@ docker rmi ubuntu:zesty
 docker rmi ubuntu:artful
 docker rmi ubuntu:bionic
 docker rmi ubuntu:cosmic
+docker rmi ubuntu:disco
 
 docker rmi $(docker images -q -f dangling=true)
