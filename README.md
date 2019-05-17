@@ -18,8 +18,8 @@
 [![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/oraclelinux-7/)
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-fedora--28-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-28/)
 [![Docker Repository](https://img.shields.io/badge/docker-fedora--29-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-29/)
+[![Docker Repository](https://img.shields.io/badge/docker-fedora--30-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-30/)
 
 
 [![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
