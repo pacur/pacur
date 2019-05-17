@@ -2,30 +2,30 @@
 
 # pacur: simple packaging
 
-[![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/archlinux/)
+![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")
 
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-1/)
-[![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/amazonlinux-2/)
+![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Docker Repository")
 
-[![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/centos-7/)
-
-
-[![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-jessie/)
-[![Docker Repository](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-stretch/)
-[![Docker Repository](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/debian-buster/)
+![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/oraclelinux-7/)
+![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Docker Repository")
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-fedora--29-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-29/)
-[![Docker Repository](https://img.shields.io/badge/docker-fedora--30-294172.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/fedora-30/)
+![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Docker Repository")
 
 
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-trusty/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-xenial/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-bionic/)
-[![Docker Repository](https://img.shields.io/badge/docker-ubuntu--disco-dd4814.svg?style=flat "Docker Repository")](https://registry.hub.docker.com/u/pacur/ubuntu-disco/)
+![Docker Repository](https://img.shields.io/badge/docker-fedora--29-294172.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-fedora--30-294172.svg?style=flat "Docker Repository")
+
+
+![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-ubuntu--disco-dd4814.svg?style=flat "Docker Repository")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
