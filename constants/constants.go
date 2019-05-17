@@ -24,7 +24,6 @@ var (
 		"ubuntu-trusty",
 		"ubuntu-xenial",
 		"ubuntu-bionic",
-		"ubuntu-cosmic",
 		"ubuntu-disco",
 	}
 	ReleasesMatch = map[string]string{
@@ -41,7 +40,6 @@ var (
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-bionic":  ".bionic_",
-		"ubuntu-cosmic":  ".cosmic_",
 		"ubuntu-disco":  ".disco_",
 	}
 	DistroPack = map[string]string{
