@@ -22,6 +22,7 @@ docker rmi pacur/fedora-26
 docker rmi pacur/fedora-27
 docker rmi pacur/fedora-28
 docker rmi pacur/fedora-29
+docker rmi pacur/fedora-30
 docker rmi pacur/genkey
 docker rmi pacur/oraclelinux-7
 docker rmi pacur/ubuntu-precise
@@ -58,6 +59,7 @@ docker rmi fedora:26
 docker rmi fedora:27
 docker rmi fedora:28
 docker rmi fedora:29
+docker rmi fedora:30
 docker rmi oraclelinux:7
 docker rmi ubuntu:precise
 docker rmi ubuntu:trusty

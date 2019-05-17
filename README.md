@@ -125,8 +125,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
-| `fedora-28` | Fedora 28 |
 | `fedora-29` | Fedora 29 |
+| `fedora-30` | Fedora 30 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
@@ -154,8 +154,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
-| `fedora-28` | Fedora 28 |
 | `fedora-29` | Fedora 29 |
+| `fedora-30` | Fedora 30 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
