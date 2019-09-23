@@ -1,76 +1,76 @@
-docker rm $(docker ps -a -q)
+sudo docker rm $(sudo docker ps -a -q)
 
-docker rmi pacur/archlinux
-docker rmi pacur/amazonlinux-2016.09
-docker rmi pacur/amazonlinux-2017.03
-docker rmi pacur/amazonlinux-2017.09
-docker rmi pacur/amazonlinux-2017.12
-docker rmi pacur/amazonlinux-1
-docker rmi pacur/amazonlinux-2
-docker rmi pacur/centos-6
-docker rmi pacur/centos-7
-docker rmi pacur/debian-jessie
-docker rmi pacur/debian-stretch
-docker rmi pacur/debian-wheezy
-docker rmi pacur/debian-buster
-docker rmi pacur/fedora-21
-docker rmi pacur/fedora-22
-docker rmi pacur/fedora-23
-docker rmi pacur/fedora-24
-docker rmi pacur/fedora-25
-docker rmi pacur/fedora-26
-docker rmi pacur/fedora-27
-docker rmi pacur/fedora-28
-docker rmi pacur/fedora-29
-docker rmi pacur/fedora-30
-docker rmi pacur/genkey
-docker rmi pacur/oraclelinux-7
-docker rmi pacur/ubuntu-precise
-docker rmi pacur/ubuntu-trusty
-docker rmi pacur/ubuntu-vivid
-docker rmi pacur/ubuntu-wily
-docker rmi pacur/ubuntu-xenial
-docker rmi pacur/ubuntu-yakkety
-docker rmi pacur/ubuntu-zesty
-docker rmi pacur/ubuntu-artful
-docker rmi pacur/ubuntu-bionic
-docker rmi pacur/ubuntu-cosmic
-docker rmi pacur/ubuntu-disco
-docker rmi base/archlinux
-docker rmi archlinux/base
-docker rmi amazonlinux:2016.09
-docker rmi amazonlinux:2017.03
-docker rmi amazonlinux:2017.09
-docker rmi amazonlinux:2017.12
-docker rmi amazonlinux:1
-docker rmi amazonlinux:2
-docker rmi centos:6
-docker rmi centos:7
-docker rmi debian:jessie
-docker rmi debian:stretch
-docker rmi debian:wheezy
-docker rmi debian:buster
-docker rmi fedora:21
-docker rmi fedora:22
-docker rmi fedora:23
-docker rmi fedora:24
-docker rmi fedora:25
-docker rmi fedora:26
-docker rmi fedora:27
-docker rmi fedora:28
-docker rmi fedora:29
-docker rmi fedora:30
-docker rmi oraclelinux:7
-docker rmi ubuntu:precise
-docker rmi ubuntu:trusty
-docker rmi ubuntu:vivid
-docker rmi ubuntu:wily
-docker rmi ubuntu:xenial
-docker rmi ubuntu:yakkety
-docker rmi ubuntu:zesty
-docker rmi ubuntu:artful
-docker rmi ubuntu:bionic
-docker rmi ubuntu:cosmic
-docker rmi ubuntu:disco
+sudo docker rmi pacur/archlinux
+sudo docker rmi pacur/amazonlinux-2016.09
+sudo docker rmi pacur/amazonlinux-2017.03
+sudo docker rmi pacur/amazonlinux-2017.09
+sudo docker rmi pacur/amazonlinux-2017.12
+sudo docker rmi pacur/amazonlinux-1
+sudo docker rmi pacur/amazonlinux-2
+sudo docker rmi pacur/centos-6
+sudo docker rmi pacur/centos-7
+sudo docker rmi pacur/debian-jessie
+sudo docker rmi pacur/debian-stretch
+sudo docker rmi pacur/debian-wheezy
+sudo docker rmi pacur/debian-buster
+sudo docker rmi pacur/fedora-21
+sudo docker rmi pacur/fedora-22
+sudo docker rmi pacur/fedora-23
+sudo docker rmi pacur/fedora-24
+sudo docker rmi pacur/fedora-25
+sudo docker rmi pacur/fedora-26
+sudo docker rmi pacur/fedora-27
+sudo docker rmi pacur/fedora-28
+sudo docker rmi pacur/fedora-29
+sudo docker rmi pacur/fedora-30
+sudo docker rmi pacur/genkey
+sudo docker rmi pacur/oraclelinux-7
+sudo docker rmi pacur/ubuntu-precise
+sudo docker rmi pacur/ubuntu-trusty
+sudo docker rmi pacur/ubuntu-vivid
+sudo docker rmi pacur/ubuntu-wily
+sudo docker rmi pacur/ubuntu-xenial
+sudo docker rmi pacur/ubuntu-yakkety
+sudo docker rmi pacur/ubuntu-zesty
+sudo docker rmi pacur/ubuntu-artful
+sudo docker rmi pacur/ubuntu-bionic
+sudo docker rmi pacur/ubuntu-cosmic
+sudo docker rmi pacur/ubuntu-disco
+sudo docker rmi base/archlinux
+sudo docker rmi archlinux/base
+sudo docker rmi amazonlinux:2016.09
+sudo docker rmi amazonlinux:2017.03
+sudo docker rmi amazonlinux:2017.09
+sudo docker rmi amazonlinux:2017.12
+sudo docker rmi amazonlinux:1
+sudo docker rmi amazonlinux:2
+sudo docker rmi centos:6
+sudo docker rmi centos:7
+sudo docker rmi debian:jessie
+sudo docker rmi debian:stretch
+sudo docker rmi debian:wheezy
+sudo docker rmi debian:buster
+sudo docker rmi fedora:21
+sudo docker rmi fedora:22
+sudo docker rmi fedora:23
+sudo docker rmi fedora:24
+sudo docker rmi fedora:25
+sudo docker rmi fedora:26
+sudo docker rmi fedora:27
+sudo docker rmi fedora:28
+sudo docker rmi fedora:29
+sudo docker rmi fedora:30
+sudo docker rmi oraclelinux:7
+sudo docker rmi ubuntu:precise
+sudo docker rmi ubuntu:trusty
+sudo docker rmi ubuntu:vivid
+sudo docker rmi ubuntu:wily
+sudo docker rmi ubuntu:xenial
+sudo docker rmi ubuntu:yakkety
+sudo docker rmi ubuntu:zesty
+sudo docker rmi ubuntu:artful
+sudo docker rmi ubuntu:bionic
+sudo docker rmi ubuntu:cosmic
+sudo docker rmi ubuntu:disco
 
-docker rmi $(docker images -q -f dangling=true)
+sudo docker rmi $(sudo docker images -q -f dangling=true)

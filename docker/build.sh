@@ -4,6 +4,6 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 for dir in */ ; do
     cd $dir
-    docker build --rm -t pacur/${dir::-1} .
+    sudo docker build --rm -t pacur/${dir::-1} .
     cd ..
 done
