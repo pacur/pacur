@@ -25,6 +25,7 @@ var (
 		"ubuntu-xenial",
 		"ubuntu-bionic",
 		"ubuntu-disco",
+		"ubuntu-eoan",
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":      "",
@@ -41,6 +42,7 @@ var (
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-bionic":  ".bionic_",
 		"ubuntu-disco":  ".disco_",
+		"ubuntu-eoan":  ".eoan_",
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",
