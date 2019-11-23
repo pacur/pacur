@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"github.com/dropbox/godropbox/errors"
 	"os"
 	"os/exec"
 )
@@ -15,10 +14,6 @@ func Rsync(source, dest string) (err error) {
 
 	err = cmd.Run()
 	if err != nil {
-		err = &CopyError{
-			errors.Wrapf(err, "utils: Failed to rsync '%s' to '%s'", source,
-				dest),
-		}
 		return
 	}
 
@@ -35,10 +30,6 @@ func RsyncExt(source, dest, ext string) (err error) {
 
 	err = cmd.Run()
 	if err != nil {
-		err = &CopyError{
-			errors.Wrapf(err, "utils: Failed to rsync '%s' to '%s'", source,
-				dest),
-		}
 		return
 	}
 
@@ -55,10 +46,6 @@ func RsyncMatch(source, dest, match string) (err error) {
 
 	err = cmd.Run()
 	if err != nil {
-		err = &CopyError{
-			errors.Wrapf(err, "utils: Failed to rsync '%s' to '%s'", source,
-				dest),
-		}
 		return
 	}
 

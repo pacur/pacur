@@ -3,14 +3,14 @@ package project
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
+	"path/filepath"
+	"strings"
+
 	"github.com/m0rf30/pacur/constants"
 	"github.com/m0rf30/pacur/debian"
 	"github.com/m0rf30/pacur/pacman"
 	"github.com/m0rf30/pacur/redhat"
 	"github.com/m0rf30/pacur/utils"
-	"path/filepath"
-	"strings"
 )
 
 type DistroProject interface {
@@ -51,10 +51,6 @@ func (p *Project) Init() (err error) {
 
 		err = json.Unmarshal(dataByt, &data)
 		if err != nil {
-			err = &ParseError{
-				errors.Wrapf(err,
-					"project: Failed to parse project conf '%s'", p.confPath),
-			}
 			return
 		}
 
@@ -119,9 +115,6 @@ func (p *Project) getProject(target, path string) (
 			Release:    release,
 		}
 	default:
-		err = &UnknownType{
-			errors.Newf("project: Unknown repo type '%s'", target),
-		}
 	}
 
 	return

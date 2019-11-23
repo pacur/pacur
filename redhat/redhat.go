@@ -2,15 +2,15 @@ package redhat
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/container/set"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/m0rf30/pacur/constants"
-	"github.com/m0rf30/pacur/pack"
-	"github.com/m0rf30/pacur/utils"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/dropbox/godropbox/container/set"
+	"github.com/m0rf30/pacur/constants"
+	"github.com/m0rf30/pacur/pack"
+	"github.com/m0rf30/pacur/utils"
 )
 
 type Redhat struct {
@@ -27,35 +27,20 @@ type Redhat struct {
 func (r *Redhat) getRpmPath() (path string, err error) {
 	archs, err := ioutil.ReadDir(r.rpmsDir)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to find rpms arch from '%s'",
-				r.rpmsDir),
-		}
 		return
 	}
 
 	if len(archs) < 1 {
-		err = &BuildError{
-			errors.Newf("redhat: Failed to find rpm arch from '%s'",
-				r.rpmsDir),
-		}
 		return
 	}
 	archPath := filepath.Join(r.rpmsDir, archs[0].Name())
 
 	rpms, err := ioutil.ReadDir(archPath)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to find rpms from '%s'",
-				r.rpmsDir),
-		}
 		return
 	}
 
 	if len(rpms) < 1 {
-		err = &BuildError{
-			errors.Newf("redhat: Failed to find rpm from '%s'"),
-		}
 		return
 	}
 	path = filepath.Join(archPath, rpms[0].Name())
@@ -289,10 +274,6 @@ func (r *Redhat) clean() (err error) {
 
 	match, ok := constants.ReleasesMatch[r.Pack.FullRelease]
 	if !ok {
-		err = &BuildError{
-			errors.Newf("redhat: Failed to find match for '%s'",
-				r.Pack.FullRelease),
-		}
 		return
 	}
 
@@ -308,10 +289,6 @@ func (r *Redhat) clean() (err error) {
 func (r *Redhat) copy() (err error) {
 	archs, err := ioutil.ReadDir(r.rpmsDir)
 	if err != nil {
-		err = &BuildError{
-			errors.Wrapf(err, "redhat: Failed to find rpms from '%s'",
-				r.rpmsDir),
-		}
 		return
 	}
 
@@ -353,10 +330,6 @@ func (r *Redhat) Build() (err error) {
 	}
 
 	if len(files) == 0 {
-		err = &BuildError{
-			errors.Newf("redhat: Failed to find rpms files '%s'",
-				r.rpmsDir),
-		}
 		return
 	}
 

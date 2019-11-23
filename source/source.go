@@ -6,14 +6,14 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/m0rf30/pacur/utils"
 	"hash"
 	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
+
+	"github.com/m0rf30/pacur/utils"
 )
 
 const (
@@ -87,10 +87,6 @@ func (s *Source) extract() (err error) {
 
 	err = cmd.Run()
 	if err != nil {
-		err = &GetError{
-			errors.Wrapf(err, "builder: Failed to extract source '%s'",
-				s.Source),
-		}
 		return
 	}
 
@@ -104,9 +100,6 @@ func (s *Source) validate() (err error) {
 
 	file, err := os.Open(s.Path)
 	if err != nil {
-		err = &HashError{
-			errors.Wrap(err, "source: Failed to open file for hash"),
-		}
 		return
 	}
 	defer file.Close()
@@ -122,9 +115,6 @@ func (s *Source) validate() (err error) {
 	case 128:
 		hash = sha512.New()
 	default:
-		err = &HashError{
-			errors.Newf("source: Unknown hash type for hash '%s'", s.Hash),
-		}
 		return
 	}
 
@@ -138,9 +128,6 @@ func (s *Source) validate() (err error) {
 	hexSum := fmt.Sprintf("%x", sum)
 
 	if hexSum != s.Hash {
-		err = &HashError{
-			errors.Newf("source: Hash verification failed for '%s'", s.Source),
-		}
 		return
 	}
 

@@ -2,10 +2,10 @@ package signing
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/m0rf30/pacur/utils"
 	"os/user"
 	"path/filepath"
+
+	"github.com/m0rf30/pacur/utils"
 )
 
 func CreateRedhatConf() (err error) {
@@ -18,9 +18,6 @@ func CreateRedhatConf() (err error) {
 
 	usr, err := user.Current()
 	if err != nil {
-		err = &LookupError{
-			errors.Wrap(err, "signing: Failed to get current user"),
-		}
 		return
 	}
 

@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"flag"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/m0rf30/pacur/signing"
 	"strings"
+
+	"github.com/m0rf30/pacur/signing"
 )
 
 func GenKey() (err error) {
@@ -15,9 +15,6 @@ func GenKey() (err error) {
 	email := args[n-1]
 
 	if name == "" || email == "" {
-		err = &InvalidCommand{
-			errors.New("cmd: Missing name and email"),
-		}
 		return
 	}
 

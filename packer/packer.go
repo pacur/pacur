@@ -1,7 +1,6 @@
 package packer
 
 import (
-	"github.com/dropbox/godropbox/errors"
 	"github.com/m0rf30/pacur/constants"
 	"github.com/m0rf30/pacur/debian"
 	"github.com/m0rf30/pacur/pack"
@@ -34,10 +33,6 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 		system := distro
 		if release != "" {
 			system += "-" + release
-		}
-
-		err = &UnknownSystem{
-			errors.Newf("packer: Unkown system %s", system),
 		}
 		return
 	}

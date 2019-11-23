@@ -1,9 +1,9 @@
 package signing
 
 import (
-	"github.com/dropbox/godropbox/errors"
-	"github.com/m0rf30/pacur/utils"
 	"strings"
+
+	"github.com/m0rf30/pacur/utils"
 )
 
 func GetName() (name string, err error) {
@@ -32,9 +32,6 @@ func GetName() (name string, err error) {
 		return
 	}
 
-	err = &LookupError{
-		errors.New("signing: Failed to find gpg name"),
-	}
 	return
 }
 
@@ -75,9 +72,7 @@ func GetId() (id string, err error) {
 	}
 
 	if id == "" {
-		err = &LookupError{
-			errors.New("signing: Failed to find gpg id"),
-		}
+		return
 	}
 	return
 }
