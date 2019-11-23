@@ -23,7 +23,7 @@ func Parse() (err error) {
 		{
 			Name:    "build",
 			Aliases: []string{"b"},
-			Usage:   "Build a project",
+			Usage:   "Build a package for a target",
 			Action: func(c *cli.Context) error {
 				err = Build()
 				return err
@@ -32,7 +32,7 @@ func Parse() (err error) {
 		{
 			Name:    "create",
 			Aliases: []string{"c"},
-			Usage:   "Create a project",
+			Usage:   "Create repo assets for a target",
 			Action: func(c *cli.Context) error {
 				err = Create()
 				return err
