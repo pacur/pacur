@@ -3,8 +3,8 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 for dir in */ ; do
     cd $dir
-    sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur # `date`|g" Dockerfile
+    sed -i -e "s|go get github.com/m0rf30/pacur.*|go get github.com/m0rf30/pacur # `date`|g" Dockerfile
     sudo docker build --rm -t pacur/${dir::-1} .
-    sed -i -e "s|go get github.com/pacur/pacur.*|go get github.com/pacur/pacur|g" Dockerfile
+    sed -i -e "s|go get github.com/m0rf30/pacur.*|go get github.com/m0rf30/pacur|g" Dockerfile
     cd ..
 done

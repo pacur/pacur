@@ -1,4 +1,4 @@
-[![pacur](https://raw.githubusercontent.com/pacur/pacur-artwork/master/pacur.png)](http://pacur.org)
+[![pacur](https://raw.githubusercontent.com/m0rf30/pacur-artwork/master/pacur.png)](http://pacur.org)
 
 # pacur: simple packaging
 
@@ -51,7 +51,7 @@ assist with this. Always run the `clean.sh` script to clear any existing pacur
 images. Building the images can take several hours.
 
 ```
-cd ~/go/src/github.com/pacur/pacur/docker
+cd ~/go/src/github.com/m0rf30/pacur/docker
 sh clean.sh
 sh build.sh
 ```
@@ -240,7 +240,7 @@ available in the example directory. The `pull` command should be run before
 all builds to update the docker images used for builds.
 
 ```
-$ go get github.com/pacur/pacur
+$ go get github.com/m0rf30/pacur
 $ cd example
 $ pacur pull
 $ pacur project init
