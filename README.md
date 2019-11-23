@@ -41,7 +41,7 @@ build packages 32 bit packages. Pacur will also create a `deb`, `rpm` and
 `pacman` signed repository that can be used on ArchLinux, CentOS, Fedora,
 Debian and Ubuntu to distribute the packages. A
 [tutorial](https://medium.com/@zachhuff386/pacur-tutorial-9848b774c84a)
-on creating a project is aviaible on medium.
+on creating a project is available on medium.
 
 ### initialize
 
@@ -70,7 +70,7 @@ key="example ${variable} string"
 key:ubuntu="this will apply only to ubuntu builds"
 ```
 
-### builtin variables
+### built-in variables
 
 | key | value |
 | --- | ----- |
@@ -165,9 +165,9 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-eoan` | Ubuntu eoan |
 
 Directives are used to specify variables that only apply to a limited set of
-build targets. All variables can use directives including user definied
+build targets. All variables can use directives including user defined
 variables. To use directives include the directive after a
-variable seperated by a colon such as
+variable separated by a colon such as
 `pkgdesc:ubuntu="This description will only apply to Ubuntu packages"`
 The directives above are sorted lowest to highest priority.
 
