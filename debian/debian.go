@@ -142,7 +142,7 @@ func (d *Debian) createScripts() (err error) {
 	scripts := map[string][]string{
 		"preinst":   d.Pack.PreInst,
 		"postinst":  d.Pack.PostInst,
-		"templates": d.Pack.Debconf,
+		"templates": d.Pack.Templates,
 		"prerm":     d.Pack.PreRm,
 		"postrm":    d.Pack.PostRm,
 	}

@@ -43,3 +43,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     cp ${pkgname}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
 }
+
+templates() {
+	echo "ciao"   
+}
