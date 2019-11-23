@@ -105,6 +105,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `package` | `func` | Function to package the source into the pkgdir, starts in srcdir |
 | `preinst` | `func` | Function to run before installing |
 | `postinst` | `func` | Function to run after installing |
+| `templates` | `func` | Function to run when debconf is used, only used for debian packages |
 | `prerm` | `func` | Function to run before removing |
 | `postrm` | `func` | Function to run after removing |
 
