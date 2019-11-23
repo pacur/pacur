@@ -2,10 +2,10 @@ package cmd
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"os"
 
+	"github.com/m0rf30/pacur/utils"
 	"github.com/urfave/cli"
 )
 
@@ -17,78 +17,60 @@ func Parse() (err error) {
 	app := cli.NewApp()
 	app.Name = "pacur"
 	app.Usage = "Automated deb, rpm and pkgbuild build system'"
-	app.Action = func(c *cli.Context) error {
-		fmt.Println("boom! I say!")
-		return nil
-	}
 
 	app.Commands = []*cli.Command{
 		{
 			Name:    "build",
 			Aliases: []string{"b"},
-			Usage:   "add a task to the list",
+			Usage:   "Build a project",
 			Action: func(c *cli.Context) error {
-				fmt.Println("added task: ", c.Args().First())
-				return nil
+				err = Build()
+				return err
 			},
 		},
 		{
 			Name:    "create",
 			Aliases: []string{"c"},
-			Usage:   "complete a task on the list",
+			Usage:   "Create a project",
 			Action: func(c *cli.Context) error {
-				fmt.Println("completed task: ", c.Args().First())
-				return nil
+				err = Create()
+				return err
 			},
 		},
 		{
 			Name:    "project",
 			Aliases: []string{"p"},
-			Usage:   "options for task templates",
-			Subcommands: []*cli.Command{
-				{
-					Name:  "add",
-					Usage: "add a new template",
-					Action: func(c *cli.Context) error {
-						fmt.Println("new task template: ", c.Args().First())
-						return nil
-					},
-				},
-				{
-					Name:  "remove",
-					Usage: "remove an existing template",
-					Action: func(c *cli.Context) error {
-						fmt.Println("removed task template: ", c.Args().First())
-						return nil
-					},
-				},
+			Usage:   "complete a task on the list",
+			Action: func(c *cli.Context) error {
+				err = Project()
+				return err
 			},
 		},
 		{
 			Name:    "docker",
 			Aliases: []string{"d"},
-			Usage:   "add a task to the list",
+			Usage:   "Pull the built images",
 			Action: func(c *cli.Context) error {
-				fmt.Println("added task: ", c.Args().First())
-				return nil
+				err = utils.PullContainers()
+				return err
 			},
 		},
 		{
 			Name:    "gen-key",
 			Aliases: []string{"g"},
-			Usage:   "add a task to the list",
+			Usage:   "Generate a pairs of key for repo",
 			Action: func(c *cli.Context) error {
-				fmt.Println("added task: ", c.Args().First())
-				return nil
+				err = GenKey()
+				return err
 			},
 		},
 		{
 			Name:    "list-targets",
 			Aliases: []string{"l"},
-			Usage:   "add a task to the list",
+			Usage:   "List a bunch of available build targets",
 			Action: func(c *cli.Context) error {
-				fmt.Println("added task: ", c.Args().First())
-				return nil
+				err = ListTargets()
+				return err
 			},
 		},
 	}

@@ -1,11 +1,11 @@
 package utils
 
 import (
-	"github.com/dropbox/godropbox/errors"
-	"github.com/m0rf30/pacur/constants"
 	"math/rand"
 	"os"
 	"os/exec"
+
+	"github.com/m0rf30/pacur/constants"
 )
 
 var (
@@ -20,9 +20,6 @@ func HttpGet(url, output string) (err error) {
 
 	err = cmd.Run()
 	if err != nil {
-		err = &HttpError{
-			errors.Wrapf(err, "utils: Failed to get '%s'", url),
-		}
 		return
 	}
 
