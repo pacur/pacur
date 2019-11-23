@@ -1,0 +1,18 @@
+FROM ubuntu:trusty
+MAINTAINER M0Rf30
+
+RUN apt-get --assume-yes update
+&& apt-get --assume-yes upgrade
+&& apt-get --assume-yes install build-essential reprepro rsync wget zip git bzr mercurial
+&& wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
+&& echo "692d17071736f74be04a72a06dab9cac1cd759377bd85316e52b2227604c004c go1.13.4.linux-amd64.tar.gz" | sha256sum -c -
+&& tar -C /usr/local -xf go1.13.4.linux-amd64.tar.gz
+&& rm -f go1.13.4.linux-amd64.tar.gz
+
+ENV GOPATH /go
+ENV PATH /usr/local/go/bin:$PATH:/go/bin
+
+RUN go get github.com/m0rf30/pacur
+
+ENTRYPOINT ["pacur"]
+CMD ["build", "ubuntu-trusty"]
