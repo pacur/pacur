@@ -14,8 +14,6 @@ import (
 func Parse() (err error) {
 	flag.Parse()
 
-	cmd := flag.Arg(0)
-
 	app := cli.NewApp()
 	app.Name = "pacur"
 	app.Usage = "make an explosive entrance"
@@ -24,7 +22,7 @@ func Parse() (err error) {
 		return nil
 	}
 
-	app.Commands = []cli.Command{
+	app.Commands = []*cli.Command{
 		{
 			Name:    "build",
 			Aliases: []string{"a"},
@@ -47,7 +45,7 @@ func Parse() (err error) {
 			Name:    "project",
 			Aliases: []string{"t"},
 			Usage:   "options for task templates",
-			Subcommands: []cli.Command{
+			Subcommands: []*cli.Command{
 				{
 					Name:  "add",
 					Usage: "add a new template",
@@ -95,8 +93,9 @@ func Parse() (err error) {
 		},
 	}
 
-	err := app.Run(os.Args)
+	err = app.Run(os.Args)
 	if err != nil {
 		log.Fatal(err)
 	}
+	return err
 }
