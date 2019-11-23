@@ -215,7 +215,7 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.PreInst = data.([]string)
 	case "postinst":
 		p.PostInst = data.([]string)
-	case "debconf":
+	case "templates":
 		p.Templates = data.([]string)
 	case "prerm":
 		p.PreRm = data.([]string)
