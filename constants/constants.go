@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	DockerOrg = "pacur/"
+	DockerOrg = "m0rf30/pacur-"
 )
 
 var (
@@ -41,8 +41,8 @@ var (
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-bionic":  ".bionic_",
-		"ubuntu-disco":  ".disco_",
-		"ubuntu-eoan":  ".eoan_",
+		"ubuntu-disco":   ".disco_",
+		"ubuntu-eoan":    ".eoan_",
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",
