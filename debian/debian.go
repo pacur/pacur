@@ -140,10 +140,11 @@ func (d *Debian) createMd5Sums() (err error) {
 
 func (d *Debian) createScripts() (err error) {
 	scripts := map[string][]string{
-		"preinst":  d.Pack.PreInst,
-		"postinst": d.Pack.PostInst,
-		"prerm":    d.Pack.PreRm,
-		"postrm":   d.Pack.PostRm,
+		"preinst":   d.Pack.PreInst,
+		"postinst":  d.Pack.PostInst,
+		"templates": d.Pack.Debconf,
+		"prerm":     d.Pack.PreRm,
+		"postrm":    d.Pack.PostRm,
 	}
 
 	for name, script := range scripts {

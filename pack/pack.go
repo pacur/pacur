@@ -40,6 +40,7 @@ type Pack struct {
 	Package     []string
 	PreInst     []string
 	PostInst    []string
+	Debconf     []string
 	PreRm       []string
 	PostRm      []string
 	Variables   map[string]string
@@ -130,6 +131,7 @@ func (p *Pack) Resolve() (err error) {
 	reslv.AddList("package", p.Package)
 	reslv.AddList("preinst", p.PreInst)
 	reslv.AddList("postinst", p.PostInst)
+	reslv.AddList("debconf", p.Debconf)
 	reslv.AddList("prerm", p.PreRm)
 	reslv.AddList("postrm", p.PostRm)
 
@@ -213,6 +215,8 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.PreInst = data.([]string)
 	case "postinst":
 		p.PostInst = data.([]string)
+	case "debconf":
+		p.Debconf = data.([]string)
 	case "prerm":
 		p.PreRm = data.([]string)
 	case "postrm":
