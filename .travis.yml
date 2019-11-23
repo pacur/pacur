@@ -3,7 +3,8 @@ language: bash
 services:
 - docker
 before_install:
-- bash cd docker && ./build.sh
+- cd docker
+- bash ./build.sh
 deploy:
   provider: script
   script: bash docker/push.sh
