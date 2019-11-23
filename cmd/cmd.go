@@ -41,10 +41,32 @@ func Parse() (err error) {
 		{
 			Name:    "project",
 			Aliases: []string{"p"},
-			Usage:   "complete a task on the list",
-			Action: func(c *cli.Context) error {
-				err = Project()
-				return err
+			Usage:   "Create and manage a project",
+			Subcommands: []*cli.Command{
+				{
+					Name:  "init",
+					Usage: "Initialize the repo and create pacur.json",
+					Action: func(c *cli.Context) error {
+						Project()
+						return nil
+					},
+				},
+				{
+					Name:  "build",
+					Usage: "Build a project",
+					Action: func(c *cli.Context) error {
+						Project()
+						return nil
+					},
+				},
+				{
+					Name:  "repo",
+					Usage: "Generate all the assets needed for repo hosting",
+					Action: func(c *cli.Context) error {
+						Project()
+						return nil
+					},
+				},
 			},
 		},
 		{
