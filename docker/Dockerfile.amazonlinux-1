@@ -1,14 +1,13 @@
 FROM amazonlinux:1
 MAINTAINER M0Rf30
 
-RUN yum -y install epel-release
-&& yum -y upgrade
-&& yum -y groupinstall 'Development Tools'
-&& yum -y install tar expect rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git bzr mercurial
-
-&& wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
-&& echo "692d17071736f74be04a72a06dab9cac1cd759377bd85316e52b2227604c004c go1.13.4.linux-amd64.tar.gz" | sha256sum -c -
-&& tar -C /usr/local -xf go1.13.4.linux-amd64.tar.gz
+RUN yum -y install epel-release \
+&& yum -y upgrade \
+&& yum -y groupinstall 'Development Tools' \
+&& yum -y install tar expect rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git bzr mercurial \
+&& wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz \
+&& echo "692d17071736f74be04a72a06dab9cac1cd759377bd85316e52b2227604c004c go1.13.4.linux-amd64.tar.gz" | sha256sum -c - \
+&& tar -C /usr/local -xf go1.13.4.linux-amd64.tar.gz \
 && rm -f go1.13.4.linux-amd64.tar.gz
 
 ENV GOPATH /go
