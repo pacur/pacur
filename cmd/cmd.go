@@ -16,7 +16,7 @@ func Parse() (err error) {
 
 	app := cli.NewApp()
 	app.Name = "pacur"
-	app.Usage = "make an explosive entrance"
+	app.Usage = "Automated deb, rpm and pkgbuild build system'"
 	app.Action = func(c *cli.Context) error {
 		fmt.Println("boom! I say!")
 		return nil
@@ -25,7 +25,7 @@ func Parse() (err error) {
 	app.Commands = []*cli.Command{
 		{
 			Name:    "build",
-			Aliases: []string{"a"},
+			Aliases: []string{"b"},
 			Usage:   "add a task to the list",
 			Action: func(c *cli.Context) error {
 				fmt.Println("added task: ", c.Args().First())
@@ -43,7 +43,7 @@ func Parse() (err error) {
 		},
 		{
 			Name:    "project",
-			Aliases: []string{"t"},
+			Aliases: []string{"p"},
 			Usage:   "options for task templates",
 			Subcommands: []*cli.Command{
 				{
@@ -65,8 +65,8 @@ func Parse() (err error) {
 			},
 		},
 		{
-			Name:    "pull",
-			Aliases: []string{"a"},
+			Name:    "docker",
+			Aliases: []string{"d"},
 			Usage:   "add a task to the list",
 			Action: func(c *cli.Context) error {
 				fmt.Println("added task: ", c.Args().First())
@@ -75,7 +75,7 @@ func Parse() (err error) {
 		},
 		{
 			Name:    "gen-key",
-			Aliases: []string{"a"},
+			Aliases: []string{"g"},
 			Usage:   "add a task to the list",
 			Action: func(c *cli.Context) error {
 				fmt.Println("added task: ", c.Args().First())
@@ -84,7 +84,7 @@ func Parse() (err error) {
 		},
 		{
 			Name:    "list-targets",
-			Aliases: []string{"a"},
+			Aliases: []string{"l"},
 			Usage:   "add a task to the list",
 			Action: func(c *cli.Context) error {
 				fmt.Println("added task: ", c.Args().First())
