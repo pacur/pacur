@@ -99,13 +99,14 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `provides` | `list` | List of packages provided |
 | `conflicts` | `list` | List of packages conflicts |
 | `sources` | `list` | List of packages sources. Sources can be url or paths that are relative to the PKGBUILD |
+| `debconf_config` | `string` | File used as debconf config, only used for debian packages |
+| `debconf_template` | `string` | File used as debconf template, only used for debian packages |
 | `hashsums` | `list` | List of `md5`/`sha1`/`sha256`/`sha512` hex hashes for sources, hash type is determined by the length of the hash. Use `skip` to ignore hash check |
 | `backup` | `list` | List of config files that shouldn't be overwritten on upgrades |
 | `build` | `func` | Function to build the source, starts in srcdir |
 | `package` | `func` | Function to package the source into the pkgdir, starts in srcdir |
 | `preinst` | `func` | Function to run before installing |
 | `postinst` | `func` | Function to run after installing |
-| `templates` | `func` | Function to run when debconf is used, only used for debian packages |
 | `prerm` | `func` | Function to run before removing |
 | `postrm` | `func` | Function to run after removing |
 
