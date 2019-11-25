@@ -138,13 +138,34 @@ func (d *Debian) createMd5Sums() (err error) {
 	return
 }
 
+func (d *Debian) createDebconfTemplate() (err error) {
+	path := filepath.Join(d.debDir, d.Pack.DebconfTemplate)
+
+	err = utils.CreateWrite(path, d.Pack.DebconfTemplate)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+func (d *Debian) createDebconfConfig() (err error) {
+	path := filepath.Join(d.debDir, d.Pack.DebconfConfig)
+
+	err = utils.CreateWrite(path, d.Pack.DebconfConfig)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
 func (d *Debian) createScripts() (err error) {
 	scripts := map[string][]string{
-		"preinst":   d.Pack.PreInst,
-		"postinst":  d.Pack.PostInst,
-		"templates": d.Pack.Templates,
-		"prerm":     d.Pack.PreRm,
-		"postrm":    d.Pack.PostRm,
+		"preinst":  d.Pack.PreInst,
+		"postinst": d.Pack.PostInst,
+		"prerm":    d.Pack.PreRm,
+		"postrm":   d.Pack.PostRm,
 	}
 
 	for name, script := range scripts {
@@ -259,6 +280,16 @@ func (d *Debian) Build() (err error) {
 	}
 
 	err = d.createScripts()
+	if err != nil {
+		return
+	}
+
+	err = d.createDebconfTemplate()
+	if err != nil {
+		return
+	}
+
+	err = d.createDebconfConfig()
 	if err != nil {
 		return
 	}

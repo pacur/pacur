@@ -8,42 +8,43 @@ import (
 )
 
 type Pack struct {
-	priorities  map[string]int
-	Targets     []string
-	Distro      string
-	Release     string
-	FullRelease string
-	Root        string
-	Home        string
-	SourceDir   string
-	PackageDir  string
-	PkgName     string
-	PkgVer      string
-	PkgRel      string
-	PkgDesc     string
-	PkgDescLong []string
-	Maintainer  string
-	Arch        string
-	License     []string
-	Section     string
-	Priority    string
-	Url         string
-	Depends     []string
-	OptDepends  []string
-	MakeDepends []string
-	Provides    []string
-	Conflicts   []string
-	Sources     []string
-	HashSums    []string
-	Backup      []string
-	Build       []string
-	Package     []string
-	PreInst     []string
-	PostInst    []string
-	Templates   []string
-	PreRm       []string
-	PostRm      []string
-	Variables   map[string]string
+	priorities      map[string]int
+	Targets         []string
+	Distro          string
+	Release         string
+	FullRelease     string
+	Root            string
+	Home            string
+	SourceDir       string
+	PackageDir      string
+	PkgName         string
+	PkgVer          string
+	PkgRel          string
+	PkgDesc         string
+	PkgDescLong     []string
+	Maintainer      string
+	Arch            string
+	License         []string
+	Section         string
+	Priority        string
+	Url             string
+	Depends         []string
+	OptDepends      []string
+	MakeDepends     []string
+	Provides        []string
+	Conflicts       []string
+	Sources         []string
+	DebconfTemplate string
+	DebconfConfig   string
+	HashSums        []string
+	Backup          []string
+	Build           []string
+	Package         []string
+	PreInst         []string
+	PostInst        []string
+	PreRm           []string
+	PostRm          []string
+	Variables       map[string]string
 }
 
 func (p *Pack) Init() {
@@ -125,13 +126,14 @@ func (p *Pack) Resolve() (err error) {
 	reslv.AddList("provides", p.Provides)
 	reslv.AddList("conflicts", p.Conflicts)
 	reslv.AddList("sources", p.Sources)
+	reslv.Add("debconf_template", &p.DebconfTemplate)
+	reslv.Add("debconf_config", &p.DebconfConfig)
 	reslv.AddList("hashsums", p.HashSums)
 	reslv.AddList("backup", p.Backup)
 	reslv.AddList("build", p.Build)
 	reslv.AddList("package", p.Package)
 	reslv.AddList("preinst", p.PreInst)
 	reslv.AddList("postinst", p.PostInst)
-	reslv.AddList("templates", p.Templates)
 	reslv.AddList("prerm", p.PreRm)
 	reslv.AddList("postrm", p.PostRm)
 
@@ -203,6 +205,10 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.Conflicts = data.([]string)
 	case "sources":
 		p.Sources = data.([]string)
+	case "debconf_template":
+		p.DebconfTemplate = data.(string)
+	case "debconf_config":
+		p.DebconfConfig = data.(string)
 	case "hashsums":
 		p.HashSums = data.([]string)
 	case "backup":
@@ -215,8 +221,6 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.PreInst = data.([]string)
 	case "postinst":
 		p.PostInst = data.([]string)
-	case "templates":
-		p.Templates = data.([]string)
 	case "prerm":
 		p.PreRm = data.([]string)
 	case "postrm":

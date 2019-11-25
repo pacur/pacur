@@ -2,11 +2,12 @@ package builder
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
+
 	"github.com/m0rf30/pacur/pack"
 	"github.com/m0rf30/pacur/source"
 	"github.com/m0rf30/pacur/utils"
-	"os"
-	"path/filepath"
 )
 
 type Builder struct {
