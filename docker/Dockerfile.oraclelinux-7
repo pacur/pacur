@@ -1,5 +1,5 @@
 FROM oraclelinux:7
-MAINTAINER M0Rf30
+MAINTAINER pacur
 
 RUN yum -y install yum-utils \
 && yum-config-manager --enable ol7_developer \
@@ -17,7 +17,7 @@ RUN yum -y install yum-utils \
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
 
-RUN go get github.com/m0rf30/pacur
+RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
 CMD ["build", "oraclelinux-7"]

@@ -3,7 +3,7 @@ package signing
 import (
 	"strings"
 
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/utils"
 )
 
 func GetName() (name string, err error) {

@@ -2,7 +2,7 @@ package signing
 
 import (
 	"fmt"
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/utils"
 	"path/filepath"
 )
 

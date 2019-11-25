@@ -1,5 +1,5 @@
 FROM archlinux/base
-MAINTAINER M0Rf30
+MAINTAINER pacur
 
 RUN pacman -Syu --noconfirm \
 && pacman -S --noconfirm base-devel go git bzr mercurial wget rsync tar zip sudo \
@@ -8,7 +8,7 @@ RUN pacman -Syu --noconfirm \
 ENV GOPATH /go
 ENV PATH $PATH:/go/bin
 
-RUN go get github.com/m0rf30/pacur \
+RUN go get github.com/pacur/pacur \
 && sed -i 's|bsdtar -xf "$dbfile" -C "$tmpdir/$repo"|tar -xf "$dbfile" -C "$tmpdir/$repo"|g' /usr/bin/repo-add
 
 ENTRYPOINT ["pacur"]

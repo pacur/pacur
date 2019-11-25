@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER M0Rf30
+MAINTAINER pacur
 
 RUN apt-get --assume-yes update \
 && apt-get --assume-yes upgrade \
@@ -12,7 +12,7 @@ RUN apt-get --assume-yes update \
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
 
-RUN go get github.com/m0rf30/pacur
+RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
 CMD ["build", "debian-jessie"]

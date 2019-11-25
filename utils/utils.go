@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/m0rf30/pacur/constants"
+	"github.com/pacur/pacur/constants"
 )
 
 var (

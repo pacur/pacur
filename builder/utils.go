@@ -1,7 +1,7 @@
 package builder
 
 import (
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/utils"
 )
 
 func createScript(path string, cmds []string) (err error) {

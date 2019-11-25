@@ -4,7 +4,7 @@ import (
 	"flag"
 	"strings"
 
-	"github.com/m0rf30/pacur/signing"
+	"github.com/pacur/pacur/signing"
 )
 
 func GenKey() (err error) {

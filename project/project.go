@@ -6,11 +6,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/m0rf30/pacur/constants"
-	"github.com/m0rf30/pacur/debian"
-	"github.com/m0rf30/pacur/pacman"
-	"github.com/m0rf30/pacur/redhat"
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/constants"
+	"github.com/pacur/pacur/debian"
+	"github.com/pacur/pacur/pacman"
+	"github.com/pacur/pacur/redhat"
+	"github.com/pacur/pacur/utils"
 )
 
 type DistroProject interface {

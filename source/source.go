@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/utils"
 )
 
 const (

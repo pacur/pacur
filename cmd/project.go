@@ -4,7 +4,7 @@ import (
 	"flag"
 	"os"
 
-	"github.com/m0rf30/pacur/project"
+	"github.com/pacur/pacur/project"
 )
 
 func Project() (err error) {

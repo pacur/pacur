@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"flag"
-	"github.com/m0rf30/pacur/builder"
-	"github.com/m0rf30/pacur/packer"
-	"github.com/m0rf30/pacur/parse"
+	"github.com/pacur/pacur/builder"
+	"github.com/pacur/pacur/packer"
+	"github.com/pacur/pacur/parse"
 	"strings"
 )
 

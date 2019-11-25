@@ -1,12 +1,13 @@
 package constants
 
 import (
-	"github.com/dropbox/godropbox/container/set"
 	"strings"
+
+	"github.com/dropbox/godropbox/container/set"
 )
 
 const (
-	DockerOrg = "m0rf30/pacur-"
+	DockerOrg = "pacur/"
 )
 
 var (

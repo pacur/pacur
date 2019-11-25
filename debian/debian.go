@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/m0rf30/pacur/constants"
-	"github.com/m0rf30/pacur/pack"
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/constants"
+	"github.com/pacur/pacur/pack"
+	"github.com/pacur/pacur/utils"
 )
 
 type Debian struct {

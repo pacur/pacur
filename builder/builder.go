@@ -5,9 +5,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/m0rf30/pacur/pack"
-	"github.com/m0rf30/pacur/source"
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/pack"
+	"github.com/pacur/pacur/source"
+	"github.com/pacur/pacur/utils"
 )
 
 type Builder struct {

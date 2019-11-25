@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/m0rf30/pacur/pack"
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/pack"
+	"github.com/pacur/pacur/utils"
 )
 
 const (

@@ -3,8 +3,8 @@ package pack
 import (
 	"strings"
 
-	"github.com/m0rf30/pacur/constants"
-	"github.com/m0rf30/pacur/resolver"
+	"github.com/pacur/pacur/constants"
+	"github.com/pacur/pacur/resolver"
 )
 
 type Pack struct {

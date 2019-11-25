@@ -1,8 +1,8 @@
 package redhat
 
 import (
-	"github.com/m0rf30/pacur/constants"
-	"github.com/m0rf30/pacur/utils"
+	"github.com/pacur/pacur/constants"
+	"github.com/pacur/pacur/utils"
 	"path/filepath"
 )
 
