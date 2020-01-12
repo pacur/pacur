@@ -142,6 +142,8 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		release = ".el8.centos"
 	} else if r.Pack.Distro == "oraclelinux" && r.Pack.Release == "7" {
 		release = ".el7.oraclelinux"
+	} else if r.Pack.Distro == "oraclelinux" && r.Pack.Release == "8" {
+		release = ".el8.oraclelinux"
 	}
 
 	data := ""

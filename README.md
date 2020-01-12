@@ -8,6 +8,7 @@
 ![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Docker Repository")
 
 ![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-centos--8-10233f.svg?style=flat "Docker Repository")
 
 
 ![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")
@@ -16,6 +17,7 @@
 
 
 ![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Docker Repository")
 
 
 ![Docker Repository](https://img.shields.io/badge/docker-fedora--29-294172.svg?style=flat "Docker Repository")
@@ -129,6 +131,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-29` | Fedora 29 |
 | `fedora-30` | Fedora 30 |
 | `oraclelinux-7` | Oraclelinux 7 |
+| `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
@@ -159,6 +162,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-29` | Fedora 29 |
 | `fedora-30` | Fedora 30 |
 | `oraclelinux-7` | Oraclelinux 7 |
+| `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |

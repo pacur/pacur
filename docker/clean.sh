@@ -26,6 +26,7 @@ sudo docker rmi pacur/fedora-29
 sudo docker rmi pacur/fedora-30
 sudo docker rmi pacur/genkey
 sudo docker rmi pacur/oraclelinux-7
+sudo docker rmi pacur/oraclelinux-8
 sudo docker rmi pacur/ubuntu-precise
 sudo docker rmi pacur/ubuntu-trusty
 sudo docker rmi pacur/ubuntu-vivid
@@ -64,6 +65,7 @@ sudo docker rmi fedora:28
 sudo docker rmi fedora:29
 sudo docker rmi fedora:30
 sudo docker rmi oraclelinux:7
+sudo docker rmi oraclelinux:8
 sudo docker rmi ubuntu:precise
 sudo docker rmi ubuntu:trusty
 sudo docker rmi ubuntu:vivid
