@@ -2,15 +2,16 @@ package redhat
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"strings"
+
 	"github.com/dropbox/godropbox/container/set"
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"strings"
 )
 
 type Redhat struct {
@@ -137,6 +138,8 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		release = ".amzn2"
 	} else if r.Pack.Distro == "centos" && r.Pack.Release == "7" {
 		release = ".el7.centos"
+	} else if r.Pack.Distro == "centos" && r.Pack.Release == "8" {
+		release = ".el8.centos"
 	} else if r.Pack.Distro == "oraclelinux" && r.Pack.Release == "7" {
 		release = ".el7.oraclelinux"
 	}

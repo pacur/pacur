@@ -122,6 +122,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |
+| `centos-8` | Centos 8 |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
@@ -151,6 +152,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |
+| `centos-8` | Centos 8 |
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |

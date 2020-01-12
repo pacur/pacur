@@ -9,6 +9,7 @@ sudo docker rmi pacur/amazonlinux-1
 sudo docker rmi pacur/amazonlinux-2
 sudo docker rmi pacur/centos-6
 sudo docker rmi pacur/centos-7
+sudo docker rmi pacur/centos-8
 sudo docker rmi pacur/debian-jessie
 sudo docker rmi pacur/debian-stretch
 sudo docker rmi pacur/debian-wheezy
@@ -47,6 +48,7 @@ sudo docker rmi amazonlinux:1
 sudo docker rmi amazonlinux:2
 sudo docker rmi centos:6
 sudo docker rmi centos:7
+sudo docker rmi centos:8
 sudo docker rmi debian:jessie
 sudo docker rmi debian:stretch
 sudo docker rmi debian:wheezy

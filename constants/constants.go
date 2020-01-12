@@ -1,8 +1,9 @@
 package constants
 
 import (
-	"github.com/dropbox/godropbox/container/set"
 	"strings"
+
+	"github.com/dropbox/godropbox/container/set"
 )
 
 const (
@@ -17,6 +18,7 @@ var (
 		"fedora-29",
 		"fedora-30",
 		"centos-7",
+		"centos-8",
 		"debian-jessie",
 		"debian-stretch",
 		"debian-buster",
@@ -34,6 +36,7 @@ var (
 		"fedora-29":      ".fc29.",
 		"fedora-30":      ".fc30.",
 		"centos-7":       ".el7.centos.",
+		"centos-8":       ".el8.centos.",
 		"debian-jessie":  ".jessie_",
 		"debian-stretch": ".stretch_",
 		"debian-buster":  ".buster_",
@@ -41,8 +44,8 @@ var (
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-bionic":  ".bionic_",
-		"ubuntu-disco":  ".disco_",
-		"ubuntu-eoan":  ".eoan_",
+		"ubuntu-disco":   ".disco_",
+		"ubuntu-eoan":    ".eoan_",
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",
