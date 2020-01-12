@@ -2,7 +2,7 @@ FROM archlinux/base
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm base-devel go git bzr mercurial wget rsync tar zip sudo
+RUN pacman -S --noconfirm base-devel go git mercurial wget rsync tar zip sudo
 RUN ln -s -f /usr/bin/pinentry-curses /usr/bin/pinentry
 
 ENV GOPATH /go
