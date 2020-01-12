@@ -36,6 +36,7 @@ var (
 		"amazonlinux-2":  ".amzn2.",
 		"fedora-29":      ".fc29.",
 		"fedora-30":      ".fc30.",
+		"fedora-31":      ".fc31.",
 		"centos-7":       ".el7.centos.",
 		"centos-8":       ".el8.centos.",
 		"debian-jessie":  ".jessie_",

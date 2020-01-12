@@ -22,6 +22,7 @@
 
 ![Docker Repository](https://img.shields.io/badge/docker-fedora--29-294172.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-fedora--30-294172.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-fedora--31-294172.svg?style=flat "Docker Repository")
 
 
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")
@@ -130,6 +131,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster` | Debian buster |
 | `fedora-29` | Fedora 29 |
 | `fedora-30` | Fedora 30 |
+| `fedora-31` | Fedora 31 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
@@ -161,6 +163,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster` | Debian buster |
 | `fedora-29` | Fedora 29 |
 | `fedora-30` | Fedora 30 |
+| `fedora-31` | Fedora 31 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
