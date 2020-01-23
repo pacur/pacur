@@ -17,6 +17,7 @@ var (
 		"amazonlinux-2",
 		"fedora-29",
 		"fedora-30",
+		"fedora-31",
 		"centos-7",
 		"centos-8",
 		"debian-jessie",
