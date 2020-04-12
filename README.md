@@ -139,6 +139,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-disco` | Ubuntu disco |
 | `ubuntu-eoan` | Ubuntu eoan |
+| `ubuntu-focal` | Ubuntu focal |
 
 ### directives
 
@@ -171,6 +172,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-disco` | Ubuntu disco |
 | `ubuntu-eoan` | Ubuntu eoan |
+| `ubuntu-focal` | Ubuntu focal |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user definied
