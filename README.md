@@ -20,9 +20,8 @@
 ![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Docker Repository")
 
 
-![Docker Repository](https://img.shields.io/badge/docker-fedora--29-294172.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-fedora--30-294172.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-fedora--31-294172.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-fedora--32-294172.svg?style=flat "Docker Repository")
 
 
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")
@@ -30,6 +29,7 @@
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--disco-dd4814.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--eoan-dd4814.svg?style=flat "Docker Repository")
+![Docker Repository](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Docker Repository")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -129,9 +129,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
-| `fedora-29` | Fedora 29 |
-| `fedora-30` | Fedora 30 |
 | `fedora-31` | Fedora 31 |
+| `fedora-32` | Fedora 32 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
@@ -162,9 +161,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
-| `fedora-29` | Fedora 29 |
-| `fedora-30` | Fedora 30 |
 | `fedora-31` | Fedora 31 |
+| `fedora-32` | Fedora 32 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
