@@ -2,33 +2,33 @@
 
 # pacur: simple packaging
 
-![Docker Repository](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Docker Repository")
+![Arch Linux](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Arch Linux")
 
-![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Docker Repository")
+![Amazon Linux 1](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Amazon Linux 1")
+![Amazon Linux 2](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Amazon Linux 2")
 
-![Docker Repository](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-centos--8-10233f.svg?style=flat "Docker Repository")
-
-
-![Docker Repository](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Docker Repository")
+![CentOS 7](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "CentOS 7")
+![CentOS 8](https://img.shields.io/badge/docker-centos--8-10233f.svg?style=flat "CentOS 8")
 
 
-![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Docker Repository")
+![Debian Jessie](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Debian Jessie")
+![Debian Strech](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Debian Strech")
+![Debian Buster](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Debian Buster")
 
 
-![Docker Repository](https://img.shields.io/badge/docker-fedora--31-294172.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-fedora--32-294172.svg?style=flat "Docker Repository")
+![Oracle Linux 7](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
+![Oracle Linux 8](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
 
 
-![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-ubuntu--eoan-dd4814.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Docker Repository")
+![Fedora 31](https://img.shields.io/badge/docker-fedora--31-294172.svg?style=flat "Fedora 31")
+![Fedora 32](https://img.shields.io/badge/docker-fedora--32-294172.svg?style=flat "Fedora 32")
+
+
+![Ubuntu Trusty](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Ubuntu Trusty")
+![Ubuntu Xenial](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
+![Ubuntu Bionic](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
+![Ubuntu Eoan](https://img.shields.io/badge/docker-ubuntu--eoan-dd4814.svg?style=flat "Ubuntu Eoan")
+![Ubuntu Focal](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
