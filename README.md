@@ -27,7 +27,6 @@
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Docker Repository")
-![Docker Repository](https://img.shields.io/badge/docker-ubuntu--disco-dd4814.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--eoan-dd4814.svg?style=flat "Docker Repository")
 ![Docker Repository](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Docker Repository")
 
@@ -136,7 +135,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
-| `ubuntu-disco` | Ubuntu disco |
 | `ubuntu-eoan` | Ubuntu eoan |
 | `ubuntu-focal` | Ubuntu focal |
 
@@ -168,7 +166,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
-| `ubuntu-disco` | Ubuntu disco |
 | `ubuntu-eoan` | Ubuntu eoan |
 | `ubuntu-focal` | Ubuntu focal |
 

@@ -27,7 +27,6 @@ var (
 		"ubuntu-trusty",
 		"ubuntu-xenial",
 		"ubuntu-bionic",
-		"ubuntu-disco",
 		"ubuntu-eoan",
 		"ubuntu-focal",
 	}
@@ -47,7 +46,6 @@ var (
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-bionic":  ".bionic_",
-		"ubuntu-disco":   ".disco_",
 		"ubuntu-eoan":    ".eoan_",
 		"ubuntu-focal":   ".focal_",
 	}
