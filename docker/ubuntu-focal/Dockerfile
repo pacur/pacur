@@ -2,7 +2,7 @@ FROM ubuntu:focal
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update
-RUN apt-get --assume-yes upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install build-essential reprepro rsync wget zip git mercurial
 
 RUN wget https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz
