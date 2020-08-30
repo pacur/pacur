@@ -42,6 +42,7 @@ sudo docker rmi pacur/ubuntu-cosmic
 sudo docker rmi pacur/ubuntu-disco
 sudo docker rmi pacur/ubuntu-eoan
 sudo docker rmi pacur/ubuntu-focal
+sudo docker rmi pacur/ubuntu-groovy
 sudo docker rmi base/archlinux
 sudo docker rmi archlinux/base
 sudo docker rmi amazonlinux:2016.09
@@ -84,5 +85,6 @@ sudo docker rmi ubuntu:cosmic
 sudo docker rmi ubuntu:disco
 sudo docker rmi ubuntu:eoan
 sudo docker rmi ubuntu:focal
+sudo docker rmi ubuntu:groovy
 
 sudo docker rmi $(sudo docker images -q -f dangling=true)
