@@ -46,7 +46,7 @@ func (p *PacmanProject) Prep() (err error) {
 		}
 	}
 
-	err = utils.RsyncExt(p.Path, buildDir, ".pkg.tar.xz")
+	err = utils.RsyncExt(p.Path, buildDir, ".pkg.tar.zst")
 	if err != nil {
 		return
 	}

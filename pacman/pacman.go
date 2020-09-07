@@ -232,7 +232,7 @@ func (p *Pacman) makeDirs() (err error) {
 }
 
 func (p *Pacman) clean() (err error) {
-	pkgPaths, err := utils.FindExt(p.Pack.Home, ".pkg.tar.xz")
+	pkgPaths, err := utils.FindExt(p.Pack.Home, ".pkg.tar.zst")
 	if err != nil {
 		return
 	}
@@ -245,7 +245,7 @@ func (p *Pacman) clean() (err error) {
 }
 
 func (p *Pacman) copy() (err error) {
-	pkgs, err := utils.FindExt(p.pacmanDir, ".pkg.tar.xz")
+	pkgs, err := utils.FindExt(p.pacmanDir, ".pkg.tar.zst")
 	if err != nil {
 		return
 	}

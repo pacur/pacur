@@ -25,7 +25,7 @@ func (m *Mirror) createPacman() (err error) {
 		return
 	}
 
-	err = utils.RsyncExt(m.Root, outDir, ".pkg.tar.xz")
+	err = utils.RsyncExt(m.Root, outDir, ".pkg.tar.zst")
 	if err != nil {
 		return
 	}
@@ -37,7 +37,7 @@ func (m *Mirror) createPacman() (err error) {
 		}
 	}
 
-	pkgs, err := utils.FindExt(outDir, ".pkg.tar.xz")
+	pkgs, err := utils.FindExt(outDir, ".pkg.tar.zst")
 	for _, pkg := range pkgs {
 		err = utils.Exec(outDir, "repo-add",
 			fmt.Sprintf("%s.db.tar.gz", m.Name), pkg)

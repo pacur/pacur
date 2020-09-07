@@ -5,7 +5,7 @@ import (
 )
 
 func SignPacman(dir string) (err error) {
-	pkgs, err := utils.FindExt(dir, ".pkg.tar.xz")
+	pkgs, err := utils.FindExt(dir, ".pkg.tar.zst")
 	if err != nil {
 		return
 	}
