@@ -30,6 +30,7 @@ var (
 		"ubuntu-eoan",
 		"ubuntu-focal",
 		"ubuntu-groovy",
+		"linuxdeepin",
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":      "",
@@ -50,6 +51,7 @@ var (
 		"ubuntu-eoan":    ".eoan_",
 		"ubuntu-focal":   ".focal_",
 		"ubuntu-groovy":  ".groovy_",
+		"linuxdeepin":    ".v20_",
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",
@@ -59,6 +61,7 @@ var (
 		"debian":      "debian",
 		"oraclelinux": "redhat",
 		"ubuntu":      "debian",
+		"linuxdeepin": "debian",
 	}
 	Packagers = [...]string{
 		"apt",

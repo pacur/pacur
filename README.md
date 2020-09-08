@@ -129,6 +129,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
+| `linuxdeepin`   | Linux Deepin   |
 | `fedora-31` | Fedora 31 |
 | `fedora-32` | Fedora 32 |
 | `oraclelinux-7` | Oraclelinux 7 |
@@ -161,6 +162,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
+| `linuxdeepin` | Linux Deepin |
 | `fedora-31` | Fedora 31 |
 | `fedora-32` | Fedora 32 |
 | `oraclelinux-7` | Oraclelinux 7 |
