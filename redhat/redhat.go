@@ -173,6 +173,8 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	}
 
 	data += "\n"
+	data += "%_build_id_links none"
+	data += "\n"
 
 	if len(r.Pack.PkgDescLong) > 0 {
 		data += "%description\n"
@@ -242,7 +244,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 
 func (r *Redhat) rpmBuild() (err error) {
 	err = utils.Exec(r.specsDir, "rpmbuild", "--define",
-		"_topdir "+r.redhatDir, "-bb", r.Pack.PkgName+".spec")
+		"_topdir "+r.redhatDir, "-ba", r.Pack.PkgName+".spec")
 	if err != nil {
 		return
 	}
