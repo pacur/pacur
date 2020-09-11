@@ -173,7 +173,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	}
 
 	data += "\n"
-	data += "%_build_id_links none"
+	data += "%global _build_id_links none\n"
 	data += "\n"
 
 	if len(r.Pack.PkgDescLong) > 0 {
