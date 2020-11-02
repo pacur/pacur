@@ -20,7 +20,6 @@
 ![Oracle Linux 8](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
 
 
-![Fedora 31](https://img.shields.io/badge/docker-fedora--31-294172.svg?style=flat "Fedora 31")
 ![Fedora 32](https://img.shields.io/badge/docker-fedora--32-294172.svg?style=flat "Fedora 32")
 ![Fedora 33](https://img.shields.io/badge/docker-fedora--33-294172.svg?style=flat "Fedora 33")
 
@@ -130,7 +129,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
-| `fedora-31` | Fedora 31 |
 | `fedora-32` | Fedora 32 |
 | `fedora-33` | Fedora 33 |
 | `oraclelinux-7` | Oraclelinux 7 |
@@ -163,7 +161,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
-| `fedora-31` | Fedora 31 |
 | `fedora-32` | Fedora 32 |
 | `fedora-33` | Fedora 33 |
 | `oraclelinux-7` | Oraclelinux 7 |
