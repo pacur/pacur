@@ -60,7 +60,7 @@ func (p *PacmanProject) Create() (err error) {
 		return
 	}
 
-	err = utils.Exec("", "docker", "run", "--rm", "-t", "-v",
+	err = utils.Exec("", "podman", "run", "--rm", "-t", "-v",
 		buildDir+":/pacur:Z", constants.DockerOrg+p.Distro, "create",
 		p.Distro, p.Name)
 	if err != nil {

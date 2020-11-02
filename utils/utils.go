@@ -40,7 +40,7 @@ func RandStr(n int) (str string) {
 
 func PullContainers() (err error) {
 	for _, release := range constants.Releases {
-		err = Exec("", "docker", "pull", constants.DockerOrg+release)
+		err = Exec("", "podman", "pull", constants.DockerOrg+release)
 		if err != nil {
 			return
 		}
