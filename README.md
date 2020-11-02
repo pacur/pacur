@@ -22,6 +22,7 @@
 
 ![Fedora 31](https://img.shields.io/badge/docker-fedora--31-294172.svg?style=flat "Fedora 31")
 ![Fedora 32](https://img.shields.io/badge/docker-fedora--32-294172.svg?style=flat "Fedora 32")
+![Fedora 33](https://img.shields.io/badge/docker-fedora--33-294172.svg?style=flat "Fedora 33")
 
 
 ![Ubuntu Trusty](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Ubuntu Trusty")
@@ -131,6 +132,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster` | Debian buster |
 | `fedora-31` | Fedora 31 |
 | `fedora-32` | Fedora 32 |
+| `fedora-33` | Fedora 33 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
@@ -163,6 +165,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster` | Debian buster |
 | `fedora-31` | Fedora 31 |
 | `fedora-32` | Fedora 32 |
+| `fedora-33` | Fedora 33 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
