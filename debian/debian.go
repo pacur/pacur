@@ -173,6 +173,10 @@ func (d *Debian) createScripts() (err error) {
 }
 
 func (d *Debian) clean() (err error) {
+	if !constants.CleanPrevious {
+		return
+	}
+
 	pkgPaths, err := utils.FindExt(d.Pack.Home, ".deb")
 	if err != nil {
 		return

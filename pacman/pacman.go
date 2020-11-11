@@ -2,6 +2,7 @@ package pacman
 
 import (
 	"fmt"
+	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
 	"os"
@@ -232,6 +233,10 @@ func (p *Pacman) makeDirs() (err error) {
 }
 
 func (p *Pacman) clean() (err error) {
+	if !constants.CleanPrevious {
+		return
+	}
+
 	pkgPaths, err := utils.FindExt(p.Pack.Home, ".pkg.tar.zst")
 	if err != nil {
 		return

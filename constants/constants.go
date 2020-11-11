@@ -71,6 +71,7 @@ var (
 	DistrosSet     = set.NewSet()
 	DistroPackager = map[string]string{}
 	PackagersSet   = set.NewSet()
+	CleanPrevious  = false
 )
 
 func init() {
