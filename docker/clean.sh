@@ -10,10 +10,11 @@ sudo podman rmi pacur/amazonlinux-2
 sudo podman rmi pacur/centos-6
 sudo podman rmi pacur/centos-7
 sudo podman rmi pacur/centos-8
+sudo podman rmi pacur/debian-wheezy
 sudo podman rmi pacur/debian-jessie
 sudo podman rmi pacur/debian-stretch
-sudo podman rmi pacur/debian-wheezy
 sudo podman rmi pacur/debian-buster
+sudo podman rmi pacur/debian-bullseye
 sudo podman rmi pacur/fedora-21
 sudo podman rmi pacur/fedora-22
 sudo podman rmi pacur/fedora-23
@@ -55,10 +56,11 @@ sudo podman rmi amazonlinux:2
 sudo podman rmi centos:6
 sudo podman rmi centos:7
 sudo podman rmi centos:8
+sudo podman rmi debian:wheezy
 sudo podman rmi debian:jessie
 sudo podman rmi debian:stretch
-sudo podman rmi debian:wheezy
 sudo podman rmi debian:buster
+sudo podman rmi debian:bullseye
 sudo podman rmi fedora:21
 sudo podman rmi fedora:22
 sudo podman rmi fedora:23

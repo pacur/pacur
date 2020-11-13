@@ -10,19 +10,16 @@
 ![CentOS 7](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "CentOS 7")
 ![CentOS 8](https://img.shields.io/badge/docker-centos--8-10233f.svg?style=flat "CentOS 8")
 
-
 ![Debian Jessie](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Debian Jessie")
 ![Debian Strech](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Debian Strech")
 ![Debian Buster](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Debian Buster")
-
+![Debian Bullseye](https://img.shields.io/badge/docker-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
 
 ![Oracle Linux 7](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
 ![Oracle Linux 8](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
 
-
 ![Fedora 32](https://img.shields.io/badge/docker-fedora--32-294172.svg?style=flat "Fedora 32")
 ![Fedora 33](https://img.shields.io/badge/docker-fedora--33-294172.svg?style=flat "Fedora 33")
-
 
 ![Ubuntu Trusty](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Ubuntu Trusty")
 ![Ubuntu Xenial](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
@@ -75,102 +72,104 @@ key:ubuntu="this will apply only to ubuntu builds"
 
 ### builtin variables
 
-| key | value |
-| --- | ----- |
+| key         | value                                                             |
+| ----------- | ----------------------------------------------------------------- |
 | `${srcdir}` | `Source` directory where all sources are downloaded and extracted |
-| `${pkgdir}` | `Package` directory for the root of the package |
+| `${pkgdir}` | `Package` directory for the root of the package                   |
 
 ### spec
 
-| key | type | value |
-| --- | ---- | ----- |
-| `targets` | `list` | List of build targets only used for projects. Prefix a `!` to ignore target. |
-| `pkgname` | `string` | Package name |
-| `pkgver` | `string` | Package version |
-| `pkgrel` | `string` | Package release number |
-| `pkgdesc` | `string` | Short package description |
-| `pkgdesclong` | `list` | List of lines for package description |
-| `maintainer` | `string` | Package maintainer |
-| `arch` | `string` | Package architecture, can be `all` or `amd64` |
-| `license` | `list` | List of licenses for packaged software |
-| `section` | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br> `libs` |
-| `priority` | `string` | Package priority, only used for debian packages |
-| `url` | `string` | Package url |
-| `depends` | `list` | List of package dependencies |
-| `optdepends` | `list` | List of package optional dependencies |
-| `makedepends` | `list` | List of package build dependencies |
-| `provides` | `list` | List of packages provided |
-| `conflicts` | `list` | List of packages conflicts |
-| `sources` | `list` | List of packages sources. Sources can be url or paths that are relative to the PKGBUILD |
-| `hashsums` | `list` | List of `md5`/`sha1`/`sha256`/`sha512` hex hashes for sources, hash type is determined by the length of the hash. Use `skip` to ignore hash check |
-| `backup` | `list` | List of config files that shouldn't be overwritten on upgrades |
-| `build` | `func` | Function to build the source, starts in srcdir |
-| `package` | `func` | Function to package the source into the pkgdir, starts in srcdir |
-| `preinst` | `func` | Function to run before installing |
-| `postinst` | `func` | Function to run after installing |
-| `prerm` | `func` | Function to run before removing |
-| `postrm` | `func` | Function to run after removing |
+| key           | type     | value                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `targets`     | `list`   | List of build targets only used for projects. Prefix a `!` to ignore target.                                                                                                                                                                                                                                                                                                                                                                               |
+| `pkgname`     | `string` | Package name                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `pkgver`      | `string` | Package version                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `pkgrel`      | `string` | Package release number                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `pkgdesc`     | `string` | Short package description                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `pkgdesclong` | `list`   | List of lines for package description                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `maintainer`  | `string` | Package maintainer                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `arch`        | `string` | Package architecture, can be `all` or `amd64`                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `license`     | `list`   | List of licenses for packaged software                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `section`     | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br> `libs` |
+| `priority`    | `string` | Package priority, only used for debian packages                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `url`         | `string` | Package url                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `depends`     | `list`   | List of package dependencies                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `optdepends`  | `list`   | List of package optional dependencies                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `makedepends` | `list`   | List of package build dependencies                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `provides`    | `list`   | List of packages provided                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `conflicts`   | `list`   | List of packages conflicts                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `sources`     | `list`   | List of packages sources. Sources can be url or paths that are relative to the PKGBUILD                                                                                                                                                                                                                                                                                                                                                                    |
+| `hashsums`    | `list`   | List of `md5`/`sha1`/`sha256`/`sha512` hex hashes for sources, hash type is determined by the length of the hash. Use `skip` to ignore hash check                                                                                                                                                                                                                                                                                                          |
+| `backup`      | `list`   | List of config files that shouldn't be overwritten on upgrades                                                                                                                                                                                                                                                                                                                                                                                             |
+| `build`       | `func`   | Function to build the source, starts in srcdir                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `package`     | `func`   | Function to package the source into the pkgdir, starts in srcdir                                                                                                                                                                                                                                                                                                                                                                                           |
+| `preinst`     | `func`   | Function to run before installing                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `postinst`    | `func`   | Function to run after installing                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `prerm`       | `func`   | Function to run before removing                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `postrm`      | `func`   | Function to run after removing                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 ### build targets
 
-| target | value |
-| ------ | ----- |
-| `archlinux` | All archlinux releases |
-| `amazonlinux` | All amazonlinux releases |
-| `centos` | All centos releases |
-| `debian` | All debian releases |
-| `fedora` | All fedora releases |
-| `oraclelinux` | All oraclelinux releases |
-| `ubuntu` | All ubuntu releases |
-| `amazonlinux-1` | Amazonlinux 1 |
-| `amazonlinux-2` | Amazonlinux 2 |
-| `centos-7` | Centos 7 |
-| `centos-8` | Centos 8 |
-| `debian-jessie` | Debian jessie |
-| `debian-stretch` | Debian stretch |
-| `debian-buster` | Debian buster |
-| `fedora-32` | Fedora 32 |
-| `fedora-33` | Fedora 33 |
-| `oraclelinux-7` | Oraclelinux 7 |
-| `oraclelinux-8` | Oraclelinux 8 |
-| `ubuntu-trusty` | Ubuntu trusty |
-| `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-bionic` | Ubuntu bionic |
-| `ubuntu-eoan` | Ubuntu eoan |
-| `ubuntu-focal` | Ubuntu focal |
-| `ubuntu-groovy` | Ubuntu groovy |
+| target            | value                    |
+| ----------------- | ------------------------ |
+| `archlinux`       | All archlinux releases   |
+| `amazonlinux`     | All amazonlinux releases |
+| `centos`          | All centos releases      |
+| `debian`          | All debian releases      |
+| `fedora`          | All fedora releases      |
+| `oraclelinux`     | All oraclelinux releases |
+| `ubuntu`          | All ubuntu releases      |
+| `amazonlinux-1`   | Amazonlinux 1            |
+| `amazonlinux-2`   | Amazonlinux 2            |
+| `centos-7`        | Centos 7                 |
+| `centos-8`        | Centos 8                 |
+| `debian-jessie`   | Debian jessie            |
+| `debian-stretch`  | Debian stretch           |
+| `debian-buster`   | Debian buster            |
+| `debian-bullseye` | Debian bullseye          |
+| `fedora-32`       | Fedora 32                |
+| `fedora-33`       | Fedora 33                |
+| `oraclelinux-7`   | Oraclelinux 7            |
+| `oraclelinux-8`   | Oraclelinux 8            |
+| `ubuntu-trusty`   | Ubuntu trusty            |
+| `ubuntu-xenial`   | Ubuntu xenial            |
+| `ubuntu-bionic`   | Ubuntu bionic            |
+| `ubuntu-eoan`     | Ubuntu eoan              |
+| `ubuntu-focal`    | Ubuntu focal             |
+| `ubuntu-groovy`   | Ubuntu groovy            |
 
 ### directives
 
-| directive | value |
-| --------- | ----- |
-| `apt` | All deb packages |
-| `pacman` | All pkg packages |
-| `yum` | All rpm packages |
-| `archlinux` | All archlinux releases |
-| `amazonlinux` | All amazonlinux releases |
-| `centos` | All centos releases |
-| `debian` | All debian releases |
-| `fedora` | All fedora releases |
-| `oraclelinux` | All oraclelinux releases |
-| `ubuntu` | All ubuntu releases |
-| `amazonlinux-1` | Amazonlinux 1 |
-| `amazonlinux-2` | Amazonlinux 2 |
-| `centos-7` | Centos 7 |
-| `centos-8` | Centos 8 |
-| `debian-jessie` | Debian jessie |
-| `debian-stretch` | Debian stretch |
-| `debian-buster` | Debian buster |
-| `fedora-32` | Fedora 32 |
-| `fedora-33` | Fedora 33 |
-| `oraclelinux-7` | Oraclelinux 7 |
-| `oraclelinux-8` | Oraclelinux 8 |
-| `ubuntu-trusty` | Ubuntu trusty |
-| `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-bionic` | Ubuntu bionic |
-| `ubuntu-eoan` | Ubuntu eoan |
-| `ubuntu-focal` | Ubuntu focal |
-| `ubuntu-groovy` | Ubuntu groovy |
+| directive         | value                    |
+| ----------------- | ------------------------ |
+| `apt`             | All deb packages         |
+| `pacman`          | All pkg packages         |
+| `yum`             | All rpm packages         |
+| `archlinux`       | All archlinux releases   |
+| `amazonlinux`     | All amazonlinux releases |
+| `centos`          | All centos releases      |
+| `debian`          | All debian releases      |
+| `fedora`          | All fedora releases      |
+| `oraclelinux`     | All oraclelinux releases |
+| `ubuntu`          | All ubuntu releases      |
+| `amazonlinux-1`   | Amazonlinux 1            |
+| `amazonlinux-2`   | Amazonlinux 2            |
+| `centos-7`        | Centos 7                 |
+| `centos-8`        | Centos 8                 |
+| `debian-jessie`   | Debian jessie            |
+| `debian-stretch`  | Debian stretch           |
+| `debian-buster`   | Debian buster            |
+| `debian-bullseye` | Debian bullseye          |
+| `fedora-32`       | Fedora 32                |
+| `fedora-33`       | Fedora 33                |
+| `oraclelinux-7`   | Oraclelinux 7            |
+| `oraclelinux-8`   | Oraclelinux 8            |
+| `ubuntu-trusty`   | Ubuntu trusty            |
+| `ubuntu-xenial`   | Ubuntu xenial            |
+| `ubuntu-bionic`   | Ubuntu bionic            |
+| `ubuntu-eoan`     | Ubuntu eoan              |
+| `ubuntu-focal`    | Ubuntu focal             |
+| `ubuntu-groovy`   | Ubuntu groovy            |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user definied
