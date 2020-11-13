@@ -12,7 +12,7 @@
 
 
 ![Debian Jessie](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Debian Jessie")
-![Debian Strech](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Debian Strech")
+![Debian Stretch](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Debian Stretch")
 ![Debian Buster](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Debian Buster")
 
 
@@ -35,16 +35,16 @@ Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
 are available for several linux distributions. Builds are done on Docker
 containers without needing to setup any virtual machines or install any
-software other then Docker. All packages are built using a simple format that
+software other than Docker. All packages are built using a simple format that
 is similar to [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from
 ArchLinux. Each distribution is different and will still require different
-build instructions but a consistent build process and format can be used for
-all builds. Docker only supports 64 bit containers, pacur can't be used to
-build packages 32 bit packages. Pacur will also create a `deb`, `rpm` and
+build instructions, but a consistent build process and format can be used for
+all builds. Docker only supports 64-bit containers, pacur can't be used to
+build packages 32-bit packages. Pacur will also create a `deb`, `rpm` and
 `pacman` signed repository that can be used on ArchLinux, CentOS, Fedora,
 Debian and Ubuntu to distribute the packages. A
 [tutorial](https://medium.com/@zachhuff386/pacur-tutorial-9848b774c84a)
-on creating a project is aviaible on medium.
+on creating a project is available on medium.
 
 ### initialize
 
@@ -173,11 +173,11 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-groovy` | Ubuntu groovy |
 
 Directives are used to specify variables that only apply to a limited set of
-build targets. All variables can use directives including user definied
+build targets. All variables can use directives including user defined
 variables. To use directives include the directive after a
-variable seperated by a colon such as
-`pkgdesc:ubuntu="This description will only apply to Ubuntu packages"`
-The directives above are sorted lowest to highest priority.
+variable separated by a colon such as
+`pkgdesc:ubuntu="This description will only apply to Ubuntu packages"`.
+The directives above are sorted from lowest to the highest priority.
 
 ### example
 

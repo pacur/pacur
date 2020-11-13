@@ -37,7 +37,7 @@ func GetPacker(pac *pack.Pack, distro, release string) (
 		}
 
 		err = &UnknownSystem{
-			errors.Newf("packer: Unkown system %s", system),
+			errors.Newf("packer: Unknown system %s", system),
 		}
 		return
 	}
