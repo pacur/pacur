@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM docker.io/ubuntu:focal
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

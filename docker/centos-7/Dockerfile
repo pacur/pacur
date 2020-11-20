@@ -1,4 +1,4 @@
-FROM centos:7
+FROM docker.io/centos:7
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y install epel-release

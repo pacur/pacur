@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM docker.io/ubuntu:trusty
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

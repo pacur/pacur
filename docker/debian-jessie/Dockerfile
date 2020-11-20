@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM docker.io/debian:jessie
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

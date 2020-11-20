@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM docker.io/ubuntu:xenial
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

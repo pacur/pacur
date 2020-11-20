@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM docker.io/ubuntu:bionic
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

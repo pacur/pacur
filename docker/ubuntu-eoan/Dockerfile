@@ -1,4 +1,4 @@
-FROM ubuntu:eoan
+FROM docker.io/ubuntu:eoan
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

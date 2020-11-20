@@ -1,4 +1,4 @@
-FROM oraclelinux:7
+FROM docker.io/oraclelinux:7
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y install yum-utils

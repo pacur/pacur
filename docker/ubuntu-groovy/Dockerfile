@@ -1,4 +1,4 @@
-FROM ubuntu:groovy
+FROM docker.io/ubuntu:groovy
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

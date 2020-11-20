@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM docker.io/fedora:33
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y upgrade

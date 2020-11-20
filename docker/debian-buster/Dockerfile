@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM docker.io/debian:buster
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM docker.io/debian:stretch
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update

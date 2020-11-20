@@ -1,4 +1,4 @@
-FROM amazonlinux:1
+FROM docker.io/amazonlinux:1
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y install epel-release
