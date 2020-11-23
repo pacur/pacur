@@ -1,4 +1,4 @@
-FROM docker.io/archlinux/base
+FROM docker.io/archlinux
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN pacman -Syu --noconfirm
