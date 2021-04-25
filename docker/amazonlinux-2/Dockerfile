@@ -13,7 +13,7 @@ RUN rm -f go1.16.3.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
-ENV GO111MODULE=off
+ENV GO111MODULE off
 
 RUN go get github.com/pacur/pacur
 
