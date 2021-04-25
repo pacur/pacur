@@ -27,6 +27,7 @@ sudo podman rmi pacur/fedora-30
 sudo podman rmi pacur/fedora-31
 sudo podman rmi pacur/fedora-32
 sudo podman rmi pacur/fedora-33
+sudo podman rmi pacur/fedora-34
 sudo podman rmi pacur/genkey
 sudo podman rmi pacur/oraclelinux-7
 sudo podman rmi pacur/oraclelinux-8
@@ -44,6 +45,7 @@ sudo podman rmi pacur/ubuntu-disco
 sudo podman rmi pacur/ubuntu-eoan
 sudo podman rmi pacur/ubuntu-focal
 sudo podman rmi pacur/ubuntu-groovy
+sudo podman rmi archlinux
 sudo podman rmi base/archlinux
 sudo podman rmi archlinux/base
 sudo podman rmi amazonlinux:2016.09
@@ -72,6 +74,7 @@ sudo podman rmi fedora:30
 sudo podman rmi fedora:31
 sudo podman rmi fedora:32
 sudo podman rmi fedora:33
+sudo podman rmi fedora:34
 sudo podman rmi oraclelinux:7
 sudo podman rmi oraclelinux:8
 sudo podman rmi ubuntu:precise

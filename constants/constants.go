@@ -14,8 +14,8 @@ var (
 	Releases = [...]string{
 		"amazonlinux-1",
 		"amazonlinux-2",
-		"fedora-32",
 		"fedora-33",
+		"fedora-34",
 		"centos-7",
 		"centos-8",
 		"debian-jessie",
@@ -33,8 +33,8 @@ var (
 	ReleasesMatch = map[string]string{
 		"amazonlinux-1":  ".amzn1.",
 		"amazonlinux-2":  ".amzn2.",
-		"fedora-32":      ".fc32.",
 		"fedora-33":      ".fc33.",
+		"fedora-34":      ".fc34.",
 		"centos-7":       ".el7.centos.",
 		"centos-8":       ".el8.centos.",
 		"debian-jessie":  ".jessie_",
