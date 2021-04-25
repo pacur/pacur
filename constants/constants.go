@@ -26,9 +26,9 @@ var (
 		"ubuntu-trusty",
 		"ubuntu-xenial",
 		"ubuntu-bionic",
-		"ubuntu-eoan",
 		"ubuntu-focal",
 		"ubuntu-groovy",
+		"ubuntu-hirsute",
 	}
 	ReleasesMatch = map[string]string{
 		"amazonlinux-1":  ".amzn1.",
@@ -45,9 +45,9 @@ var (
 		"ubuntu-trusty":  ".trusty_",
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-bionic":  ".bionic_",
-		"ubuntu-eoan":    ".eoan_",
 		"ubuntu-focal":   ".focal_",
 		"ubuntu-groovy":  ".groovy_",
+		"ubuntu-hirsute": ".hirsute_",
 	}
 	DistroPack = map[string]string{
 		"amazonlinux": "redhat",
