@@ -12,6 +12,7 @@ const (
 
 var (
 	Releases = [...]string{
+		"archlinux",
 		"amazonlinux-1",
 		"amazonlinux-2",
 		"fedora-33",
@@ -31,6 +32,7 @@ var (
 		"ubuntu-hirsute",
 	}
 	ReleasesMatch = map[string]string{
+		"archlinux":      "",
 		"amazonlinux-1":  ".amzn1.",
 		"amazonlinux-2":  ".amzn2.",
 		"fedora-33":      ".fc33.",
@@ -50,6 +52,7 @@ var (
 		"ubuntu-hirsute": ".hirsute_",
 	}
 	DistroPack = map[string]string{
+		"archlinux":   "pacman",
 		"amazonlinux": "redhat",
 		"fedora":      "redhat",
 		"centos":      "redhat",
