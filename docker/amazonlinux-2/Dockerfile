@@ -13,9 +13,9 @@ RUN rm -f go1.16.5.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
-ENV GO111MODULE off
 
-RUN go get github.com/pacur/pacur
+
+RUN go get github.com/aanno/pacur/v2@pr/aanno-go-module
 
 ENTRYPOINT ["pacur"]
 CMD ["build", "amazonlinux-2"]

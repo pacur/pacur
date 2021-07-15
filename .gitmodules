@@ -1,0 +1,3 @@
+[submodule "godropbox"]
+	path = godropbox
+	url = https://github.com/dropbox/godropbox.git
