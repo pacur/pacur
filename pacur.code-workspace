@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"[go]": {
+			"editor.insertSpaces": false,
+			"editor.formatOnSave": true,
+			"editor.tabSize": 4,
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			},
+			"editor.suggest.snippetsPreventQuickSuggestions": false
+		},
+		"go.toolsEnvVars": {
+		
+		}
+		"go.testTags": ""
+		"[go.mod]": {
+			"editor.insertSpaces": false,
+			"editor.formatOnSave": true,
+			"editor.tabSize": 4,
+			"editor.codeActionsOnSave": {
+				"source.organizeImports": true
+			},
+			"editor.suggest.snippetsPreventQuickSuggestions": false
+		},
+	}
+}
