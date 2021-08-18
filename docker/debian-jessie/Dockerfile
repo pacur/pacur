@@ -5,10 +5,10 @@ RUN apt-get --assume-yes update
 RUN apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install build-essential reprepro rsync wget zip git mercurial
 
-RUN wget https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
-RUN echo "be333ef18b3016e9d7cb7b1ff1fdb0cac800ca0be4cf2290fe613b3d069dfe0d go1.16.6.linux-amd64.tar.gz" | sha256sum -c -
-RUN tar -C /usr/local -xf go1.16.6.linux-amd64.tar.gz
-RUN rm -f go1.16.6.linux-amd64.tar.gz
+RUN wget https://golang.org/dl/go1.17.linux-amd64.tar.gz
+RUN echo "6bf89fc4f5ad763871cf7eac80a2d594492de7a818303283f1366a7f6a30372d go1.17.linux-amd64.tar.gz" | sha256sum -c -
+RUN tar -C /usr/local -xf go1.17.linux-amd64.tar.gz
+RUN rm -f go1.17.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
