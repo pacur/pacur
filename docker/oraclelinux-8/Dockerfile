@@ -1,7 +1,7 @@
 FROM docker.io/oraclelinux:8
 MAINTAINER Pacur <contact@pacur.org>
 
-RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+RUN yum -y install oracle-epel-release-el8
 
 RUN yum -y install yum-utils
 RUN yum-config-manager --enable ol8_appstream

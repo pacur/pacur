@@ -1,6 +1,8 @@
 FROM docker.io/oraclelinux:7
 MAINTAINER Pacur <contact@pacur.org>
 
+RUN yum -y install oracle-epel-release-el7
+
 RUN yum -y install yum-utils
 RUN yum-config-manager --enable ol7_developer
 RUN yum-config-manager --enable ol7_developer_epel
