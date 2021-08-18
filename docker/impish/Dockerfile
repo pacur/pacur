@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:groovy
+FROM docker.io/ubuntu:impish
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update
@@ -17,4 +17,4 @@ ENV GO111MODULE off
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "ubuntu-groovy"]
+CMD ["build", "ubuntu-impish"]

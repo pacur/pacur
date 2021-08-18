@@ -28,8 +28,8 @@ var (
 		"ubuntu-xenial",
 		"ubuntu-bionic",
 		"ubuntu-focal",
-		"ubuntu-groovy",
 		"ubuntu-hirsute",
+		"ubuntu-impish",
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":      "",
@@ -48,8 +48,8 @@ var (
 		"ubuntu-xenial":  ".xenial_",
 		"ubuntu-bionic":  ".bionic_",
 		"ubuntu-focal":   ".focal_",
-		"ubuntu-groovy":  ".groovy_",
 		"ubuntu-hirsute": ".hirsute_",
+		"ubuntu-impish":  ".impish_",
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",
