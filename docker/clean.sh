@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo podman rm $(sudo podman ps -a -q)
 
 sudo podman rmi pacur/archlinux
