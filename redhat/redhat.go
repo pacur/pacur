@@ -176,6 +176,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	data += "%global _build_id_links none\n"
 	data += "%global _python_bytecompile_extra 0\n"
 	data += "%global _python_bytecompile_errors_terminate_build 0\n"
+	data += "%undefine __brp_python_bytecompile"
 	data += "\n"
 
 	if len(r.Pack.PkgDescLong) > 0 {
