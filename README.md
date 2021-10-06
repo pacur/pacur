@@ -11,9 +11,9 @@
 ![CentOS 8](https://img.shields.io/badge/docker-centos--8-10233f.svg?style=flat "CentOS 8")
 
 
-![Debian Jessie](https://img.shields.io/badge/docker-debian--jessie-d70a53.svg?style=flat "Debian Jessie")
 ![Debian Stretch](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Debian Stretch")
 ![Debian Buster](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Debian Buster")
+![Debian Bullseye](https://img.shields.io/badge/docker-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
 
 
 ![Oracle Linux 7](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
@@ -126,9 +126,9 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |
 | `centos-8` | Centos 8 |
-| `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
+| `debian-bullseye` | Debian bullseye |
 | `fedora-33` | Fedora 33 |
 | `fedora-34` | Fedora 34 |
 | `oraclelinux-7` | Oraclelinux 7 |
@@ -158,9 +158,9 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |
 | `centos-8` | Centos 8 |
-| `debian-jessie` | Debian jessie |
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
+| `debian-bullseye` | Debian bullseye |
 | `fedora-33` | Fedora 33 |
 | `fedora-34` | Fedora 34 |
 | `oraclelinux-7` | Oraclelinux 7 |
@@ -262,7 +262,7 @@ $ httpserver --port 80
 
 After the repo has been created and is hosted on a server the following
 commands can be used to add the repo to the package manager for yum and apt.
-For the debian repo the `jessie` should be replaced with the debian/ubuntu
+For the debian repo the `bullseye` should be replaced with the debian/ubuntu
 release name. The `pacur` repo name and filenames can be change to suite the
 name of your software.
 
@@ -292,7 +292,7 @@ $ yum install httpserver
 
 ```
 $ nano /etc/apt/sources.list.d/pacur.list
-deb http://HTTP_SERVER_IP/apt jessie main
+deb http://HTTP_SERVER_IP/apt bullseye main
 
 $ apt-key adv --keyserver hkp://pgp.mit.edu --recv KEYID
 $ apt-get update
