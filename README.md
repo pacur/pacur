@@ -20,8 +20,8 @@
 ![Oracle Linux 8](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
 
 
-![Fedora 33](https://img.shields.io/badge/docker-fedora--33-294172.svg?style=flat "Fedora 33")
 ![Fedora 34](https://img.shields.io/badge/docker-fedora--34-294172.svg?style=flat "Fedora 34")
+![Fedora 35](https://img.shields.io/badge/docker-fedora--35-294172.svg?style=flat "Fedora 35")
 
 
 ![Ubuntu Trusty](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Ubuntu Trusty")
@@ -129,8 +129,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
 | `debian-bullseye` | Debian bullseye |
-| `fedora-33` | Fedora 33 |
 | `fedora-34` | Fedora 34 |
+| `fedora-35` | Fedora 35 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |
@@ -161,8 +161,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-stretch` | Debian stretch |
 | `debian-buster` | Debian buster |
 | `debian-bullseye` | Debian bullseye |
-| `fedora-33` | Fedora 33 |
 | `fedora-34` | Fedora 34 |
+| `fedora-35` | Fedora 35 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `ubuntu-trusty` | Ubuntu trusty |

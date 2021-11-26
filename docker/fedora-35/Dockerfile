@@ -1,4 +1,4 @@
-FROM docker.io/fedora:33
+FROM docker.io/fedora:35
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y upgrade
@@ -17,4 +17,4 @@ ENV GO111MODULE off
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "fedora-33"]
+CMD ["build", "fedora-35"]
