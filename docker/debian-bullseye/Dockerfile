@@ -1,4 +1,4 @@
-FROM docker.io/debian:buster
+FROM docker.io/debian:bullseye
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update
@@ -17,4 +17,4 @@ ENV GO111MODULE off
 RUN go get github.com/pacur/pacur
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "debian-buster"]
+CMD ["build", "debian-bullseye"]
