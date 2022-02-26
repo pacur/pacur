@@ -7,7 +7,7 @@ RUN ln -s -f /usr/bin/pinentry-curses /usr/bin/pinentry
 
 ENV GOPATH /go
 ENV PATH $PATH:/go/bin
-ENV GO111MODULE off
+ENV GO111MODULE on
 
 RUN go get github.com/pacur/pacur
 
