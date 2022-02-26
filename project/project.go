@@ -201,6 +201,10 @@ func (p *Project) Repo(filter string) (err error) {
 	}
 
 	err = p.iterPackages(filter, func(target, path string) (err error) {
+		fmt.Println("******************************************************")
+		fmt.Printf("Preparing: %s - %s\n", filter, target)
+		fmt.Println("******************************************************")
+
 		proj, err := p.getProject(target, path)
 		if err != nil {
 			return
