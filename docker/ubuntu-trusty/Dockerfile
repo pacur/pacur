@@ -14,7 +14,7 @@ ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
 ENV GO111MODULE on
 
-RUN go get github.com/pacur/pacur
+RUN go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
 CMD ["build", "ubuntu-trusty"]
