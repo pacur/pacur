@@ -40,7 +40,7 @@ is similar to [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from
 ArchLinux. Each distribution is different and will still require different
 build instructions, but a consistent build process and format can be used for
 all builds. Docker only supports 64-bit containers, pacur can't be used to
-build packages 32-bit packages. Pacur will also create a `deb`, `rpm` and
+build 32-bit packages. Pacur will also create a `deb`, `rpm` and
 `pacman` signed repository that can be used on ArchLinux, CentOS, Fedora,
 Debian and Ubuntu to distribute the packages. A
 [tutorial](https://medium.com/@zachhuff386/pacur-tutorial-9848b774c84a)
