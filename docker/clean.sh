@@ -51,6 +51,7 @@ sudo podman rmi pacur/ubuntu-focal
 sudo podman rmi pacur/ubuntu-groovy
 sudo podman rmi pacur/ubuntu-hirsute
 sudo podman rmi pacur/ubuntu-impish
+sudo podman rmi pacur/ubuntu-jammy
 sudo podman rmi archlinux
 sudo podman rmi base/archlinux
 sudo podman rmi archlinux/base
@@ -102,5 +103,6 @@ sudo podman rmi ubuntu:focal
 sudo podman rmi ubuntu:groovy
 sudo podman rmi ubuntu:hirsute
 sudo podman rmi ubuntu:impish
+sudo podman rmi ubuntu:jammy
 
 sudo podman rmi $(sudo podman images -q -f dangling=true)

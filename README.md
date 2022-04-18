@@ -28,8 +28,8 @@
 ![Ubuntu Xenial](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
 ![Ubuntu Bionic](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
 ![Ubuntu Focal](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
-![Ubuntu Hirsute](https://img.shields.io/badge/docker-ubuntu--hirsute-dd4814.svg?style=flat "Ubuntu Hirsute")
 ![Ubuntu Impish](https://img.shields.io/badge/docker-ubuntu--impish-dd4814.svg?style=flat "Ubuntu Impish")
+![Ubuntu Jammy](https://img.shields.io/badge/docker-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -137,8 +137,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
-| `ubuntu-hirsute` | Ubuntu hirsute |
 | `ubuntu-impish` | Ubuntu impish |
+| `ubuntu-jammy` | Ubuntu jammy |
 
 ### directives
 
@@ -169,8 +169,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
-| `ubuntu-hirsute` | Ubuntu hirsute |
 | `ubuntu-impish` | Ubuntu impish |
+| `ubuntu-jammy` | Ubuntu jammy |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user defined

@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:hirsute
+FROM docker.io/ubuntu:jammy
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update
@@ -17,4 +17,4 @@ ENV GO111MODULE on
 RUN go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "ubuntu-hirsute"]
+CMD ["build", "ubuntu-jammy"]
