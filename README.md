@@ -230,7 +230,7 @@ build() {
     export GOPATH="${srcdir}/go"
     mv "${pkgname}-${pkgver}" "go/src"
     cd "go/src/${pkgname}-${pkgver}"
-    go get
+    go install
     go build -a
 }
 
@@ -244,18 +244,18 @@ package() {
 ### project example
 
 A project can be created with the cli tools which can be installed using
-go get. The packages can be built and added to the repo. An example project is
+`go install`. The packages can be built and added to the repo. An example project is
 available in the example directory. The `pull` command should be run before
 all builds to update the docker images used for builds.
 
 ```
-$ go get github.com/pacur/pacur
+$ go install github.com/pacur/pacur@latest
 $ cd example
 $ pacur pull
 $ pacur project init
 $ pacur project build
 $ pacur project repo
-$ go get github.com/pacur/httpserver
+$ go install github.com/pacur/httpserver@latest
 $ cd mirror
 $ httpserver --port 80
 ```
