@@ -1,7 +1,7 @@
 FROM docker.io/oraclelinux:8
 MAINTAINER Pacur <contact@pacur.org>
 
-RUN yum -y install oracle-epel-release-el8
+RUN yum -y install dnf-plugins-core oracle-epel-release-el8
 
 RUN dnf config-manager --set-enabled ol8_appstream
 RUN dnf config-manager --set-enabled ol8_addons
