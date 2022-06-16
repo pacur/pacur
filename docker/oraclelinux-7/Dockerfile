@@ -5,7 +5,7 @@ RUN yum -y install oracle-epel-release-el7
 
 RUN yum -y install yum-utils
 RUN yum-config-manager --enable ol7_developer
-RUN yum-config-manager --enable ol7_developer_epel
+RUN yum-config-manager --enable ol7_developer_EPEL
 RUN yum-config-manager --enable ol7_optional_latest
 RUN yum-config-manager --enable ol7_addons
 

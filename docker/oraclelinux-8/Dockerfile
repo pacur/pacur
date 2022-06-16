@@ -3,10 +3,10 @@ MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y install oracle-epel-release-el8
 
-RUN yum -y install yum-utils
-RUN yum-config-manager --enable ol8_appstream
-RUN yum-config-manager --enable ol8_addons
-RUN yum-config-manager --enable ol8_codeready_builder
+RUN dnf config-manager --set-enabled ol8_appstream
+RUN dnf config-manager --set-enabled ol8_addons
+RUN dnf config-manager --set-enabled ol8_codeready_builder
+RUN dnf config-manager --set-enabled ol8_developer_EPEL
 
 RUN yum -y upgrade
 RUN yum -y groupinstall 'Development Tools'
