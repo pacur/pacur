@@ -2,6 +2,8 @@
 sudo podman rm $(sudo podman ps -a -q)
 
 sudo podman rmi pacur/archlinux
+sudo podman rmi pacur/almalinux-8
+sudo podman rmi pacur/almalinux-9
 sudo podman rmi pacur/amazonlinux-2016.09
 sudo podman rmi pacur/amazonlinux-2017.03
 sudo podman rmi pacur/amazonlinux-2017.09
@@ -55,6 +57,8 @@ sudo podman rmi pacur/ubuntu-jammy
 sudo podman rmi archlinux
 sudo podman rmi base/archlinux
 sudo podman rmi archlinux/base
+sudo podman rmi almalinux:8
+sudo podman rmi almalinux:9
 sudo podman rmi amazonlinux:2016.09
 sudo podman rmi amazonlinux:2017.03
 sudo podman rmi amazonlinux:2017.09

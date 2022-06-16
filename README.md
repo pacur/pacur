@@ -4,11 +4,16 @@
 
 ![Arch Linux](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Arch Linux")
 
+
+![AlmaLinux 8](https://img.shields.io/badge/docker-almalinux--8-0f4266.svg?style=flat "AlmaLinux 8")
+![AlmaLinux 9](https://img.shields.io/badge/docker-almalinux--9-0f4266.svg?style=flat "AlmaLinux 9")
+
+
 ![Amazon Linux 1](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Amazon Linux 1")
 ![Amazon Linux 2](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Amazon Linux 2")
 
+
 ![CentOS 7](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "CentOS 7")
-![CentOS 8](https://img.shields.io/badge/docker-centos--8-10233f.svg?style=flat "CentOS 8")
 
 
 ![Debian Stretch](https://img.shields.io/badge/docker-debian--stretch-d70a53.svg?style=flat "Debian Stretch")
@@ -116,12 +121,15 @@ key:ubuntu="this will apply only to ubuntu builds"
 | target | value |
 | ------ | ----- |
 | `archlinux` | All archlinux releases |
+| `almalinux` | All almalinux releases |
 | `amazonlinux` | All amazonlinux releases |
 | `centos` | All centos releases |
 | `debian` | All debian releases |
 | `fedora` | All fedora releases |
 | `oraclelinux` | All oraclelinux releases |
 | `ubuntu` | All ubuntu releases |
+| `almalinux-8` | AlmaLinux 8 |
+| `almalinux-9` | AlmaLinux 9 |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |
@@ -148,12 +156,15 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `pacman` | All pkg packages |
 | `yum` | All rpm packages |
 | `archlinux` | All archlinux releases |
+| `almalinux` | All almalinux releases |
 | `amazonlinux` | All amazonlinux releases |
 | `centos` | All centos releases |
 | `debian` | All debian releases |
 | `fedora` | All fedora releases |
 | `oraclelinux` | All oraclelinux releases |
 | `ubuntu` | All ubuntu releases |
+| `almalinux-8` | AlmaLinux 8 |
+| `almalinux-9` | AlmaLinux 9 |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
 | `centos-7` | Centos 7 |

@@ -132,7 +132,11 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	path := filepath.Join(r.specsDir, r.Pack.PkgName+".spec")
 
 	release := "%{?dist}"
-	if r.Pack.Distro == "amazonlinux" && r.Pack.Release == "1" {
+	if r.Pack.Distro == "almalinux" && r.Pack.Release == "8" {
+		release = ".el8.almalinux"
+	} else if r.Pack.Distro == "almalinux" && r.Pack.Release == "9" {
+		release = ".el9.almalinux"
+	} else if r.Pack.Distro == "amazonlinux" && r.Pack.Release == "1" {
 		release = ".amzn1"
 	} else if r.Pack.Distro == "amazonlinux" && r.Pack.Release == "2" {
 		release = ".amzn2"

@@ -13,6 +13,8 @@ const (
 var (
 	Releases = [...]string{
 		"archlinux",
+		"almalinux-8",
+		"almalinux-9",
 		"amazonlinux-1",
 		"amazonlinux-2",
 		"fedora-35",
@@ -33,6 +35,8 @@ var (
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":       "",
+		"almalinux-8":     ".el8.almalinux.",
+		"almalinux-9":     ".el9.almalinux.",
 		"amazonlinux-1":   ".amzn1.",
 		"amazonlinux-2":   ".amzn2.",
 		"fedora-35":       ".fc35.",
@@ -53,6 +57,7 @@ var (
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",
+		"almalinux":   "redhat",
 		"amazonlinux": "redhat",
 		"fedora":      "redhat",
 		"centos":      "redhat",
