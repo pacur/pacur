@@ -1,9 +1,10 @@
 package redhat
 
 import (
+	"path/filepath"
+
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/utils"
-	"path/filepath"
 )
 
 type RedhatProject struct {
@@ -46,7 +47,8 @@ func (p *RedhatProject) Prep() (err error) {
 		}
 	}
 
-	err = utils.RsyncExt(p.Path, buildDir, ".rpm")
+	rel := constants.ReleasesMatch[p.Distro+"-"+p.Release]
+	err = utils.RsyncRelExt(p.Path, buildDir, rel, ".rpm")
 	if err != nil {
 		return
 	}

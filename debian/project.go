@@ -46,7 +46,7 @@ func (p *DebianProject) Prep() (err error) {
 		}
 	}
 
-	err = utils.RsyncExt(p.Path, buildDir, ".deb")
+	err = utils.RsyncRelExt(p.Path, buildDir, p.Release, ".deb")
 	if err != nil {
 		return
 	}
