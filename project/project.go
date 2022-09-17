@@ -16,6 +16,7 @@ import (
 type DistroProject interface {
 	Prep() error
 	Create() error
+	Clean() error
 }
 
 type conf struct {
@@ -238,6 +239,11 @@ func (p *Project) Repo(filter string) (err error) {
 			}
 
 			err = proj.Create()
+			if err != nil {
+				return
+			}
+
+			err = proj.Clean()
 			if err != nil {
 				return
 			}

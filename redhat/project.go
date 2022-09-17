@@ -77,3 +77,17 @@ func (p *RedhatProject) Create() (err error) {
 
 	return
 }
+
+func (p *RedhatProject) Clean() (err error) {
+	buildDir, err := p.getBuildDir()
+	if err != nil {
+		return
+	}
+
+	err = utils.RemoveAll(buildDir)
+	if err != nil {
+		return
+	}
+
+	return
+}

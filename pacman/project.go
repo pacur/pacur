@@ -1,9 +1,10 @@
 package pacman
 
 import (
+	"path/filepath"
+
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/utils"
-	"path/filepath"
 )
 
 type PacmanProject struct {
@@ -69,6 +70,20 @@ func (p *PacmanProject) Create() (err error) {
 
 	err = utils.Rsync(filepath.Join(buildDir, "pacman"),
 		filepath.Join(p.MirrorRoot, "pacman"))
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+func (p *PacmanProject) Clean() (err error) {
+	buildDir, err := p.getBuildDir()
+	if err != nil {
+		return
+	}
+
+	err = utils.RemoveAll(buildDir)
 	if err != nil {
 		return
 	}

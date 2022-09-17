@@ -1,9 +1,10 @@
 package debian
 
 import (
+	"path/filepath"
+
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/utils"
-	"path/filepath"
 )
 
 type DebianProject struct {
@@ -69,6 +70,20 @@ func (p *DebianProject) Create() (err error) {
 
 	err = utils.Rsync(filepath.Join(buildDir, "apt"),
 		filepath.Join(p.MirrorRoot, "apt"))
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+func (p *DebianProject) Clean() (err error) {
+	buildDir, err := p.getBuildDir()
+	if err != nil {
+		return
+	}
+
+	err = utils.RemoveAll(buildDir)
 	if err != nil {
 		return
 	}
