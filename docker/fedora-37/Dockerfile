@@ -1,4 +1,4 @@
-FROM docker.io/fedora:35
+FROM docker.io/fedora:37
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y upgrade
@@ -17,4 +17,4 @@ ENV GO111MODULE on
 RUN GOPROXY=direct go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "fedora-35"]
+CMD ["build", "fedora-37"]
