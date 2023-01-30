@@ -3,10 +3,10 @@ MAINTAINER Pacur <contact@pacur.org>
 
 RUN yum -y install dnf-plugins-core oracle-epel-release-el9
 
-sudo dnf config-manager --set-enabled ol9_appstream
-sudo dnf config-manager --set-enabled ol9_addons
-sudo dnf config-manager --set-enabled ol9_codeready_builder
-sudo dnf config-manager --set-enabled ol9_developer_EPEL
+RUN dnf config-manager --set-enabled ol9_appstream
+RUN dnf config-manager --set-enabled ol9_addons
+RUN dnf config-manager --set-enabled ol9_codeready_builder
+RUN dnf config-manager --set-enabled ol9_developer_EPEL
 
 RUN yum -y upgrade
 RUN yum -y groupinstall 'Development Tools'
