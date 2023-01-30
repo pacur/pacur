@@ -38,6 +38,7 @@ sudo podman rmi pacur/fedora-37
 sudo podman rmi pacur/genkey
 sudo podman rmi pacur/oraclelinux-7
 sudo podman rmi pacur/oraclelinux-8
+sudo podman rmi pacur/oraclelinux-9
 sudo podman rmi pacur/ubuntu-precise
 sudo podman rmi pacur/ubuntu-trusty
 sudo podman rmi pacur/ubuntu-vivid
@@ -94,6 +95,7 @@ sudo podman rmi fedora:36
 sudo podman rmi fedora:37
 sudo podman rmi oraclelinux:7
 sudo podman rmi oraclelinux:8
+sudo podman rmi oraclelinux:9
 sudo podman rmi ubuntu:precise
 sudo podman rmi ubuntu:trusty
 sudo podman rmi ubuntu:vivid

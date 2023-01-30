@@ -23,6 +23,7 @@
 
 ![Oracle Linux 7](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
 ![Oracle Linux 8](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
+![Oracle Linux 9](https://img.shields.io/badge/docker-oraclelinux--9-f82200.svg?style=flat "Oracle Linux 9")
 
 
 ![Fedora 36](https://img.shields.io/badge/docker-fedora--36-294172.svg?style=flat "Fedora 36")
@@ -141,6 +142,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-37` | Fedora 37 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
+| `oraclelinux-9` | Oraclelinux 9 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
@@ -176,6 +178,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `fedora-37` | Fedora 37 |
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
+| `oraclelinux-9` | Oraclelinux 9 |
 | `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
