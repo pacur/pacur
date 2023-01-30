@@ -204,7 +204,7 @@ the package with docker.
 $ mkdir httpserver
 $ cd httpserver
 $ nano PKGBUILD
-$ docker run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
+$ podman run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
 ```
 
 ```
