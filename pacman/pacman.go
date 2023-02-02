@@ -204,7 +204,7 @@ func (p *Pacman) pacmanBuild() (err error) {
 		return
 	}
 
-	err = utils.Exec(p.pacmanDir, "sudo", "-u", "nobody", "makepkg")
+	err = utils.Exec(p.pacmanDir, "sudo", "-u", "nobody", "makepkg", "--nodeps")
 	if err != nil {
 		return
 	}
