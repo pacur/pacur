@@ -182,7 +182,7 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	data += "%global _build_id_links none\n"
 	data += "%global _python_bytecompile_extra 0\n"
 	data += "%global _python_bytecompile_errors_terminate_build 0\n"
-	data += "%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')"
+	data += "%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')\n"
 
 	for _, rpmOpt := range r.Pack.RpmOpts {
 		data += fmt.Sprintf("%s\n", rpmOpt)
