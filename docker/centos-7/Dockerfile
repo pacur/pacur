@@ -1,6 +1,9 @@
 FROM docker.io/centos:7
 MAINTAINER Pacur <contact@pacur.org>
 
+COPY RPM-GPG-KEY-endpoint-7 /etc/pki/rpm-gpg/RPM-GPG-KEY-endpoint-7
+COPY endpoint.repo /etc/yum.repos.d/endpoint.repo
+
 RUN yum -y install epel-release
 RUN yum -y upgrade
 RUN yum -y groupinstall 'Development Tools'
