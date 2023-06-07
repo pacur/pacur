@@ -1,10 +1,5 @@
 module github.com/pacur/pacur
 
-go 1.17
+go 1.18
 
-require github.com/dropbox/godropbox v0.0.0-20200228041828-52ad444d3502
-
-require (
-	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/stretchr/testify v1.7.0 // indirect
-)
+require github.com/dropbox/godropbox v0.0.0-20220817175148-f0626942059b
