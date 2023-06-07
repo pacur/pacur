@@ -102,6 +102,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `section` | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br> `libs` |
 | `priority` | `string` | Package priority, only used for debian packages |
 | `url` | `string` | Package url |
+| `rpmopts` | `list` | List of lines to add to RPM spec |
 | `depends` | `list` | List of package dependencies |
 | `optdepends` | `list` | List of package optional dependencies |
 | `makedepends` | `list` | List of package build dependencies |
@@ -225,6 +226,9 @@ pkgdesc:ubuntu="Http file server written with Go for Ubuntu"
 pkgdesclong=(
     "Quick http file server written with Go"
     "using directory listing similar to apache"
+)
+rpmopts=(
+    "AutoReqProv: no"
 )
 maintainer="Example <example@pacur.org>"
 arch="all"
