@@ -29,7 +29,6 @@
 ![Fedora 38](https://img.shields.io/badge/docker-fedora--38-294172.svg?style=flat "Fedora 38")
 
 
-![Ubuntu Trusty](https://img.shields.io/badge/docker-ubuntu--trusty-dd4814.svg?style=flat "Ubuntu Trusty")
 ![Ubuntu Xenial](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
 ![Ubuntu Bionic](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
 ![Ubuntu Focal](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
@@ -142,7 +141,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `oraclelinux-9` | Oraclelinux 9 |
-| `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
@@ -177,7 +175,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7` | Oraclelinux 7 |
 | `oraclelinux-8` | Oraclelinux 8 |
 | `oraclelinux-9` | Oraclelinux 9 |
-| `ubuntu-trusty` | Ubuntu trusty |
 | `ubuntu-xenial` | Ubuntu xenial |
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
@@ -202,7 +199,7 @@ the package with docker.
 $ mkdir httpserver
 $ cd httpserver
 $ nano PKGBUILD
-$ podman run --rm -t -v `pwd`:/pacur pacur/ubuntu-trusty
+$ podman run --rm -t -v `pwd`:/pacur pacur/ubuntu-xenial
 ```
 
 ```
