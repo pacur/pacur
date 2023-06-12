@@ -53,6 +53,7 @@ func (d *Debian) getSums() (err error) {
 	for _, line := range strings.Split(output, "\n") {
 		d.sums += strings.Replace(line, "./", "", 1) + "\n"
 	}
+	d.sums = strings.TrimSpace(d.sums)
 
 	return
 }
