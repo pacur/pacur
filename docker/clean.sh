@@ -59,6 +59,7 @@ sudo podman rmi pacur/ubuntu-hirsute
 sudo podman rmi pacur/ubuntu-impish
 sudo podman rmi pacur/ubuntu-jammy
 sudo podman rmi pacur/ubuntu-kinetic
+sudo podman rmi pacur/ubuntu-lunar
 sudo podman rmi archlinux
 sudo podman rmi base/archlinux
 sudo podman rmi archlinux/base
@@ -118,5 +119,6 @@ sudo podman rmi ubuntu:hirsute
 sudo podman rmi ubuntu:impish
 sudo podman rmi ubuntu:jammy
 sudo podman rmi ubuntu:kinetic
+sudo podman rmi ubuntu:lunar
 
 sudo podman rmi $(sudo podman images -q -f dangling=true)

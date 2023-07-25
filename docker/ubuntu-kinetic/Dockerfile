@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:kinetic
+FROM docker.io/ubuntu:lunar
 MAINTAINER Pacur <contact@pacur.org>
 
 RUN apt-get --assume-yes update
@@ -17,4 +17,4 @@ ENV GO111MODULE on
 RUN GOPROXY=direct go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "ubuntu-kinetic"]
+CMD ["build", "ubuntu-lunar"]
