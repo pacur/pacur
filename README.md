@@ -18,6 +18,7 @@
 
 ![Debian Buster](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Debian Buster")
 ![Debian Bullseye](https://img.shields.io/badge/docker-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
+![Debian Bookworm](https://img.shields.io/badge/docker-debian--bookworm-d70a53.svg?style=flat "Debian Bookworm")
 
 
 ![Oracle Linux 7](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
@@ -136,6 +137,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos-8` | Centos 8 |
 | `debian-buster` | Debian buster |
 | `debian-bullseye` | Debian bullseye |
+| `debian-bookworm` | Debian bookworm |
 | `fedora-37` | Fedora 37 |
 | `fedora-38` | Fedora 38 |
 | `oraclelinux-7` | Oraclelinux 7 |
@@ -170,6 +172,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `centos-8` | Centos 8 |
 | `debian-buster` | Debian buster |
 | `debian-bullseye` | Debian bullseye |
+| `debian-bookworm` | Debian bookworm |
 | `fedora-37` | Fedora 37 |
 | `fedora-38` | Fedora 38 |
 | `oraclelinux-7` | Oraclelinux 7 |
