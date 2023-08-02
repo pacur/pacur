@@ -6,10 +6,10 @@ RUN yum -y upgrade
 RUN yum -y groupinstall 'Development Tools'
 RUN yum -y install tar expect rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git mercurial
 
-RUN wget https://go.dev/dl/go1.20.6.linux-amd64.tar.gz
-RUN echo "b945ae2bb5db01a0fb4786afde64e6fbab50b67f6fa0eb6cfa4924f16a7ff1eb go1.20.6.linux-amd64.tar.gz" | sha256sum -c -
-RUN tar -C /usr/local -xf go1.20.6.linux-amd64.tar.gz
-RUN rm -f go1.20.6.linux-amd64.tar.gz
+RUN wget https://go.dev/dl/go1.20.7.linux-amd64.tar.gz
+RUN echo "f0a87f1bcae91c4b69f8dc2bc6d7e6bfcd7524fceec130af525058c0c17b1b44 go1.20.7.linux-amd64.tar.gz" | sha256sum -c -
+RUN tar -C /usr/local -xf go1.20.7.linux-amd64.tar.gz
+RUN rm -f go1.20.7.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
