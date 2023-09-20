@@ -103,6 +103,11 @@ func (m *Mirror) createDebian() (err error) {
 	}
 
 	for _, deb := range debs {
+		println("**************************************************")
+		fmt.Println(m.Root, "reprepro", "--outdir", outDir,
+			"includedeb", m.Release, deb)
+		println("**************************************************")
+
 		err = utils.Exec(m.Root, "reprepro", "--outdir", outDir,
 			"includedeb", m.Release, deb)
 		if err != nil {
