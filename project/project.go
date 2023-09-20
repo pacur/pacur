@@ -203,7 +203,7 @@ func (p *Project) Repo(filter string) (err error) {
 
 	err = p.iterPackages(filter, func(target, path string) (err error) {
 		fmt.Println("******************************************************")
-		fmt.Printf("Preparing: %s - %s\n", filter, target)
+		fmt.Printf("Preparing: %s - %s\n", path, target)
 		fmt.Println("******************************************************")
 
 		proj, err := p.getProject(target, path)
@@ -232,6 +232,12 @@ func (p *Project) Repo(filter string) (err error) {
 		}
 
 		if exists {
+			fmt.Println(
+				"******************************************************")
+			fmt.Printf("Create: %s\n", release)
+			fmt.Println(
+				"******************************************************")
+
 			proj, e := p.getProject(release, path)
 			if e != nil {
 				err = e
