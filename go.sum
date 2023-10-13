@@ -1,8 +1,6 @@
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/dropbox/godropbox v0.0.0-20220817175148-f0626942059b h1:kyj6/Iog5NfYSW6sOcHYBc+/ipjwhb4iex/PUZt0LBg=
-github.com/dropbox/godropbox v0.0.0-20220817175148-f0626942059b/go.mod h1:Vr/Q4p40Kce7JAHDITjDhiy/zk07W4tqD5YVi5FD0PA=
 github.com/dropbox/godropbox v0.0.0-20230623171840-436d2007a9fd h1:s2vYw+2c+7GR1ccOaDuDcKsmNB/4RIxyu5liBm1VRbs=
 github.com/dropbox/godropbox v0.0.0-20230623171840-436d2007a9fd/go.mod h1:Vr/Q4p40Kce7JAHDITjDhiy/zk07W4tqD5YVi5FD0PA=
 github.com/gogo/protobuf v1.3.1/go.mod h1:SlYgWuQ5SjCEi6WLHjHCa1yvBfUnHcTbrrZtXPKa29o=
