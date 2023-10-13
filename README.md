@@ -146,6 +146,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
 | `ubuntu-jammy` | Ubuntu jammy |
+| `ubuntu-lunar` | Ubuntu lunar |
 
 ### directives
 
@@ -180,6 +181,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
 | `ubuntu-jammy` | Ubuntu jammy |
+| `ubuntu-lunar` | Ubuntu lunar |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user defined
