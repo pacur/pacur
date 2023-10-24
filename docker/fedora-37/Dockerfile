@@ -1,5 +1,5 @@
 FROM docker.io/fedora:37
-MAINTAINER Pacur <contact@pacur.org>
+LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN yum -y upgrade
 RUN yum -y groupinstall 'Development Tools'

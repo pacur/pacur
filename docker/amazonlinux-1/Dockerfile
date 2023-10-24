@@ -1,5 +1,5 @@
 FROM docker.io/amazonlinux:1
-MAINTAINER Pacur <contact@pacur.org>
+LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN yum -y install epel-release
 RUN yum -y upgrade

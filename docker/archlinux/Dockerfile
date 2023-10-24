@@ -1,5 +1,5 @@
 FROM docker.io/archlinux
-MAINTAINER Pacur <contact@pacur.org>
+LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN pacman -Syu --noconfirm
 RUN pacman -S --noconfirm base-devel go git mercurial wget rsync tar zip sudo

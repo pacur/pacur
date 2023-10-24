@@ -1,5 +1,5 @@
 FROM docker.io/oraclelinux:9
-MAINTAINER Pacur <contact@pacur.org>
+LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN yum -y install dnf-plugins-core oracle-epel-release-el9
 

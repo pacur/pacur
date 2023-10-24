@@ -1,5 +1,5 @@
 FROM docker.io/debian:bookworm
-MAINTAINER Pacur <contact@pacur.org>
+LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN apt-get --assume-yes update
 RUN apt-get --assume-yes upgrade

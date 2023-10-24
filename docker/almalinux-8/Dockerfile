@@ -1,5 +1,5 @@
 FROM docker.io/almalinux:8
-MAINTAINER Pacur <contact@pacur.org>
+LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN yum -y install dnf-plugins-core
 RUN dnf config-manager --set-enabled powertools

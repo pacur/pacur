@@ -1,5 +1,5 @@
 FROM docker.io/oraclelinux:7
-MAINTAINER Pacur <contact@pacur.org>
+LABEL maintainer="Pacur <contact@pacur.org>"
 
 COPY RPM-GPG-KEY-endpoint-7 /etc/pki/rpm-gpg/RPM-GPG-KEY-endpoint-7
 COPY endpoint.repo /etc/yum.repos.d/endpoint.repo
