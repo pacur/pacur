@@ -11,6 +11,7 @@
 
 ![Amazon Linux 1](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Amazon Linux 1")
 ![Amazon Linux 2](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Amazon Linux 2")
+![Amazon Linux 2023](https://img.shields.io/badge/docker-amazonlinux--2023-faaf34.svg?style=flat "Amazon Linux 2023")
 
 
 ![CentOS 7](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "CentOS 7")
@@ -132,6 +133,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `almalinux-9` | AlmaLinux 9 |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
+| `amazonlinux-2023` | Amazonlinux 2023 |
 | `centos-7` | Centos 7 |
 | `centos-8` | Centos 8 |
 | `debian-buster` | Debian buster |
@@ -166,6 +168,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `almalinux-9` | AlmaLinux 9 |
 | `amazonlinux-1` | Amazonlinux 1 |
 | `amazonlinux-2` | Amazonlinux 2 |
+| `amazonlinux-2023` | Amazonlinux 2023 |
 | `centos-7` | Centos 7 |
 | `centos-8` | Centos 8 |
 | `debian-buster` | Debian buster |

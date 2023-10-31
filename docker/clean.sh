@@ -10,6 +10,7 @@ sudo podman rmi pacur/amazonlinux-2017.09
 sudo podman rmi pacur/amazonlinux-2017.12
 sudo podman rmi pacur/amazonlinux-1
 sudo podman rmi pacur/amazonlinux-2
+sudo podman rmi pacur/amazonlinux-2023
 sudo podman rmi pacur/centos-6
 sudo podman rmi pacur/centos-7
 sudo podman rmi pacur/centos-8
@@ -71,6 +72,7 @@ sudo podman rmi amazonlinux:2017.09
 sudo podman rmi amazonlinux:2017.12
 sudo podman rmi amazonlinux:1
 sudo podman rmi amazonlinux:2
+sudo podman rmi amazonlinux:2023
 sudo podman rmi centos:6
 sudo podman rmi centos:7
 sudo podman rmi centos:8

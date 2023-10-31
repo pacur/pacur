@@ -140,6 +140,8 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		release = ".amzn1"
 	} else if r.Pack.Distro == "amazonlinux" && r.Pack.Release == "2" {
 		release = ".amzn2"
+	} else if r.Pack.Distro == "amazonlinux" && r.Pack.Release == "2023" {
+		release = ".amzn2023"
 	} else if r.Pack.Distro == "centos" && r.Pack.Release == "7" {
 		release = ".el7.centos"
 	} else if r.Pack.Distro == "centos" && r.Pack.Release == "8" {
