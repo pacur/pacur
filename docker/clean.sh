@@ -38,6 +38,7 @@ sudo podman rmi pacur/fedora-35
 sudo podman rmi pacur/fedora-36
 sudo podman rmi pacur/fedora-37
 sudo podman rmi pacur/fedora-38
+sudo podman rmi pacur/fedora-39
 sudo podman rmi pacur/genkey
 sudo podman rmi pacur/oraclelinux-7
 sudo podman rmi pacur/oraclelinux-8
@@ -100,6 +101,7 @@ sudo podman rmi fedora:35
 sudo podman rmi fedora:36
 sudo podman rmi fedora:37
 sudo podman rmi fedora:38
+sudo podman rmi fedora:39
 sudo podman rmi oraclelinux:7
 sudo podman rmi oraclelinux:8
 sudo podman rmi oraclelinux:9
