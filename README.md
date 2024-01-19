@@ -35,6 +35,7 @@
 ![Ubuntu Bionic](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
 ![Ubuntu Focal](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
 ![Ubuntu Jammy](https://img.shields.io/badge/docker-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
+![Ubuntu Mantic](https://img.shields.io/badge/docker-ubuntu--mantic-dd4814.svg?style=flat "Ubuntu Mantic")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -148,6 +149,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
 | `ubuntu-jammy` | Ubuntu jammy |
+| `ubuntu-mantic` | Ubuntu mantic |
 
 ### directives
 
@@ -183,6 +185,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-bionic` | Ubuntu bionic |
 | `ubuntu-focal` | Ubuntu focal |
 | `ubuntu-jammy` | Ubuntu jammy |
+| `ubuntu-mantic` | Ubuntu mantic |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user defined
