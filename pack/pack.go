@@ -7,6 +7,11 @@ import (
 	"strings"
 )
 
+type Dependency struct {
+	Name        string
+	Restriction *string
+}
+
 type Pack struct {
 	priorities  map[string]int
 	Targets     []string
@@ -28,9 +33,9 @@ type Pack struct {
 	Section     string
 	Priority    string
 	Url         string
-	Depends     []string
-	OptDepends  []string
-	MakeDepends []string
+	Depends     []Dependency
+	OptDepends  []Dependency
+	MakeDepends []Dependency
 	Provides    []string
 	Conflicts   []string
 	Sources     []string
@@ -111,8 +116,36 @@ func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
 	return
 }
 
+func ParseDependency(dependency string) Dependency {
+	for i, c := range dependency {
+		if c == '=' || c == '<' || c == '>' {
+			var restriction = dependency[i:]
+			return Dependency {
+				Name: dependency[:i],
+				Restriction: &restriction,
+			}
+		}
+	}
+	return Dependency {
+		Name: dependency,
+		Restriction: nil,
+	}
+}
+
+func ParseDependencies(dependencies []string) []Dependency {
+	parsed := make([]Dependency, len(dependencies))
+	for i, d := range dependencies {
+		parsed[i] = ParseDependency(d)
+	}
+	return parsed
+}
+
 func (p *Pack) Resolve() (err error) {
 	reslv := resolver.New()
+
+	var dependsRaw     []string
+	var optDependsRaw  []string
+	var makeDependsRaw []string
 
 	reslv.AddList("targets", p.Targets)
 	reslv.Add("root", &p.Root)
@@ -129,9 +162,9 @@ func (p *Pack) Resolve() (err error) {
 	reslv.Add("section", &p.Section)
 	reslv.Add("priority", &p.Priority)
 	reslv.Add("url", &p.Url)
-	reslv.AddList("depends", p.Depends)
-	reslv.AddList("optdepends", p.OptDepends)
-	reslv.AddList("makedepends", p.MakeDepends)
+	reslv.AddList("depends", dependsRaw)
+	reslv.AddList("optdepends", optDependsRaw)
+	reslv.AddList("makedepends", makeDependsRaw)
 	reslv.AddList("provides", p.Provides)
 	reslv.AddList("conflicts", p.Conflicts)
 	reslv.AddList("sources", p.Sources)
@@ -202,11 +235,11 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 	case "url":
 		p.Url = data.(string)
 	case "depends":
-		p.Depends = data.([]string)
+		p.Depends = ParseDependencies(data.([]string))
 	case "optdepends":
-		p.OptDepends = data.([]string)
+		p.OptDepends = ParseDependencies(data.([]string))
 	case "makedepends":
-		p.MakeDepends = data.([]string)
+		p.MakeDepends = ParseDependencies(data.([]string))
 	case "provides":
 		p.Provides = data.([]string)
 	case "conflicts":

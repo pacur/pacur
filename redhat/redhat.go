@@ -64,6 +64,14 @@ func (r *Redhat) getRpmPath() (path string, err error) {
 	return
 }
 
+func DependString(dependency pack.Dependency) string {
+	if dependency.Restriction == nil {
+		return dependency.Name
+	} else {
+		return fmt.Sprintf("%s %s", dependency.Name, *dependency.Restriction)
+	}
+}
+
 func (r *Redhat) getDepends() (err error) {
 	if len(r.Pack.MakeDepends) == 0 {
 		return
@@ -73,7 +81,9 @@ func (r *Redhat) getDepends() (err error) {
 		"-y",
 		"install",
 	}
-	args = append(args, r.Pack.MakeDepends...)
+	for _, d := range r.Pack.MakeDepends {
+		args = append(args, DependString(d))
+	}
 
 	err = utils.Exec("", "yum", args...)
 	if err != nil {
@@ -173,11 +183,11 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	}
 
 	for _, pkg := range r.Pack.Depends {
-		data += fmt.Sprintf("Requires: %s\n", pkg)
+		data += fmt.Sprintf("Requires: %s\n", DependString(pkg))
 	}
 
 	for _, pkg := range r.Pack.MakeDepends {
-		data += fmt.Sprintf("BuildRequires: %s\n", pkg)
+		data += fmt.Sprintf("BuildRequires: %s\n", DependString(pkg))
 	}
 
 	data += "\n"
