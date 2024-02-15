@@ -68,7 +68,7 @@ func DependString(dependency pack.Dependency) string {
 	if dependency.Restriction == nil {
 		return dependency.Name
 	} else {
-		return fmt.Sprintf("%s %s", dependency.Name, *dependency.Restriction)
+		return dependency.Name + *dependency.Restriction
 	}
 }
 
