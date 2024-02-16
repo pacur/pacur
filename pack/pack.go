@@ -9,7 +9,7 @@ import (
 
 type DependencyRestriction struct {
 	Comparison string
-	Version string
+	Version    string
 }
 
 type Dependency struct {
@@ -141,13 +141,13 @@ func ParseDependency(dependency string) Dependency {
 	var restriction *DependencyRestriction
 	if comparisonEnd != -1 {
 		name = dependency[:comparisonStart]
-		restriction = &DependencyRestriction {
+		restriction = &DependencyRestriction{
 			Comparison: dependency[comparisonStart:comparisonEnd],
-			Version: dependency[comparisonEnd:],
+			Version:    dependency[comparisonEnd:],
 		}
 	}
-	return Dependency {
-		Name: name,
+	return Dependency{
+		Name:        name,
 		Restriction: restriction,
 	}
 }
@@ -163,8 +163,8 @@ func ParseDependencies(dependencies []string) []Dependency {
 func (p *Pack) Resolve() (err error) {
 	reslv := resolver.New()
 
-	var dependsRaw     []string
-	var optDependsRaw  []string
+	var dependsRaw []string
+	var optDependsRaw []string
 	var makeDependsRaw []string
 
 	reslv.AddList("targets", p.Targets)
