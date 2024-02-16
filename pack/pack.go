@@ -132,6 +132,7 @@ func ParseDependency(dependency string) Dependency {
 		} else {
 			if comparisonStart != -1 {
 				comparisonEnd = i
+				break
 			}
 		}
 	}
