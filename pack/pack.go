@@ -7,9 +7,14 @@ import (
 	"strings"
 )
 
+type DependencyRestriction struct {
+	Comparison string
+	Version string
+}
+
 type Dependency struct {
 	Name        string
-	Restriction *string
+	Restriction *DependencyRestriction
 }
 
 type Pack struct {
@@ -117,18 +122,32 @@ func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
 }
 
 func ParseDependency(dependency string) Dependency {
+	comparisonStart := -1
+	comparisonEnd := -1
 	for i, c := range dependency {
 		if c == '=' || c == '<' || c == '>' {
-			var restriction = dependency[i:]
-			return Dependency {
-				Name: dependency[:i],
-				Restriction: &restriction,
+			if comparisonStart == -1 {
+				comparisonStart = i
+			}
+		} else {
+			if comparisonStart != -1 {
+				comparisonEnd = i
 			}
 		}
 	}
+
+	name := dependency
+	var restriction *DependencyRestriction
+	if comparisonEnd != -1 {
+		name = dependency[:comparisonStart]
+		restriction = &DependencyRestriction {
+			Comparison: dependency[comparisonStart:comparisonEnd],
+			Version: dependency[comparisonEnd:],
+		}
+	}
 	return Dependency {
-		Name: dependency,
-		Restriction: nil,
+		Name: name,
+		Restriction: restriction,
 	}
 }
 

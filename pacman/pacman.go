@@ -20,7 +20,7 @@ func DependString(dependency pack.Dependency) string {
 	if dependency.Restriction == nil {
 		return dependency.Name
 	} else {
-		return dependency.Name + *dependency.Restriction
+		return fmt.Sprintf("%s%s%s", dependency.Name, dependency.Restriction.Comparison, dependency.Restriction.Version)
 	}
 }
 
