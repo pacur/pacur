@@ -191,7 +191,7 @@ func File(distro, release, home string) (pac *pack.Pack, err error) {
 					err = &SyntaxError{
 						errors.Newf(
 							"parse: Unexpected char '%s' expected "+
-							"'\"' or '`' (%d: %s)", val[:1], n, line),
+								"'\"' or '`' (%d: %s)", val[:1], n, line),
 					}
 					return
 				}

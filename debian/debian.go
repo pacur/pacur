@@ -18,6 +18,25 @@ type Debian struct {
 	sums        string
 }
 
+func DependString(dependency pack.Dependency) string {
+	if dependency.Restriction == nil {
+		return dependency.Name
+	} else {
+		return fmt.Sprintf("%s (%s %s)", dependency.Name, dependency.Restriction.Comparison, dependency.Restriction.Version)
+	}
+}
+
+func DependsString(dependencies []pack.Dependency) string {
+	var result string
+	for i, d := range dependencies {
+		if i > 0 {
+			result += ", "
+		}
+		result += DependString(d)
+	}
+	return result
+}
+
 func (d *Debian) getDepends() (err error) {
 	if len(d.Pack.MakeDepends) == 0 {
 		return
@@ -32,7 +51,9 @@ func (d *Debian) getDepends() (err error) {
 		"--assume-yes",
 		"install",
 	}
-	args = append(args, d.Pack.MakeDepends...)
+	for _, d := range d.Pack.MakeDepends {
+		args = append(args, DependString(d))
+	}
 
 	err = utils.Exec("", "apt-get", args...)
 	if err != nil {
@@ -94,8 +115,7 @@ func (d *Debian) createControl() (err error) {
 	data += fmt.Sprintf("Installed-Size: %d\n", d.installSize)
 
 	if len(d.Pack.Depends) > 0 {
-		data += fmt.Sprintf("Depends: %s\n",
-			strings.Join(d.Pack.Depends, ", "))
+		data += fmt.Sprintf("Depends: %s\n", DependsString(d.Pack.Depends))
 	}
 
 	if len(d.Pack.Conflicts) > 0 {
@@ -104,8 +124,7 @@ func (d *Debian) createControl() (err error) {
 	}
 
 	if len(d.Pack.OptDepends) > 0 {
-		data += fmt.Sprintf("Recommends: %s\n",
-			strings.Join(d.Pack.OptDepends, ", "))
+		data += fmt.Sprintf("Recommends: %s\n", DependsString(d.Pack.OptDepends))
 	}
 
 	data += fmt.Sprintf("Section: %s\n", d.Pack.Section)
