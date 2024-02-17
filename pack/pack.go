@@ -4,56 +4,58 @@ import (
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/resolver"
+	"regexp"
 	"strings"
 )
 
-type DependencyRestriction struct {
-	Comparison string
-	Version    string
+var verComparisonReg = regexp.MustCompile(`>=|<=|=`)
+
+type Pack struct {
+	priorities     map[string]int
+	Targets        []string
+	Distro         string
+	Release        string
+	FullRelease    string
+	Root           string
+	Home           string
+	SourceDir      string
+	PackageDir     string
+	PkgName        string
+	PkgVer         string
+	PkgRel         string
+	PkgDesc        string
+	PkgDescLong    []string
+	Maintainer     string
+	Arch           string
+	License        []string
+	Section        string
+	Priority       string
+	Url            string
+	Depends        []string
+	DependsExt     []*Dependency
+	OptDepends     []string
+	OptDependsExt  []*Dependency
+	MakeDepends    []string
+	MakeDependsExt []*Dependency
+	Provides       []string
+	Conflicts      []string
+	Sources        []string
+	HashSums       []string
+	Backup         []string
+	Build          []string
+	Package        []string
+	PreInst        []string
+	PostInst       []string
+	PreRm          []string
+	PostRm         []string
+	Variables      map[string]string
+	RpmOpts        []string
 }
 
 type Dependency struct {
-	Name        string
-	Restriction *DependencyRestriction
-}
-
-type Pack struct {
-	priorities  map[string]int
-	Targets     []string
-	Distro      string
-	Release     string
-	FullRelease string
-	Root        string
-	Home        string
-	SourceDir   string
-	PackageDir  string
-	PkgName     string
-	PkgVer      string
-	PkgRel      string
-	PkgDesc     string
-	PkgDescLong []string
-	Maintainer  string
-	Arch        string
-	License     []string
-	Section     string
-	Priority    string
-	Url         string
-	Depends     []Dependency
-	OptDepends  []Dependency
-	MakeDepends []Dependency
-	Provides    []string
-	Conflicts   []string
-	Sources     []string
-	HashSums    []string
-	Backup      []string
-	Build       []string
-	Package     []string
-	PreInst     []string
-	PostInst    []string
-	PreRm       []string
-	PostRm      []string
-	Variables   map[string]string
-	RpmOpts     []string
+	Name       string
+	Comparison string
+	Version    string
 }
 
 func (p *Pack) Init() {
@@ -121,51 +123,8 @@ func (p *Pack) parseDirective(input string) (key string, pry int, err error) {
 	return
 }
 
-func ParseDependency(dependency string) Dependency {
-	comparisonStart := -1
-	comparisonEnd := -1
-	for i, c := range dependency {
-		if c == '=' || c == '<' || c == '>' {
-			if comparisonStart == -1 {
-				comparisonStart = i
-			}
-		} else {
-			if comparisonStart != -1 {
-				comparisonEnd = i
-				break
-			}
-		}
-	}
-
-	name := dependency
-	var restriction *DependencyRestriction
-	if comparisonEnd != -1 {
-		name = dependency[:comparisonStart]
-		restriction = &DependencyRestriction{
-			Comparison: dependency[comparisonStart:comparisonEnd],
-			Version:    dependency[comparisonEnd:],
-		}
-	}
-	return Dependency{
-		Name:        name,
-		Restriction: restriction,
-	}
-}
-
-func ParseDependencies(dependencies []string) []Dependency {
-	parsed := make([]Dependency, len(dependencies))
-	for i, d := range dependencies {
-		parsed[i] = ParseDependency(d)
-	}
-	return parsed
-}
-
 func (p *Pack) Resolve() (err error) {
 	reslv := resolver.New()
-
-	var dependsRaw []string
-	var optDependsRaw []string
-	var makeDependsRaw []string
 
 	reslv.AddList("targets", p.Targets)
 	reslv.Add("root", &p.Root)
@@ -182,9 +141,9 @@ func (p *Pack) Resolve() (err error) {
 	reslv.Add("section", &p.Section)
 	reslv.Add("priority", &p.Priority)
 	reslv.Add("url", &p.Url)
-	reslv.AddList("depends", dependsRaw)
-	reslv.AddList("optdepends", optDependsRaw)
-	reslv.AddList("makedepends", makeDependsRaw)
+	reslv.AddList("depends", p.Depends)
+	reslv.AddList("optdepends", p.OptDepends)
+	reslv.AddList("makedepends", p.MakeDepends)
 	reslv.AddList("provides", p.Provides)
 	reslv.AddList("conflicts", p.Conflicts)
 	reslv.AddList("sources", p.Sources)
@@ -255,11 +214,14 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 	case "url":
 		p.Url = data.(string)
 	case "depends":
-		p.Depends = ParseDependencies(data.([]string))
+		p.Depends = data.([]string)
+		p.DependsExt = ParseDependencies(data.([]string))
 	case "optdepends":
-		p.OptDepends = ParseDependencies(data.([]string))
+		p.OptDepends = data.([]string)
+		p.OptDependsExt = ParseDependencies(data.([]string))
 	case "makedepends":
-		p.MakeDepends = ParseDependencies(data.([]string))
+		p.MakeDepends = data.([]string)
+		p.MakeDependsExt = ParseDependencies(data.([]string))
 	case "provides":
 		p.Provides = data.([]string)
 	case "conflicts":
