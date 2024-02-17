@@ -1,5 +1,11 @@
 package pack
 
+import (
+	"regexp"
+)
+
+var verComparisonReg = regexp.MustCompile(`>=|<=|=`)
+
 func ParseDependency(dependency string) (dpn *Dependency) {
 	comparison := verComparisonReg.FindString(dependency)
 	comparisonSpl := verComparisonReg.Split(dependency, -1)

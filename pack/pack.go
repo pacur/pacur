@@ -4,11 +4,8 @@ import (
 	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/resolver"
-	"regexp"
 	"strings"
 )
-
-var verComparisonReg = regexp.MustCompile(`>=|<=|=`)
 
 type Pack struct {
 	priorities     map[string]int
