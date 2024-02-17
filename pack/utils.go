@@ -4,8 +4,7 @@ func ParseDependency(dependency string) (dpn *Dependency) {
 	comparison := verComparisonReg.FindString(dependency)
 	comparisonSpl := verComparisonReg.Split(dependency, -1)
 
-	name := dependency
-	if comparison != "" && len(comparisonSpl) == 3 {
+	if comparison != "" && len(comparisonSpl) == 2 {
 		dpn = &Dependency{
 			Name:       comparisonSpl[0],
 			Comparison: comparison,
@@ -13,7 +12,7 @@ func ParseDependency(dependency string) (dpn *Dependency) {
 		}
 	} else {
 		dpn = &Dependency{
-			Name: name,
+			Name: dependency,
 		}
 	}
 
