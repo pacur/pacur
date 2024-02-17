@@ -2,7 +2,7 @@ package pack
 
 func ParseDependency(dependency string) (dpn *Dependency) {
 	comparison := verComparisonReg.FindString(dependency)
-	comparisonSpl := verComparisonReg.Split(dependency, 1)
+	comparisonSpl := verComparisonReg.Split(dependency, -1)
 
 	name := dependency
 	if comparison != "" && len(comparisonSpl) == 3 {
