@@ -64,16 +64,8 @@ func (r *Redhat) getRpmPath() (path string, err error) {
 	return
 }
 
-func DependString(dependency pack.Dependency) string {
-	if dependency.Restriction == nil {
-		return dependency.Name
-	} else {
-		return fmt.Sprintf("%s %s %s", dependency.Name, dependency.Restriction.Comparison, dependency.Restriction.Version)
-	}
-}
-
 func (r *Redhat) getDepends() (err error) {
-	if len(r.Pack.MakeDepends) == 0 {
+	if len(r.Pack.MakeDependsExt) == 0 {
 		return
 	}
 
@@ -81,8 +73,8 @@ func (r *Redhat) getDepends() (err error) {
 		"-y",
 		"install",
 	}
-	for _, d := range r.Pack.MakeDepends {
-		args = append(args, DependString(d))
+	for _, d := range r.Pack.MakeDependsExt {
+		args = append(args, formatDepend(d))
 	}
 
 	err = utils.Exec("", "yum", args...)
@@ -182,12 +174,12 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		data += fmt.Sprintf("Conflicts: %s\n", pkg)
 	}
 
-	for _, pkg := range r.Pack.Depends {
-		data += fmt.Sprintf("Requires: %s\n", DependString(pkg))
+	for _, pkg := range r.Pack.DependsExt {
+		data += fmt.Sprintf("Requires: %s\n", formatDepend(pkg))
 	}
 
-	for _, pkg := range r.Pack.MakeDepends {
-		data += fmt.Sprintf("BuildRequires: %s\n", DependString(pkg))
+	for _, pkg := range r.Pack.MakeDependsExt {
+		data += fmt.Sprintf("BuildRequires: %s\n", formatDepend(pkg))
 	}
 
 	data += "\n"

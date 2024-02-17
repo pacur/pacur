@@ -1,5 +1,10 @@
 package redhat
 
+import (
+	"fmt"
+	"github.com/pacur/pacur/pack"
+)
+
 func ConvertSection(section string) (converted string) {
 	switch section {
 	case "admin":
@@ -69,4 +74,11 @@ func ConvertSection(section string) (converted string) {
 	}
 
 	return
+}
+
+func formatDepend(dpn *pack.Dependency) string {
+	if dpn.Comparison == "" || dpn.Version == "" {
+		return dpn.Name
+	}
+	return fmt.Sprintf("%s %s %s", dpn.Name, dpn.Comparison, dpn.Version)
 }
