@@ -16,16 +16,8 @@ type Pacman struct {
 	pacmanDir string
 }
 
-func DependString(dependency pack.Dependency) string {
-	if dependency.Restriction == nil {
-		return dependency.Name
-	} else {
-		return fmt.Sprintf("%s%s%s", dependency.Name, dependency.Restriction.Comparison, dependency.Restriction.Version)
-	}
-}
-
 func (p *Pacman) getDepends() (err error) {
-	if len(p.Pack.MakeDepends) == 0 {
+	if len(p.Pack.MakeDependsExt) == 0 {
 		return
 	}
 
@@ -38,8 +30,8 @@ func (p *Pacman) getDepends() (err error) {
 		"-S",
 		"--noconfirm",
 	}
-	for _, d := range p.Pack.MakeDepends {
-		args = append(args, DependString(d))
+	for _, dpn := range p.Pack.MakeDependsExt {
+		args = append(args, formatDepend(dpn))
 	}
 
 	err = utils.Exec("", "pacman", args...)
@@ -140,16 +132,18 @@ func (p *Pacman) createMake() (err error) {
 
 	if len(p.Pack.Depends) > 0 {
 		data += "depends=(\n"
-		for _, item := range p.Pack.Depends {
-			data += fmt.Sprintf("    %s\n", strconv.Quote(DependString(item)))
+		for _, item := range p.Pack.DependsExt {
+			data += fmt.Sprintf("    %s\n", strconv.Quote(
+				formatDepend(item)))
 		}
 		data += ")\n"
 	}
 
-	if len(p.Pack.OptDepends) > 0 {
+	if len(p.Pack.OptDependsExt) > 0 {
 		data += "optdepends=(\n"
-		for _, item := range p.Pack.OptDepends {
-			data += fmt.Sprintf("    %s\n", strconv.Quote(DependString(item)))
+		for _, item := range p.Pack.OptDependsExt {
+			data += fmt.Sprintf("    %s\n", strconv.Quote(
+				formatDepend(item)))
 		}
 		data += ")\n"
 	}
