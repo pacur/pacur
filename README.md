@@ -36,6 +36,7 @@
 ![Ubuntu Focal](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
 ![Ubuntu Jammy](https://img.shields.io/badge/docker-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
 ![Ubuntu Mantic](https://img.shields.io/badge/docker-ubuntu--mantic-dd4814.svg?style=flat "Ubuntu Mantic")
+![Ubuntu Noble](https://img.shields.io/badge/docker-ubuntu--noble-dd4814.svg?style=flat "Ubuntu Noble")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -81,111 +82,113 @@ key:ubuntu="this will apply only to ubuntu builds"
 
 ### builtin variables
 
-| key | value |
-| --- | ----- |
+| key         | value |
+|-------------| ----- |
 | `${srcdir}` | `Source` directory where all sources are downloaded and extracted |
 | `${pkgdir}` | `Package` directory for the root of the package |
 
 ### spec
 
-| key | type | value |
-| --- | ---- | ----- |
-| `targets` | `list` | List of build targets only used for projects. Prefix a `!` to ignore target. |
-| `pkgname` | `string` | Package name |
-| `pkgver` | `string` | Package version |
-| `pkgrel` | `string` | Package release number |
-| `pkgdesc` | `string` | Short package description |
+| key          | type | value |
+|--------------| ---- | ----- |
+| `targets`    | `list` | List of build targets only used for projects. Prefix a `!` to ignore target. |
+| `pkgname`    | `string` | Package name |
+| `pkgver`     | `string` | Package version |
+| `pkgrel`     | `string` | Package release number |
+| `pkgdesc`    | `string` | Short package description |
 | `pkgdesclong` | `list` | List of lines for package description |
 | `maintainer` | `string` | Package maintainer |
-| `arch` | `string` | Package architecture, can be `all` or `amd64` |
-| `license` | `list` | List of licenses for packaged software |
-| `section` | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br> `libs` |
-| `priority` | `string` | Package priority, only used for debian packages |
-| `url` | `string` | Package url |
-| `rpmopts` | `list` | List of lines to add to RPM spec |
-| `depends` | `list` | List of package dependencies |
+| `arch`       | `string` | Package architecture, can be `all` or `amd64` |
+| `license`    | `list` | List of licenses for packaged software |
+| `section`    | `string` | Section for package. Built in sections available:<br> `admin`<br> `localization`<br> `mail`<br> `comm`<br> `math`<br> `database`<br> `misc`<br> `debug`<br> `net`<br> `news`<br> `devel`<br> `doc`<br> `editors`<br> `electronics`<br> `embedded`<br> `fonts`<br> `games`<br> `science`<br> `shells`<br> `sound`<br> `graphics`<br> `text`<br> `httpd`<br> `vcs`<br> `interpreters`<br> `video`<br> `web`<br> `kernel`<br> `x11`<br> `libdevel`<br> `libs` |
+| `priority`   | `string` | Package priority, only used for debian packages |
+| `url`        | `string` | Package url |
+| `rpmopts`    | `list` | List of lines to add to RPM spec |
+| `depends`    | `list` | List of package dependencies |
 | `optdepends` | `list` | List of package optional dependencies |
 | `makedepends` | `list` | List of package build dependencies |
-| `provides` | `list` | List of packages provided |
-| `conflicts` | `list` | List of packages conflicts |
-| `sources` | `list` | List of packages sources. Sources can be url or paths that are relative to the PKGBUILD |
-| `hashsums` | `list` | List of `md5`/`sha1`/`sha256`/`sha512` hex hashes for sources, hash type is determined by the length of the hash. Use `skip` to ignore hash check |
-| `backup` | `list` | List of config files that shouldn't be overwritten on upgrades |
-| `build` | `func` | Function to build the source, starts in srcdir |
-| `package` | `func` | Function to package the source into the pkgdir, starts in srcdir |
-| `preinst` | `func` | Function to run before installing |
-| `postinst` | `func` | Function to run after installing |
-| `prerm` | `func` | Function to run before removing |
-| `postrm` | `func` | Function to run after removing |
+| `provides`   | `list` | List of packages provided |
+| `conflicts`  | `list` | List of packages conflicts |
+| `sources`    | `list` | List of packages sources. Sources can be url or paths that are relative to the PKGBUILD |
+| `hashsums`   | `list` | List of `md5`/`sha1`/`sha256`/`sha512` hex hashes for sources, hash type is determined by the length of the hash. Use `skip` to ignore hash check |
+| `backup`     | `list` | List of config files that shouldn't be overwritten on upgrades |
+| `build`      | `func` | Function to build the source, starts in srcdir |
+| `package`    | `func` | Function to package the source into the pkgdir, starts in srcdir |
+| `preinst`    | `func` | Function to run before installing |
+| `postinst`   | `func` | Function to run after installing |
+| `prerm`      | `func` | Function to run before removing |
+| `postrm`     | `func` | Function to run after removing |
 
 ### build targets
 
-| target | value |
-| ------ | ----- |
-| `archlinux` | All archlinux releases |
-| `almalinux` | All almalinux releases |
-| `amazonlinux` | All amazonlinux releases |
-| `centos` | All centos releases |
-| `debian` | All debian releases |
-| `fedora` | All fedora releases |
-| `oraclelinux` | All oraclelinux releases |
-| `ubuntu` | All ubuntu releases |
-| `almalinux-8` | AlmaLinux 8 |
-| `almalinux-9` | AlmaLinux 9 |
-| `amazonlinux-1` | Amazonlinux 1 |
-| `amazonlinux-2` | Amazonlinux 2 |
-| `amazonlinux-2023` | Amazonlinux 2023 |
-| `centos-7` | Centos 7 |
-| `centos-8` | Centos 8 |
-| `debian-buster` | Debian buster |
-| `debian-bullseye` | Debian bullseye |
-| `debian-bookworm` | Debian bookworm |
-| `fedora-38` | Fedora 38 |
-| `fedora-39` | Fedora 39 |
-| `oraclelinux-7` | Oraclelinux 7 |
-| `oraclelinux-8` | Oraclelinux 8 |
-| `oraclelinux-9` | Oraclelinux 9 |
-| `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-bionic` | Ubuntu bionic |
-| `ubuntu-focal` | Ubuntu focal |
-| `ubuntu-jammy` | Ubuntu jammy |
-| `ubuntu-mantic` | Ubuntu mantic |
+| target             | value                    |
+|--------------------|--------------------------|
+| `archlinux`        | All archlinux releases   |
+| `almalinux`        | All almalinux releases   |
+| `amazonlinux`      | All amazonlinux releases |
+| `centos`           | All centos releases      |
+| `debian`           | All debian releases      |
+| `fedora`           | All fedora releases      |
+| `oraclelinux`      | All oraclelinux releases |
+| `ubuntu`           | All ubuntu releases      |
+| `almalinux-8`      | AlmaLinux 8              |
+| `almalinux-9`      | AlmaLinux 9              |
+| `amazonlinux-1`    | Amazonlinux 1            |
+| `amazonlinux-2`    | Amazonlinux 2            |
+| `amazonlinux-2023` | Amazonlinux 2023         |
+| `centos-7`         | Centos 7                 |
+| `centos-8`         | Centos 8                 |
+| `debian-buster`    | Debian buster            |
+| `debian-bullseye`  | Debian bullseye          |
+| `debian-bookworm`  | Debian bookworm          |
+| `fedora-38`        | Fedora 38                |
+| `fedora-39`        | Fedora 39                |
+| `oraclelinux-7`    | Oraclelinux 7            |
+| `oraclelinux-8`    | Oraclelinux 8            |
+| `oraclelinux-9`    | Oraclelinux 9            |
+| `ubuntu-xenial`    | Ubuntu xenial            |
+| `ubuntu-bionic`    | Ubuntu bionic            |
+| `ubuntu-focal`     | Ubuntu focal             |
+| `ubuntu-jammy`     | Ubuntu jammy             |
+| `ubuntu-mantic`    | Ubuntu mantic            |
+| `ubuntu-noble`     | Ubuntu noble             |
 
 ### directives
 
-| directive | value |
-| --------- | ----- |
-| `apt` | All deb packages |
-| `pacman` | All pkg packages |
-| `yum` | All rpm packages |
-| `archlinux` | All archlinux releases |
-| `almalinux` | All almalinux releases |
-| `amazonlinux` | All amazonlinux releases |
-| `centos` | All centos releases |
-| `debian` | All debian releases |
-| `fedora` | All fedora releases |
-| `oraclelinux` | All oraclelinux releases |
-| `ubuntu` | All ubuntu releases |
-| `almalinux-8` | AlmaLinux 8 |
-| `almalinux-9` | AlmaLinux 9 |
-| `amazonlinux-1` | Amazonlinux 1 |
-| `amazonlinux-2` | Amazonlinux 2 |
-| `amazonlinux-2023` | Amazonlinux 2023 |
-| `centos-7` | Centos 7 |
-| `centos-8` | Centos 8 |
-| `debian-buster` | Debian buster |
-| `debian-bullseye` | Debian bullseye |
-| `debian-bookworm` | Debian bookworm |
-| `fedora-38` | Fedora 38 |
-| `fedora-39` | Fedora 39 |
-| `oraclelinux-7` | Oraclelinux 7 |
-| `oraclelinux-8` | Oraclelinux 8 |
-| `oraclelinux-9` | Oraclelinux 9 |
-| `ubuntu-xenial` | Ubuntu xenial |
-| `ubuntu-bionic` | Ubuntu bionic |
-| `ubuntu-focal` | Ubuntu focal |
-| `ubuntu-jammy` | Ubuntu jammy |
-| `ubuntu-mantic` | Ubuntu mantic |
+| directive          | value                    |
+|--------------------|--------------------------|
+| `apt`              | All deb packages         |
+| `pacman`           | All pkg packages         |
+| `yum`              | All rpm packages         |
+| `archlinux`        | All archlinux releases   |
+| `almalinux`        | All almalinux releases   |
+| `amazonlinux`      | All amazonlinux releases |
+| `centos`           | All centos releases      |
+| `debian`           | All debian releases      |
+| `fedora`           | All fedora releases      |
+| `oraclelinux`      | All oraclelinux releases |
+| `ubuntu`           | All ubuntu releases      |
+| `almalinux-8`      | AlmaLinux 8              |
+| `almalinux-9`      | AlmaLinux 9              |
+| `amazonlinux-1`    | Amazonlinux 1            |
+| `amazonlinux-2`    | Amazonlinux 2            |
+| `amazonlinux-2023` | Amazonlinux 2023         |
+| `centos-7`         | Centos 7                 |
+| `centos-8`         | Centos 8                 |
+| `debian-buster`    | Debian buster            |
+| `debian-bullseye`  | Debian bullseye          |
+| `debian-bookworm`  | Debian bookworm          |
+| `fedora-38`        | Fedora 38                |
+| `fedora-39`        | Fedora 39                |
+| `oraclelinux-7`    | Oraclelinux 7            |
+| `oraclelinux-8`    | Oraclelinux 8            |
+| `oraclelinux-9`    | Oraclelinux 9            |
+| `ubuntu-xenial`    | Ubuntu xenial            |
+| `ubuntu-bionic`    | Ubuntu bionic            |
+| `ubuntu-focal`     | Ubuntu focal             |
+| `ubuntu-jammy`     | Ubuntu jammy             |
+| `ubuntu-mantic`    | Ubuntu mantic            |
+| `ubuntu-noble`     | Ubuntu noble             |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user defined
