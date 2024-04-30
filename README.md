@@ -27,8 +27,8 @@
 ![Oracle Linux 9](https://img.shields.io/badge/docker-oraclelinux--9-f82200.svg?style=flat "Oracle Linux 9")
 
 
-![Fedora 38](https://img.shields.io/badge/docker-fedora--38-294172.svg?style=flat "Fedora 38")
 ![Fedora 39](https://img.shields.io/badge/docker-fedora--39-294172.svg?style=flat "Fedora 39")
+![Fedora 40](https://img.shields.io/badge/docker-fedora--40-294172.svg?style=flat "Fedora 40")
 
 
 ![Ubuntu Xenial](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
@@ -141,8 +141,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
-| `fedora-38`        | Fedora 38                |
 | `fedora-39`        | Fedora 39                |
+| `fedora-40`        | Fedora 40                |
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
@@ -178,8 +178,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
-| `fedora-38`        | Fedora 38                |
 | `fedora-39`        | Fedora 39                |
+| `fedora-40`        | Fedora 40                |
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
