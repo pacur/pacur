@@ -265,14 +265,17 @@ package() {
 ### project example
 
 A project can be created with the cli tools which can be installed using
-`go install`. The packages can be built and added to the repo. An example project is
-available in the example directory. The `pull` command should be run before
-all builds to update the docker images used for builds.
+`go install`. The packages can be built and added to the repo. An example
+project is available in the example directory. The container build script 
+must first be run to build the container images for all distributions. 
+Directories in the docker directory can be removed to exclude distributions 
+that are not needed.
 
 ```
 $ go install github.com/pacur/pacur@latest
+$ cd ~/go/pkg/mod/github.com/pacur/pacur@*/docker
+$ sh build.sh
 $ cd example
-$ pacur pull
 $ pacur project init
 $ pacur project build
 $ pacur project repo
