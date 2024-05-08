@@ -56,12 +56,14 @@ on creating a project is available on medium.
 ### initialize
 
 It is recommended to build the docker images locally instead of pulling each
-image from the Docker Hub. A script is located in the docker directory to
-assist with this. Always run the `clean.sh` script to clear any existing pacur
-images. Building the images can take several hours.
+image from the Docker Hub. Currently the Docker Hub images are not
+maintained. A script is located in the docker directory to assist with this.
+Always run the `clean.sh` script to clear any existing pacur images. Building
+the images can take several hours.
 
 ```
-cd ~/go/src/github.com/pacur/pacur/docker
+go install github.com/pacur/pacur@latest
+cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/docker/ | sort -V | tail -n 1)"
 sh clean.sh
 sh build.sh
 ```
@@ -273,7 +275,7 @@ that are not needed.
 
 ```
 $ go install github.com/pacur/pacur@latest
-$ cd ~/go/pkg/mod/github.com/pacur/pacur@*/docker
+$ cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/docker/ | sort -V | tail -n 1)"
 $ sh build.sh
 $ cd example
 $ pacur project init
