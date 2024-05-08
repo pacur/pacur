@@ -266,9 +266,9 @@ package() {
 
 A project can be created with the cli tools which can be installed using
 `go install`. The packages can be built and added to the repo. An example
-project is available in the example directory. The container build script 
-must first be run to build the container images for all distributions. 
-Directories in the docker directory can be removed to exclude distributions 
+project is available in the example directory. The container build script
+must first be run to build the container images for all distributions.
+Directories in the docker directory can be removed to exclude distributions
 that are not needed.
 
 ```
