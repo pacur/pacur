@@ -1,6 +1,6 @@
 targets=(
     "archlinux"
-    "centos"
+    "oraclelinux"
     "debian"
     "ubuntu"
 )
@@ -8,7 +8,7 @@ pkgname="httpserver"
 pkgver="1.0"
 pkgrel="1"
 pkgdesc="Http file server written with Go"
-pkgdesc:centos="Http file server written with Go for CentOS"
+pkgdesc:oraclelinux="Http file server written with Go for Oracle Linux"
 pkgdesc:debian="Http file server written with Go for Debian"
 pkgdesc:fedora="Http file server written with Go for Fedora"
 pkgdesc:ubuntu="Http file server written with Go for Ubuntu"

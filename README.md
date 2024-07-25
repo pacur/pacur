@@ -14,9 +14,6 @@
 ![Amazon Linux 2023](https://img.shields.io/badge/docker-amazonlinux--2023-faaf34.svg?style=flat "Amazon Linux 2023")
 
 
-![CentOS 7](https://img.shields.io/badge/docker-centos--7-10233f.svg?style=flat "CentOS 7")
-
-
 ![Debian Buster](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Debian Buster")
 ![Debian Bullseye](https://img.shields.io/badge/docker-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
 ![Debian Bookworm](https://img.shields.io/badge/docker-debian--bookworm-d70a53.svg?style=flat "Debian Bookworm")
@@ -128,7 +125,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `archlinux`        | All archlinux releases   |
 | `almalinux`        | All almalinux releases   |
 | `amazonlinux`      | All amazonlinux releases |
-| `centos`           | All centos releases      |
 | `debian`           | All debian releases      |
 | `fedora`           | All fedora releases      |
 | `oraclelinux`      | All oraclelinux releases |
@@ -138,8 +134,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-1`    | Amazonlinux 1            |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
-| `centos-7`         | Centos 7                 |
-| `centos-8`         | Centos 8                 |
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
@@ -216,7 +210,7 @@ $ podman run --rm -t -v `pwd`:/pacur pacur/ubuntu-xenial
 ```
 targets=(
     "archlinux"
-    "centos"
+    "oraclelinux"
     "debian"
     "ubuntu"
 )
@@ -224,7 +218,7 @@ pkgname="httpserver"
 pkgver="1.0"
 pkgrel="1"
 pkgdesc="Http file server written with Go"
-pkgdesc:centos="Http file server written with Go for CentOS"
+pkgdesc:oraclelinux="Http file server written with Go for Oracle Linux"
 pkgdesc:debian="Http file server written with Go for Debian"
 pkgdesc:fedora="Http file server written with Go for Fedora"
 pkgdesc:ubuntu="Http file server written with Go for Ubuntu"
@@ -307,7 +301,7 @@ $ pacman -S httpserver
 $ nano /etc/yum.repos.d/pacur.repo
 [pacur]
 name=Pacur Repository
-baseurl=http://HTTP_SERVER_IP/yum/centos/7/
+baseurl=http://HTTP_SERVER_IP/yum/oraclelinux/7/
 gpgcheck=1
 enabled=1
 
