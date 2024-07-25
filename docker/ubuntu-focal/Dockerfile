@@ -5,10 +5,10 @@ RUN apt-get --assume-yes update
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install build-essential reprepro rsync wget zip git mercurial
 
-RUN wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
-RUN echo "5901c52b7a78002aeff14a21f93e0f064f74ce1360fce51c6ee68cd471216a17 go1.22.2.linux-amd64.tar.gz" | sha256sum -c -
-RUN tar -C /usr/local -xf go1.22.2.linux-amd64.tar.gz
-RUN rm -f go1.22.2.linux-amd64.tar.gz
+RUN wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
+RUN echo "904b924d435eaea086515bc63235b192ea441bd8c9b198c507e85009e6e4c7f0 go1.22.5.linux-amd64.tar.gz" | sha256sum -c -
+RUN tar -C /usr/local -xf go1.22.5.linux-amd64.tar.gz
+RUN rm -f go1.22.5.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
