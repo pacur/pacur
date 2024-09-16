@@ -159,7 +159,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `archlinux`        | All archlinux releases   |
 | `almalinux`        | All almalinux releases   |
 | `amazonlinux`      | All amazonlinux releases |
-| `centos`           | All centos releases      |
 | `debian`           | All debian releases      |
 | `fedora`           | All fedora releases      |
 | `oraclelinux`      | All oraclelinux releases |
@@ -169,8 +168,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `amazonlinux-1`    | Amazonlinux 1            |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
-| `centos-7`         | Centos 7                 |
-| `centos-8`         | Centos 8                 |
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
