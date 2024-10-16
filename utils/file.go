@@ -2,12 +2,13 @@ package utils
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/pritunl/tools/errors"
 )
 
 func ReadFile(path string) (data []byte, err error) {

@@ -1,5 +1,5 @@
 module github.com/pacur/pacur
 
-go 1.18
+go 1.23.1
 
-require github.com/dropbox/godropbox v0.0.0-20230623171840-436d2007a9fd
+require github.com/pritunl/tools v0.0.0-20241016084349-51d8b122396f

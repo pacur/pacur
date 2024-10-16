@@ -2,9 +2,10 @@ package cmd
 
 import (
 	"flag"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/signing"
 	"strings"
+
+	"github.com/pacur/pacur/signing"
+	"github.com/pritunl/tools/errors"
 )
 
 func GenKey() (err error) {

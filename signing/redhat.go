@@ -2,10 +2,11 @@ package signing
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/utils"
 	"os/user"
 	"path/filepath"
+
+	"github.com/pacur/pacur/utils"
+	"github.com/pritunl/tools/errors"
 )
 
 func CreateRedhatConf() (err error) {

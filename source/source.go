@@ -6,14 +6,15 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/utils"
 	"hash"
 	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
+
+	"github.com/pacur/pacur/utils"
+	"github.com/pritunl/tools/errors"
 )
 
 const (

@@ -1,10 +1,11 @@
 package project
 
 import (
-	"github.com/dropbox/godropbox/container/set"
+	"strings"
+
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/parse"
-	"strings"
+	"github.com/pritunl/tools/set"
 )
 
 func getDistro(name string) (distro, release string) {

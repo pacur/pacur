@@ -2,11 +2,12 @@ package mirror
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
+	"path/filepath"
+
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/signing"
 	"github.com/pacur/pacur/utils"
-	"path/filepath"
+	"github.com/pritunl/tools/errors"
 )
 
 type Mirror struct {

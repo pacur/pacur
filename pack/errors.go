@@ -1,7 +1,7 @@
 package pack
 
 import (
-	"github.com/dropbox/godropbox/errors"
+	"github.com/pritunl/tools/errors"
 )
 
 type ParseError struct {

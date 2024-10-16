@@ -7,11 +7,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/dropbox/godropbox/container/set"
-	"github.com/dropbox/godropbox/errors"
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/pack"
 	"github.com/pacur/pacur/utils"
+	"github.com/pritunl/tools/errors"
+	"github.com/pritunl/tools/set"
 )
 
 type Redhat struct {

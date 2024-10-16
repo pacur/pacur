@@ -1,11 +1,12 @@
 package utils
 
 import (
-	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/constants"
 	"math/rand"
 	"os"
 	"os/exec"
+
+	"github.com/pacur/pacur/constants"
+	"github.com/pritunl/tools/errors"
 )
 
 var (

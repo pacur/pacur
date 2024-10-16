@@ -1,9 +1,10 @@
 package utils
 
 import (
-	"github.com/dropbox/godropbox/errors"
 	"os"
 	"os/exec"
+
+	"github.com/pritunl/tools/errors"
 )
 
 func Rsync(source, dest string) (err error) {

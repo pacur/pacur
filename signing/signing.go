@@ -1,9 +1,10 @@
 package signing
 
 import (
-	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/utils"
 	"strings"
+
+	"github.com/pacur/pacur/utils"
+	"github.com/pritunl/tools/errors"
 )
 
 func GetName() (name string, err error) {

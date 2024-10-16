@@ -1,10 +1,11 @@
 package pack
 
 import (
-	"github.com/dropbox/godropbox/errors"
+	"strings"
+
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/resolver"
-	"strings"
+	"github.com/pritunl/tools/errors"
 )
 
 type Pack struct {

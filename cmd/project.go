@@ -2,9 +2,10 @@ package cmd
 
 import (
 	"flag"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/project"
 	"os"
+
+	"github.com/pacur/pacur/project"
+	"github.com/pritunl/tools/errors"
 )
 
 func Project() (err error) {

@@ -1,10 +1,11 @@
 package utils
 
 import (
-	"github.com/dropbox/godropbox/errors"
 	"io"
 	"os"
 	"os/exec"
+
+	"github.com/pritunl/tools/errors"
 )
 
 func Exec(dir, name string, arg ...string) (err error) {

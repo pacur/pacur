@@ -3,14 +3,15 @@ package project
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
+	"path/filepath"
+	"strings"
+
 	"github.com/pacur/pacur/constants"
 	"github.com/pacur/pacur/debian"
 	"github.com/pacur/pacur/pacman"
 	"github.com/pacur/pacur/redhat"
 	"github.com/pacur/pacur/utils"
-	"path/filepath"
-	"strings"
+	"github.com/pritunl/tools/errors"
 )
 
 type DistroProject interface {

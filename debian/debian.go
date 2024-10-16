@@ -2,13 +2,14 @@ package debian
 
 import (
 	"fmt"
-	"github.com/dropbox/godropbox/errors"
-	"github.com/pacur/pacur/constants"
-	"github.com/pacur/pacur/pack"
-	"github.com/pacur/pacur/utils"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/pacur/pacur/constants"
+	"github.com/pacur/pacur/pack"
+	"github.com/pacur/pacur/utils"
+	"github.com/pritunl/tools/errors"
 )
 
 type Debian struct {
