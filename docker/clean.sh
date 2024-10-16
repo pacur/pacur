@@ -65,6 +65,7 @@ sudo podman rmi pacur/ubuntu-kinetic
 sudo podman rmi pacur/ubuntu-lunar
 sudo podman rmi pacur/ubuntu-mantic
 sudo podman rmi pacur/ubuntu-noble
+sudo podman rmi pacur/ubuntu-oracular
 sudo podman rmi archlinux
 sudo podman rmi base/archlinux
 sudo podman rmi archlinux/base
@@ -130,5 +131,6 @@ sudo podman rmi ubuntu:kinetic
 sudo podman rmi ubuntu:lunar
 sudo podman rmi ubuntu:mantic
 sudo podman rmi ubuntu:noble
+sudo podman rmi ubuntu:oracular
 
 sudo podman rmi $(sudo podman images -q -f dangling=true)

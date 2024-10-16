@@ -27,12 +27,11 @@
 ![Fedora 40](https://img.shields.io/badge/podman-fedora--40-294172.svg?style=flat "Fedora 40")
 
 
-![Ubuntu Xenial](https://img.shields.io/badge/podman-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
 ![Ubuntu Bionic](https://img.shields.io/badge/podman-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
 ![Ubuntu Focal](https://img.shields.io/badge/podman-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
 ![Ubuntu Jammy](https://img.shields.io/badge/podman-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
-![Ubuntu Mantic](https://img.shields.io/badge/podman-ubuntu--mantic-dd4814.svg?style=flat "Ubuntu Mantic")
 ![Ubuntu Noble](https://img.shields.io/badge/podman-ubuntu--noble-dd4814.svg?style=flat "Ubuntu Noble")
+![Ubuntu Oracular](https://img.shields.io/badge/podman-ubuntu--oracular-dd4814.svg?style=flat "Ubuntu Oracular")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -140,12 +139,11 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
-| `ubuntu-xenial`    | Ubuntu xenial            |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
-| `ubuntu-mantic`    | Ubuntu mantic            |
 | `ubuntu-noble`     | Ubuntu noble             |
+| `ubuntu-oracular`  | Ubuntu oracular          |
 
 ### directives
 
@@ -173,12 +171,11 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
-| `ubuntu-xenial`    | Ubuntu xenial            |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
-| `ubuntu-mantic`    | Ubuntu mantic            |
 | `ubuntu-noble`     | Ubuntu noble             |
+| `ubuntu-oracular`  | Ubuntu oracular          |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user defined
