@@ -2,48 +2,47 @@
 
 # pacur: simple packaging
 
-![Arch Linux](https://img.shields.io/badge/docker-archlinux-1794d1.svg?style=flat "Arch Linux")
+![Arch Linux](https://img.shields.io/badge/podman-archlinux-1794d1.svg?style=flat "Arch Linux")
 
 
-![AlmaLinux 8](https://img.shields.io/badge/docker-almalinux--8-0f4266.svg?style=flat "AlmaLinux 8")
-![AlmaLinux 9](https://img.shields.io/badge/docker-almalinux--9-0f4266.svg?style=flat "AlmaLinux 9")
+![AlmaLinux 8](https://img.shields.io/badge/podman-almalinux--8-0f4266.svg?style=flat "AlmaLinux 8")
+![AlmaLinux 9](https://img.shields.io/badge/podman-almalinux--9-0f4266.svg?style=flat "AlmaLinux 9")
 
 
-![Amazon Linux 1](https://img.shields.io/badge/docker-amazonlinux--1-faaf34.svg?style=flat "Amazon Linux 1")
-![Amazon Linux 2](https://img.shields.io/badge/docker-amazonlinux--2-faaf34.svg?style=flat "Amazon Linux 2")
-![Amazon Linux 2023](https://img.shields.io/badge/docker-amazonlinux--2023-faaf34.svg?style=flat "Amazon Linux 2023")
+![Amazon Linux 2](https://img.shields.io/badge/podman-amazonlinux--2-faaf34.svg?style=flat "Amazon Linux 2")
+![Amazon Linux 2023](https://img.shields.io/badge/podman-amazonlinux--2023-faaf34.svg?style=flat "Amazon Linux 2023")
 
 
-![Debian Buster](https://img.shields.io/badge/docker-debian--buster-d70a53.svg?style=flat "Debian Buster")
-![Debian Bullseye](https://img.shields.io/badge/docker-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
-![Debian Bookworm](https://img.shields.io/badge/docker-debian--bookworm-d70a53.svg?style=flat "Debian Bookworm")
+![Debian Buster](https://img.shields.io/badge/podman-debian--buster-d70a53.svg?style=flat "Debian Buster")
+![Debian Bullseye](https://img.shields.io/badge/podman-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
+![Debian Bookworm](https://img.shields.io/badge/podman-debian--bookworm-d70a53.svg?style=flat "Debian Bookworm")
 
 
-![Oracle Linux 7](https://img.shields.io/badge/docker-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
-![Oracle Linux 8](https://img.shields.io/badge/docker-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
-![Oracle Linux 9](https://img.shields.io/badge/docker-oraclelinux--9-f82200.svg?style=flat "Oracle Linux 9")
+![Oracle Linux 7](https://img.shields.io/badge/podman-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
+![Oracle Linux 8](https://img.shields.io/badge/podman-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
+![Oracle Linux 9](https://img.shields.io/badge/podman-oraclelinux--9-f82200.svg?style=flat "Oracle Linux 9")
 
 
-![Fedora 39](https://img.shields.io/badge/docker-fedora--39-294172.svg?style=flat "Fedora 39")
-![Fedora 40](https://img.shields.io/badge/docker-fedora--40-294172.svg?style=flat "Fedora 40")
+![Fedora 39](https://img.shields.io/badge/podman-fedora--39-294172.svg?style=flat "Fedora 39")
+![Fedora 40](https://img.shields.io/badge/podman-fedora--40-294172.svg?style=flat "Fedora 40")
 
 
-![Ubuntu Xenial](https://img.shields.io/badge/docker-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
-![Ubuntu Bionic](https://img.shields.io/badge/docker-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
-![Ubuntu Focal](https://img.shields.io/badge/docker-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
-![Ubuntu Jammy](https://img.shields.io/badge/docker-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
-![Ubuntu Mantic](https://img.shields.io/badge/docker-ubuntu--mantic-dd4814.svg?style=flat "Ubuntu Mantic")
-![Ubuntu Noble](https://img.shields.io/badge/docker-ubuntu--noble-dd4814.svg?style=flat "Ubuntu Noble")
+![Ubuntu Xenial](https://img.shields.io/badge/podman-ubuntu--xenial-dd4814.svg?style=flat "Ubuntu Xenial")
+![Ubuntu Bionic](https://img.shields.io/badge/podman-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
+![Ubuntu Focal](https://img.shields.io/badge/podman-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
+![Ubuntu Jammy](https://img.shields.io/badge/podman-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
+![Ubuntu Mantic](https://img.shields.io/badge/podman-ubuntu--mantic-dd4814.svg?style=flat "Ubuntu Mantic")
+![Ubuntu Noble](https://img.shields.io/badge/podman-ubuntu--noble-dd4814.svg?style=flat "Ubuntu Noble")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
-are available for several linux distributions. Builds are done on Docker
+are available for several linux distributions. Builds are done on podman
 containers without needing to setup any virtual machines or install any
-software other than Docker. All packages are built using a simple format that
+software other than podman. All packages are built using a simple format that
 is similar to [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) from
 ArchLinux. Each distribution is different and will still require different
 build instructions, but a consistent build process and format can be used for
-all builds. Docker only supports 64-bit containers, pacur can't be used to
+all builds. podman only supports 64-bit containers, pacur can't be used to
 build 32-bit packages. Pacur will also create a `deb`, `rpm` and
 `pacman` signed repository that can be used on ArchLinux, CentOS, Fedora,
 Debian and Ubuntu to distribute the packages. A
@@ -52,15 +51,15 @@ on creating a project is available on medium.
 
 ### initialize
 
-It is recommended to build the docker images locally instead of pulling each
-image from the Docker Hub. Currently the Docker Hub images are not
-maintained. A script is located in the docker directory to assist with this.
+It is recommended to build the podman images locally instead of pulling each
+image from the podman Hub. Currently the podman Hub images are not
+maintained. A script is located in the podman directory to assist with this.
 Always run the `clean.sh` script to clear any existing pacur images. Building
 the images can take several hours.
 
 ```
 go install github.com/pacur/pacur@latest
-cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/docker/ | sort -V | tail -n 1)"
+cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/podman/ | sort -V | tail -n 1)"
 sh clean.sh
 sh build.sh
 ```
@@ -131,7 +130,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
-| `amazonlinux-1`    | Amazonlinux 1            |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
 | `debian-buster`    | Debian buster            |
@@ -165,7 +163,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
-| `amazonlinux-1`    | Amazonlinux 1            |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
 | `debian-buster`    | Debian buster            |
@@ -195,7 +192,7 @@ The directives above are sorted from lowest to the highest priority.
 First create a directory for the PKGBUILD file. This directory should only
 contain the PKGBUILD file and any other files needed such as patches. Then
 create a PKGBUILD the package directory. After creating the PKGBUILD build
-the package with docker.
+the package with podman.
 
 ```
 $ mkdir httpserver
@@ -261,12 +258,12 @@ A project can be created with the cli tools which can be installed using
 `go install`. The packages can be built and added to the repo. An example
 project is available in the example directory. The container build script
 must first be run to build the container images for all distributions.
-Directories in the docker directory can be removed to exclude distributions
+Directories in the podman directory can be removed to exclude distributions
 that are not needed.
 
 ```
 $ go install github.com/pacur/pacur@latest
-$ cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/docker/ | sort -V | tail -n 1)"
+$ cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/podman/ | sort -V | tail -n 1)"
 $ sh build.sh
 $ cd example
 $ pacur project init
