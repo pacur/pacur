@@ -4,6 +4,7 @@ import (
 	"regexp"
 )
 
+// The two character comparisions must come before the others.
 var verComparisonReg = regexp.MustCompile(`>=|<=|>|<|=`)
 
 func ParseDependency(dependency string) (dpn *Dependency) {
