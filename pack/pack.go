@@ -46,7 +46,7 @@ type Pack struct {
 	PostInst       []string
 	PreRm          []string
 	PostRm         []string
-	Variables      map[string]string
+	Variables      map[string]*string
 	RpmOpts        []string
 }
 
@@ -156,8 +156,8 @@ func (p *Pack) Resolve() (err error) {
 	reslv.AddList("rpmopts", p.RpmOpts)
 
 	if p.Variables != nil {
-		for key, val := range p.Variables {
-			reslv.Add(key, &val)
+		for key, valPtr := range p.Variables {
+			reslv.Add(key, valPtr)
 		}
 	}
 
@@ -246,9 +246,11 @@ func (p *Pack) AddItem(key string, data interface{}, n int, line string) (
 		p.RpmOpts = data.([]string)
 	default:
 		if p.Variables == nil {
-			p.Variables = map[string]string{}
+			p.Variables = map[string]*string{}
 		}
-		p.Variables[key] = data.(string)
+		val := data.(string)
+		p.Variables[key] = new(string)
+		*p.Variables[key] = val
 	}
 
 	return
