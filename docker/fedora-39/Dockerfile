@@ -1,8 +1,8 @@
-FROM docker.io/fedora:41
+FROM docker.io/fedora:39
 LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN dnf -y upgrade
-RUN dnf -y group install development-tools
+RUN dnf -y groupinstall 'Development Tools'
 RUN dnf -y install tar expect gpg rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git mercurial
 
 RUN wget https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
@@ -17,4 +17,4 @@ ENV GO111MODULE on
 RUN GOPROXY=direct go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "fedora-41"]
+CMD ["build", "fedora-39"]
