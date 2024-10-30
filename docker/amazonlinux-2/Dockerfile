@@ -1,6 +1,13 @@
 FROM docker.io/amazonlinux:2
 LABEL maintainer="Pacur <contact@pacur.org>"
 
+RUN echo $'[ol7_developer_EPEL]\n\
+name=Oracle Linux 7 EPEL Packages for Development (x86_64)\n\
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/developer_EPEL/x86_64/\n\
+gpgcheck=1\n\
+enabled=1\n\
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol7\n' > /etc/yum.repos.d/epel-ol7.repo
+
 RUN yum -y upgrade
 RUN yum -y groupinstall 'Development Tools'
 RUN yum -y install tar expect rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git mercurial

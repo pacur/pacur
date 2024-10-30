@@ -23,8 +23,8 @@
 ![Oracle Linux 9](https://img.shields.io/badge/podman-oraclelinux--9-f82200.svg?style=flat "Oracle Linux 9")
 
 
-![Fedora 39](https://img.shields.io/badge/podman-fedora--39-294172.svg?style=flat "Fedora 39")
 ![Fedora 40](https://img.shields.io/badge/podman-fedora--40-294172.svg?style=flat "Fedora 40")
+![Fedora 41](https://img.shields.io/badge/podman-fedora--41-294172.svg?style=flat "Fedora 41")
 
 
 ![Ubuntu Bionic](https://img.shields.io/badge/podman-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
@@ -134,8 +134,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
-| `fedora-39`        | Fedora 39                |
 | `fedora-40`        | Fedora 40                |
+| `fedora-41`        | Fedora 41                |
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
@@ -166,8 +166,8 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
-| `fedora-39`        | Fedora 39                |
 | `fedora-40`        | Fedora 40                |
+| `fedora-41`        | Fedora 41                |
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |

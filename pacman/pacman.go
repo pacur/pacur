@@ -2,13 +2,14 @@ package pacman
 
 import (
 	"fmt"
-	"github.com/pacur/pacur/constants"
-	"github.com/pacur/pacur/pack"
-	"github.com/pacur/pacur/utils"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/pacur/pacur/constants"
+	"github.com/pacur/pacur/pack"
+	"github.com/pacur/pacur/utils"
 )
 
 type Pacman struct {
