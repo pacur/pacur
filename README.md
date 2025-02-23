@@ -23,8 +23,8 @@
 ![Oracle Linux 9](https://img.shields.io/badge/podman-oraclelinux--9-f82200.svg?style=flat "Oracle Linux 9")
 
 
-![RockyLinux 8](https://img.shields.io/badge/podman-rockylinux--8-0f4266.svg?style=flat "RockyLinux 8")
-![RockyLinux 9](https://img.shields.io/badge/podman-rockylinux--9-0f4266.svg?style=flat "RockyLinux 9")
+![RockyLinux 8](https://img.shields.io/badge/podman-rockylinux--8-10b981.svg?style=flat "RockyLinux 8")
+![RockyLinux 9](https://img.shields.io/badge/podman-rockylinux--9-10b981.svg?style=flat "RockyLinux 9")
 
 
 ![Fedora 39](https://img.shields.io/badge/podman-fedora--39-294172.svg?style=flat "Fedora 40")
