@@ -36,6 +36,7 @@
 ![Ubuntu Focal](https://img.shields.io/badge/podman-ubuntu--focal-dd4814.svg?style=flat "Ubuntu Focal")
 ![Ubuntu Jammy](https://img.shields.io/badge/podman-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
 ![Ubuntu Noble](https://img.shields.io/badge/podman-ubuntu--noble-dd4814.svg?style=flat "Ubuntu Noble")
+![Ubuntu Oracular](https://img.shields.io/badge/podman-ubuntu--oracular-dd4814.svg?style=flat "Ubuntu Oracular")
 ![Ubuntu Plucky](https://img.shields.io/badge/podman-ubuntu--plucky-dd4814.svg?style=flat "Ubuntu Plucky")
 
 Pacur allows building packages for multiple linux distributions with a
@@ -152,6 +153,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
 | `ubuntu-noble`     | Ubuntu noble             |
+| `ubuntu-oracular`  | Ubuntu oracular          |
 | `ubuntu-plucky`    | Ubuntu plucky            |
 
 ### directives
@@ -188,6 +190,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
 | `ubuntu-noble`     | Ubuntu noble             |
+| `ubuntu-oracular`  | Ubuntu oracular          |
 | `ubuntu-plucky`    | Ubuntu plucky            |
 
 Directives are used to specify variables that only apply to a limited set of

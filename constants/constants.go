@@ -32,6 +32,7 @@ var (
 		"ubuntu-focal",
 		"ubuntu-jammy",
 		"ubuntu-noble",
+		"ubuntu-oracular",
 		"ubuntu-plucky",
 	}
 	ReleasesMatch = map[string]string{
@@ -55,6 +56,7 @@ var (
 		"ubuntu-focal":     ".focal_",
 		"ubuntu-jammy":     ".jammy_",
 		"ubuntu-noble":     ".noble_",
+		"ubuntu-oracular":  ".oracular_",
 		"ubuntu-plucky":    ".plucky_",
 	}
 	DistroPack = map[string]string{
