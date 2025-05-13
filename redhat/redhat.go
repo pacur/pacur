@@ -176,6 +176,10 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		data += fmt.Sprintf("Requires: %s\n", formatDepend(pkg))
 	}
 
+	for _, pkg := range r.Pack.OptDependsExt {
+		data += fmt.Sprintf("Recommends: %s\n", formatDepend(pkg))
+	}
+
 	for _, pkg := range r.Pack.MakeDependsExt {
 		data += fmt.Sprintf("BuildRequires: %s\n", formatDepend(pkg))
 	}
