@@ -4,6 +4,7 @@ sudo podman rm $(sudo podman ps -a -q)
 sudo podman rmi pacur/archlinux
 sudo podman rmi pacur/almalinux-8
 sudo podman rmi pacur/almalinux-9
+sudo podman rmi pacur/almalinux-10
 sudo podman rmi pacur/amazonlinux-2016.09
 sudo podman rmi pacur/amazonlinux-2017.03
 sudo podman rmi pacur/amazonlinux-2017.09
@@ -47,8 +48,10 @@ sudo podman rmi pacur/genkey
 sudo podman rmi pacur/oraclelinux-7
 sudo podman rmi pacur/oraclelinux-8
 sudo podman rmi pacur/oraclelinux-9
+sudo podman rmi pacur/oraclelinux-10
 sudo podman rmi pacur/rockylinux-8
 sudo podman rmi pacur/rockylinux-9
+sudo podman rmi pacur/rockylinux-10
 sudo podman rmi pacur/ubuntu-precise
 sudo podman rmi pacur/ubuntu-trusty
 sudo podman rmi pacur/ubuntu-vivid
@@ -77,6 +80,7 @@ sudo podman rmi base/archlinux
 sudo podman rmi archlinux/base
 sudo podman rmi almalinux:8
 sudo podman rmi almalinux:9
+sudo podman rmi almalinux:10
 sudo podman rmi amazonlinux:2016.09
 sudo podman rmi amazonlinux:2017.03
 sudo podman rmi amazonlinux:2017.09
@@ -119,8 +123,10 @@ sudo podman rmi fedora:42
 sudo podman rmi oraclelinux:7
 sudo podman rmi oraclelinux:8
 sudo podman rmi oraclelinux:9
+sudo podman rmi oraclelinux:10
 sudo podman rmi rockylinux:8
 sudo podman rmi rockylinux:9
+sudo podman rmi rockylinux:10
 sudo podman rmi ubuntu:precise
 sudo podman rmi ubuntu:trusty
 sudo podman rmi ubuntu:vivid

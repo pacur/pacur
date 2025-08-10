@@ -7,6 +7,7 @@
 
 ![AlmaLinux 8](https://img.shields.io/badge/podman-almalinux--8-0f4266.svg?style=flat "AlmaLinux 8")
 ![AlmaLinux 9](https://img.shields.io/badge/podman-almalinux--9-0f4266.svg?style=flat "AlmaLinux 9")
+![AlmaLinux 10](https://img.shields.io/badge/podman-almalinux--10-0f4266.svg?style=flat "AlmaLinux 10")
 
 
 ![Amazon Linux 2](https://img.shields.io/badge/podman-amazonlinux--2-faaf34.svg?style=flat "Amazon Linux 2")
@@ -22,10 +23,12 @@
 ![Oracle Linux 7](https://img.shields.io/badge/podman-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
 ![Oracle Linux 8](https://img.shields.io/badge/podman-oraclelinux--8-f82200.svg?style=flat "Oracle Linux 8")
 ![Oracle Linux 9](https://img.shields.io/badge/podman-oraclelinux--9-f82200.svg?style=flat "Oracle Linux 9")
+![Oracle Linux 10](https://img.shields.io/badge/podman-oraclelinux--10-f82200.svg?style=flat "Oracle Linux 10")
 
 
 ![RockyLinux 8](https://img.shields.io/badge/podman-rockylinux--8-10b981.svg?style=flat "RockyLinux 8")
 ![RockyLinux 9](https://img.shields.io/badge/podman-rockylinux--9-10b981.svg?style=flat "RockyLinux 9")
+![RockyLinux 10](https://img.shields.io/badge/podman-rockylinux--10-10b981.svg?style=flat "RockyLinux 10")
 
 
 ![Fedora 40](https://img.shields.io/badge/podman-fedora--40-294172.svg?style=flat "Fedora 40")
@@ -137,6 +140,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
+| `almalinux-10`     | AlmaLinux 10             |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
 | `debian-buster`    | Debian buster            |
@@ -149,8 +153,10 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
+| `oraclelinux-10`   | Oraclelinux 10           |
 | `rockylinux-8`     | RockyLinux 8             |
 | `rockylinux-9`     | RockyLinux 9             |
+| `rockylinux-10`    | RockyLinux 10            |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
@@ -175,6 +181,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
+| `almalinux-10`     | AlmaLinux 10             |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
 | `debian-buster`    | Debian buster            |
@@ -187,8 +194,10 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
+| `oraclelinux-10`   | Oraclelinux 10           |
 | `rockylinux-8`     | RockyLinux 8             |
 | `rockylinux-9`     | RockyLinux 9             |
+| `rockylinux-10`    | RockyLinux 10            |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
