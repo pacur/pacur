@@ -16,6 +16,7 @@
 ![Debian Buster](https://img.shields.io/badge/podman-debian--buster-d70a53.svg?style=flat "Debian Buster")
 ![Debian Bullseye](https://img.shields.io/badge/podman-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
 ![Debian Bookworm](https://img.shields.io/badge/podman-debian--bookworm-d70a53.svg?style=flat "Debian Bookworm")
+![Debian Trixie](https://img.shields.io/badge/podman-debian--trixie-d70a53.svg?style=flat "Debian Trixie")
 
 
 ![Oracle Linux 7](https://img.shields.io/badge/podman-oraclelinux--7-f82200.svg?style=flat "Oracle Linux 7")
@@ -141,6 +142,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
+| `debian-trixie`    | Debian trixie            |
 | `fedora-40`        | Fedora 40                |
 | `fedora-41`        | Fedora 41                |
 | `fedora-42`        | Fedora 42                |
@@ -178,6 +180,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
+| `debian-trixie`    | Debian trixie            |
 | `fedora-40`        | Fedora 40                |
 | `fedora-41`        | Fedora 41                |
 | `fedora-42`        | Fedora 42                |

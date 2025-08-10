@@ -20,6 +20,7 @@ sudo podman rmi pacur/debian-wheezy
 sudo podman rmi pacur/debian-buster
 sudo podman rmi pacur/debian-bullseye
 sudo podman rmi pacur/debian-bookworm
+sudo podman rmi pacur/debian-trixie
 sudo podman rmi pacur/fedora-21
 sudo podman rmi pacur/fedora-22
 sudo podman rmi pacur/fedora-23
@@ -92,6 +93,7 @@ sudo podman rmi debian:wheezy
 sudo podman rmi debian:buster
 sudo podman rmi debian:bullseye
 sudo podman rmi debian:bookworm
+sudo podman rmi debian:trixie
 sudo podman rmi fedora:21
 sudo podman rmi fedora:22
 sudo podman rmi fedora:23
