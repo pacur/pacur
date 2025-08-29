@@ -170,7 +170,7 @@ func (p *Pacman) createMake() (err error) {
 			strconv.Quote(p.Pack.PkgName+".install"))
 	}
 
-	data += "options=(\"emptydirs\")\n"
+	data += "options=(\"emptydirs\" \"!debug\")\n"
 
 	if len(p.Pack.Backup) > 0 {
 		data += "backup=(\n"
