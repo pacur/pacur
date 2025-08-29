@@ -14,7 +14,6 @@
 ![Amazon Linux 2023](https://img.shields.io/badge/podman-amazonlinux--2023-faaf34.svg?style=flat "Amazon Linux 2023")
 
 
-![Debian Buster](https://img.shields.io/badge/podman-debian--buster-d70a53.svg?style=flat "Debian Buster")
 ![Debian Bullseye](https://img.shields.io/badge/podman-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
 ![Debian Bookworm](https://img.shields.io/badge/podman-debian--bookworm-d70a53.svg?style=flat "Debian Bookworm")
 ![Debian Trixie](https://img.shields.io/badge/podman-debian--trixie-d70a53.svg?style=flat "Debian Trixie")
@@ -143,7 +142,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `almalinux-10`     | AlmaLinux 10             |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
-| `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
 | `debian-trixie`    | Debian trixie            |
@@ -184,7 +182,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `almalinux-10`     | AlmaLinux 10             |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
-| `debian-buster`    | Debian buster            |
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
 | `debian-trixie`    | Debian trixie            |
