@@ -68,6 +68,7 @@ the images can take several hours.
 ```
 go install github.com/pacur/pacur@latest
 cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/podman/ | sort -V | tail -n 1)"
+# delete any distro directories if not needed
 sh clean.sh
 sh build.sh
 ```
@@ -214,13 +215,14 @@ The directives above are sorted from lowest to the highest priority.
 First create a directory for the PKGBUILD file. This directory should only
 contain the PKGBUILD file and any other files needed such as patches. Then
 create a PKGBUILD the package directory. After creating the PKGBUILD build
-the package with podman.
+the package with podman. If SELinux is enabled `:z` must be used in the mount.
 
 ```
 $ mkdir httpserver
 $ cd httpserver
 $ nano PKGBUILD
-$ podman run --rm -t -v `pwd`:/pacur pacur/ubuntu-xenial
+$ sudo mkdir /pacur
+$ sudo podman run --rm -t -v `pwd`:/pacur localhost/pacur/ubuntu-noble
 ```
 
 ```
@@ -280,12 +282,12 @@ A project can be created with the cli tools which can be installed using
 `go install`. The packages can be built and added to the repo. An example
 project is available in the example directory. The container build script
 must first be run to build the container images for all distributions.
-Directories in the podman directory can be removed to exclude distributions
+Directories in the docker directory can be removed to exclude distributions
 that are not needed.
 
 ```
 $ go install github.com/pacur/pacur@latest
-$ cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/podman/ | sort -V | tail -n 1)"
+$ cd "$(ls -d ~/go/pkg/mod/github.com/pacur/pacur@*/docker/ | sort -V | tail -n 1)"
 $ sh build.sh
 $ cd example
 $ pacur project init
