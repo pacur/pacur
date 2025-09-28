@@ -190,7 +190,6 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		data += fmt.Sprintf("BuildRequires: %s\n", formatDepend(pkg))
 	}
 
-	data += "AutoProv: no\n"
 	data += "\n"
 	data += "%global _build_id_links none\n"
 	data += "%global _python_bytecompile_extra 0\n"
