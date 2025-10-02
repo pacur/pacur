@@ -212,14 +212,14 @@ The directives above are sorted from lowest to the highest priority.
 First create a directory for the PKGBUILD file. This directory should only
 contain the PKGBUILD file and any other files needed such as patches. Then
 create a PKGBUILD the package directory. After creating the PKGBUILD build
-the package with podman. If SELinux is enabled `:z` must be used in the mount.
+the package with podman. If SELinux is enabled `:Z` must be used in the mount.
 
 ```
 $ mkdir httpserver
 $ cd httpserver
 $ nano PKGBUILD
 $ sudo mkdir /pacur
-$ sudo podman run --rm -t -v `pwd`:/pacur localhost/pacur/ubuntu-noble
+$ sudo podman run --rm -t -v `pwd`:/pacur:Z localhost/pacur/ubuntu-noble
 ```
 
 ```
