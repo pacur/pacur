@@ -36,6 +36,7 @@ var (
 		"ubuntu-jammy",
 		"ubuntu-noble",
 		"ubuntu-plucky",
+		"ubuntu-questing",
 	}
 	ReleasesMatch = map[string]string{
 		"archlinux":        "",
@@ -62,6 +63,7 @@ var (
 		"ubuntu-jammy":     ".jammy_",
 		"ubuntu-noble":     ".noble_",
 		"ubuntu-plucky":    ".plucky_",
+		"ubuntu-questing":  ".questing_",
 	}
 	DistroPack = map[string]string{
 		"archlinux":   "pacman",

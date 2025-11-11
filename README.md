@@ -40,6 +40,7 @@
 ![Ubuntu Jammy](https://img.shields.io/badge/podman-ubuntu--jammy-dd4814.svg?style=flat "Ubuntu Jammy")
 ![Ubuntu Noble](https://img.shields.io/badge/podman-ubuntu--noble-dd4814.svg?style=flat "Ubuntu Noble")
 ![Ubuntu Plucky](https://img.shields.io/badge/podman-ubuntu--plucky-dd4814.svg?style=flat "Ubuntu Plucky")
+![Ubuntu Questing](https://img.shields.io/badge/podman-ubuntu--questing-dd4814.svg?style=flat "Ubuntu Questing")
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -160,6 +161,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-jammy`     | Ubuntu jammy             |
 | `ubuntu-noble`     | Ubuntu noble             |
 | `ubuntu-plucky`    | Ubuntu plucky            |
+| `ubuntu-questing`  | Ubuntu questing          |
 
 ### directives
 
@@ -199,6 +201,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `ubuntu-jammy`     | Ubuntu jammy             |
 | `ubuntu-noble`     | Ubuntu noble             |
 | `ubuntu-plucky`    | Ubuntu plucky            |
+| `ubuntu-questing`  | Ubuntu questing          |
 
 Directives are used to specify variables that only apply to a limited set of
 build targets. All variables can use directives including user defined
