@@ -152,12 +152,6 @@ func (r *Redhat) createSpec(files []string) (err error) {
 		release = ".el9.oraclelinux"
 	} else if r.Pack.Distro == "oraclelinux" && r.Pack.Release == "10" {
 		release = ".el10.oraclelinux"
-	} else if r.Pack.Distro == "rockylinux" && r.Pack.Release == "8" {
-		release = ".el8.rockylinux"
-	} else if r.Pack.Distro == "rockylinux" && r.Pack.Release == "9" {
-		release = ".el9.rockylinux"
-	} else if r.Pack.Distro == "rockylinux" && r.Pack.Release == "10" {
-		release = ".el10.rockylinux"
 	}
 
 	data := ""

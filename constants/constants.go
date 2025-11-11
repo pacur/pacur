@@ -28,9 +28,6 @@ var (
 		"oraclelinux-8",
 		"oraclelinux-9",
 		"oraclelinux-10",
-		"rockylinux-8",
-		"rockylinux-9",
-		"rockylinux-10",
 		"ubuntu-bionic",
 		"ubuntu-focal",
 		"ubuntu-jammy",
@@ -55,9 +52,6 @@ var (
 		"oraclelinux-8":    ".el8.oraclelinux.",
 		"oraclelinux-9":    ".el9.oraclelinux.",
 		"oraclelinux-10":   ".el10.oraclelinux.",
-		"rockylinux-8":     ".el8.rockylinux.",
-		"rockylinux-9":     ".el9.rockylinux.",
-		"rockylinux-10":    ".el10.rockylinux.",
 		"ubuntu-bionic":    ".bionic_",
 		"ubuntu-focal":     ".focal_",
 		"ubuntu-jammy":     ".jammy_",
@@ -72,7 +66,6 @@ var (
 		"fedora":      "redhat",
 		"debian":      "debian",
 		"oraclelinux": "redhat",
-		"rockylinux":  "redhat",
 		"ubuntu":      "debian",
 	}
 	Packagers = [...]string{

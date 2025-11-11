@@ -25,11 +25,6 @@
 ![Oracle Linux 10](https://img.shields.io/badge/podman-oraclelinux--10-f82200.svg?style=flat "Oracle Linux 10")
 
 
-![RockyLinux 8](https://img.shields.io/badge/podman-rockylinux--8-10b981.svg?style=flat "RockyLinux 8")
-![RockyLinux 9](https://img.shields.io/badge/podman-rockylinux--9-10b981.svg?style=flat "RockyLinux 9")
-![RockyLinux 10](https://img.shields.io/badge/podman-rockylinux--10-10b981.svg?style=flat "RockyLinux 10")
-
-
 ![Fedora 41](https://img.shields.io/badge/podman-fedora--41-294172.svg?style=flat "Fedora 41")
 ![Fedora 42](https://img.shields.io/badge/podman-fedora--42-294172.svg?style=flat "Fedora 42")
 ![Fedora 43](https://img.shields.io/badge/podman-fedora--43-294172.svg?style=flat "Fedora 43")
@@ -136,7 +131,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian`           | All debian releases      |
 | `fedora`           | All fedora releases      |
 | `oraclelinux`      | All oraclelinux releases |
-| `rockylinux`       | All rockylinux releases  |
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
@@ -153,9 +147,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
 | `oraclelinux-10`   | Oraclelinux 10           |
-| `rockylinux-8`     | RockyLinux 8             |
-| `rockylinux-9`     | RockyLinux 9             |
-| `rockylinux-10`    | RockyLinux 10            |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
@@ -176,7 +167,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian`           | All debian releases      |
 | `fedora`           | All fedora releases      |
 | `oraclelinux`      | All oraclelinux releases |
-| `rockylinux`       | All rockylinux releases  |
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
@@ -193,9 +183,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
 | `oraclelinux-10`   | Oraclelinux 10           |
-| `rockylinux-8`     | RockyLinux 8             |
-| `rockylinux-9`     | RockyLinux 9             |
-| `rockylinux-10`    | RockyLinux 10            |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
