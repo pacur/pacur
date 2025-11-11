@@ -30,9 +30,9 @@
 ![RockyLinux 10](https://img.shields.io/badge/podman-rockylinux--10-10b981.svg?style=flat "RockyLinux 10")
 
 
-![Fedora 40](https://img.shields.io/badge/podman-fedora--40-294172.svg?style=flat "Fedora 40")
 ![Fedora 41](https://img.shields.io/badge/podman-fedora--41-294172.svg?style=flat "Fedora 41")
 ![Fedora 42](https://img.shields.io/badge/podman-fedora--42-294172.svg?style=flat "Fedora 42")
+![Fedora 43](https://img.shields.io/badge/podman-fedora--43-294172.svg?style=flat "Fedora 43")
 
 
 ![Ubuntu Bionic](https://img.shields.io/badge/podman-ubuntu--bionic-dd4814.svg?style=flat "Ubuntu Bionic")
@@ -146,9 +146,9 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
 | `debian-trixie`    | Debian trixie            |
-| `fedora-40`        | Fedora 40                |
 | `fedora-41`        | Fedora 41                |
 | `fedora-42`        | Fedora 42                |
+| `fedora-43`        | Fedora 43                |
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
@@ -186,9 +186,9 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
 | `debian-trixie`    | Debian trixie            |
-| `fedora-40`        | Fedora 40                |
 | `fedora-41`        | Fedora 41                |
 | `fedora-42`        | Fedora 42                |
+| `fedora-43`        | Fedora 43                |
 | `oraclelinux-7`    | Oraclelinux 7            |
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
