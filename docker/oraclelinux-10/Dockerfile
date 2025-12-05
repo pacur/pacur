@@ -6,7 +6,6 @@ RUN dnf -y install oracle-epel-release-el10
 RUN dnf config-manager --set-enabled ol10_appstream
 RUN dnf config-manager --set-enabled ol10_addons
 RUN dnf config-manager --set-enabled ol10_codeready_builder
-RUN dnf config-manager --set-enabled ol10_u0_developer_EPEL
 
 RUN dnf -y upgrade
 RUN dnf -y groupinstall 'Development Tools'
