@@ -2,7 +2,7 @@ FROM docker.io/fedora:43
 LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN dnf -y upgrade
-RUN dnf -y groupinstall 'Development Tools'
+RUN dnf -y group install development-tools
 RUN dnf -y install tar expect gpg rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git mercurial
 
 RUN wget https://go.dev/dl/go1.25.4.linux-amd64.tar.gz
