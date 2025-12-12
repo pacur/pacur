@@ -267,8 +267,15 @@ func (r *Redhat) createSpec(files []string, fast bool) (err error) {
 }
 
 func (r *Redhat) rpmBuild() (err error) {
-	err = utils.Exec(r.specsDir, "rpmbuild", "--define",
-		"_topdir "+r.redhatDir, "-ba", r.Pack.PkgName+".spec")
+	arch := convertArch(r.Pack.Arch)
+
+	if arch != "" {
+		err = utils.Exec(r.specsDir, "rpmbuild", "--target", arch,
+			"--define", "_topdir "+r.redhatDir, "-ba", r.Pack.PkgName+".spec")
+	} else {
+		err = utils.Exec(r.specsDir, "rpmbuild", "--define",
+			"_topdir "+r.redhatDir, "-ba", r.Pack.PkgName+".spec")
+	}
 	if err != nil {
 		return
 	}

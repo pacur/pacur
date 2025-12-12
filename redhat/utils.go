@@ -2,8 +2,22 @@ package redhat
 
 import (
 	"fmt"
+
 	"github.com/pacur/pacur/pack"
 )
+
+func convertArch(arch string) string {
+	switch arch {
+	case "all":
+		return "noarch"
+	case "arm64":
+		return "aarch64"
+	case "amd64":
+		return "x86_64"
+	default:
+		return arch
+	}
+}
 
 func ConvertSection(section string) (converted string) {
 	switch section {
