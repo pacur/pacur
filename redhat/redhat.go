@@ -130,7 +130,7 @@ func (r *Redhat) getFiles() (files []string, err error) {
 	return
 }
 
-func (r *Redhat) createSpec(files []string) (err error) {
+func (r *Redhat) createSpec(files []string, fast bool) (err error) {
 	path := filepath.Join(r.specsDir, r.Pack.PkgName+".spec")
 
 	release := "%{?dist}"
@@ -189,6 +189,10 @@ func (r *Redhat) createSpec(files []string) (err error) {
 	data += "%global _python_bytecompile_extra 0\n"
 	data += "%global _python_bytecompile_errors_terminate_build 0\n"
 	data += "%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')\n"
+
+	if fast {
+		data += "%define _binary_payload w0.gzdio\n"
+	}
 
 	for _, rpmOpt := range r.Pack.RpmOpts {
 		data += fmt.Sprintf("%s\n", rpmOpt)
@@ -368,7 +372,7 @@ func (r *Redhat) Build() (err error) {
 	}
 	defer r.remDirs()
 
-	err = r.createSpec([]string{})
+	err = r.createSpec([]string{}, true)
 	if err != nil {
 		return
 	}
@@ -397,7 +401,7 @@ func (r *Redhat) Build() (err error) {
 		return
 	}
 
-	err = r.createSpec(files)
+	err = r.createSpec(files, false)
 	if err != nil {
 		return
 	}
