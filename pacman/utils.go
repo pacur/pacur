@@ -2,6 +2,7 @@ package pacman
 
 import (
 	"fmt"
+
 	"github.com/pacur/pacur/pack"
 )
 
@@ -9,6 +10,8 @@ func convertPacman(arch string) string {
 	switch arch {
 	case "all":
 		return "any"
+	case "arm64":
+		return "aarch64"
 	case "amd64":
 		return "x86_64"
 	default:
