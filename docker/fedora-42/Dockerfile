@@ -5,10 +5,10 @@ RUN dnf -y upgrade
 RUN dnf -y group install development-tools
 RUN dnf -y install tar expect gpg rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git mercurial
 
-RUN wget https://go.dev/dl/go1.26.0.linux-amd64.tar.gz
-RUN echo "aac1b08a0fb0c4e0a7c1555beb7b59180b05dfc5a3d62e40e9de90cd42f88235 go1.26.0.linux-amd64.tar.gz" | sha256sum -c -
-RUN tar -C /usr/local -xf go1.26.0.linux-amd64.tar.gz
-RUN rm -f go1.26.0.linux-amd64.tar.gz
+RUN wget https://go.dev/dl/go1.26.2.linux-amd64.tar.gz
+RUN echo "aac1b08a0fb0c4e0a7c1555beb7b59180b05dfc5a3d62e40e9de90cd42f88235 go1.26.2.linux-amd64.tar.gz" | sha256sum -c -
+RUN tar -C /usr/local -xf go1.26.2.linux-amd64.tar.gz
+RUN rm -f go1.26.2.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
