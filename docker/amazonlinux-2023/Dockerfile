@@ -15,7 +15,7 @@ ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
 ENV GO111MODULE on
 
-RUN GOPROXY=direct go install github.com/pacur/pacur@latest
+RUN go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
 CMD ["build", "amazonlinux-2023"]
