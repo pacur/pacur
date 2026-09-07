@@ -5,7 +5,7 @@ import (
 )
 
 func createScript(path string, cmds []string) (err error) {
-	data := "set -e\n"
+	data := "set -ex\n"
 	for _, cmd := range cmds {
 		data += cmd + "\n"
 	}
