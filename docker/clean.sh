@@ -130,9 +130,9 @@ sudo podman rmi oraclelinux:7
 sudo podman rmi oraclelinux:8
 sudo podman rmi oraclelinux:9
 sudo podman rmi oraclelinux:10
-sudo podman rmi rockylinux:8
-sudo podman rmi rockylinux:9
-sudo podman rmi rockylinux:10
+sudo podman rmi rockylinux/rockylinux:8
+sudo podman rmi rockylinux/rockylinux:9
+sudo podman rmi rockylinux/rockylinux:10
 sudo podman rmi ubuntu:precise
 sudo podman rmi ubuntu:trusty
 sudo podman rmi ubuntu:vivid

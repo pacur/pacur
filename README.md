@@ -25,6 +25,11 @@
 ![Oracle Linux 10](https://img.shields.io/badge/podman-oraclelinux--10-f82200.svg?style=flat "Oracle Linux 10")
 
 
+![Rocky Linux 8](https://img.shields.io/badge/podman-rockylinux--8-10b981.svg?style=flat "Rocky Linux 8")
+![Rocky Linux 9](https://img.shields.io/badge/podman-rockylinux--9-10b981.svg?style=flat "Rocky Linux 9")
+![Rocky Linux 10](https://img.shields.io/badge/podman-rockylinux--10-10b981.svg?style=flat "Rocky Linux 10")
+
+
 ![Fedora 42](https://img.shields.io/badge/podman-fedora--42-294172.svg?style=flat "Fedora 42")
 ![Fedora 43](https://img.shields.io/badge/podman-fedora--43-294172.svg?style=flat "Fedora 43")
 ![Fedora 44](https://img.shields.io/badge/podman-fedora--44-294172.svg?style=flat "Fedora 44")
@@ -36,6 +41,7 @@
 ![Ubuntu Noble](https://img.shields.io/badge/podman-ubuntu--noble-dd4814.svg?style=flat "Ubuntu Noble")
 ![Ubuntu Questing](https://img.shields.io/badge/podman-ubuntu--questing-dd4814.svg?style=flat "Ubuntu Questing")
 ![Ubuntu Resolute](https://img.shields.io/badge/podman-ubuntu--resolute-dd4814.svg?style=flat "Ubuntu Resolute")
+
 
 Pacur allows building packages for multiple linux distributions with a
 consistent package spec format. Currently `deb`, `rpm` and `pacman` packages
@@ -131,6 +137,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian`           | All debian releases      |
 | `fedora`           | All fedora releases      |
 | `oraclelinux`      | All oraclelinux releases |
+| `rockylinux`       | All rockylinux releases  |
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
@@ -147,6 +154,9 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
 | `oraclelinux-10`   | Oraclelinux 10           |
+| `rockylinux-8`     | Rocky Linux 8            |
+| `rockylinux-9`     | Rocky Linux 9            |
+| `rockylinux-10`    | Rocky Linux 10           |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
@@ -167,6 +177,7 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `debian`           | All debian releases      |
 | `fedora`           | All fedora releases      |
 | `oraclelinux`      | All oraclelinux releases |
+| `rockylinux`       | All rockylinux releases  |
 | `ubuntu`           | All ubuntu releases      |
 | `almalinux-8`      | AlmaLinux 8              |
 | `almalinux-9`      | AlmaLinux 9              |
@@ -183,6 +194,9 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `oraclelinux-8`    | Oraclelinux 8            |
 | `oraclelinux-9`    | Oraclelinux 9            |
 | `oraclelinux-10`   | Oraclelinux 10           |
+| `rockylinux-8`     | Rocky Linux 8            |
+| `rockylinux-9`     | Rocky Linux 9            |
+| `rockylinux-10`    | Rocky Linux 10           |
 | `ubuntu-bionic`    | Ubuntu bionic            |
 | `ubuntu-focal`     | Ubuntu focal             |
 | `ubuntu-jammy`     | Ubuntu jammy             |
