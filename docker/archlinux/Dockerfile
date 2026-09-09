@@ -9,7 +9,7 @@ ENV GOPATH /go
 ENV PATH $PATH:/go/bin
 ENV GO111MODULE on
 
-RUN go install github.com/pacur/pacur@bee0432f4c313ddf538afabbe0f9a3c87e0f0119
+RUN go install github.com/pacur/pacur@latest
 
 RUN sed -i 's|bsdtar -xf "$dbfile" -C "$tmpdir/$repo"|tar -xf "$dbfile" -C "$tmpdir/$repo"|g' /usr/bin/repo-add
 
