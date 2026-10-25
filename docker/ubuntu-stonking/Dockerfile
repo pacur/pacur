@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:questing
+FROM docker.io/ubuntu:stonking
 LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN apt-get --assume-yes update
@@ -17,4 +17,4 @@ ENV GO111MODULE on
 RUN go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "ubuntu-questing"]
+CMD ["build", "ubuntu-stonking"]

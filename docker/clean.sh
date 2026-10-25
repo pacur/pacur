@@ -79,6 +79,7 @@ sudo podman rmi pacur/ubuntu-oracular
 sudo podman rmi pacur/ubuntu-plucky
 sudo podman rmi pacur/ubuntu-questing
 sudo podman rmi pacur/ubuntu-resolute
+sudo podman rmi pacur/ubuntu-stonking
 sudo podman rmi archlinux
 sudo podman rmi base/archlinux
 sudo podman rmi archlinux/base
@@ -158,5 +159,6 @@ sudo podman rmi ubuntu:oracular
 sudo podman rmi ubuntu:plucky
 sudo podman rmi ubuntu:questing
 sudo podman rmi ubuntu:resolute
+sudo podman rmi ubuntu:stonking
 
 sudo podman rmi $(sudo podman images -q -f dangling=true)
