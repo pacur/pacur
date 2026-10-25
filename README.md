@@ -14,7 +14,6 @@
 ![Amazon Linux 2023](https://img.shields.io/badge/podman-amazonlinux--2023-faaf34.svg?style=flat "Amazon Linux 2023")
 
 
-![Debian Bullseye](https://img.shields.io/badge/podman-debian--bullseye-d70a53.svg?style=flat "Debian Bullseye")
 ![Debian Bookworm](https://img.shields.io/badge/podman-debian--bookworm-d70a53.svg?style=flat "Debian Bookworm")
 ![Debian Trixie](https://img.shields.io/badge/podman-debian--trixie-d70a53.svg?style=flat "Debian Trixie")
 
@@ -144,7 +143,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `almalinux-10`     | AlmaLinux 10             |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
-| `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
 | `debian-trixie`    | Debian trixie            |
 | `fedora-43`        | Fedora 43                |
@@ -184,7 +182,6 @@ key:ubuntu="this will apply only to ubuntu builds"
 | `almalinux-10`     | AlmaLinux 10             |
 | `amazonlinux-2`    | Amazonlinux 2            |
 | `amazonlinux-2023` | Amazonlinux 2023         |
-| `debian-bullseye`  | Debian bullseye          |
 | `debian-bookworm`  | Debian bookworm          |
 | `debian-trixie`    | Debian trixie            |
 | `fedora-43`        | Fedora 43                |
@@ -301,7 +298,7 @@ $ httpserver --port 80
 
 After the repo has been created and is hosted on a server the following
 commands can be used to add the repo to the package manager for yum and apt.
-For the debian repo the `bullseye` should be replaced with the debian/ubuntu
+For the debian repo the `trixie` should be replaced with the debian/ubuntu
 release name. The `pacur` repo name and filenames can be change to suite the
 name of your software.
 
@@ -331,7 +328,7 @@ $ yum install httpserver
 
 ```
 $ nano /etc/apt/sources.list.d/pacur.list
-deb http://HTTP_SERVER_IP/apt bullseye main
+deb http://HTTP_SERVER_IP/apt trixie main
 
 $ apt-key adv --keyserver hkp://pgp.mit.edu --recv KEYID
 $ apt-get update
