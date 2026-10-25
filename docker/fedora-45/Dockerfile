@@ -1,4 +1,4 @@
-FROM docker.io/fedora:42
+FROM docker.io/fedora:45
 LABEL maintainer="Pacur <contact@pacur.org>"
 
 RUN dnf -y upgrade
@@ -17,4 +17,4 @@ ENV GO111MODULE on
 RUN go install github.com/pacur/pacur@latest
 
 ENTRYPOINT ["pacur"]
-CMD ["build", "fedora-42"]
+CMD ["build", "fedora-45"]
