@@ -5,10 +5,10 @@ RUN dnf -y upgrade
 RUN dnf -y group install development-tools
 RUN dnf -y install tar expect gpg rpm-build rpm-sign openssl createrepo rsync make automake gcc wget zip git mercurial
 
-RUN wget https://go.dev/dl/go1.27.3.linux-amd64.tar.gz
-RUN echo "65efbc80fdc1fa2cd2631cad5b481777a68e8725f34e89f50fc6ac714e379b40 go1.27.3.linux-amd64.tar.gz" | sha256sum -c -
-RUN tar -C /usr/local -xf go1.27.3.linux-amd64.tar.gz
-RUN rm -f go1.27.3.linux-amd64.tar.gz
+RUN wget https://go.dev/dl/go1.27.4.linux-amd64.tar.gz
+RUN echo "7226736c2339719cda28fbf3a54d71aa63bcefe376e98cef00034268dab24840 go1.27.4.linux-amd64.tar.gz" | sha256sum -c -
+RUN tar -C /usr/local -xf go1.27.4.linux-amd64.tar.gz
+RUN rm -f go1.27.4.linux-amd64.tar.gz
 
 ENV GOPATH /go
 ENV PATH /usr/local/go/bin:$PATH:/go/bin
